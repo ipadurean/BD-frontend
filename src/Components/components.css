@@ -1,0 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway|Varela+Round|Coda);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+.driver-list {
+  background-color: rgb(229, 241, 248);
+  height: 120px;
+  margin: 10px;
+  display: flex;
+  
+}
+
+#img {
+  
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #757272;
+}
+
+#profile-photo{
+margin: 1em;
+  padding: .7em;
+  float: left;
+  margin-top: .3em;
+  height: 12em;
+  width: 12em;
+  border-radius: 18em;
+}
+
+.box {
+  
+  margin: auto;
+	width: 35em; 
+  height: 15em;
+  background: #fff;
+  border-radius: .3em;
+  
+}
+
+.username {
+  margin: auto;
+  margin-top: -4.40em;
+  margin-left: 5.80em;
+  color: #658585;
+  font-size: 1.53em;
+  font-family: "Coda", sans-serif;
+  font-weight: bold;
+}
+
+.car-photo {
+  width: 500px;
+  height: 300px;
+  
+  box-shadow: 5px 5px 5px 5px #bdbaba;
+  }
+
+.title {
+  margin: 10px;
+}
+
+#btn {
+  height: 3em;
+width: 500px;
+margin-top: 50px;
+border-radius: 10px;
+}
+

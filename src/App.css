@@ -1,22 +1,18 @@
-.App {
-  text-align: center;
+.App-container {
+  background-color: rgba(107, 105, 105, 0.075)
 }
 
-.App-logo {
-  height: 40vmin;
+.bttn {
+
+  background-color: rgb(220, 233, 210);
+  margin-left: 3px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+
+.search {
+ 
+ margin-right: 100px;
 }
 
-.App-link {
-  color: #09d3ac;
-}
+
