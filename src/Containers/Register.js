@@ -3,7 +3,7 @@ import {
   FormGroup,
   FormControl
 } from "react-bootstrap";
-// import LoaderButton from "../components/LoaderButton";
+
 import "./Register.css";
 
 export default class Register extends Component {
@@ -12,27 +12,22 @@ export default class Register extends Component {
 
     this.state = {
       isLoading: false,
-      firstName: "",
-      lastName: "",
-      email: "",
+      name: "",
       password: "",
       confirmPassword: "",
-      confirmationCode: "",
       newUser: null
     };
   }
 
   validateForm() {
     return (
-      this.state.email.length > 0 &&
+      this.state.name.length > 0 &&
       this.state.password.length > 0 &&
       this.state.password === this.state.confirmPassword
     );
   }
 
-  validateConfirmationForm() {
-    return this.state.confirmationCode.length > 0;
-  }
+
 
   handleChange = event => {
     this.setState({
@@ -50,38 +45,7 @@ export default class Register extends Component {
     this.setState({ isLoading: false });
   }
 
-  handleConfirmationSubmit = async event => {
-    event.preventDefault();
-
-    this.setState({ isLoading: true });
-  }
-
-  renderConfirmationForm() {
-    return (
-      <form onSubmit={this.handleConfirmationSubmit}>
-        <FormGroup controlId="confirmationCode" bsSize="large">
-          
-          <FormControl
-            autoFocus
-            type="tel"
-            placeholder="confirmation code"
-            value={this.state.confirmationCode}
-            onChange={this.handleChange}
-          />
-          <p>Please check your email for the code.</p>
-        </FormGroup>
-        {/* <LoaderButton
-          block
-          bsSize="large"
-          disabled={!this.validateConfirmationForm()}
-          type="submit"
-          isLoading={this.state.isLoading}
-          text="Verify"
-          loadingText="Verifying…"
-        /> */}
-      </form>
-    );
-  }
+ 
 
   renderForm() {
     return (
@@ -107,7 +71,7 @@ export default class Register extends Component {
             onChange={this.handleChange}
           />
         </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
+        <FormGroup controlId="password" bssize="large">
           
           <FormControl
             value={this.state.password}
@@ -116,7 +80,7 @@ export default class Register extends Component {
             type="password"
           />
         </FormGroup>
-        <FormGroup controlId="confirmPassword" bsSize="large">
+        <FormGroup controlId="confirmPassword" bssize="large">
           
           <FormControl
             value={this.state.confirmPassword}
@@ -143,7 +107,7 @@ export default class Register extends Component {
       <div className="Signup">
         {this.state.newUser === null
           ? this.renderForm()
-          : this.renderConfirmationForm()}
+          : this.renderForm()}
       </div>
     );
   }

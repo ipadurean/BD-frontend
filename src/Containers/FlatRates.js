@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import "./FlatRates.css"
 
 class FlatRates extends Component {
   constructor(){

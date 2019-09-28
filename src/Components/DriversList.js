@@ -1,5 +1,6 @@
 import React from 'react';
 import Driver from './Driver'
+
 const DriversList = (props) => {
   return (
     <div className="list">
@@ -7,8 +8,6 @@ const DriversList = (props) => {
       <Driver key={driver.id} select={props.select} driver={driver} />
         )
       }
-        
-      
     </div>
   );
 }

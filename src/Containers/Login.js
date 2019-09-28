@@ -7,13 +7,14 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
-      email: "",
+      username: "",
       password: ""
     };
   }
 
+  
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
+    return this.state.username.length > 0 && this.state.password.length > 0;
   }
 
   handleChange = event => {
@@ -24,24 +25,26 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props.login(this.state)
   }
 
   render() {
+    
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bssize="large">
+          <FormGroup controlId="username" bssize="large">
             
             <FormControl
               autoFocus
-              type="email"
-              placeholder= "email"
-              value={this.state.email}
+              type="text"
+              placeholder= "username"
+              value={this.state.username}
               onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup  controlId="password" bssize="large">
-            {/* <ControlLabel>Password</ControlLabel> */}
+            
             <FormControl
               value={this.state.password}
               onChange={this.handleChange}

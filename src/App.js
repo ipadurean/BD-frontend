@@ -1,48 +1,114 @@
 import React, { Component } from "react";
-import Header from './Components/Header'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
-import Routes from "./Routes";
-
+import Login from './Containers/Login';
+import DriversList from './Components/DriversList';
+import DriverProfile from "./Components/DriverProfile";
+import NavBar from './Components/NavBar'
 import "./App.css";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App-container">
-         <Header />
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">About</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="flatrates">Flat rates</Nav.Link>
-              <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Highest rated</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Availability</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Form inline className="search">
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-            <span className="bttn">
-              <Button href="login" variant="outline-success">Login</Button>
-              </span>
-            <span className="bttn">
-              <Button href="register" variant="outline-success">Sign up</Button>
-              </span>
-          </Navbar.Collapse>
-        </Navbar>
-       
-        <Routes />
-      </div>
-    );
+
+  constructor() {
+    super()
+    this.state = {
+      drivers: [],
+      selectedDriver: null,
+      loggedUser: null,
+      presentTrips: null,
+      clicklogin: false,
+      clickBook: false
+    }
   }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/drivers')
+      .then(res => res.json())
+      .then(data => {
+        return this.setState({ drivers: data })
+      })
+      .catch(function (error) {
+        console.log('Looks like there was a problem: \n', error)
+      });
+  }
+
+  login = (credentials) => {
+    
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": 'application/json'
+      },
+      body: JSON.stringify({user:
+        credentials
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        selectedDriver: null,
+        loggedUser: data.user});
+      localStorage.setItem('jwt', data.jwt)})
+
+}
+
+  selectDriver = (driver) => {
+    this.setState({ selectedDriver: driver })
+  }
+
+  bookRide = (time) => {
+    fetch('http://localhost:3000/trips', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": 'application/json'
+      },
+      body: JSON.stringify({
+        user_id:this.state.loggedUser.id, 
+        driver_id: this.state.selectedDriver.id,
+        time_booked: time,
+        total: this.state.selectedDriver.rate * time
+      })
+    })
+    .then(res => res.json())
+    .then(this.setState({clickBook: true}))
+    
+  }
+
+  logout = () => {
+    localStorage.clear();
+    this.setState({
+      loggedUser: null
+    })
+  }
+    clickLogin = () => {
+      this.setState({
+        selectedDriver: null,
+        loggedUser: null,
+        clicklogin: true
+      })
+  }
+  
+  
+  
+    render(){
+      
+      return(
+       <div className="app-container">
+          <NavBar click={this.clickLogin} logout={this.logout} logged={this.state.loggedUser} />
+          {this.state.selectedDriver&&this.state.loggedUser ?
+          <DriverProfile booked={this.state.clickBook} book={this.bookRide} driver={this.state.selectedDriver} /> :
+           !this.state.loggedUser&&this.state.clicklogin ?
+           <div>
+            <Login login={this.login} /> 
+            <DriversList select={this.selectDriver} drivers={this.state.drivers} />
+            </div> :
+           
+            <DriversList select={this.selectDriver} drivers={this.state.drivers} /> 
+
+          }
+       </div>  
+        )
+    }
 }
 
 export default App;
