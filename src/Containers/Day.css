@@ -3,33 +3,36 @@
   width: 50px;
   height: 600px;
   margin: 10px;
-  padding: 5px;
-  
-  
-  background-color: rgb(213, 231, 231)
- }
- .ruler .hr {
-  
-  border-top: 10px solid rgb(110, 107, 107);
-  width: 40px;
-  height: 20px;
  }
 
- .ruler .hv {
-  border-bottom: 5px solid rgb(212, 180, 180);
-  width: 20px;
+ .ruler .hr {
+  background-color: aliceblue;
+  border-bottom: solid rgb(113, 124, 105);
+  padding-left: 14px;
+  width: 25px;
+  height: 15px;
+  margin-bottom:2px;
+  
  }
- .ruler .qt {
-  border-bottom: 3px solid rgb(243, 50, 50);
-  width: 10px;
+
+ .ruler .brown {
+   background-color: brown;
+   border-bottom: solid rgb(113, 124, 105);
+  padding-left: 14px;
+  width: 25px;
+  height: 15px;
+  margin-bottom:2px;
  }
+
+ 
 
  .ruler .hr:after {
+   
+  top: -5px;
   position: relative;
-  left: -15px;
-  font: 11px/1 sans-serif;
-  
- }
+  left: 20px;
+  font-size: 12px;
+}
 .div .hr::after {
   top:0;
 }
@@ -38,158 +41,145 @@
   top: 0%;
  }
  .ruler .hr:nth-of-type(1):after {
-  content: "0";
+  content: "01";
  }
  .ruler .hr:nth-of-type(2) {
   top: 4.16%;
  }
  .ruler .hr:nth-of-type(2):after {
-  content: "1";
+  content: "02";
  }
  .ruler .hr:nth-of-type(3) {
   top: 8.33%;
  }
  .ruler .hr:nth-of-type(3):after {
-  content: "2";
+  content: "03";
  }
  .ruler .hr:nth-of-type(4) {
   top: 12.50%;
  }
  .ruler .hr:nth-of-type(4):after {
-  content: "3";
+  content: "04";
  }
  .ruler .hr:nth-of-type(5) {
   top: 16.66%;
  }
  .ruler .hr:nth-of-type(5):after {
-  content: "4";
+  content: "05";
  }
  .ruler .hr:nth-of-type(6) {
   top: 20.83%;
  }
  .ruler .hr:nth-of-type(6):after {
-  content: "5";
+  content: "06";
  }
  .ruler .hr:nth-of-type(7) {
   top: 25%;
  }
  .ruler .hr:nth-of-type(7):after {
-  content: "6";
+  content: "07";
  }
  .ruler .hr:nth-of-type(8) {
   top: 29.16%;
  }
  .ruler .hr:nth-of-type(8):after {
-  content: "7";
+  content: "08";
  }
  .ruler .hr:nth-of-type(9) {
   top: 33.33%;
  }
  .ruler .hr:nth-of-type(9):after {
-  content: "8";
+  content: "09";
  }
  .ruler .hr:nth-of-type(10) {
   top: 37.50%;
  }
  .ruler .hr:nth-of-type(10):after {
-  content: "9";
+  content: "10";
  }
  .ruler .hr:nth-of-type(11) {
   top: 41.66%;
  }
  .ruler .hr:nth-of-type(11):after {
-  content: "10";
+  content: "11";
  }
  .ruler .hr:nth-of-type(12) {
   top: 45.83%;
  }
  .ruler .hr:nth-of-type(12):after {
-  content: "11";
+  content: "12";
  }
  .ruler .hr:nth-of-type(13) {
   top: 50%;
  }
  .ruler .hr:nth-of-type(13):after {
-  content: "12";
+  content: "13";
  }
  .ruler .hr:nth-of-type(14) {
   top: 54.16%;
  }
  .ruler .hr:nth-of-type(14):after {
-  content: "13";
+  content: "14";
  }
  .ruler .hr:nth-of-type(15) {
   top: 58.33%;
  }
  .ruler .hr:nth-of-type(15):after {
-  content: "14";
+  content: "15";
  }
  .ruler .hr:nth-of-type(16) {
   top: 62.5%;
  }
  .ruler .hr:nth-of-type(16):after {
-  content: "15";
+  content: "16";
  }
  .ruler .hr:nth-of-type(17) {
   top: 66.66%;
  }
  .ruler .hr:nth-of-type(17):after {
-  content: "16";
+  content: "17";
  }
  .ruler .hr:nth-of-type(18) {
   top: 70.83%;
  }
  .ruler .hr:nth-of-type(18):after {
-  content: "17";
+  content: "18";
  }
  .ruler .hr:nth-of-type(19) {
   top: 75%;
  }
  .ruler .hr:nth-of-type(19):after {
-  content: "18";
+  content: "19";
  }
  .ruler .hr:nth-of-type(20) {
   top: 79.16%;
  }
  .ruler .hr:nth-of-type(20):after {
-  content: "19";
+  content: "20";
  }
  .ruler .hr:nth-of-type(21) {
   top: 83.33%;
  }
  .ruler .hr:nth-of-type(21):after {
-  content: "20";
+  content: "21";
  }
  .ruler .hr:nth-of-type(22) {
   top: 87.5%;
  }
  .ruler .hr:nth-of-type(22):after {
-  content: "21";
+  content: "22";
  }
  .ruler .hr:nth-of-type(23) {
   top: 91.66%;
  }
  .ruler .hr:nth-of-type(23):after {
-  content: "22";
+  content: "23";
  }
  .ruler .hr:nth-of-type(24) {
   top: 95.83%;
  }
  .ruler .hr:nth-of-type(24):after {
-  content: "23";
- }
- .ruler .hr:nth-of-type(25) {
-  top: 100%;
- }
- .ruler .hr:nth-of-type(25):after {
   content: "24";
  }
- .ruler .qt:nth-of-type(0) {
-  top: 25%;
- }
- .ruler .hv:nth-of-type(1) {
-  top: 50%;
- }
- .ruler .qt:nth-of-type(2) {
-  top: 75%;
- }
+
+ 

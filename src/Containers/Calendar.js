@@ -9,9 +9,7 @@ class Calendar extends Component {
       selectedMonth: new Date().getMonth(),
       timeNow: new Date(),
       weekday: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      dayClicked: null,
-      selectedFirst:null,
-      // selectedLast:null
+      dayClicked:null,
     }
   }
 
@@ -25,8 +23,8 @@ class Calendar extends Component {
     let d = 1;
     while (d <= days) {
     (date.setDate(d) < this.state.timeNow.getTime()?
-      daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date} ><span>{d}</span></div>) :
-      daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date} data-calendar-status="active"><span>{d}</span></div>))
+      daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>) :
+      daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date.setDate(d)} data-calendar-status="active"><span>{d}</span></div>))
       d++
     }
     return daysArr;
@@ -55,19 +53,18 @@ class Calendar extends Component {
 
 displayDay = (event) => {
       this.setState({
-          dayClicked: event.target.parentNode.dataset.calendarDate
+          dayClicked: event.target.parentNode.dataset.calendarDate,
+          selectedFirst:null,
+          selectedLast:null
       }) 
 }
 
-handleSelect = (event) => {
-  this.setState({
-    selectedFirst: event.target.value.substring(event.target.selectionStart, event.target.selectionEnd),
-    // selectedLast: event.target.selectionEnd.value
-  })
-}
+
+
+
 
   render() {
-console.log(this.state.selectedFirst)
+// console.log(this.state.selectedFirst, this.state.selectedLast)
     return (
     <div>
       <div id="myCalendar" className="calendar" >
@@ -92,7 +89,13 @@ console.log(this.state.selectedFirst)
         
       </div>
       
-    <span>{this.state.dayClicked&&<Day select={this.handleSelect}/>}</span>
+            <span>{this.state.dayClicked &&
+                <Day date={this.state.dayClicked} 
+                     select={this.handleClick}
+                     start={this.state.selectedFirst}
+                     end={this.state.selectedLast}
+                  />}
+            </span>
       </div>
     )
   }
