@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       drivers: [],
       selectedDriver: null,
+      loggedIn: !!localStorage.getItem("jwt"),
       loggedUser: null,
       presentTrips: null,
       clicklogin: false,
@@ -41,15 +42,17 @@ class App extends Component {
       body: JSON.stringify({user:
         credentials
       })
-    })
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
+      })
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem('jwt', data.jwt)
+        this.setState({
         selectedDriver: null,
-        loggedUser: data.user});
-      localStorage.setItem('jwt', data.jwt)})
-
-}
+        loggedIn:true,
+        loggedUser: data.user
+       })
+    })
+   }
 
   selectDriver = (driver) => {
     this.setState({ selectedDriver: driver })
@@ -63,7 +66,7 @@ class App extends Component {
         "Accept": 'application/json'
       },
       body: JSON.stringify({
-        user_id:this.state.loggedUser.id, 
+        user_id:this.state.loggedUser, 
         driver_id: this.state.selectedDriver.id,
         time_booked: time,
         total: this.state.selectedDriver.rate * time
@@ -83,7 +86,6 @@ class App extends Component {
     clickLogin = () => {
       this.setState({
         selectedDriver: null,
-        loggedUser: null,
         clicklogin: true
       })
   }
@@ -94,16 +96,18 @@ class App extends Component {
       
       return(
        <div className="app-container">
-          <NavBar click={this.clickLogin} logout={this.logout} logged={this.state.loggedUser} />
-          {this.state.selectedDriver&&this.state.loggedUser ?
+          <NavBar click={this.clickLogin} logout={this.logout} logged={this.state.loggedIn} />
+          {this.state.selectedDriver&&this.state.loggedIn ?
           <DriverProfile booked={this.state.clickBook} book={this.bookRide} driver={this.state.selectedDriver} /> :
-           !this.state.loggedUser&&this.state.clicklogin ?
-           <div>
-            <Login login={this.login} /> 
-            <DriversList select={this.selectDriver} drivers={this.state.drivers} />
-            </div> :
-           
-            <DriversList select={this.selectDriver} drivers={this.state.drivers} /> 
+          !this.state.loggedIn&&this.state.clicklogin ?
+          <div>
+          <Login login={this.login} /> 
+          <DriversList select={this.selectDriver} drivers={this.state.drivers} /> 
+          </div>:
+          this.state.loggedIn ?
+          <DriversList select={this.selectDriver} drivers={this.state.drivers} />
+           :
+          <DriversList select={this.selectDriver} drivers={this.state.drivers} />
 
           }
        </div>  

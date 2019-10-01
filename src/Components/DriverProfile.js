@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./components.css";
-import Trip from './Trip'
+import Trip from './Trip';
+import Calendar from '../Containers/Calendar';
+
 
 class DriverProfile extends Component {
   constructor(){
@@ -19,7 +21,7 @@ class DriverProfile extends Component {
       }
 
     render(){
-      console.log(this.state)
+      
       return (
     <div className="driver-container">
       <div className="box">
@@ -31,12 +33,7 @@ class DriverProfile extends Component {
           {this.props.driver.description}
         </div>
       </div>
-      
-      <div>
-        <h4>${this.props.driver.rate}/hour</h4>
-        <h4>{this.props.driver.car}</h4>
-        <img className="car-photo" alt="car" src={this.props.driver.car_photo}/>
-        <div className="book">
+      <div className="book">
           <p>Select time needed:</p>
           <select onChange={this.handleChange}>
               
@@ -50,10 +47,20 @@ class DriverProfile extends Component {
               <option value="8" >8 hours</option>
               <option value="9" >9 hours</option>
           </select>
+          <Calendar />
+          
           <Button onClick={() => this.props.book(this.state.time)} id="btn">Book ride with this driver</Button>
           {this.props.booked && <Trip time={this.state.time} driver={this.props.driver} />}
-          </div>
+          
       </div>
+      
+      <div>
+        <h4>${this.props.driver.rate}/hour</h4>
+        <h4>{this.props.driver.car}</h4>
+        <img className="car-photo" alt="car" src={this.props.driver.car_photo}/>
+        
+      </div>
+      
     </div>
       )
     }
