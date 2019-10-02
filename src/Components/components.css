@@ -47,8 +47,8 @@
 
 .car-photo {
   margin: 1%;
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: 250px;
   object-fit: cover;
   box-shadow: 3px 3px 3px 3px #bdbaba;
   }
@@ -63,8 +63,7 @@ border-radius: 10px;
 
 .driver-container {
   background-color: rgba(216, 228, 231, 0.349);
-  padding: 2%;
-  padding-top: 15%;
+  padding: 15% 5% 15% 5%;
   margin: 1%;
 }
 
@@ -73,7 +72,6 @@ border-radius: 10px;
   width:auto;
   margin: 1%;
   float: right;
-  background-color: rgb(207, 226, 220)
 }
 
 .nav-container {
@@ -90,10 +88,15 @@ border-radius: 10px;
 #logo {
   font-family: "Coda", sans-serif;
   align-items: left;
-  color: rgb(32, 18, 18);
-  font-size: 450%;
-  text-shadow: 2px 2px #cecbcb;
+  color: rgb(95, 93, 93);
+  font-size: 500%;
+  text-shadow: 4px 4px #27282b;
   margin-top: 85px;
   
+}
+
+.trip {
+  padding: 15px;
+  background-color: beige;
 }
 

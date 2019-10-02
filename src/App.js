@@ -13,10 +13,9 @@ class App extends Component {
       drivers: [],
       selectedDriver: null,
       loggedIn: !!localStorage.getItem("jwt"),
-      loggedUser: null,
+      loggedUser: 1,
       presentTrips: null,
       clicklogin: false,
-      clickBook: false
     }
   }
 
@@ -32,7 +31,7 @@ class App extends Component {
   }
 
   login = (credentials) => {
-    
+   
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
@@ -48,8 +47,8 @@ class App extends Component {
         localStorage.setItem('jwt', data.jwt)
         this.setState({
         selectedDriver: null,
-        loggedIn:true,
-        loggedUser: data.user
+        loggedIn: data.jwt,
+        loggedUser: data.user.id
        })
     })
    }
@@ -58,31 +57,17 @@ class App extends Component {
     this.setState({ selectedDriver: driver })
   }
 
-  bookRide = (time) => {
-    fetch('http://localhost:3000/trips', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        "Accept": 'application/json'
-      },
-      body: JSON.stringify({
-        user_id:this.state.loggedUser, 
-        driver_id: this.state.selectedDriver.id,
-        time_booked: time,
-        total: this.state.selectedDriver.rate * time
-      })
-    })
-    .then(res => res.json())
-    .then(this.setState({clickBook: true}))
-    
-  }
+ 
 
-  logout = () => {
+  logout = (event) => {
+    event.preventDefault();
     localStorage.clear();
     this.setState({
-      loggedUser: null
+      loggedUser: false,
+      loggedIn: false
     })
   }
+
     clickLogin = () => {
       this.setState({
         selectedDriver: null,
@@ -93,20 +78,19 @@ class App extends Component {
   
   
     render(){
-      
+console.log(this.state)
       return(
        <div className="app-container">
           <NavBar click={this.clickLogin} logout={this.logout} logged={this.state.loggedIn} />
           {this.state.selectedDriver&&this.state.loggedIn ?
-          <DriverProfile booked={this.state.clickBook} book={this.bookRide} driver={this.state.selectedDriver} /> :
+          <DriverProfile user={this.state.loggedUser} driver={this.state.selectedDriver} /> :
           !this.state.loggedIn&&this.state.clicklogin ?
           <div>
           <Login login={this.login} /> 
           <DriversList select={this.selectDriver} drivers={this.state.drivers} /> 
           </div>:
-          this.state.loggedIn ?
-          <DriversList select={this.selectDriver} drivers={this.state.drivers} />
-           :
+          this.state.loggedIn?
+          <DriversList select={this.selectDriver} drivers={this.state.drivers} />:
           <DriversList select={this.selectDriver} drivers={this.state.drivers} />
 
           }

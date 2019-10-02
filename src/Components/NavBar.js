@@ -32,7 +32,7 @@ class NavBar extends Component {
            {!this.props.logged? 
            <div>
             <span className="bttn">
-              <Button onClick={() => this.props.click()} variant="outline-success">Login</Button>
+              <Button onClick={this.props.click} variant="outline-success">Login</Button>
               </span>
             <span className="bttn">
               <Button href="register" variant="outline-success">Sign up</Button>
@@ -40,7 +40,7 @@ class NavBar extends Component {
               </div> :
               
               <span className="bttn">
-              <Button onClick={() => this.props.logout()} href="/" variant="outline-success">Logout</Button>
+              <Button onClick={this.props.logout} href="/" variant="outline-success">Logout</Button>
               </span>
             }
 

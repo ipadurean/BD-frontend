@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Day from './Day'
-import './Calendar.css'
+import Day from './Day';
+import './Calendar.css';
+import Trip from '../Components/Trip';
+import { Button } from "react-bootstrap";
 
 class Calendar extends Component {
   constructor() {
@@ -8,8 +10,10 @@ class Calendar extends Component {
     this.state = {
       selectedMonth: new Date().getMonth(),
       timeNow: new Date(),
-      weekday: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       dayClicked:null,
+      start:null,
+      end:null,
+      clickBook: false
     }
   }
 
@@ -21,6 +25,7 @@ class Calendar extends Component {
     let daysArr = [];
     let days = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
     let d = 1;
+    for (let i=1; i<date.getDay(); i++){daysArr.push( <div key={i+100} className="calendar-date calendar-date--disabled"><span></span></div>)}
     while (d <= days) {
     (date.setDate(d) < this.state.timeNow.getTime()?
       daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>) :
@@ -51,12 +56,47 @@ class Calendar extends Component {
     return months[date.getMonth()] + " " + date.getFullYear()
   }
 
-displayDay = (event) => {
-      this.setState({
-          dayClicked: event.target.parentNode.dataset.calendarDate,
-          selectedFirst:null,
-          selectedLast:null
-      }) 
+  displayDay = (event) => {
+        this.setState({
+            dayClicked: event.target.parentNode.dataset.calendarDate,
+            start:null,
+            end:null
+        }) 
+  }
+
+handleClick = (event) => {
+   this.state.start===null?
+        this.setState({start: event.target.dataset.val-1, end: event.target.dataset.val-0}) :
+   (this.state.end-this.state.start)===1 ?
+        this.setState({end: event.target.dataset.val-0}) :
+   this.setState({start: event.target.dataset.val-1, end: event.target.dataset.val-0})
+}
+
+bookRide = () => {
+  fetch('http://localhost:3000/trips', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      "Accept": 'application/json'
+    },
+    body: JSON.stringify({
+      user_id:this.props.user, 
+      driver_id: this.props.driver.id,
+      time_booked: this.state.end - this.state.start,
+      start_time: this.state.start*3600000+parseInt(this.state.dayClicked),
+      end_time: this.state.end*3600000+parseInt(this.state.dayClicked),
+      total: this.props.driver.rate * (this.state.end - this.state.start)
+    })
+  })
+  .then(res => res.json())
+  .then(this.setState({clickBook: true}))
+  
+}
+
+getBookingTime = () => {
+  let date = new Date();
+  date.setTime(this.state.start*3600000+parseInt(this.state.dayClicked));
+  return date+"";
 }
 
 
@@ -64,7 +104,7 @@ displayDay = (event) => {
 
 
   render() {
-// console.log(this.state.selectedFirst, this.state.selectedLast)
+
     return (
     <div>
       <div id="myCalendar" className="calendar" >
@@ -86,17 +126,23 @@ displayDay = (event) => {
         <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
         {this.createMonth()}
         </div>
+       
         
       </div>
-      
             <span>{this.state.dayClicked &&
-                <Day date={this.state.dayClicked} 
-                     select={this.handleClick}
-                     start={this.state.selectedFirst}
-                     end={this.state.selectedLast}
-                  />}
+                      <Day date={this.state.dayClicked} 
+                          select={this.handleClick}
+                          start={this.state.start}
+                          end={this.state.end}
+                        />}
             </span>
-      </div>
+            <div>
+            <Button onClick={this.bookRide} id="btn">Book ride with this driver</Button>
+          {this.state.clickBook && <Trip time={this.state.end - this.state.start} 
+                                         driver={this.props.driver}
+                                         date={this.getBookingTime()} />}
+          </div>
+    </div>
     )
   }
 
