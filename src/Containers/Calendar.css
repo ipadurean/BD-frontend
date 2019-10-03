@@ -20,8 +20,9 @@
     box-shadow: 0 4px 22px 0 rgba(0, 0, 0, 0.05);
     margin: 5px;
     overflow: hidden;
-    width: 350px;
-    float:left;
+    width: 450px;
+    float:right;
+    padding: 10px;
     
 }
 @media (max-width:1200px) {
@@ -90,7 +91,8 @@
     background-color: rgba(var(--calendar-selected-bg-color), 0.3);
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 10px
+    padding-bottom: 10px;
+    padding: 5px;
 }
 
 .calendar .calendar-date {
@@ -122,4 +124,9 @@
     border-radius: 0;
     cursor: not-allowed;
     opacity: 0.2;
+}
+
+#btn {
+    background-color: rgb(105, 105, 93);
+    border: 1px solid black
 }

@@ -16,6 +16,7 @@ class App extends Component {
       loggedUser: 1,
       presentTrips: null,
       clicklogin: false,
+      keyword: null
     }
   }
 
@@ -74,6 +75,37 @@ class App extends Component {
         clicklogin: true
       })
   }
+
+  sortByRate = () => {
+    this.setState(prevState => {
+      return {
+        drivers: prevState.drivers.sort(function(a, b){return a.rate-b.rate})
+      }
+    })
+  }
+
+  sortByRating = () => {
+    this.setState(prevState => {
+      return {
+        drivers: prevState.drivers.sort(function(a, b){return b.rating-a.rating})
+      }
+    })
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      keyword: event.target.value
+    })
+  }
+
+  searchDrivers = (event) => {
+    event.preventDefault();
+    this.setState(prevState => {
+      return {
+        drivers: prevState.drivers.filter(el => (el.username + " " + el.description+ " " + el.car).toLowerCase().includes(prevState.keyword.toLowerCase()))
+      }
+    })
+  }
   
   
   
@@ -81,17 +113,27 @@ class App extends Component {
 console.log(this.state)
       return(
        <div className="app-container">
-          <NavBar click={this.clickLogin} logout={this.logout} logged={this.state.loggedIn} />
-          {this.state.selectedDriver&&this.state.loggedIn ?
-          <DriverProfile user={this.state.loggedUser} driver={this.state.selectedDriver} /> :
-          !this.state.loggedIn&&this.state.clicklogin ?
+          <NavBar sortByRate={this.sortByRate} 
+                  sortByRating={this.sortByRating}
+                  click={this.clickLogin} 
+                  logout={this.logout} 
+                  logged={this.state.loggedIn}
+                  change={this.handleChange}
+                  search={this.searchDrivers} />
+        {this.state.selectedDriver&&this.state.loggedIn ?
+          <DriverProfile user={this.state.loggedUser} 
+                        driver={this.state.selectedDriver} /> :
+        !this.state.loggedIn&&this.state.clicklogin ?
           <div>
           <Login login={this.login} /> 
-          <DriversList select={this.selectDriver} drivers={this.state.drivers} /> 
+          <DriversList select={this.selectDriver} 
+                       drivers={this.state.drivers} /> 
           </div>:
-          this.state.loggedIn?
-          <DriversList select={this.selectDriver} drivers={this.state.drivers} />:
-          <DriversList select={this.selectDriver} drivers={this.state.drivers} />
+        this.state.loggedIn?
+          <DriversList select={this.selectDriver} 
+                       drivers={this.state.drivers} />:
+          <DriversList select={this.selectDriver} 
+                       drivers={this.state.drivers} />
 
           }
        </div>  

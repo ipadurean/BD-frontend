@@ -1,6 +1,7 @@
 .ruler {
-  
-  float:right;
+  display: flex;
+  flex-direction: column;
+  float:left;
   width: 100px;
   height: auto;
   margin: 10px;
@@ -8,7 +9,7 @@
 
  .ruler .hr {
   background-color: white;
-  border-bottom: solid rgb(179, 199, 165);
+  border: 1px solid rgb(179, 199, 165);
   padding-left: 14px;
   width: 20px;
   height: 15px;

@@ -18,16 +18,16 @@ class NavBar extends Component {
             <Nav className="mr-auto">
             <Nav.Link href="/flatrates">Flatrates</Nav.Link>
               <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Highest rated</NavDropdown.Item>
+                <NavDropdown.Item onClick={this.props.sortByRating} >Highest rated</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Availability</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Item onClick={this.props.sortByRate} >Rate</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form inline className="search">
+            <Form onChange={this.props.change} inline className="search">
               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button variant="outline-success">Search</Button>
+              <Button onClick={this.props.search} variant="outline-success">Search</Button>
             </Form>
            {!this.props.logged? 
            <div>
