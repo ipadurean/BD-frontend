@@ -112,12 +112,12 @@ getBookingTime = () => {
 
 
   render() {
-console.log(this.state.dayClicked)
+
     return (
     <div>
       <div id="myCalendar" className="calendar" >
       <div>{this.state.dayClicked &&
-                      <Day date={this.state.dayClicked} 
+                      <Day date={this.getBookingTime} 
                           select={this.handleClick}
                           start={this.state.start}
                           end={this.state.end}

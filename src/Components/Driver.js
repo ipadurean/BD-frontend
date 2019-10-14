@@ -11,7 +11,7 @@ const Driver = (props) => {
         
       </div>
       <img id="img" alt="img" src={props.driver.photo}/>
-    <p>{props.driver.car}</p>
+    <p> - {props.driver.car}</p>
     
 </div>
   )

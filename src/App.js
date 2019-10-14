@@ -1,22 +1,24 @@
 import React, { Component } from "react";
-import Login from './Containers/Login';
 import DriversList from './Components/DriversList';
-import DriverProfile from "./Components/DriverProfile";
-import NavBar from './Components/NavBar'
+import Header from './Components/Header';
+import { Router, Route, Redirect } from 'react-router-dom';
+import Routes from './Routes';
+import NavBar from './Components/NavBar';
+import Login from './Containers/Login';
+import Home from './Containers/Home'
 import "./App.css";
+import Auth from './authAdapter'
+import createBrowserHistory from 'history/createBrowserHistory';
+
+const history = createBrowserHistory()
 
 class App extends Component {
-
   constructor() {
     super()
     this.state = {
       drivers: [],
-      selectedDriver: null,
-      loggedIn: !!localStorage.getItem("jwt"),
-      loggedUser: 1,
-      presentTrips: null,
-      clicklogin: false,
-      keyword: null
+      loggedIn: false,
+      user: {}
     }
   }
 
@@ -29,116 +31,70 @@ class App extends Component {
       .catch(function (error) {
         console.log('Looks like there was a problem: \n', error)
       });
-  }
-
-  login = (credentials) => {
-   
-    fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        "Accept": 'application/json'
-      },
-      body: JSON.stringify({user:
-        credentials
-      })
-      })
-      .then(res => res.json())
-      .then(data => {
-        localStorage.setItem('jwt', data.jwt)
-        this.setState({
-        selectedDriver: null,
-        loggedIn: data.jwt,
-        loggedUser: data.user.id
-       })
-    })
    }
 
-  selectDriver = (driver) => {
-    this.setState({ selectedDriver: driver })
-  }
-
- 
-
-  logout = (event) => {
-    event.preventDefault();
-    localStorage.clear();
-    this.setState({
-      loggedUser: false,
-      loggedIn: false
-    })
-  }
-
-    clickLogin = () => {
-      this.setState({
-        selectedDriver: null,
-        clicklogin: true
-      })
-  }
-
-  sortByRate = () => {
-    this.setState(prevState => {
-      return {
-        drivers: prevState.drivers.sort(function(a, b){return a.rate-b.rate})
-      }
-    })
-  }
-
-  sortByRating = () => {
-    this.setState(prevState => {
-      return {
-        drivers: prevState.drivers.sort(function(a, b){return b.rating-a.rating})
-      }
-    })
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      keyword: event.target.value
-    })
-  }
-
-  searchDrivers = (event) => {
-    event.preventDefault();
-    this.setState(prevState => {
-      return {
-        drivers: prevState.drivers.filter(el => (el.username + " " + el.description+ " " + el.car).toLowerCase().includes(prevState.keyword.toLowerCase()))
-      }
-    })
-  }
-  
-  
-  
-    render(){
-console.log(this.state)
-      return(
-       <div className="app-container">
-          <NavBar sortByRate={this.sortByRate} 
-                  sortByRating={this.sortByRating}
-                  click={this.clickLogin} 
-                  logout={this.logout} 
-                  logged={this.state.loggedIn}
-                  change={this.handleChange}
-                  search={this.searchDrivers} />
-        {this.state.selectedDriver&&this.state.loggedIn ?
-          <DriverProfile user={this.state.loggedUser} 
-                        driver={this.state.selectedDriver} /> :
-        !this.state.loggedIn&&this.state.clicklogin ?
-          <div>
-          <Login login={this.login} /> 
-          <DriversList select={this.selectDriver} 
-                       drivers={this.state.drivers} /> 
-          </div>:
-        this.state.loggedIn?
-          <DriversList select={this.selectDriver} 
-                       drivers={this.state.drivers} />:
-          <DriversList select={this.selectDriver} 
-                       drivers={this.state.drivers} />
-
-          }
-       </div>  
-        )
+    componentWillMount(){
+      if (localStorage.getItem('jwt')) {
+      Auth.currentUser()
+        .then(user => {
+          if (!user.error) {
+            this.setState({
+                loggedIn: true,
+                user: user
+              })
+            }
+          })
+        }
     }
+  
+    logout(){
+      localStorage.removeItem('jwt')
+      this.setState({ isLoggedIn: false, user:{}})
+    }
+
+    logIn(loginParams){
+      
+      Auth.login(loginParams)
+        .then( user => {
+          if (!user.error) {
+            this.setState({
+              loggedIn: true, 
+              user: user
+            })
+            localStorage.setItem('jwt', user.token )
+          }
+        })
+    }
+
+
+  render(){
+console.log(this.state.loggedIn, this.state.user)
+      return(
+          <Router history={history}>
+            <div>
+              <Header />
+              <NavBar logged={this.state.loggedIn} 
+                      logout={this.logout} />
+              <Route exact path='/' render={()=>{
+              return this.state.loggedIn ? <Home drivers={this.state.drivers} 
+                                                 history={history} 
+                                                 user={this.state.user} />: 
+              <Redirect to="/login"/>
+              
+            }} />
+    <Route path='/login' render={() =>{
+              return this.state.loggedIn ? <Redirect to="/"/> : 
+              <div>
+                <Login onSubmit={this.logIn.bind(this)} />
+                <DriversList drivers={this.state.drivers} />
+              </div>}
+            }/>
+              <Routes />
+              
+            </div>
+          </Router>
+      )
+  }
 }
 
 export default App;

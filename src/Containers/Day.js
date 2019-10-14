@@ -13,11 +13,11 @@ class Day extends Component {
     while (i < 25){
       
       parseInt(this.props.start) === i-1 ?
-      hours.push(<div  style={{background: "#eb7f7f"}} data-val={i} key={i} className="hr"></div>):
+      hours.push(<div  style={{background: "rgb(179, 199, 165)"}} data-val={i} key={i} className="hr"></div>):
       parseInt(this.props.end) === i ?
       hours.map(el => {
         for (let k = parseInt(this.props.start); k< parseInt(this.props.end); k++){
-             hours[k] = <div  style={{background: "#eb7f7f"}} data-val={k} key={k+100} className="hr"></div>
+             hours[k] = <div  style={{background: "rgb(179, 199, 165)"}} data-val={k} key={k+100} className="hr"></div>
             }; return hours
         }):
       hours.push(<div  data-val={i} key={i} className="hr"></div>)

@@ -61,7 +61,7 @@
 border-radius: 10px;
 }
 
-.driver-container {
+.box {
   background-color: rgba(216, 228, 231, 0.349);
   padding: 15% 5% 15% 5%;
   margin: 1%;
@@ -80,18 +80,21 @@ border-radius: 10px;
 
 .header {
   background-image:url("https://i.ytimg.com/vi/x0UNhUfgVk0/maxresdefault.jpg");
-  height: 200px;
+  height: 120px;
   display: flex;
+  background-position: 50%;
   
 }
 
 #logo {
   font-family: "Coda", sans-serif;
   align-items: left;
-  color: rgb(95, 93, 93);
+  color: rgb(0, 0, 0);
   font-size: 500%;
-  text-shadow: 4px 4px #27282b;
-  margin-top: 85px;
+  text-shadow: 4px 4px #e8eaf1;
+  margin-top: 15px;
+  margin-left: 15px
+  
   
 }
 

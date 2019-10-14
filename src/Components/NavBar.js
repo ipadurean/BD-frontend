@@ -12,7 +12,7 @@ class NavBar extends Component {
     return (
       <div className="nav-container">
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">About</Navbar.Brand>
+          <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
@@ -21,8 +21,6 @@ class NavBar extends Component {
                 <NavDropdown.Item onClick={this.props.sortByRating} >Highest rated</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Availability</NavDropdown.Item>
                 <NavDropdown.Item onClick={this.props.sortByRate} >Rate</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form onChange={this.props.change} inline className="search">
@@ -32,7 +30,7 @@ class NavBar extends Component {
            {!this.props.logged? 
            <div>
             <span className="bttn">
-              <Button onClick={this.props.click} variant="outline-success">Login</Button>
+              <Button href="/login" variant="outline-success">Login</Button>
               </span>
             <span className="bttn">
               <Button href="register" variant="outline-success">Sign up</Button>

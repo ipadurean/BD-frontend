@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./components.css";
 import Calendar from '../Containers/Calendar';
+// import { Button } from 'semantic-ui-react'
 
 
 class DriverProfile extends Component {
@@ -17,7 +18,9 @@ class DriverProfile extends Component {
     render(){
       
       return (
+        
     <div className="driver-container">
+      <button onClick={this.props.back} >Back</button>
       <div className="box">
         <img id="profile-photo" alt="img" src={this.props.driver.photo}/>
         <div className="username">{this.props.driver.name}</div>
