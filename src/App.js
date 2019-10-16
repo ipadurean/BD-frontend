@@ -17,6 +17,7 @@ class App extends Component {
     super()
     this.state = {
       drivers: [],
+      filter: false,
       loggedIn: false,
       user: {}
     }
@@ -67,18 +68,62 @@ class App extends Component {
     }
 
 
+  sortByRate = () => {
+    this.state.loggedIn?
+    this.setState(prevState => {
+      return {
+        drivers: prevState.drivers.sort(function(a, b){return a.rate-b.rate})
+      }
+    }) :
+    history.push("/")
+  }
+
+  sortByRating = () => {
+    this.state.loggedIn? 
+    this.setState(prevState => {
+      return {
+        drivers: prevState.drivers.sort(function(a, b){return b.rating-a.rating})
+      }
+    }):
+    history.push("/")
+  }
+
+ 
+
+  searchDrivers = (keyword) => {
+    this.state.filter?
+   this.setState({
+        filter: this.state.drivers.filter(el => (el.username + " " + el.description+ " " + el.car).toLowerCase().includes(keyword.toLowerCase()))
+      }):
+    alert("type something!")
+   }
+
+   resetSearch = () => {
+     this.setState({
+       filter: false
+     })
+   }
+
+
   render(){
-console.log(this.state.loggedIn, this.state.user)
+
       return(
           <Router history={history}>
             <div>
               <Header />
               <NavBar logged={this.state.loggedIn} 
-                      logout={this.logout} />
+                      logout={this.logout} 
+                      sortByRate={this.sortByRate}
+                      sortByRating={this.sortByRating} 
+                      search={this.searchDrivers} 
+                      reset={this.resetSearch}
+                      change={this.handleChange} />
+                      
               <Route exact path='/' render={()=>{
-              return this.state.loggedIn ? <Home drivers={this.state.drivers} 
+              return this.state.loggedIn ? <Home drivers={this.state.filter || this.state.drivers} 
                                                  history={history} 
-                                                 user={this.state.user} />: 
+                                                 user={this.state.user}
+                                                 logged={this.state.loggedIn} />: 
               <Redirect to="/login"/>
               
             }} />
@@ -86,7 +131,8 @@ console.log(this.state.loggedIn, this.state.user)
               return this.state.loggedIn ? <Redirect to="/"/> : 
               <div>
                 <Login onSubmit={this.logIn.bind(this)} />
-                <DriversList drivers={this.state.drivers} />
+                <DriversList drivers={this.state.drivers}
+                             logged={this.state.loggedIn} />
               </div>}
             }/>
               <Routes />

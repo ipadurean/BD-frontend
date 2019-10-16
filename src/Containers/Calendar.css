@@ -9,27 +9,49 @@
     --calendar-selected-radius: 5px;
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+   
+    
+}
+
+.book {
+    display: flex;
+    flex-direction: row;
+}
+
+.day {
+  display: inline;  
+}
+
+
+
+
 .calendar *, .calendar *:before, .calendar *:after {
     box-sizing: border-box;
 }
 
 .calendar {
+    display: block !important;
+    left: -60px;
+    /* min-height: 100% !important; */
     background-color: var(--calendar-bg-color);
     border-radius: var(--calendar-border-radius);
     border: solid 1px var(--calendar-border-color);
     box-shadow: 0 4px 22px 0 rgba(0, 0, 0, 0.05);
     margin: 5px;
-    overflow: hidden;
-    width: 450px;
-    float:right;
-    padding: 10px;
+    min-width: 400px !important;
+    max-width: 400px !important;
+    min-height: 450px !important;
+    max-height: 450px !important;
+    padding: 5px;
+    
     
 }
-@media (max-width:1200px) {
-    .calendar {
-        width: auto;
-    }
-}
+
+
 .calendar .calendar-btn {
     -moz-user-select: none;
     -ms-user-select: none;
@@ -126,7 +148,4 @@
     opacity: 0.2;
 }
 
-#btn {
-    background-color: rgb(105, 105, 93);
-    border: 1px solid black
-}
+

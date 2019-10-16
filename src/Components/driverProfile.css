@@ -1,0 +1,38 @@
+.driver-container {
+  display: block;
+  padding: 3%;
+}
+.box {
+  background-color: rgba(236, 251, 255, 0.349);
+  padding: 10% 5% 10% 5%;
+  width: 100%;
+}
+
+.username {
+  margin: auto;
+  margin-top: -4.40em;
+  margin-left: 5.80em;
+  color: #658585;
+  font-size: 1.53em;
+  font-family: "Coda", sans-serif;
+  font-weight: bold;
+}
+
+.car-photo {
+  float: right;
+  margin: 1%;
+  width: 450px;
+  height: 250px;
+  object-fit: cover;
+  box-shadow: 3px 3px 3px 3px #bdbaba;
+  }
+
+  #profile-photo{
+    margin: 1em;
+    padding: .7em;
+    float: left;
+    margin-top: .3em;
+    height: 12em;
+    width: 12em;
+    border-radius: 18em;
+  }

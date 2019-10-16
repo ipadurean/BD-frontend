@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Day from './Day';
 import './Calendar.css';
 import Trip from '../Components/Trip';
-import { Button } from "react-bootstrap";
+
 
 class Calendar extends Component {
   constructor() {
@@ -88,7 +88,7 @@ bookRide = () => {
       "Accept": 'application/json'
     },
     body: JSON.stringify({
-      user_id:this.props.user, 
+      user_id:this.props.user.id, 
       driver_id: this.props.driver.id,
       time_booked: this.state.end - this.state.start,
       start_time: this.state.start*3600000+parseInt(this.state.dayClicked),
@@ -114,44 +114,49 @@ getBookingTime = () => {
   render() {
 
     return (
-    <div>
-      <div id="myCalendar" className="calendar" >
-      <div>{this.state.dayClicked &&
-                      <Day date={this.getBookingTime} 
-                          select={this.handleClick}
-                          start={this.state.start}
-                          end={this.state.end}
-                        />}
-            </div>
-        <div className="calendar-header">
-          <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous"><svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path></svg></button>
-          <div className="calendar-header__label" data-calendar-label="month">{this.getMonthYear()}</div>
-          <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next"><svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></button>
-        </div>
-        <div className="calendar-week"></div>
-        <div className="calendar-week">
-          <span>Sun</span>
-          <span>Mon</span>
-          <span>Tue</span>
-          <span>Wed</span>
-          <span>Thu</span>
-          <span>Fri</span>
-          <span>Sat</span>
-        </div>
-        <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
-        {this.createMonth()}
-        </div>
-       
-        
-      </div>
-            
-            <div>
-            <Button onClick={this.bookRide} id="btn">Book ride with this driver</Button>
-          {this.state.clickBook && <Trip time={this.state.end - this.state.start} 
-                                         driver={this.props.driver}
-                                         date={this.getBookingTime()} />}
-          </div>
-    </div>
+      <div className="container">
+              <div id="myCalendar" className="calendar" >
+              <div className="calendar-header">
+                  <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
+                    <svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+                    </svg>
+                  </button>
+                  <div className="calendar-header__label" data-calendar-label="month">{this.getMonthYear()}</div>
+                  <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next"><svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></button>
+                </div>
+                            <div className="calendar-week">
+                              <span>Sun</span>
+                              <span>Mon</span>
+                              <span>Tue</span>
+                              <span>Wed</span>
+                              <span>Thu</span>
+                              <span>Fri</span>
+                              <span>Sat</span>
+                            </div>
+                <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
+                {this.createMonth()}
+                </div>
+                  
+              </div>
+              <div className="book">
+                        <div className="day">{this.state.dayClicked &&
+                                      <Day date={this.getBookingTime} 
+                                          select={this.handleClick}
+                                          start={this.state.start}
+                                          end={this.state.end}
+                                        />}
+                        </div>
+                        <div>
+                        {this.state.dayClicked && 
+                      
+                        <Trip time={this.state.end - this.state.start} 
+                              driver={this.props.driver}
+                              date={this.getBookingTime()} />}
+                        </div>
+               </div>
+      </div> 
+  
     )
   }
 

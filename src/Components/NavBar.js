@@ -6,9 +6,21 @@ import "./components.css"
 class NavBar extends Component {
   constructor(){
     super()
-    this.state ={}
+    this.state ={
+      keyword: null
+    }
   }
+
+  handleChange = (event) => {
+    this.setState({
+      keyword: event.target.value
+    })
+  }
+
+
   render() {
+console.log(this.state.keyword)
+
     return (
       <div className="nav-container">
         <Navbar bg="light" expand="lg">
@@ -23,9 +35,10 @@ class NavBar extends Component {
                 <NavDropdown.Item onClick={this.props.sortByRate} >Rate</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form onChange={this.props.change} inline className="search">
+            <Form onChange={this.handleChange} inline className="search">
               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button onClick={this.props.search} variant="outline-success">Search</Button>
+              <Button onClick={() => this.props.search(this.state.keyword)} variant="outline-success">Search</Button>
+              <Button onClick={() => this.props.reset()} variant="outline-success">Reset</Button>
             </Form>
            {!this.props.logged? 
            <div>
