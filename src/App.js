@@ -8,7 +8,7 @@ import Login from './Containers/Login';
 import Home from './Containers/Home'
 import "./App.css";
 import Auth from './authAdapter'
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history'
 
 const history = createBrowserHistory()
 

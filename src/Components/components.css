@@ -57,14 +57,19 @@
 }
 
 .trip {
+
   display: flex;
   flex-direction: column;
   align-self: center;
-  margin: 5%;
-  padding: 15px;
-  max-width: 380px;
+  margin: 1%;
+  padding: 3%;
+  min-width: 400px;
+  min-height: 450px !important;
+  max-height: 450px !important;
+  margin-left: 50px;
   border: 2px solid rgb(216, 213, 213);
   box-shadow: 5px 5px 5px 5px  #dad3d3;
+  
  
 }
 
@@ -74,4 +79,11 @@
   width: 80px;
   margin: 10px;
   box-shadow: 1px 1px 1px 1px #757272;
+}
+
+.invoice {
+  background-color: rgb(223, 219, 213);
+  border: 15px solid rgb(253, 253, 253);
+  padding: 10%;
+  box-shadow: 5px 5px 5px 5px  #6e6b6b;
 }

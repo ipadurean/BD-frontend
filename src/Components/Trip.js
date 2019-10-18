@@ -1,23 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { FormGroup, FormControl } from "react-bootstrap";
+
+class Trip extends Component {
+   constructor(){
+     super();
+     this.state = {
+       address: "",
+       note: ""
+     }
+}
 
 
-const Trip = (props) => {
+   handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
 
+  validateForm() {
+    return this.state.address.length > 0 && this.props.time > 0;
+  }
+
+render(){
+  
   return (
      <div className="trip">
-       <p>You are booking a ride with: <em>{props.driver.name}</em></p>
-       <p>For: <em>{props.date.slice(0,15)}</em> </p>
-       <p>Total time: {props.time} hours</p>
-       <p>Total: ${props.time*props.driver.rate}</p>
-       <form>
-         <label> Pick-up address:
-         <input type="text" style={{width:"300px"}} /></label>
-         <label>Add note to driver:
-         <textarea style={{width:"300px"}}></textarea></label>
-         <input id="btn" type="submit" value="Book ride"/>
+       <p>You are booking a ride with: <em>{this.props.driver.name}</em></p>
+       <p>For: <em>{this.props.date.slice(0,15)} at: {this.props.date.slice(16,18)}:00</em> </p>
+       <p>Total time booked: {this.props.time} hours</p>
+       <p>Total: ${this.props.time*this.props.driver.rate}</p>
+       <form  onSubmit={(e) => this.props.submit(e,this.state)} >
+          <FormGroup controlId="address" bssize="large">
+              <FormControl
+                autoFocus
+                type="address"
+                placeholder="enter pick-up address"
+                value={this.state.address}
+                onChange={this.handleChange}
+              />
+              </FormGroup>
+            <FormGroup controlId="note" bssize="large">
+              
+              <FormControl as="textarea"
+                value={this.state.note}
+                onChange={this.handleChange}
+                placeholder="add note to driver"
+                type="text"
+              />
+            </FormGroup>
+            <input id="btn" type="submit" value="Book ride" disabled={!this.validateForm()}/>
        </form>
      </div>
   )
+}
 
 }
 

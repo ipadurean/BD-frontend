@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Day from './Day';
 import './Calendar.css';
 import Trip from '../Components/Trip';
+import Invoice from '../Components/Invoice';
 
 
 class Calendar extends Component {
@@ -13,7 +14,7 @@ class Calendar extends Component {
       dayClicked:false,
       start:null,
       end:null,
-      clickBook: false
+      booked: false
     }
   }
 
@@ -68,7 +69,8 @@ class Calendar extends Component {
         this.setState({
             dayClicked: event.target.parentNode.dataset.calendarDate,
             start:null,
-            end:null
+            end:null,
+            booked: false
         }) 
   }
 
@@ -80,7 +82,13 @@ handleClick = (event) => {
    this.setState({start: event.target.dataset.val-1, end: event.target.dataset.val-0})
 }
 
-bookRide = () => {
+bookRide = (event, item) => {
+  event.preventDefault();
+  let date = new Date();
+  date.setTime(this.state.dayClicked);
+  let date1 = date.setHours(this.state.start)
+  let date2 = date.setHours(this.state.end)
+
   fetch('http://localhost:3000/trips', {
     method: 'POST',
     headers: {
@@ -91,19 +99,27 @@ bookRide = () => {
       user_id:this.props.user.id, 
       driver_id: this.props.driver.id,
       time_booked: this.state.end - this.state.start,
-      start_time: this.state.start*3600000+parseInt(this.state.dayClicked),
-      end_time: this.state.end*3600000+parseInt(this.state.dayClicked),
-      total: this.props.driver.rate * (this.state.end - this.state.start)
+      start_time: date1,
+      end_time: date2,
+      total: this.props.driver.rate * (this.state.end - this.state.start),
+      note: item.note,
+      address: item.address
     })
   })
   .then(res => res.json())
-  .then(this.setState({clickBook: true}))
+  .then(trip => 
+    this.setState({
+       booked: trip
+    })
+  )
+  
   
 }
 
 getBookingTime = () => {
   let date = new Date();
-  date.setTime(this.state.start*3600000+parseInt(this.state.dayClicked));
+  date.setTime(this.state.dayClicked);
+  date.setHours(this.state.start)
   return date+"";
 }
 
@@ -112,7 +128,7 @@ getBookingTime = () => {
 
 
   render() {
-
+console.log(this.state.booked)
     return (
       <div className="container">
               <div id="myCalendar" className="calendar" >
@@ -148,11 +164,14 @@ getBookingTime = () => {
                                         />}
                         </div>
                         <div>
-                        {this.state.dayClicked && 
+                        {this.state.booked? <Invoice trip={this.state.booked} 
+                                                     driver={this.props.driver} /> :
+                         
                       
-                        <Trip time={this.state.end - this.state.start} 
-                              driver={this.props.driver}
-                              date={this.getBookingTime()} />}
+                        this.state.dayClicked &&  <Trip time={this.state.end - this.state.start} 
+                                                        driver={this.props.driver}
+                                                        date={this.getBookingTime()}
+                                                        submit={this.bookRide} />}
                         </div>
                </div>
       </div> 

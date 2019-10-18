@@ -19,7 +19,7 @@ class NavBar extends Component {
 
 
   render() {
-console.log(this.state.keyword)
+
 
     return (
       <div className="nav-container">
