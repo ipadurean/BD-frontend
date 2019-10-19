@@ -25,10 +25,10 @@ render(){
   
   return (
      <div className="trip">
-       <p>You are booking a ride with: <em>{this.props.driver.name}</em></p>
+       <p>You are booking a ride with: <b>{this.props.driver.name}</b></p>
        <p>For: <em>{this.props.date.slice(0,15)} at: {this.props.date.slice(16,18)}:00</em> </p>
-       <p>Total time booked: {this.props.time} hours</p>
-       <p>Total: ${this.props.time*this.props.driver.rate}</p>
+       <p>Total time booked: <b>{this.props.time}</b> hours</p>
+       <p>Total: <b>${this.props.time*this.props.driver.rate}</b></p>
        <form  onSubmit={(e) => this.props.submit(e,this.state)} >
           <FormGroup controlId="address" bssize="large">
               <FormControl

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Day from './Day';
 import './Calendar.css';
-import Trip from '../Components/Trip';
+import TripForm from './TripForm';
 import Invoice from '../Components/Invoice';
 
 
@@ -86,8 +86,8 @@ bookRide = (event, item) => {
   event.preventDefault();
   let date = new Date();
   date.setTime(this.state.dayClicked);
-  let date1 = date.setHours(this.state.start)
-  let date2 = date.setHours(this.state.end)
+  let date1 = new Date(date.setHours(this.state.start));
+  let date2 = new Date(date.setHours(this.state.end));
 
   fetch('http://localhost:3000/trips', {
     method: 'POST',
@@ -128,7 +128,7 @@ getBookingTime = () => {
 
 
   render() {
-console.log(this.state.booked)
+
     return (
       <div className="container">
               <div id="myCalendar" className="calendar" >
@@ -157,10 +157,11 @@ console.log(this.state.booked)
               </div>
               <div className="book">
                         <div className="day">{this.state.dayClicked &&
-                                      <Day date={this.getBookingTime} 
+                                      <Day day={this.state.dayClicked} 
                                           select={this.handleClick}
                                           start={this.state.start}
                                           end={this.state.end}
+                                          driver={this.props.driver}
                                         />}
                         </div>
                         <div>
@@ -168,7 +169,7 @@ console.log(this.state.booked)
                                                      driver={this.props.driver} /> :
                          
                       
-                        this.state.dayClicked &&  <Trip time={this.state.end - this.state.start} 
+                        this.state.dayClicked &&  <TripForm time={this.state.end - this.state.start} 
                                                         driver={this.props.driver}
                                                         date={this.getBookingTime()}
                                                         submit={this.bookRide} />}
