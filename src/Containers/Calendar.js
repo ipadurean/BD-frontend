@@ -36,7 +36,7 @@ class Calendar extends Component {
       this.state.dayClicked && d === select.getDate()?
            daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--selected" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>):
       d === this.state.timeNow.getDate() && this.state.timeNow.getMonth() === date.getMonth()?
-           daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--today" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>):
+           daysArr.push( <div key={d} className="calendar-date calendar-date--active" id="calendar-date--today" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>):
            daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date.setDate(d)} data-calendar-status="active"><span>{d}</span></div>)
       d++
     }
@@ -66,6 +66,7 @@ class Calendar extends Component {
   }
 
   displayDay = (event) => {
+    event.target.parentNode.className === "calendar-date calendar-date--active" &&
         this.setState({
             dayClicked: event.target.parentNode.dataset.calendarDate,
             start:null,
@@ -75,11 +76,20 @@ class Calendar extends Component {
   }
 
 handleClick = (event) => {
-   this.state.start===null?
-        this.setState({start: event.target.dataset.val-1, end: event.target.dataset.val-0}) :
-   (this.state.end-this.state.start)===1 ?
-        this.setState({end: event.target.dataset.val-0}) :
-   this.setState({start: event.target.dataset.val-1, end: event.target.dataset.val-0})
+  let x = event.target.dataset.val
+    if(event.target.className === "hr"){
+      this.state.start===null?
+            this.setState({start: x-1, end: x}) :
+      (x-this.state.start)<=1 ?
+            this.setState({start:x-1, end: x}) :
+      this.state.end - this.state.start >1 ?
+            this.setState({start: x-1, end: x}):
+      (x-this.state.start)>1?
+            this.setState({end: x}):
+            this.setState({start:null, end:null})
+    } else {
+      this.setState({start:null, end:null})
+    }
 }
 
 bookRide = (event, item) => {
@@ -128,7 +138,7 @@ getBookingTime = () => {
 
 
   render() {
-
+   console.log(this.state.start, this.state.end)
     return (
       <div className="container">
               <div id="myCalendar" className="calendar" >

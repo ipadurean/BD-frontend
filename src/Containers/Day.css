@@ -17,9 +17,24 @@
   cursor: pointer;
  }
 
-
+ .ruler .busy {
+  background-color: rgb(241, 241, 240);
+  border: 1px solid rgb(212, 221, 206);
+  padding-left: 14px;
+  width: 40px;
+  height: 18px;
+  margin-bottom:1px;
+  border-radius: 2px;
+ }
  
-
+ .ruler .busy:after {
+   content: "N/A";
+   font-size: 11px;
+   top: -7px;
+   position: relative;
+  left: -5px;
+  opacity: 0.3;
+ }
  .ruler .hr:after {
    
   top: -7px;
