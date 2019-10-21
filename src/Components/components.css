@@ -63,9 +63,7 @@
   align-self: center;
   margin: 1%;
   padding: 3%;
-  min-width: 400px;
-  min-height: 450px !important;
-  max-height: 450px !important;
+  max-height: 300px !important;
   margin-left: 50px;
   border: 2px solid rgb(216, 213, 213);
   box-shadow: 5px 5px 5px 5px  #dad3d3;
