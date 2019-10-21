@@ -99,7 +99,7 @@ bookRide = (event, item) => {
   let date1 = new Date(date.setHours(this.state.start));
   let date2 = new Date(date.setHours(this.state.end));
 
-  fetch('http://localhost:3000/trips', {
+  fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

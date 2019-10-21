@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/drivers')
+    fetch('https://radiant-fjord-35660.herokuapp.com/drivers')
       .then(res => res.json())
       .then(data => {
         return this.setState({ drivers: data })

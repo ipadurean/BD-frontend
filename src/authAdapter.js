@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000'
+const baseUrl = 'https://radiant-fjord-35660.herokuapp.com'
 
 export default class AuthAdapter {
 
