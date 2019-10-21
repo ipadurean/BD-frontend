@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl } from "react-bootstrap";
+import './TripForm.css';
 
 class Trip extends Component {
    constructor(){
@@ -24,7 +25,7 @@ class Trip extends Component {
 render(){
   
   return (
-     <div className="trip">
+     <div className="trip-form">
        <p>You are booking a ride with: <b>{this.props.driver.name}</b></p>
        <p>For: <em>{this.props.date.slice(0,15)} at: {this.props.date.slice(16,18)}:00</em> </p>
        <p>Total time booked: <b>{this.props.time}</b> hours</p>

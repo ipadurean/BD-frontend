@@ -63,7 +63,6 @@
   align-self: center;
   margin: 1%;
   padding: 3%;
-  max-height: 300px !important;
   margin-left: 50px;
   border: 2px solid rgb(216, 213, 213);
   box-shadow: 5px 5px 5px 5px  #dad3d3;
@@ -86,4 +85,5 @@
   box-shadow: 5px 5px 5px 5px  #6e6b6b;
   position: absolute;
   z-index: 1;
+  margin-bottom: 10px;
 }
