@@ -3,7 +3,7 @@ import "./MyAcc.css";
 import Trip from './Trip'
 
 const MyAcc = (props) => {
-  console.log(props.trips)
+  
   return (
     <div className="list">
       

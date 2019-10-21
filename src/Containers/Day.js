@@ -11,7 +11,7 @@ class Day extends Component {
 
   componentDidMount() {
    
-    fetch(`http://localhost:3000/drivers/${this.props.driver.id}`)
+    fetch(`https://radiant-fjord-35660.herokuapp.com/${this.props.driver.id}`)
       .then(res => res.json())
       .then(data => this.setState({trips: data.trips}))
   }
