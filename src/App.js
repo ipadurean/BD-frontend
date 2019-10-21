@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import DriversList from './Components/DriversList';
 import Header from './Components/Header';
 import { Router, Route, Redirect } from 'react-router-dom';
-import Routes from './Routes';
+import MyAcc from './Components/MyAcc';
 import NavBar from './Components/NavBar';
 import Login from './Containers/Login';
-import Home from './Containers/Home'
+import Home from './Containers/Home';
+import Register from "./Containers/Register";
 import "./App.css";
-import Auth from './authAdapter'
-import { createBrowserHistory } from 'history'
+import Auth from './authAdapter';
+import { createBrowserHistory } from 'history';
 
 const history = createBrowserHistory()
 
@@ -19,7 +20,8 @@ class App extends Component {
       drivers: [],
       filter: false,
       loggedIn: false,
-      user: {}
+      user: {},
+      trips:[]
     }
   }
 
@@ -41,7 +43,8 @@ class App extends Component {
           if (!user.error) {
             this.setState({
                 loggedIn: true,
-                user: user
+                user: {id: user.id, username: user.username},
+                trips: user.trips
               })
             }
           })
@@ -91,7 +94,7 @@ class App extends Component {
  
 
   searchDrivers = (keyword) => {
-    this.state.filter?
+    keyword?
    this.setState({
         filter: this.state.drivers.filter(el => (el.username + " " + el.description+ " " + el.car).toLowerCase().includes(keyword.toLowerCase()))
       }):
@@ -118,7 +121,7 @@ class App extends Component {
                       search={this.searchDrivers} 
                       reset={this.resetSearch}
                       change={this.handleChange} />
-                      
+                     
               <Route exact path='/' render={()=>{
               return this.state.loggedIn ? <Home drivers={this.state.filter || this.state.drivers} 
                                                  history={history} 
@@ -129,13 +132,18 @@ class App extends Component {
             }} />
     <Route path='/login' render={() =>{
               return this.state.loggedIn ? <Redirect to="/"/> : 
-              <div>
+              <div className="app">
+                <h3>For Demo please login! </h3>
+                <p>username: Guest</p>
+                <p>password: pass</p>
                 <Login onSubmit={this.logIn.bind(this)} />
                 <DriversList drivers={this.state.drivers}
                              logged={this.state.loggedIn} />
+                             
               </div>}
             }/>
-              <Routes />
+              <Route exact path="/account" render={() => <MyAcc trips={this.state.trips}/>} />
+              <Route path="/register" exact component={Register} />
               
             </div>
           </Router>

@@ -1,6 +1,6 @@
 .driver-container {
   display: grid;
-  grid-template-rows: 30px 400px auto;
+  grid-template-rows: 80px 400px auto;
   grid-template-columns: 500px auto auto;
   padding: 3%;
   
@@ -10,6 +10,7 @@
 #back {
   grid-area: 0/0/1/1;
   width: 60px;
+  margin-bottom: 50px;
 }
 
 .bio {

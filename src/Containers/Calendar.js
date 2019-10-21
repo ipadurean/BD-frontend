@@ -133,15 +133,24 @@ getBookingTime = () => {
   return date+"";
 }
 
-
+reset = () => {
+  this.setState({
+    dayClicked: false,
+    booked: false
+  })
+}
 
 
 
   render() {
-   console.log(this.state.start, this.state.end)
+
     return (
+      
       <div className="container">
-              <div id="myCalendar" className="calendar" >
+        <div>{this.state.booked && <Invoice trip={this.state.booked} 
+                                                     driver={this.props.driver}
+    reset={this.reset} />}</div>
+         <div id="myCalendar" className="calendar" >
               <div className="calendar-header">
                   <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
                     <svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -162,6 +171,7 @@ getBookingTime = () => {
                             </div>
                 <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
                 {this.createMonth()}
+                
                 </div>
                   
               </div>
@@ -175,11 +185,9 @@ getBookingTime = () => {
                                         />}
                         </div>
                         <div>
-                        {this.state.booked? <Invoice trip={this.state.booked} 
-                                                     driver={this.props.driver} /> :
                          
                       
-                        this.state.dayClicked &&  <TripForm time={this.state.end - this.state.start} 
+                        {this.state.dayClicked &&  <TripForm time={this.state.end - this.state.start} 
                                                         driver={this.props.driver}
                                                         date={this.getBookingTime()}
                                                         submit={this.bookRide} />}
