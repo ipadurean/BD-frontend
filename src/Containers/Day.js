@@ -10,8 +10,7 @@ class Day extends Component {
   }
 
   componentDidMount() {
-   
-    fetch(`https://radiant-fjord-35660.herokuapp.com/drivers/${this.props.driver.id}`)
+   fetch(`https://radiant-fjord-35660.herokuapp.com/drivers/${this.props.driver.id}`)
       .then(res => res.json())
       .then(data => this.setState({trips: data.trips}))
   }
@@ -22,7 +21,7 @@ class Day extends Component {
     let date = new Date();
     date.setTime(this.props.day);
     let arr = items.filter(el => new Date(el.start_time).toString().slice(0, 15) === date.toString().slice(0, 15));
-    let newArr = arr.map(el => [new Date(el.start_time).getHours(), new Date(el.end_time).getHours()])
+    let newArr = arr.map(el => [new Date(el.start_time).getHours(), new Date(el.end_time).getHours()||25])
         for(let i=0; i<newArr.length; i++){
             for(let k=newArr[i][0]; k<newArr[i][1]; k++){
               bookedHours.push(k)
@@ -63,7 +62,7 @@ class Day extends Component {
  
 
    render(){
-   
+   console.log(this.filterTrips(this.state.trips))
     return (<div onClick={this.props.select} className="ruler">{this.renderHours()}</div>)
    }
 
