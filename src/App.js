@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DriversList from './Components/DriversList';
 import Header from './Components/Header';
 import { Router, Route, Redirect } from 'react-router-dom';
-import MyAcc from './Components/MyAcc';
+import MyAcc from './Containers/MyAcc';
 import NavBar from './Components/NavBar';
 import Login from './Containers/Login';
 import Home from './Containers/Home';
@@ -20,8 +20,7 @@ class App extends Component {
       drivers: [],
       filter: false,
       loggedIn: false,
-      user: {},
-      trips:[]
+      user: {}
     }
   }
 
@@ -43,8 +42,7 @@ class App extends Component {
           if (!user.error) {
             this.setState({
                 loggedIn: true,
-                user: {id: user.id, username: user.username},
-                trips: user.trips
+                user: {id: user.id, username: user.username}
               })
             }
           })
@@ -109,7 +107,7 @@ class App extends Component {
 
 
   render(){
-
+console.log(this.state.user.username)
       return(
           <Router history={history}>
             <div>
@@ -142,7 +140,9 @@ class App extends Component {
                              
               </div>}
             }/>
-              <Route exact path="/account" render={() => <MyAcc trips={this.state.trips}/>} />
+              <Route exact path="/account" render={() => {
+                                                  return this.state.loggedIn && 
+                                                         <MyAcc drivers={this.state.drivers} />}} />
               <Route path="/register" exact component={Register} />
               
             </div>
