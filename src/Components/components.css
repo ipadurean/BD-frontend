@@ -84,6 +84,6 @@
   padding: 10%;
   box-shadow: 5px 5px 5px 5px  #6e6b6b;
   position: absolute;
-  z-index: 1;
-  margin-bottom: 10px;
+  z-index: 5;
+  margin-bottom: 50px;
 }

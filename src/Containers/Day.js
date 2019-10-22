@@ -62,7 +62,7 @@ class Day extends Component {
  
 
    render(){
-   console.log(this.filterTrips(this.state.trips))
+   
     return (<div onClick={this.props.select} className="ruler">{this.renderHours()}</div>)
    }
 

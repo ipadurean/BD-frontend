@@ -21,7 +21,7 @@ class DriverProfile extends Component {
                 <h4>Chauffeur</h4>
                 <img id="profile-photo" alt="img" src={this.props.driver.photo}/>
                 {this.props.driver.description}
-                <h4>${this.props.driver.rate}/hour</h4>
+                <h4>Rate: ${this.props.driver.rate}/hour</h4>
               </div>
               
               <div className="vehicle">
