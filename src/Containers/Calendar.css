@@ -51,6 +51,7 @@
     padding: 5px;
     
     
+    
 }
 
 
@@ -129,6 +130,7 @@
     max-width: 14.28%;
     padding: 10px 0;
 }
+
 
 .calendar .calendar-date--active {
     cursor: pointer;

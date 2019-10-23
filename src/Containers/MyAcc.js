@@ -18,7 +18,7 @@ class MyAcc extends Component {
       .then(user => {
         if (!user.error) {
           this.setState({
-            trips: user.trips,
+            trips: user.trips.reverse(),
               user: {id: user.id, username: user.username}
                })
           }
