@@ -31,7 +31,6 @@ class NavBar extends Component {
             {this.props.logged && <Nav.Link href="/account">My account</Nav.Link>}
               <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={this.props.sortByRating} >Highest rated</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Availability</NavDropdown.Item>
                 <NavDropdown.Item onClick={this.props.sortByRate} >Rate</NavDropdown.Item>
               </NavDropdown>
             </Nav>
