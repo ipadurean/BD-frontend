@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./MyAcc.css";
 import Trip from '../Components/Trip';
 import Auth from '../authAdapter';
+import { Navbar } from "react-bootstrap";
 
 class MyAcc extends Component {
   constructor(){
@@ -30,6 +31,11 @@ class MyAcc extends Component {
 
       return (
         <div className="list">
+           <div className="nav-container">
+             <Navbar bg="light" expand="lg">
+                 <Navbar.Brand href="/">Home</Navbar.Brand>
+            </Navbar>
+            </div>
           <div id="user" >
           <h3>Hello <em>{this.state.user.username}</em>! This is the history of your trips:</h3>
           </div>

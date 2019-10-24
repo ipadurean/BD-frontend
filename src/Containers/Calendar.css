@@ -28,7 +28,10 @@
   display: inline;  
 }
 
-
+#note {
+    text-shadow: 1px 1px white;
+   
+}
 
 
 .calendar *, .calendar *:before, .calendar *:after {

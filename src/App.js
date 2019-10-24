@@ -3,13 +3,14 @@ import DriversList from './Components/DriversList';
 import Header from './Components/Header';
 import { Router, Route, Redirect } from 'react-router-dom';
 import MyAcc from './Containers/MyAcc';
-import NavBar from './Components/NavBar';
 import Login from './Containers/Login';
 import Home from './Containers/Home';
 import Register from "./Containers/Register";
 import "./App.css";
 import Auth from './authAdapter';
+import About from './Components/About'
 import { createBrowserHistory } from 'history';
+import { Navbar, Button } from "react-bootstrap";
 
 const history = createBrowserHistory()
 
@@ -112,38 +113,46 @@ class App extends Component {
           <Router history={history}>
             <div>
               <Header />
-              <NavBar logged={this.state.loggedIn} 
-                      logout={this.logout} 
-                      sortByRate={this.sortByRate}
-                      sortByRating={this.sortByRating} 
-                      search={this.searchDrivers} 
-                      reset={this.resetSearch}
-                      change={this.handleChange} />
-                     
+               
+             
               <Route exact path='/' render={()=>{
-              return this.state.loggedIn ? <Home drivers={this.state.filter || this.state.drivers} 
-                                                 history={history} 
-                                                 user={this.state.user}
-                                                 logged={this.state.loggedIn} />: 
+                 return this.state.loggedIn ? <Home drivers={this.state.filter || this.state.drivers} 
+                                                    history={history} 
+                                                    user={this.state.user}
+                                                    logged={this.state.loggedIn}
+                                                    logout={this.logout} 
+                                                    sortByRate={this.sortByRate}
+                                                    sortByRating={this.sortByRating} 
+                                                    search={this.searchDrivers} 
+                                                    reset={this.resetSearch}
+                                                    change={this.handleChange} />: 
               <Redirect to="/login"/>
               
             }} />
-    <Route path='/login' render={() =>{
-              return this.state.loggedIn ? <Redirect to="/"/> : 
-              <div className="app">
-                <h3>For Demo please login! </h3>
-                <p>username: Guest</p>
-                <p>password: pass</p>
-                <Login onSubmit={this.logIn.bind(this)} />
-                <DriversList drivers={this.state.drivers}
-                             logged={this.state.loggedIn} />
-                             
-              </div>}
-            }/>
+              <Route path='/login' render={() =>{
+                        return this.state.loggedIn ? <Redirect to="/"/> : 
+                        <div className="app">
+                          <Navbar>
+                            <div>
+                              <span className="bttn">
+                                <Button href="/login" variant="outline-success">Login</Button>
+                                </span>
+                              <span className="bttn">
+                                <Button href="register" variant="outline-success">Sign up</Button>
+                                </span>
+                            </div>
+                          </Navbar>  
+                          <Login onSubmit={this.logIn.bind(this)} />
+                          <DriversList drivers={this.state.drivers}
+                                      logged={this.state.loggedIn} />
+                                      
+                        </div>}
+                      }/>
               <Route exact path="/account" render={() => {
                                                   return this.state.loggedIn && 
                                                          <MyAcc drivers={this.state.drivers} />}} />
               <Route path="/register" exact component={Register} />
+              <Route path='/about' exact component={About} />
               
             </div>
           </Router>

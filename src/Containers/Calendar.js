@@ -150,7 +150,9 @@ reset = () => {
         <div>{this.state.booked && <Invoice trip={this.state.booked} 
                                                      driver={this.props.driver}
     reset={this.reset} />}</div>
+    
          <div id="myCalendar" className="calendar" >
+         <h6 id="note">Please select a date:</h6>
               <div className="calendar-header">
                   <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
                     <svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">

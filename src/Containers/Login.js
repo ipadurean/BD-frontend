@@ -36,6 +36,9 @@ export default class Login extends Component {
     
     return (
       <div className="Login">
+        <h5>For Demo please login !</h5>
+        <h6>Username: Guest</h6>
+        <h6>Password: pass</h6>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="username" bssize="large">
             

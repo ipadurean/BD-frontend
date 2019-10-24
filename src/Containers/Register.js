@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  FormGroup,
-  FormControl
-} from "react-bootstrap";
-
+import { FormGroup, FormControl, Navbar} from "react-bootstrap";
 import "./Register.css";
 
 export default class Register extends Component {
@@ -105,6 +101,11 @@ export default class Register extends Component {
   render() {
     return (
       <div className="Signup">
+        <div className="nav-container">
+             <Navbar bg="light" expand="lg">
+                 <Navbar.Brand href="/">Home</Navbar.Brand>
+            </Navbar>
+        </div> 
         {this.state.newUser === null
           ? this.renderForm()
           : this.renderForm()}
