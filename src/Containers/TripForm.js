@@ -45,7 +45,7 @@ render(){
               <FormControl as="textarea"
                 value={this.state.note}
                 onChange={this.handleChange}
-                placeholder="add note to driver"
+                placeholder="add note to driver (optional)"
                 type="text"
               />
             </FormGroup>

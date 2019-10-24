@@ -17,10 +17,12 @@ class DriverProfile extends Component {
            <button id="back" onClick={this.props.back} >Back</button>
               <div className="bio">
                 <div className="username">{this.props.driver.name}</div>
-                <span>Rating {this.props.driver.rating}*</span>
-                <h4>Chauffeur</h4>
+                
                 <img id="profile-photo" alt="img" src={this.props.driver.photo}/>
-                {this.props.driver.description}
+                <h4>Chauffeur</h4>
+                <span>Rating {this.props.driver.rating}*</span>
+
+                <p id="description">{this.props.driver.description}</p>
                 <h4>Rate: ${this.props.driver.rate}/hour</h4>
               </div>
               
