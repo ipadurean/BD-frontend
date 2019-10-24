@@ -42,7 +42,8 @@ export default class Home extends Component {
                 sortByRating={this.props.sortByRating} 
                 search={this.props.search} 
                 reset={this.props.reset}
-                change={this.props.change} />
+                change={this.props.change}
+                selected={this.state.selectedDriver} />
         {this.state.selectedDriver ?
           <DriverProfile user={this.props.user} 
                         driver={this.state.selectedDriver} 

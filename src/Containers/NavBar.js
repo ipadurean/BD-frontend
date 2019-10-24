@@ -27,25 +27,25 @@ class NavBar extends Component {
         
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Brand href="/about">About</Navbar.Brand>
+          { !this.props.selected &&
           <Navbar.Collapse id="basic-navbar-nav">
-          
-            <Nav className="mr-auto">
-            <Nav.Link href="/account">My account</Nav.Link>
-              <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
-                <NavDropdown.Item onClick={this.props.sortByRating} >by Highest rated</NavDropdown.Item>
-                <NavDropdown.Item onClick={this.props.sortByRate} >by Hourly Rate</NavDropdown.Item>
-              </NavDropdown>
-            
-            <Form onChange={this.handleChange} inline className="search">
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button onClick={() => this.props.search(this.state.keyword)} variant="outline-success">Search</Button>
-              <Button onClick={() => this.props.reset()} variant="outline-success">Reset</Button>
-            </Form>
-            </Nav>
+              <Nav className="mr-auto">
+              <Nav.Link href="/account">My account</Nav.Link>
+                <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
+                  <NavDropdown.Item onClick={this.props.sortByRating} >by Highest rated</NavDropdown.Item>
+                  <NavDropdown.Item onClick={this.props.sortByRate} >by Hourly Rate</NavDropdown.Item>
+                </NavDropdown>
+              
+                  <Form onChange={this.handleChange} inline className="search">
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                    <Button onClick={() => this.props.search(this.state.keyword)} variant="outline-success">Search</Button>
+                    <Button onClick={() => this.props.reset()} variant="outline-success">Reset</Button>
+                  </Form>
+              </Nav>
             <span className="bttn">
               <Button onClick={this.props.logout} href="/" variant="outline-success">Logout</Button>
             </span> 
-            </Navbar.Collapse>
+            </Navbar.Collapse>}
         </Navbar> 
         
       </div>

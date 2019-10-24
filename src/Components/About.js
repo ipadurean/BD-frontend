@@ -17,7 +17,7 @@ const About = () => {
                   It allows users to select a private chauffeur from a list based on different features from his/her individual profile. 
                   Then they can click on a date, select hours needed and ultimately booking a ride. 
               </p>
-              <p>* <em>The present version is for demonstration purposes only. All drivers profiles are fake and booking a ride will not incur any charges</em></p>
+              <p>* <em>The present version is for demonstration purposes only. All drivers profiles are fake and booking a ride shall not incur any liability whatsoever</em></p>
           </div>
          </div>
       )
