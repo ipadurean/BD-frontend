@@ -27,10 +27,10 @@ class NavBar extends Component {
         
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Brand href="/about">About</Navbar.Brand>
+          <Navbar.Brand href="/account">My Account</Navbar.Brand>
           { !this.props.selected &&
           <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-              <Nav.Link href="/account">My account</Nav.Link>
                 <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
                   <NavDropdown.Item onClick={this.props.sortByRating} >by Highest rated</NavDropdown.Item>
                   <NavDropdown.Item onClick={this.props.sortByRate} >by Hourly Rate</NavDropdown.Item>
