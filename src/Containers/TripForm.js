@@ -18,7 +18,7 @@ class Trip extends Component {
     });
   }
 
-  validateForm() {
+  validateForm = () => {
     return this.state.address.length > 0 && this.props.time > 0;
   }
 

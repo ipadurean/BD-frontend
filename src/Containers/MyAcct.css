@@ -1,0 +1,26 @@
+.trip-history {
+  margin: 3%;
+}
+
+.trip-container {
+  border: 1px solid rgb(238, 238, 238)
+}
+
+#trip-header {
+  background-color: aliceblue;
+  padding: 1em;
+  width: 100%;
+}
+
+#user {
+  margin: 50px;
+}
+
+#date {
+  margin-left:10em;
+}
+
+#trip-body {
+  margin: 3%;
+  
+}

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import "./MyAcc.css";
-import Trip from '../Components/Trip';
+import "./MyAcct.css";
+import Trip from './Trip';
 import Auth from '../authAdapter';
 import { Navbar } from "react-bootstrap";
 
-class MyAcc extends Component {
+class MyAcct extends Component {
   constructor(){
     super()
     this.state = {
@@ -26,27 +26,29 @@ class MyAcc extends Component {
         })
       }
   }
+
+ 
   
  render(){
 
       return (
-        <div className="list">
+        <div className="trip-history">
            <div className="nav-container">
              <Navbar bg="light" expand="lg">
                  <Navbar.Brand href="/">Home</Navbar.Brand>
-            </Navbar>
+             </Navbar>
+           </div>
+            <div id="user" >
+                <h3>Hello <em>{this.state.user.username}</em>! This is the history of your trips:</h3>
             </div>
-          <div id="user" >
-          <h3>Hello <em>{this.state.user.username}</em>! This is the history of your trips:</h3>
-          </div>
          
-          {this.state.trips.map(el => {
-          return  <Trip key={el.id} driver={this.props.drivers.filter(item => item.id === el.driver_id)[0]} trip={el} />
-          })
-          }
+                {this.state.trips.map(el => {
+                                        return   <Trip key={el.id} driver={this.props.drivers.filter(item => item.id === el.driver_id)[0]} trip={el} />
+                                  })
+                }
         </div>
       );
   }
 }
 
-export default MyAcc;
+export default MyAcct;

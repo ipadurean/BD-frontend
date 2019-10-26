@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DriversList from './Components/DriversList';
 import Header from './Components/Header';
 import { Router, Route, Redirect } from 'react-router-dom';
-import MyAcc from './Containers/MyAcc';
+import MyAcct from './Containers/MyAcct';
 import Login from './Containers/Login';
 import Home from './Containers/Home';
 import Register from "./Containers/Register";
@@ -150,7 +150,7 @@ class App extends Component {
                       }/>
               <Route exact path="/account" render={() => {
                                                   return this.state.loggedIn && 
-                                                         <MyAcc drivers={this.state.drivers} />}} />
+                                                         <MyAcct drivers={this.state.drivers} />}} />
               <Route path="/register" exact component={Register} />
               <Route path='/about' exact component={About} />
               
