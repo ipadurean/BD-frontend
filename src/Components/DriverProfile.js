@@ -14,6 +14,7 @@ class DriverProfile extends Component {
   
       return (
         <div className="driver-container">
+          <div className="driver-card">
            <button id="back" onClick={this.props.back} >Back</button>
               <div className="bio">
                 <div className="username">{this.props.driver.name}</div>
@@ -30,7 +31,7 @@ class DriverProfile extends Component {
                 <h4>{this.props.driver.car}</h4>
                 <img className="car-photo" alt="car" src={this.props.driver.car_photo}/>
               </div>
-            
+            </div>
             
               <Calendar user={this.props.user} driver={this.props.driver} />
          </div>

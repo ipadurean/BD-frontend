@@ -171,30 +171,26 @@ reset = () => {
                               <span>Fri</span>
                               <span>Sat</span>
                             </div>
-                <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
-                {this.createMonth()}
-                
-                </div>
-                  
+                    <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
+                        {this.createMonth()}
+                        
+                    </div>
               </div>
-              <div className="book">
-                        <div className="day">{this.state.dayClicked &&
+              <span className="day">
+                    {this.state.dayClicked &&
                                       <Day day={this.state.dayClicked} 
                                           select={this.handleClick}
                                           start={this.state.start}
                                           end={this.state.end}
                                           driver={this.props.driver}
                                         />}
-                        </div>
-                        <div>
-                         
-                      
-                        {this.state.dayClicked &&  <TripForm time={this.state.end - this.state.start} 
-                                                        driver={this.props.driver}
-                                                        date={this.getBookingTime()}
-                                                        submit={this.bookRide} />}
-                        </div>
-               </div>
+              </span>
+              <div className="book">
+                        <TripForm time={this.state.end - this.state.start} 
+                                  driver={this.props.driver}
+                                  date={this.getBookingTime()}
+                                  submit={this.bookRide} />
+              </div>
       </div> 
   
     )

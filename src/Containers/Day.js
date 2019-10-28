@@ -47,10 +47,10 @@ class Day extends Component {
           } else if(bookedHours.includes(i)){
             hours.push(<div data-val={0} key={i} className="busy"></div>)
           } else if (i === a+1) {
-            hours.push(<div  style={{background: "#96B56C"}} data-val={i} key={i} className="hr"></div>)
+            hours.push(<div  style={{background: "#a2c0da"}} data-val={i} key={i} className="hr"></div>)
           }
           else if(i>a+1 && i<=b) {
-              hours[i] = <div  style={{background: "#96B56C"}} data-val={i} key={i} className="hr"></div>
+              hours[i] = <div  style={{background: "#a2c0da"}} data-val={i} key={i} className="hr"></div>
           } else {
             hours.push(<div data-val={i} key={i} className="hr"></div>)
           }
