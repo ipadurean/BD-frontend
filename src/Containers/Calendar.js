@@ -147,12 +147,13 @@ reset = () => {
     return (
       
       <div className="container">
-        <div>{this.state.booked && <Invoice trip={this.state.booked} 
-                                                     driver={this.props.driver}
-    reset={this.reset} />}</div>
-    
-         <div id="myCalendar" className="calendar" >
-         <h6 id="note">Please select a date:</h6>
+        {this.state.booked && <Invoice trip={this.state.booked} 
+                                            driver={this.props.driver}
+                                            reset={this.reset} />}
+        
+        <div className="calendar-container">
+          <div id="myCalendar" className="calendar" >
+            <h6 id="note">Please select a date:</h6>
               <div className="calendar-header">
                   <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
                     <svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -160,7 +161,12 @@ reset = () => {
                     </svg>
                   </button>
                   <div className="calendar-header__label" data-calendar-label="month">{this.getMonthYear()}</div>
-                  <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next"><svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></button>
+                  <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next">
+                    <svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z">
+                      </path>
+                    </svg>
+                  </button>
                 </div>
                             <div className="calendar-week">
                               <span>Sun</span>
@@ -176,7 +182,7 @@ reset = () => {
                         
                     </div>
               </div>
-              <span className="day">
+              <div className="day">
                     {this.state.dayClicked &&
                                       <Day day={this.state.dayClicked} 
                                           select={this.handleClick}
@@ -184,7 +190,8 @@ reset = () => {
                                           end={this.state.end}
                                           driver={this.props.driver}
                                         />}
-              </span>
+              </div>
+           </div>
               <div className="book">
                         <TripForm time={this.state.end - this.state.start} 
                                   driver={this.props.driver}

@@ -14,8 +14,9 @@ class DriverProfile extends Component {
   
       return (
         <div className="driver-container">
+          <button id="back" onClick={this.props.back} >Back</button>
           <div className="driver-card">
-           <button id="back" onClick={this.props.back} >Back</button>
+           
               <div className="bio">
                 <div className="username">{this.props.driver.name}</div>
                 
@@ -24,11 +25,11 @@ class DriverProfile extends Component {
                 <span>Rating {this.props.driver.rating}*</span>
 
                 <p id="description">{this.props.driver.description}</p>
-                <h4>Rate: ${this.props.driver.rate}/hour</h4>
+                <h5>Rate: ${this.props.driver.rate}/hour</h5>
               </div>
               
               <div className="vehicle">
-                <h4>{this.props.driver.car}</h4>
+                <h5>{this.props.driver.car}</h5>
                 <img className="car-photo" alt="car" src={this.props.driver.car_photo}/>
               </div>
             </div>

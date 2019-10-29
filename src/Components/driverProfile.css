@@ -1,15 +1,22 @@
 .driver-container {
-    padding: 3%;
+    padding: 2vw;
    
   
 }
 
 .driver-card {
-  
+  padding-left: 5vw;
   display: grid;
   grid-template-rows: 80px 400px;
-  grid-template-columns: 600px auto;
+  grid-template-columns: 460px auto;
   
+}
+
+@media screen and (max-width: 1020px) {
+    .driver-card {
+      display: flex;
+      flex-direction: column;
+    }
 }
 
 
@@ -21,19 +28,16 @@
 
 .bio {
  grid-area: 2/1/2/2;
- margin-left: 50px;
+ margin-left: 10px;
+ max-width: 450px !important;
 }
 
 #description {
-
   float:right
 }
 
 .vehicle {
- margin-left: 80px;
- padding: 3%;
  grid-area: 2/2/2/2;
-
 }
 
 .username {
@@ -44,9 +48,9 @@
 }
 
 .car-photo {
-  
+  border-radius: 5px;
   margin: 1%;
-  width: 450px;
+  width: 440px;
   height: 250px;
   object-fit: cover;
   box-shadow: 3px 3px 3px 3px #bdbaba;

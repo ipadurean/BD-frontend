@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './NavBar.css';
 
 class NavBar extends Component {
   constructor(){
@@ -22,14 +23,18 @@ class NavBar extends Component {
 
     return (
       <div className="nav-container">
-      
+       { this.props.selected?
         <Navbar bg="light" expand="lg">
-        
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Brand href="/about">About</Navbar.Brand>
           <Navbar.Brand href="/account">My Account</Navbar.Brand>
-          { !this.props.selected &&
-          <Navbar.Collapse id="basic-navbar-nav">
+        </Navbar> :
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="/">Home</Navbar.Brand>
+          <Navbar.Brand href="/about">About</Navbar.Brand>
+          <Navbar.Brand href="/account">My Account</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
                 <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
                   <NavDropdown.Item onClick={this.props.sortByRating} >by Highest rated</NavDropdown.Item>
@@ -41,12 +46,13 @@ class NavBar extends Component {
                     <Button onClick={() => this.props.search(this.state.keyword)} variant="outline-success">Search</Button>
                     <Button onClick={() => this.props.reset()} variant="outline-success">Reset</Button>
                   </Form>
+                 
               </Nav>
-            <span className="bttn">
-              <Button onClick={this.props.logout} href="/" variant="outline-success">Logout</Button>
-            </span> 
-            </Navbar.Collapse>}
-        </Navbar> 
+              <div id="bttn">
+                    <Button onClick={this.props.logout} href="/" variant="outline-success">Logout</Button>
+                 </div> 
+              </Navbar.Collapse>
+        </Navbar>}
         
       </div>
     );

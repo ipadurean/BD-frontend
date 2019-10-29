@@ -4,7 +4,7 @@ import "./components.css"
 const IntroProfiles = (props) => {
   
   return (
-      <div className="driver-list">
+      <div className="car-list">
             <div className="title">
               <h4>{props.driver.username}</h4><span>Rating {props.driver.rating}*</span>
               
