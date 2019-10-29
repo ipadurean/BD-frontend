@@ -150,7 +150,7 @@ reset = () => {
           <Invoice trip={this.state.booked} 
         driver={this.props.driver}
         reset={this.reset} /> :
-        <div className="container">
+        <div className="booking-container">
           <div className="calendar-container">
             <div id="myCalendar" className="calendar" >
               <h6 id="note">Please select a date:</h6>

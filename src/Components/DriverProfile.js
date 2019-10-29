@@ -18,26 +18,24 @@ class DriverProfile extends Component {
         <div className="driver-container">
           <button id="back" onClick={this.props.back} >Back</button>
           <div className="driver-card">
-           
               <div className="bio">
-                <div className="username">{this.props.driver.name}</div>
-                
-                <img id="profile-photo" alt="img" src={this.props.driver.photo}/>
-                <h4>Chauffeur</h4>
-                <span>Rating {this.props.driver.rating}*</span>
-
-                <p id="description">{this.props.driver.description}</p>
-                <h5>Rate: ${this.props.driver.rate}/hour</h5>
+                <div className="photo">
+                    <div className="username">{this.props.driver.name} <h6>Chauffeur</h6></div>
+                       <img id="profile-photo" alt="img" src={this.props.driver.photo}/>
+                      <em>Rating {this.props.driver.rating}*</em>
+                   </div>
+                <div class="description">{this.props.driver.description}</div>
+                 <h5>Rate: ${this.props.driver.rate}/hour</h5>
               </div>
               
               <div className="vehicle">
                 <h5>{this.props.driver.car}</h5>
                 <img className="car-photo" alt="car" src={this.props.driver.car_photo}/>
               </div>
-            </div>
+          </div>
             
               <Calendar user={this.props.user} driver={this.props.driver} />
-         </div>
+        </div>
       )
     }
 

@@ -9,32 +9,19 @@
     --calendar-selected-radius: 10px;
 }
 
-.container {
-   padding-left: 15%;
+.booking-container {
+   margin-bottom: 10%;
    display: flex;
    flex-wrap: wrap;
-    
+   justify-content: center;
 }
 
 .calendar-container {
-   
     display: grid;
     grid-template-rows: 470px;
-    grid-template-columns: 400px 50px;
-    margin-right: 7px;
+    grid-template-columns: 400px 57px;
 }
 
-@media (min-width: 768px){
-      .container {
-            max-width: 1720px;
-        }
-}
-
-@media (min-width: 576px){
-    .container {
-        max-width: 1720px;
-    }
-}
 
 .book {
     background-color: var(--calendar-bg-color);
@@ -45,10 +32,6 @@
     padding: 3%;
     border-radius: var(--calendar-border-radius);
     box-shadow: 1px 1px 2px 1px silver;
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 30%;
-    max-width: 50%;
    
 }
 

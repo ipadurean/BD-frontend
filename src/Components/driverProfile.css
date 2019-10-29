@@ -3,63 +3,64 @@
 }
 
 .driver-card {
-  padding-left: 15%;
-  display: grid;
-  grid-template-rows: 30px 400px;
-  grid-template-columns: 460px 460px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 4%;
   
-}
-
-@media screen and (max-width: 1020px) {
-    .driver-card {
-      display: flex;
-      flex-direction: column;
-    }
 }
 
 
 #back {
-  grid-area: 1/1/2/2;
   width: 60px;
   margin-bottom: 50px;
 }
 
 .bio {
- grid-area: 2/1/2/2;
- margin-left: 2px;
+ display: grid;
+ grid-template-columns: 180px 270px;
+ margin-left: 3px;
  max-width: 450px !important;
+ min-width: 450px !important;
 }
 
 #description {
-  float:right
+  grid-area: 1/2/2/3;
+  padding-left: 3%;
+  text-align: center;
 }
 
 .vehicle {
- grid-area: 2/2/2/2;
+ margin-bottom: 5px;
 }
 
 .username {
   color: #658585;
-  font-size: 1.53em;
+  font-size: 1.4em;
   font-family: "Coda", sans-serif;
   font-weight: bold;
 }
 
 .car-photo {
   border-radius: 5px;
-  margin: 1%;
   width: 450px;
   height: 250px;
   object-fit: cover;
-  box-shadow: 3px 3px 3px 3px #bdbaba;
+  box-shadow: 2px 2px 3px 3px #bdbaba;
   }
 
   #profile-photo{
-    margin: 1em;
-    padding: .7em;
     float: left;
-    margin-top: .3em;
-    height: 12em;
-    width: 12em;
+    margin-top: 2px;
+    height: 10em;
+    width: 10em;
     border-radius: 18em;
+  }
+
+  .driver-card h5 {
+    color: white;
+    padding: 1%;
+    border-radius: 1em;
+    background-color: rgb(157, 190, 218);
+    text-align: center;
   }
