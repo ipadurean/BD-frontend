@@ -8,7 +8,9 @@ import Calendar from '../Containers/Calendar';
 class DriverProfile extends Component {
  
 
-     
+  componentDidMount() {
+    window.scrollTo(100, 200)
+  }  
 
   render(){
   

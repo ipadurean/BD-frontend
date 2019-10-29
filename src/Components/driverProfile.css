@@ -1,14 +1,12 @@
 .driver-container {
-    padding: 2vw;
-   
-  
+  padding: 2%;
 }
 
 .driver-card {
-  padding-left: 5vw;
+  padding-left: 15%;
   display: grid;
-  grid-template-rows: 80px 400px;
-  grid-template-columns: 460px auto;
+  grid-template-rows: 30px 400px;
+  grid-template-columns: 460px 460px;
   
 }
 
@@ -28,7 +26,7 @@
 
 .bio {
  grid-area: 2/1/2/2;
- margin-left: 10px;
+ margin-left: 2px;
  max-width: 450px !important;
 }
 
@@ -50,7 +48,7 @@
 .car-photo {
   border-radius: 5px;
   margin: 1%;
-  width: 440px;
+  width: 450px;
   height: 250px;
   object-fit: cover;
   box-shadow: 3px 3px 3px 3px #bdbaba;
