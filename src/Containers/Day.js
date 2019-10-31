@@ -17,11 +17,12 @@ class Day extends Component {
 
   //Filter trips belonging to selected driver, based on selected date, and return his booked hours
   filterTrips = (items) => {
+  
     let bookedHours = [];
     let date = new Date();
     date.setTime(this.props.day);
     let arr = items.filter(el => new Date(el.start_time).toString().slice(0, 15) === date.toString().slice(0, 15));
-    let newArr = arr.map(el => [new Date(el.start_time).getHours(), new Date(el.end_time).getHours()||25])
+    let newArr = arr.map(el => [new Date(el.start_time).getHours(), new Date(el.end_time).getHours()||24])
         for(let i=0; i<newArr.length; i++){
             for(let k=newArr[i][0]; k<newArr[i][1]; k++){
               bookedHours.push(k)
@@ -35,21 +36,21 @@ class Day extends Component {
   renderHours = () => {
     const bookedHours = this.filterTrips(this.state.trips);
     let hours = [];
-    let i = 1;
+    let i = 0;
     let a = parseInt(this.props.start);
     let b = parseInt(this.props.end);
 
-    while (i < 25){
-      if(i>a+1 && bookedHours.includes(i)){
-          for(let k=i; k<25; k++){
+    while (i < 24){
+      if(i>a && bookedHours.includes(i)){
+          for(let k=i; k<24; k++){
               hours.push(<div data-val={0} key={k} className="busy"></div>)
           } return hours;
           } else if(bookedHours.includes(i)){
             hours.push(<div data-val={0} key={i} className="busy"></div>)
-          } else if (i === a+1) {
+          } else if (i === a) {
             hours.push(<div  style={{background: "#a2c0da"}} data-val={i} key={i} className="hr"></div>)
           }
-          else if(i>a+1 && i<=b) {
+          else if(i>=a && i<b) {
               hours[i] = <div  style={{background: "#a2c0da"}} data-val={i} key={i} className="hr"></div>
           } else {
             hours.push(<div data-val={i} key={i} className="hr"></div>)

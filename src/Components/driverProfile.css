@@ -27,11 +27,13 @@
 #description {
   grid-area: 1/2/2/3;
   padding-left: 3%;
+  
   text-align: center;
 }
 
 .vehicle {
  margin-bottom: 5px;
+ padding: 1%;
 }
 
 .username {
@@ -60,7 +62,8 @@
   .driver-card h5 {
     color: white;
     padding: 1%;
-    border-radius: 1em;
-    background-color: rgb(157, 190, 218);
+    border-radius: 5px;
+    background-color: rgb(98, 112, 126);
     text-align: center;
+    max-height: 35px;
   }

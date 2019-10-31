@@ -24,7 +24,7 @@ class DriverProfile extends Component {
                        <img id="profile-photo" alt="img" src={this.props.driver.photo}/>
                       <em>Rating {this.props.driver.rating}*</em>
                    </div>
-                <div class="description">{this.props.driver.description}</div>
+                <div className="description">{this.props.driver.description}</div>
                  <h5>Rate: ${this.props.driver.rate}/hour</h5>
               </div>
               

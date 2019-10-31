@@ -10,7 +10,6 @@ class Calendar extends Component {
     super()
     this.state = {
       selectedMonth: new Date().getMonth(),
-      timeNow: new Date(),
       dayClicked:false,
       start:null,
       end:null,
@@ -19,27 +18,32 @@ class Calendar extends Component {
   }
 
 
+
   createMonth = () => {
     let date = new Date();
     let select = new Date();
-    date.setMonth(this.state.selectedMonth);
+    let now = new Date();
+    select.setTime(this.state.dayClicked);
     select.setMonth(this.state.selectedMonth);
     date.setDate(1);
-    select.setTime(this.state.dayClicked);
+    date.setMonth(this.state.selectedMonth);
+    
     let daysArr = [];
     let days = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
     let d = 1;
-    for (let i=0; i<date.getDay(); i++){daysArr.push( <div key={i+100} className="calendar-date calendar-date--disabled"><span></span></div>)}
-    while (d <= days) {
-      date.setDate(d) < this.state.timeNow.getTime()?
-           daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>) :
-      this.state.dayClicked && d === select.getDate()?
-           daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--selected" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>):
-      d === this.state.timeNow.getDate() && this.state.timeNow.getMonth() === date.getMonth()?
-           daysArr.push( <div key={d} className="calendar-date calendar-date--active" id="calendar-date--today" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>):
-           daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date.setDate(d)} data-calendar-status="active"><span>{d}</span></div>)
-      d++
-    }
+       for (let i=0; i<date.getDay(); i++){
+         daysArr.push( <div key={i+100} className="calendar-date calendar-date--disabled"><span></span></div>)
+        }
+       while (d <= days) {
+            date.setDate(d) < now.getTime()?
+                daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>) :
+            this.state.dayClicked && d === select.getDate()?
+                daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--selected" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>):
+            d === now.getDate() && now.getMonth() === date.getMonth()?
+                daysArr.push( <div key={d} className="calendar-date calendar-date--active" id="calendar-date--today" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>):
+                daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date.setDate(d)} data-calendar-status="active"><span>{d}</span></div>)
+            d++
+        }
     
     return daysArr;
   }
@@ -47,14 +51,17 @@ class Calendar extends Component {
 
 
   monthPrev = () => {
-    this.setState(prevState => ({
-      selectedMonth: prevState.selectedMonth - 1
+    this.state.selectedMonth &&
+      this.setState(prevState => ({
+      selectedMonth: prevState.selectedMonth - 1,
+      dayClicked: false
     }))
   }
 
   monthNext = () => {
     this.setState(prevState => ({
-      selectedMonth: prevState.selectedMonth + 1
+      selectedMonth: prevState.selectedMonth + 1,
+      dayClicked: false
     }))
   }
 
@@ -62,7 +69,7 @@ class Calendar extends Component {
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     let date = new Date();
     date.setMonth(this.state.selectedMonth);
-    return months[date.getMonth()] + " " + date.getFullYear()
+    return months[this.state.selectedMonth%12] + " " + date.getFullYear()
   }
 
   displayDay = (event) => {
@@ -76,16 +83,16 @@ class Calendar extends Component {
   }
 
 handleClick = (event) => {
-  let x = event.target.dataset.val
+  let x = parseInt(event.target.dataset.val)
     if(event.target.className === "hr"){
       this.state.start===null?
-            this.setState({start: x-1, end: x}) :
-      (x-this.state.start)<=1 ?
-            this.setState({start:x-1, end: x}) :
+            this.setState({start: x, end: x+1}) :
+      (x-this.state.start)<=0 ?
+            this.setState({start:x, end: x+1}) :
       this.state.end - this.state.start >1 ?
-            this.setState({start: x-1, end: x}):
-      (x-this.state.start)>1?
-            this.setState({end: x}):
+            this.setState({start: x, end: x+1}):
+      (x-this.state.start)>0?
+            this.setState({end: x+1}):
             this.setState({start:null, end:null})
     } else {
       this.setState({start:null, end:null})
@@ -143,7 +150,7 @@ reset = () => {
 
 
   render() {
-  
+  console.log(this.state.start, this.state.end)
     return (
       <div>
         {this.state.booked ?
@@ -184,7 +191,7 @@ reset = () => {
                 </div>
                 <div className="day">
                       {this.state.dayClicked &&
-                                        <Day day={this.state.dayClicked} 
+                                       <Day day={this.state.dayClicked} 
                                             select={this.handleClick}
                                             start={this.state.start}
                                             end={this.state.end}
