@@ -36,6 +36,7 @@ class App extends Component {
       });
    }
 
+   //authorize user before the component is mounted
     componentWillMount(){
       if (localStorage.getItem('jwt')) {
       Auth.currentUser()

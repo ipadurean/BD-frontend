@@ -72,6 +72,7 @@ class Calendar extends Component {
     return months[this.state.selectedMonth%12] + " " + date.getFullYear()
   }
 
+  //determining the selected date in order to display the hours belonging the that specific date
   displayDay = (event) => {
     event.target.parentNode.className === "calendar-date calendar-date--active" &&
         this.setState({
@@ -82,6 +83,7 @@ class Calendar extends Component {
         }) 
   }
 
+  //selecting the starting hour and ending hour for booking
 handleClick = (event) => {
   let x = parseInt(event.target.dataset.val)
     if(event.target.className === "hr"){
@@ -133,6 +135,7 @@ bookRide = (event, item) => {
   
 }
 
+//displaying the complete date and hour of the ride's starting point 
 getBookingTime = () => {
   let date = new Date();
   date.setTime(this.state.dayClicked);
@@ -149,8 +152,8 @@ reset = () => {
 
 
 
-  render() {
-  console.log(this.state.start, this.state.end)
+render() {
+  
     return (
       <div>
         {this.state.booked ?
