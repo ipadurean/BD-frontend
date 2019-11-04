@@ -111,10 +111,8 @@ bookRide = (event, item) => {
   let date1 = new Date(date.setHours(this.state.start));
   let date2 = new Date(date.setHours(this.state.end));
 
-  async function check() {
-    return Promise.resolve(user && driver && timeTotal && !!item.address);
-  }
-    check().then(fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
+  if (user && driver && timeTotal && !!item.address) {
+    fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -136,8 +134,9 @@ bookRide = (event, item) => {
         this.setState({
           booked: trip
         })
-      ))
+      )
     }
+  }
 
 //displaying the complete date and hour of the ride's starting point 
 getBookingTime = () => {
