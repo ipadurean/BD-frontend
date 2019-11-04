@@ -103,37 +103,41 @@ handleClick = (event) => {
 
 bookRide = (event, item) => {
   event.preventDefault();
+  let user = this.props.user.id
+  let driver = this.props.driver.id
+  let timeTotal = this.state.end - this.state.start
   let date = new Date();
   date.setTime(this.state.dayClicked);
   let date1 = new Date(date.setHours(this.state.start));
   let date2 = new Date(date.setHours(this.state.end));
 
-  fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      "Accept": 'application/json'
-    },
-    body: JSON.stringify({
-      user_id:this.props.user.id, 
-      driver_id: this.props.driver.id,
-      time_booked: this.state.end - this.state.start,
-      start_time: date1,
-      end_time: date2,
-      total: this.props.driver.rate * (this.state.end - this.state.start),
-      note: item.note,
-      address: item.address
-    })
-  })
-  .then(res => res.json())
-  .then(trip => 
-    this.setState({
-       booked: trip
-    })
-  )
-  
-  
-}
+  async function check() {
+    return Promise.resolve(user && driver && timeTotal && !!item.address);
+  }
+    check().then(fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "Accept": 'application/json'
+        },
+        body: JSON.stringify({
+          user_id: user, 
+          driver_id:driver ,
+          time_booked: timeTotal,
+          start_time: date1,
+          end_time: date2,
+          total: this.props.driver.rate * timeTotal,
+          note: item.note,
+          address: item.address
+        })
+      })
+      .then(res => res.json())
+      .then(trip => 
+        this.setState({
+          booked: trip
+        })
+      ))
+    }
 
 //displaying the complete date and hour of the ride's starting point 
 getBookingTime = () => {
