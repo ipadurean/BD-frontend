@@ -32,16 +32,16 @@ class Calendar extends Component {
     let days = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
     let d = 1;
        for (let i=0; i<date.getDay(); i++){
-         daysArr.push( <div key={i+100} className="calendar-date calendar-date--disabled"><span></span></div>)
+         daysArr.push( <div key={i+100} className="calendar-date calendar-date--disabled"></div>)
         }
        while (d <= days) {
             date.setDate(d) < now.getTime()?
-                daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>) :
+                daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} >{d}</div>) :
             this.state.dayClicked && d === select.getDate()?
-                daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--selected" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>):
+                daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--selected" data-calendar-date={date.setDate(d)} >{d}</div>):
             d === now.getDate() && now.getMonth() === date.getMonth()?
-                daysArr.push( <div key={d} className="calendar-date calendar-date--active" id="calendar-date--today" data-calendar-date={date.setDate(d)} ><span>{d}</span></div>):
-                daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date.setDate(d)} data-calendar-status="active"><span>{d}</span></div>)
+                daysArr.push( <div key={d} className="calendar-date calendar-date--active" id="calendar-date--today" data-calendar-date={date.setDate(d)} >{d}</div>):
+                daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date.setDate(d)} data-calendar-status="active">{d}</div>)
             d++
         }
     
@@ -74,9 +74,10 @@ class Calendar extends Component {
 
   //determining the selected date in order to display the hours belonging the that specific date
   displayDay = (event) => {
-    event.target.parentNode.className === "calendar-date calendar-date--active" &&
+   
+    event.target.className === "calendar-date calendar-date--active" &&
         this.setState({
-            dayClicked: event.target.parentNode.dataset.calendarDate,
+            dayClicked: event.target.dataset.calendarDate,
             start:null,
             end:null,
             booked: false

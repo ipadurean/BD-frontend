@@ -25,7 +25,7 @@
 
 .book {
     background-color: var(--calendar-bg-color);
-    min-width: 450px !important;
+    min-width: 456px !important;
     max-width: 500px !important;
     min-height: 460px !important;
     max-height: 460px !important;
@@ -39,7 +39,7 @@
  width: 50px;
  grid-area: 1/2/2/3;
  background-color: var(--calendar-bg-color);
- margin-left: 3px;
+ margin-left: 4px;
  border-radius: var(--calendar-border-radius);
  padding-left: 5px;
  box-shadow: 1px 1px 2px 1px silver;
@@ -157,6 +157,8 @@
 .calendar .calendar-date--active {
     cursor: pointer;
 }
+
+
 
 .calendar #calendar-date--today {
     background-color: var(--calendar-today-bg-color);

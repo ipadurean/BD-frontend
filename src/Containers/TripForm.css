@@ -1,22 +1,11 @@
-.trip-form {
-  
-  /* display: flex;
-  flex-direction: column;
-  padding: 3%;
-  min-width: 400px;
-  min-height: 450px !important;
-  max-height: 450px !important;
-  border: 1px solid silver;
-  box-shadow: 2px 2px 2px 2px  silver;
-  border-radius: 5px; */
-  
- 
-}
+
+
 
 
 #btn {
   background-color: rgb(211, 211, 190);
   border: 3px solid rgb(192, 191, 191);
   border-radius: 40px;
+
 }
 

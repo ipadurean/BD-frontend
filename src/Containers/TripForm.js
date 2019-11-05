@@ -27,15 +27,17 @@ render(){
   return (
      <div className="trip-form">
        <p>You are booking a ride with: <b>{this.props.driver.name}</b></p>
-       <p>For: <em>{this.props.date.slice(0,15)} at: {this.props.date.slice(16,18)}:00</em> </p>
+       <p>For: <b>{this.props.date.slice(0,15)} at: {this.props.date.slice(16,18)}:00</b> </p>
        <p>Total time booked: <b>{this.props.time}</b> hours</p>
        <p>Total: <b>${this.props.time*this.props.driver.rate}</b></p>
        <form  onSubmit={(e) => this.props.submit(e,this.state)} >
-          <FormGroup controlId="address" bssize="large">
-              <FormControl
+          <FormGroup  controlId="address" bssize="large">
+         
+             <FormControl
+                className="req"
                 autoFocus
                 type="address"
-                placeholder="enter pick-up address"
+                placeholder="enter pick-up address*"
                 value={this.state.address}
                 onChange={this.handleChange}
               />
