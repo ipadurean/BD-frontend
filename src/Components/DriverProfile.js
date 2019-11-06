@@ -2,14 +2,31 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./driverProfile.css";
 import Calendar from '../Containers/Calendar';
+import Auth from '../authAdapter';
 
 
 
 class DriverProfile extends Component {
+  constructor(){
+    super();
+    this.state = {
+      user: {}
+    }
+  }
  
 
   componentDidMount() {
     window.scrollTo(100, 200)
+    if (localStorage.getItem('jwt')) {
+      Auth.currentUser()
+        .then(user => {
+          if (!user.error) {
+            this.setState({
+                user: {id: user.id, username: user.username}
+                 })
+            }
+          })
+        }
   }  
 
   render(){
@@ -34,7 +51,7 @@ class DriverProfile extends Component {
               </div>
           </div>
             
-              <Calendar user={this.props.user} driver={this.props.driver} />
+              <Calendar user={this.state.user} driver={this.props.driver} />
         </div>
       )
     }

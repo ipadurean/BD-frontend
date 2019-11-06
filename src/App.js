@@ -26,6 +26,18 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if (localStorage.getItem('jwt')) {
+      Auth.currentUser()
+        .then(user => {
+          if (!user.error) {
+            this.setState({
+              loggedIn: true,
+              user: {id: user.id, username: user.username}
+              })
+            }
+          })
+        };
+
     fetch('https://radiant-fjord-35660.herokuapp.com/drivers')
       .then(res => res.json())
       .then(data => {
@@ -36,20 +48,7 @@ class App extends Component {
       });
    }
 
-   //authorize user before the component is mounted
-    componentWillMount(){
-      if (localStorage.getItem('jwt')) {
-      Auth.currentUser()
-        .then(user => {
-          if (!user.error) {
-            this.setState({
-                loggedIn: true,
-                user: {id: user.id, username: user.username}
-              })
-            }
-          })
-        }
-    }
+  
   
     logout(){
       localStorage.removeItem('jwt')
@@ -57,18 +56,17 @@ class App extends Component {
     }
 
     logIn(loginParams){
-      
-      Auth.login(loginParams)
-        .then( user => {
+       Auth.login(loginParams)
+         .then( user => {
           if (!user.error) {
+            localStorage.setItem('jwt', user.token);
             this.setState({
-              loggedIn: true, 
-              user: user
+              loggedIn: true,
+              user: {id: user.id, username: user.username}
             })
-            localStorage.setItem('jwt', user.token )
           }
         })
-    }
+      }
 
 
   sortByRate = () => {
@@ -117,7 +115,7 @@ class App extends Component {
                
              
               <Route exact path='/' render={()=>{
-                 return this.state.loggedIn ? <Home drivers={this.state.filter || this.state.drivers} 
+                 return this.state.loggedIn? <Home drivers={this.state.filter || this.state.drivers} 
                                                     history={history} 
                                                     user={this.state.user}
                                                     logged={this.state.loggedIn}

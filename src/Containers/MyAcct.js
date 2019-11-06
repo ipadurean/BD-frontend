@@ -13,7 +13,7 @@ class MyAcct extends Component {
     }
   }
 
-  componentWillMount(){
+  componentDidMount(){
     if (localStorage.getItem('jwt')) {
     Auth.currentUser()
       .then(user => {

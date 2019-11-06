@@ -45,9 +45,8 @@ export default class Home extends Component {
                 change={this.props.change}
                 selected={this.state.selectedDriver} />
         {this.state.selectedDriver ?
-          <DriverProfile user={this.props.user} 
-                        driver={this.state.selectedDriver} 
-                        back={this.back} /> :
+          <DriverProfile driver={this.state.selectedDriver} 
+                         back={this.back} /> :
           <DriversList drivers={this.props.drivers}
                        select={this.selectDriver}
                        logged={this.props.logged} /> 

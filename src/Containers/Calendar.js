@@ -157,7 +157,7 @@ reset = () => {
 
 
 render() {
-  
+ 
     return (
       <div>
         {this.state.booked ?
