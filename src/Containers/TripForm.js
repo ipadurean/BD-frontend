@@ -35,7 +35,6 @@ render(){
          
              <FormControl
                 className="req"
-                autoFocus
                 type="address"
                 placeholder="enter pick-up address*"
                 value={this.state.address}

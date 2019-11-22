@@ -115,7 +115,7 @@ class App extends Component {
                
              
               <Route exact path='/' render={()=>{
-                 return this.state.loggedIn? <Home drivers={this.state.filter || this.state.drivers} 
+                 return this.state.loggedIn? <Home  drivers={this.state.filter || this.state.drivers} 
                                                     history={history} 
                                                     user={this.state.user}
                                                     logged={this.state.loggedIn}
@@ -124,7 +124,7 @@ class App extends Component {
                                                     sortByRating={this.sortByRating} 
                                                     search={this.searchDrivers} 
                                                     reset={this.resetSearch}
-                                                    change={this.handleChange} />: 
+                                                    change={this.handleChange} /> : 
               <Redirect to="/login"/>
               
             }} />
