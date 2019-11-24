@@ -1,0 +1,119 @@
+
+
+.day {
+  width: 50px;
+  grid-area: 1/2/2/3;
+  background-color: var(--calendar-bg-color);
+  margin-left: 4px;
+  border-radius: var(--calendar-border-radius);
+  padding-left: 5px;
+  box-shadow: 1px 1px 2px 1px silver;
+  padding-top: 2px;
+  min-height: 460px !important;
+  max-height: 460px !important;
+ }
+
+ .calendar-home *, .calendar-home *:before, .calendar-home *:after {
+  box-sizing: border-box;
+}
+
+.calendar-home {
+  display: block !important;
+  background-color: white;
+  border-radius: 2px;
+  
+  box-shadow: 1px 1px 2px 1px silver;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  min-height: 310px !important;
+  max-height: 310px !important;
+  padding: 1%;
+}
+
+
+.calendar-home :active {
+      border-radius: var(--calendar-border-radius);
+      box-shadow: 0 0 0 1px rgba(var(--calendar-today-bg-color), 0.1)
+  }
+
+
+.calendar-home .calendar-header {
+  align-items: center;
+  display: flex;
+  padding: 3px;
+  text-transform: uppercase;
+  border-radius: var(--calendar-border-radius);
+}
+
+.calendar-home .calendar-header svg {
+  fill: var(--calendar-today-color);
+}
+
+.calendar-home .calendar-header__label {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.calendar-home .calendar-week {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: var(--calendar-border-radius);
+}
+
+.calendar-home .calendar-week span {
+  color: rgb(99, 99, 185);
+  flex-direction: column;
+  flex: 0 0 14.28%;
+  font-size: 0.9em;
+  font-weight: bold;
+  max-width: 14.28%;
+  padding: 10px 0px;
+  text-align: center;
+ 
+}
+
+.calendar-home .calendar-body {
+  background-color:white;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: var(--calendar-border-radius);
+}
+
+.calendar-home .calendar-date {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 14.28%;
+  max-width: 14.28%;
+  padding: 8px;
+}
+
+
+.calendar-home .calendar-date--active {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+
+.calendar-home #calendar-date--today {
+  background-color: var(--calendar-today-bg-color);
+  color: var(--calendar-today-color);
+}
+
+.calendar-home .calendar-date--selected {
+  background-color: var(--calendar-selected-bg-color);
+  color: var(--calendar-selected-color);
+  font-size: 14px;
+}
+
+.calendar-home .calendar-date--disabled {
+  border-radius: 0;
+  cursor: not-allowed;
+  opacity: 0.2;
+  user-select: none !important;
+  font-size: 14px;
+}

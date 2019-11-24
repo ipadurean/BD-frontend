@@ -1,0 +1,21 @@
+.search-container{
+  padding: 5%;
+}
+
+#time-home{
+  width: 150px;
+  margin:2px
+}
+
+#date-home{
+  width: 200px;
+  margin:2px;
+}
+
+#form {
+  margin-left: 5%;
+}
+
+#submit{
+  margin: 2px;
+}

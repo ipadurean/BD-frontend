@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Driver from './Driver';
-import IntroProfiles from './IntroProfiles'
+import IntroProfiles from './IntroProfiles';
+import SearchAvailability from '../Containers/SearchAvailability'
 
-const DriversList = (props) => {
-  return (
-    <div className="list">
-      
-      {props.drivers.map(driver => {
-      return  props.logged?
-      <Driver key={driver.id} select={props.select} driver={driver} /> :
-      <IntroProfiles key={driver.id} driver={driver}/>
-      })
+class DriversList extends Component {
+
+
+  render(){
+      return (
+        <div className="list">
+          < SearchAvailability />
+          {this.props.drivers.map(driver => {
+          return  this.props.logged?
+          <Driver key={driver.id} select={this.props.select} driver={driver} /> :
+          <IntroProfiles key={driver.id} driver={driver}/>
+          })
+          }
+        </div>
+        );
       }
-    </div>
-  );
-}
+  }
 
 export default DriversList;
