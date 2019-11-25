@@ -2,15 +2,28 @@ import React, { Component } from 'react';
 import './SearchAvailability.css';
 import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from '../Components/CalendarHome';
+import DriversList from '../Components/DriversList';
 
 class SearchAvailability extends Component {
   constructor(){
     super()
     this.state = {
       dateClicked: false,
-      selectedDate: ""
+      selectedDate: "",
+      start: null,
+      end: null,
+      trips: [],
+      filter: false
     }
     
+  }
+
+  componentDidMount(){
+    fetch("https://radiant-fjord-35660.herokuapp.com/trips")
+    .then(res => res.json())
+    .then(data => {
+      this.setState({trips: data})
+    })
   }
 
   renderHours = () => {
@@ -39,31 +52,64 @@ class SearchAvailability extends Component {
     })
   }
 
+  searchAvailable = () =>{
+    let s = parseInt(this.state.start)
+    let e = parseInt(this.state.end) || 24
+        if (this.state.selectedDate && e > s ){
+        let d = this.state.selectedDate.toISOString().slice(0,10)
+        let intersectedDate = this.state.trips.filter(trip => trip.start_time.slice(0,10) === d)
+        let intersectedTime = intersectedDate.filter(trip => {
+                                  let start = new Date(trip.start_time).getHours();
+                                  let end = new Date(trip.end_time).getHours() || 24;
+                                  return (s > start && s < end) || (e > start && e < end) || (s <= start && e >= end)
+                              })
+        let busyDrivers = intersectedTime.map(trip => trip.driver_id)
+        let filterDrivers = this.props.drivers.filter(driver => !busyDrivers.includes(driver.id))
+            this.setState({
+              filter: filterDrivers
+            })
+        }
+  }
+
+  handleChange = (event) =>{
+      this.setState({
+        [event.target.name] : event.target.value
+      })
+  }
+
+  reset = () => {
+    this.setState({filter: false})
+  }
+
   render(){
-    console.log(this.state.selectedDate)
+  
     return(
       <div className="search-container">
         <h4>Search for available drivers:</h4>
-       <Form id="form">
+       <Form onChange={this.handleChange} id="form">
           <Row>
           
-              <Form.Control value={this.state.selectedDate.toString().slice(4, 15)} 
+              <Form.Control autoComplete="off"
+                            value={this.state.selectedDate.toString().slice(4, 15)} 
                             onClick={this.clickDate} id="date-home" 
                             placeholder="Choose Date">
               </Form.Control>
-                <Form.Control id="time-home" as="select">
-                  <option>Choose Time</option>
+                <Form.Control name="start" id="time-home" as="select">
+                  <option>Start Time</option>
                   {this.renderHours()}
                 </Form.Control>
-                <Form.Control id="time-home" as="select">
-                <option>Choose Time</option>
+                <Form.Control name="end" id="time-home" as="select">
+                <option>End Time</option>
                   {this.renderHours()}
                 </Form.Control>
-                <Button id="submit" type="submit" variant="dark">Search</Button>
-            
+                <Button onClick={this.searchAvailable} id="submit">Search</Button>
+                <Button onClick={this.reset} id="reset">Reset</Button>
           </Row>
         </Form>
         {this.state.dateClicked && <CalendarHome select={this.selectDate} />}
+        <DriversList drivers={this.state.filter || this.props.drivers}
+                     select={this.props.select}
+                     logged={this.props.logged} /> 
       </div>
     )
   }

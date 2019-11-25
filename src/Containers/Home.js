@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Home.css";
 import DriverProfile from "../Components/DriverProfile";
-import DriversList from "../Components/DriversList";
 import NavBar from './NavBar'
+import SearchAvailability from "./SearchAvailability";
 
 
 
@@ -47,9 +47,9 @@ export default class Home extends Component {
         {this.state.selectedDriver ?
           <DriverProfile driver={this.state.selectedDriver} 
                          back={this.back} /> :
-          <DriversList drivers={this.props.drivers}
-                       select={this.selectDriver}
-                       logged={this.props.logged} /> 
+          <SearchAvailability drivers={this.props.drivers}
+                              select={this.selectDriver}
+                              logged={this.props.logged} /> 
           }
        </div>  
         )

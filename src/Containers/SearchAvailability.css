@@ -18,4 +18,10 @@
 
 #submit{
   margin: 2px;
+  background-color: rgb(97, 150, 156);
+}
+
+#reset {
+  margin: 2px;
+  background-color: rgb(97, 150, 156);
 }

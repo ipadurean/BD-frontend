@@ -1,18 +1,5 @@
 
 
-.day {
-  width: 50px;
-  grid-area: 1/2/2/3;
-  background-color: var(--calendar-bg-color);
-  margin-left: 4px;
-  border-radius: var(--calendar-border-radius);
-  padding-left: 5px;
-  box-shadow: 1px 1px 2px 1px silver;
-  padding-top: 2px;
-  min-height: 460px !important;
-  max-height: 460px !important;
- }
-
  .calendar-home *, .calendar-home *:before, .calendar-home *:after {
   box-sizing: border-box;
 }
