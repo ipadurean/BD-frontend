@@ -55,9 +55,15 @@ class SearchAvailability extends Component {
   searchAvailable = () =>{
     let s = parseInt(this.state.start)
     let e = parseInt(this.state.end) || 24
+    let arr = this.state.trips.map(el => {
+      el.end_time = new Date(el.end_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
+      el.start_time = new Date(el.start_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
+      return el
+  })
+    
         if (this.state.selectedDate && e > s ){
-        let d = this.state.selectedDate.toISOString().slice(0,10)
-        let intersectedDate = this.state.trips.filter(trip => trip.start_time.slice(0,10) === d)
+        let d = this.state.selectedDate.toLocaleString().slice(0,10);
+        let intersectedDate = arr.filter(trip => trip.start_time.slice(0,10) === d);
         let intersectedTime = intersectedDate.filter(trip => {
                                   let start = new Date(trip.start_time).getHours();
                                   let end = new Date(trip.end_time).getHours() || 24;
@@ -89,8 +95,9 @@ class SearchAvailability extends Component {
        <Form onChange={this.handleChange} id="form">
           <Row>
           
-              <Form.Control autoComplete="off"
-                            value={this.state.selectedDate.toString().slice(4, 15)} 
+              <Form.Control 
+                            autoComplete="off"
+                            defaultValue={this.state.selectedDate.toString().slice(4, 15)} 
                             onClick={this.clickDate} id="date-home" 
                             placeholder="Choose Date">
               </Form.Control>

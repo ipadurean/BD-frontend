@@ -111,7 +111,6 @@ bookRide = (event, item) => {
   date.setTime(this.state.dayClicked);
   let date1 = new Date(date.setHours(this.state.start));
   let date2 = new Date(date.setHours(this.state.end));
-
   if (user && driver && timeTotal && !!item.address) {
     fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
         method: 'POST',
