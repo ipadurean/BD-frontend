@@ -13,7 +13,7 @@
 }
 
 #form {
-  margin-left: 5%;
+  padding: 5%;
 }
 
 #submit{
@@ -24,4 +24,12 @@
 #reset {
   margin: 2px;
   background-color: rgb(97, 150, 156);
+}
+
+#note {
+  padding: 2% 5%;
+}
+
+#row{
+  margin-left: 5%;
 }

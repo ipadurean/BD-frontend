@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import "./MyAcct.css";
+import "./History.css";
 import Trip from './Trip';
 import Auth from '../authAdapter';
 import { Navbar } from "react-bootstrap";
 
-class MyAcct extends Component {
+class History extends Component {
   constructor(){
     super()
     this.state = {
@@ -51,4 +51,4 @@ class MyAcct extends Component {
   }
 }
 
-export default MyAcct;
+export default History;

@@ -27,12 +27,12 @@ class NavBar extends Component {
         <Navbar bg="light" expand="lg">
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Brand href="/about">About</Navbar.Brand>
-          <Navbar.Brand href="/account">My Account</Navbar.Brand>
+          <Navbar.Brand href="/history">Ride History</Navbar.Brand>
         </Navbar> :
         <Navbar bg="light" expand="lg">
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Brand href="/about">About</Navbar.Brand>
-          <Navbar.Brand href="/account">My Account</Navbar.Brand>
+          <Navbar.Brand href="/history">Ride History</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">

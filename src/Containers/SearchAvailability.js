@@ -93,7 +93,7 @@ class SearchAvailability extends Component {
       <div className="search-container">
         <h4>Search for available drivers:</h4>
        <Form onChange={this.handleChange} id="form">
-          <Row>
+          <Row id="row">
           
               <Form.Control 
                             autoComplete="off"
@@ -112,11 +112,14 @@ class SearchAvailability extends Component {
                 <Button onClick={this.searchAvailable} id="submit">Search</Button>
                 <Button onClick={this.reset} id="reset">Reset</Button>
           </Row>
+          {this.state.dateClicked && <CalendarHome select={this.selectDate} />}
         </Form>
-        {this.state.dateClicked && <CalendarHome select={this.selectDate} />}
-        <DriversList drivers={this.state.filter || this.props.drivers}
-                     select={this.props.select}
-                     logged={this.props.logged} /> 
+            
+            {this.state.filter &&  <h5 id="note">For this date and time there are a total of {this.state.filter.length} drivers available:</h5>}
+            <DriversList drivers={this.state.filter || this.props.drivers}
+                        select={this.props.select}
+                        logged={this.props.logged} /> 
+          
       </div>
     )
   }

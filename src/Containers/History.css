@@ -3,13 +3,15 @@
 }
 
 .trip-container {
-  border: 1px solid rgb(238, 238, 238)
+  border: 1px solid rgb(238, 238, 238);
+  cursor: pointer;
 }
 
 #trip-header {
   background-color: aliceblue;
   padding: 1em;
   width: 100%;
+  cursor: pointer;
 }
 
 #user {
