@@ -9,7 +9,8 @@ class History extends Component {
     super()
     this.state = {
       trips: [],
-      user: {}
+      user: {},
+      currentTime: new Date().getTime()
     }
   }
 
@@ -19,7 +20,7 @@ class History extends Component {
       .then(user => {
         if (!user.error) {
           this.setState({
-            trips: user.trips.reverse(),
+              trips: user.trips.reverse(),
               user: {id: user.id, username: user.username}
                })
           }
@@ -27,10 +28,31 @@ class History extends Component {
       }
   }
 
+  getPastTrips = () => {
+    let pastTrips = this.state.trips.filter(el => new Date(el.end_time).getTime() < this.state.currentTime)
+    return pastTrips.map(el => {
+      return   <Trip key={el.id} driver={this.props.drivers.filter(item => item.id === el.driver_id)[0]} trip={el} />
+    })
+  }
+
+  getCurrentTrips = () => {
+     let currentTrips = this.state.trips.filter(el => new Date(el.end_time).getTime() > this.state.currentTime && new Date(el.start_time).getTime() < this.state.currentTime)
+     return currentTrips.map(el => {
+       return   <Trip key={el.id} driver={this.props.drivers.filter(item => item.id === el.driver_id)[0]} trip={el} />
+     })
+  }
+
+  getFutureTrips = () => {
+    let futureTrips = this.state.trips.filter(el => new Date(el.start_time).getTime() > this.state.currentTime)
+    return futureTrips.map(el => {
+      return   <Trip key={el.id} driver={this.props.drivers.filter(item => item.id === el.driver_id)[0]} trip={el} />
+    })
+  }
+
  
   
  render(){
-
+console.log(this.state.trips)
       return (
         <div className="trip-history">
            <div className="nav-container">
@@ -38,14 +60,25 @@ class History extends Component {
                  <Navbar.Brand href="/">Home</Navbar.Brand>
              </Navbar>
            </div>
-            <div id="user" >
+            <div class="user" >
                 <h3>Hello <em>{this.state.user.username}</em>! This is the history of your trips:</h3>
+           
+                {!!this.getCurrentTrips().length && 
+                  <div>
+                    <h5>Current trips:</h5>
+                      {this.getCurrentTrips()}
+                  </div>}
+                {!!this.getFutureTrips().length && 
+                  <div>
+                    <h5>Upcoming trips:</h5>
+                      {this.getFutureTrips()}
+                  </div>}
+                {!!this.getPastTrips().length && 
+                <div>
+                    <h5>Past trips:</h5>
+                      {this.getPastTrips()}
+                </div>}
             </div>
-         
-                {this.state.trips.map(el => {
-                                        return   <Trip key={el.id} driver={this.props.drivers.filter(item => item.id === el.driver_id)[0]} trip={el} />
-                                  })
-                }
         </div>
       );
   }
