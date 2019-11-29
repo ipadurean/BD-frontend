@@ -6,7 +6,7 @@ const Driver = (props) => {
   return (
       <div onClick={() => props.select(props.driver)} className="driver-icon">
             <div className="title">
-              <h4>{props.driver.username}</h4><span>Rating {props.driver.rating}*</span>
+              <h5>{props.driver.username}</h5><span>Rating {props.driver.rating}*</span>
               <p>Rate: ${props.driver.rate}/hour</p>
               
             </div>

@@ -112,10 +112,10 @@ class SearchAvailability extends Component {
                 <Button onClick={this.searchAvailable} id="submit">Search</Button>
                 <Button onClick={this.reset} id="reset">Reset</Button>
           </Row>
-          {this.state.dateClicked && <CalendarHome select={this.selectDate} />}
         </Form>
-            
-            {this.state.filter &&  <h5 id="note">For this date and time there are a total of {this.state.filter.length} drivers available:</h5>}
+        <div id="available"> 
+        {this.state.dateClicked && <CalendarHome select={this.selectDate} />}
+           {this.state.filter &&  <p id="note">For this date and time there are a total of <b>{this.state.filter.length}</b> drivers available:</p>}</div>
             <DriversList drivers={this.state.filter || this.props.drivers}
                         select={this.props.select}
                         logged={this.props.logged} /> 

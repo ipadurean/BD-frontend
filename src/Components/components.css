@@ -81,6 +81,7 @@
   width: 80px;
   margin: 10px;
   box-shadow: 1px 1px 1px 1px #757272;
+  border-radius: 50%;
 }
 
 .invoice {
@@ -101,5 +102,5 @@
 
 .list {
   
-  padding: 2% 10%;
+  padding: 10% 5%;
 }

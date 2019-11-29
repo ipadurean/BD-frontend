@@ -13,11 +13,11 @@
 }
 
 #form {
-  padding: 5%;
+  padding: 3% 1% 0%;
 }
 
 #submit{
-  margin: 2px;
+  margin: 2px 1px;
   background-color: rgb(97, 150, 156);
 }
 
@@ -27,9 +27,13 @@
 }
 
 #note {
-  padding: 2% 5%;
+  padding: 6%;
 }
 
 #row{
-  margin-left: 5%;
+  margin-left: 3%;
+}
+
+#available{
+   height: 40px;
 }

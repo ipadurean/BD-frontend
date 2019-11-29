@@ -41,14 +41,14 @@ class NavBar extends Component {
                   <NavDropdown.Item onClick={this.props.sortByRate} >by Hourly Rate</NavDropdown.Item>
                 </NavDropdown>
               
-                  <Form onChange={this.handleChange} inline className="search">
+                  <Form onChange={this.handleChange} inline className="search-drivers">
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                     <Button onClick={() => this.props.search(this.state.keyword)} variant="outline-success">Search</Button>
                     <Button onClick={() => this.props.reset()} variant="outline-success">Reset</Button>
                   </Form>
                  
               </Nav>
-              <div id="bttn">
+                 <div id="bttn">
                     <Button onClick={this.props.logout} href="/" variant="outline-success">Logout</Button>
                  </div> 
               </Navbar.Collapse>
