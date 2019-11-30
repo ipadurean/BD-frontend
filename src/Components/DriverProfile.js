@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './DriverProfile.css';
+import './driverProfile.css'
 import Calendar from '../Containers/Calendar';
 import Auth from '../authAdapter';
 
