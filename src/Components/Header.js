@@ -1,4 +1,5 @@
 import React from 'react';
+import './basic.css'
 
 const Header = () => {
   return (
