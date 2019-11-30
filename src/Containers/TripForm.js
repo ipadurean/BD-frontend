@@ -7,7 +7,7 @@ class Trip extends Component {
      super();
      this.state = {
        address: "",
-       note: ""
+       extra: ""
      }
 }
 
@@ -41,10 +41,10 @@ render(){
                 onChange={this.handleChange}
               />
               </FormGroup>
-            <FormGroup controlId="note" bssize="large">
+            <FormGroup controlId="extra" bssize="large">
               
               <FormControl as="textarea"
-                value={this.state.note}
+                value={this.state.extra}
                 onChange={this.handleChange}
                 placeholder="add note to driver (optional)"
                 type="text"

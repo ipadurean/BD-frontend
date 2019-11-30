@@ -1,14 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway|Varela+Round|Coda);
 @import url(https://weloveiconfonts.com/api/?family=entypo);
 
-.driver-icon {
-  
-  height: 120px;
-  margin: 1%;
-  display: flex;
-  border-top: 2px solid rgb(230, 242, 248)
-  
-}
+
 
 .about {
   padding: 10%;
@@ -39,7 +32,7 @@
 
 .header {
   background-image:url("https://i.ytimg.com/vi/x0UNhUfgVk0/maxresdefault.jpg");
-  height: 12vw;
+  height: 8vw;
   display: flex;
   background-position: 50%;
   right: 0;
@@ -48,15 +41,15 @@
 #logo {
   font-family: "Coda", sans-serif;
   align-items: left;
-  font-size: 6vw;
+  font-size: 4vw;
   -webkit-text-stroke: 1px rgb(0, 0, 0);
   color:rgb(122, 122, 122);
   text-shadow:
-      0px 0px 0 rgb(235, 235, 235),
-    -2px -3px 0 rgb(241, 241, 241),  
-     4px -3px 0 rgb(233, 233, 233),
-     0px -3px 0 rgb(230, 230, 230),
-      0px -2px 0 rgb(233, 233, 233);
+    3px  3px 3px rgb(235, 235, 235),
+    0px -3px 0 rgb(241, 241, 241),  
+    0px -3px 5px rgb(233, 233, 233),
+    3px -3px 8px rgb(230, 230, 230),
+    0px -2px 7px rgb(233, 233, 233);
   margin-top: 15px;
   margin-left: 15px;
 }
@@ -75,14 +68,7 @@
  
 }
 
-#img {
-  
-  height: 80px;
-  width: 80px;
-  margin: 10px;
-  box-shadow: 1px 1px 1px 1px #757272;
-  border-radius: 50%;
-}
+
 
 .invoice {
   background-color: rgb(250, 248, 245);

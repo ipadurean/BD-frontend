@@ -52,7 +52,7 @@ class History extends Component {
  
   
  render(){
-console.log(this.state.trips)
+
       return (
         <div className="trip-history">
            <div className="nav-container">
@@ -60,7 +60,7 @@ console.log(this.state.trips)
                  <Navbar.Brand href="/">Home</Navbar.Brand>
              </Navbar>
            </div>
-            <div class="user" >
+            <div className="user" >
                 <h3>Hello <em>{this.state.user.username}</em>! This is the history of your trips:</h3>
            
                 {!!this.getCurrentTrips().length && 

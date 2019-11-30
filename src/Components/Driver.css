@@ -1,0 +1,33 @@
+#vehicle{
+  width: 40%;
+}
+
+.driver-brief {
+  
+  height: 120px;
+  margin: 1%;
+  display: flex;
+  border-top: 2px solid rgb(230, 242, 248)
+  
+}
+
+.driver-brief button{
+  margin: 3% 1%;
+  border-radius: 10px;
+  background-color: rgb(208, 223, 236);
+  border: 1px solid rgb(202, 202, 218);
+  box-shadow: 1px 1px 1px 1px #757272;
+}
+
+#img {
+  
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #757272;
+  border-radius: 50%;
+}
+
+#total {
+  width: 50px;
+}

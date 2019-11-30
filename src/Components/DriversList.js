@@ -10,7 +10,11 @@ const DriversList = (props) => {
         <div className="list">
           {props.drivers.map(driver => {
             return  props.logged?
-            <Driver key={driver.id} select={props.select} driver={driver} /> :
+            <Driver key={driver.id} 
+                    select={props.select} 
+                    driver={driver} 
+                    hoursTotal={props.hoursTotal} 
+                    filter={props.filter}/> :
             <IntroProfiles key={driver.id} driver={driver}/>
             })
           }

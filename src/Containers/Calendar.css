@@ -48,7 +48,7 @@
  max-height: 460px !important;
 }
 
-#note {
+#calendar-note {
     text-shadow: 1px 1px white;
    
 }
@@ -71,7 +71,7 @@
     max-width: 400px !important;
     min-height: 460px !important;
     max-height: 460px !important;
-    padding: 5%;
+    padding: 8%;
 }
 
 

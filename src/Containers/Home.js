@@ -49,7 +49,8 @@ export default class Home extends Component {
                          back={this.back} /> :
           <SearchAvailability drivers={this.props.drivers}
                               select={this.selectDriver}
-                              logged={this.props.logged} /> 
+                              logged={this.props.logged} 
+                              driver={this.state.selectedDriver} /> 
           }
        </div>  
         )

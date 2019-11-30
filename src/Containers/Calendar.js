@@ -20,22 +20,22 @@ class Calendar extends Component {
 
 
   createMonth = () => {
-    let date = new Date();
-    let select = new Date();
+   
     let now = new Date();
+    let date = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
+    let select = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
+
     select.setTime(this.state.dayClicked);
-    select.setMonth(this.state.selectedMonth);
-    date.setDate(1);
-    date.setMonth(this.state.selectedMonth);
+    
     
     let daysArr = [];
-    let days = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
+    let daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
     let d = 1;
        for (let i=0; i<date.getDay(); i++){
          daysArr.push( <div key={i+100} className="calendar-date calendar-date--disabled"></div>)
         }
-       while (d <= days) {
-            date.setDate(d) < now.getTime()?
+       while (d <= daysInMonth) {
+            d < now.getDate() && now.getMonth() === this.state.selectedMonth?
                 daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} >{d}</div>) :
             this.state.dayClicked && d === select.getDate()?
                 daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--selected" data-calendar-date={date.setDate(d)} >{d}</div>):
@@ -44,7 +44,6 @@ class Calendar extends Component {
                 daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date.setDate(d)} data-calendar-status="active">{d}</div>)
             d++
         }
-    
     return daysArr;
   }
 
@@ -69,7 +68,7 @@ class Calendar extends Component {
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     let date = new Date();
     date.setMonth(this.state.selectedMonth);
-    return months[this.state.selectedMonth%12] + " " + date.getFullYear()
+    return months[this.state.selectedMonth % 12] + " " + date.getFullYear()
   }
 
   //determining the selected date in order to display the hours belonging the that specific date
@@ -108,9 +107,10 @@ bookRide = (event, item) => {
   let driver = this.props.driver.id
   let timeTotal = this.state.end - this.state.start
   let date = new Date();
-  date.setTime(this.state.dayClicked);
-  let date1 = new Date(date.setHours(this.state.start));
-  let date2 = new Date(date.setHours(this.state.end));
+      date.setTime(this.state.dayClicked);
+  let date1 = new Date(date.setUTCHours(this.state.start+6));
+  let date2 = new Date(date.setUTCHours(this.state.end+6));
+
   if (user && driver && timeTotal && !!item.address) {
     fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
         method: 'POST',
@@ -125,7 +125,7 @@ bookRide = (event, item) => {
           start_time: date1,
           end_time: date2,
           total: this.props.driver.rate * timeTotal,
-          note: item.note,
+          note: item.extra,
           address: item.address
         })
       })
@@ -156,7 +156,7 @@ reset = () => {
 
 
 render() {
- 
+console.log(this.createMonth()) 
     return (
       <div>
         {this.state.booked ?
@@ -166,7 +166,7 @@ render() {
         <div className="booking-container">
           <div className="calendar-container">
             <div id="myCalendar" className="calendar" >
-              <h6 id="note">Please select a date:</h6>
+              <h6 id="calendar-note">Please select a date:</h6>
                 <div className="calendar-header">
                     <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
                       <svg height="24" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">

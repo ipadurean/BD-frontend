@@ -1,32 +1,50 @@
 .search-container{
   padding: 5%;
+  background-color: rgb(247, 247, 247);
 }
 
 #time-home{
-  width: 150px;
-  margin:2px
+  width: 100px;
+  margin:1px
 }
 
 #date-home{
   width: 200px;
-  margin:2px;
+  margin:1px;
+}
+
+.form-container{
+  background-color: rgb(148, 156, 163);
+  border-radius: 5px;
+  height: 160px;
+}
+
+.form-container h4{
+  color: white;
+  padding: 1% 4%;
 }
 
 #form {
-  padding: 3% 1% 0%;
+  padding: 1% 1% 0%;
+  
 }
 
-#submit{
-  margin: 2px 1px;
-  background-color: rgb(97, 150, 156);
+#filter{
+  margin: 2px 1px 1px 5px;
+  background-color: rgb(194, 207, 192);
+  border-radius: 5px;
+  width:100px;
 }
 
 #reset {
-  margin: 2px;
-  background-color: rgb(97, 150, 156);
+  margin: 1.5px;
+  background-color:  rgb(194, 207, 192);
+  border-radius: 5px;
+  width:80px;
 }
 
 #note {
+  font-size: 2vw;
   padding: 6%;
 }
 
