@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './SearchAvailability.css';
+import './searchAvailability.css';
 import { Form, Row } from "react-bootstrap";
 import CalendarHome from '../Components/CalendarHome';
 import DriversList from '../Components/DriversList';

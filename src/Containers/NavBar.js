@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './NavBar.css';
+import './navBar.css';
 
 class NavBar extends Component {
   constructor(){

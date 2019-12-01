@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Day from './Day';
-import './Calendar.css';
+import './calendar.css';
 import TripForm from './TripForm';
 import Invoice from '../Components/Invoice';
 
@@ -24,9 +24,7 @@ class Calendar extends Component {
     let now = new Date();
     let date = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
     let select = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
-
-    select.setTime(this.state.dayClicked);
-    
+        select.setTime(this.state.dayClicked);
     
     let daysArr = [];
     let daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
@@ -106,10 +104,8 @@ bookRide = (event, item) => {
   let user = this.props.user.id
   let driver = this.props.driver.id
   let timeTotal = this.state.end - this.state.start
-  let date = new Date();
-      date.setTime(this.state.dayClicked);
-  let date1 = new Date(date.setUTCHours(this.state.start+6));
-  let date2 = new Date(date.setUTCHours(this.state.end+6));
+  let date1 = new Date(new Date(parseInt(this.state.dayClicked)).setUTCHours(this.state.start+6));
+  let date2 = new Date(new Date(parseInt(this.state.dayClicked)).setUTCHours(this.state.end+6));
 
   if (user && driver && timeTotal && !!item.address) {
     fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
@@ -156,7 +152,7 @@ reset = () => {
 
 
 render() {
-console.log(this.createMonth()) 
+
     return (
       <div>
         {this.state.booked ?

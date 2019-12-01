@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./History.css";
+import "./history.css";
 import Trip from './Trip';
 import Auth from '../authAdapter';
 import { Navbar } from "react-bootstrap";
