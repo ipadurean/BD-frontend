@@ -1,7 +1,7 @@
 import React from 'react';
 import Driver from './Driver';
 import IntroProfiles from './IntroProfiles';
-import './basic.css'
+import './Basic.css'
 
 
 const DriversList = (props) => {

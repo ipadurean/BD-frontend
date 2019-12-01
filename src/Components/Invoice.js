@@ -1,5 +1,5 @@
 import React from 'react';
-import './basic.css';
+import './Basic.css';
 
 
 const Invoice = (props) => {
