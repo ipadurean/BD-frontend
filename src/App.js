@@ -6,7 +6,7 @@ import History from './Containers/History';
 import Login from './Containers/Login';
 import Home from './Containers/Home';
 import Register from "./Containers/Register";
-import "./App.css";
+import './App.css';
 import Auth from './authAdapter';
 import About from './Components/About'
 import { createBrowserHistory } from 'history';

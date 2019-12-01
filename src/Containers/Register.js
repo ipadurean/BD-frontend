@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FormGroup, FormControl, Button, Navbar } from "react-bootstrap";
-import "./register.css";
+import './register.css';
 
 export default class Register extends Component {
   constructor(props) {
