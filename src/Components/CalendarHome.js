@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Style/calendarHome.css';
+import '../styles/calendarHome.css';
 
 
 

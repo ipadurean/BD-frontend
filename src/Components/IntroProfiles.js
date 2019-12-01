@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Style/general.css';
+import '../styles/general.css';
 
 const IntroProfiles = (props) => {
   

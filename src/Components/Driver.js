@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Style/Driver.css';
+import '../styles/Driver.css';
 
 const Driver = (props) => {
   

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Style/Day.css'
+import '../styles/Day.css'
 
 class Day extends Component {
   constructor(){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Day from './Day';
-import '../Style/Calendar.css';
+import '../styles/Calendar.css';
 import TripForm from './TripForm';
 import Invoice from '../Components/Invoice';
 
