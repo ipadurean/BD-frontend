@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './home.css';
+import './Home.css';
 import DriverProfile from "../Components/DriverProfile";
 import NavBar from './NavBar'
 import SearchAvailability from "./SearchAvailability";
