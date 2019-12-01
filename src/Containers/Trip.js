@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './History.css'
+import '../Style/History.css'
 
 
 

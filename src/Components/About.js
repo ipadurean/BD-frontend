@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from "react-bootstrap";
-import './general.css'
+import '../Style/general.css'
 
 
 
