@@ -18,13 +18,10 @@ class CalendarHome extends Component {
 
 
       createMonth = () => {
-        let date = new Date();
-        let select = new Date();
         let now = new Date();
+        let date = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
+        let select = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
         select.setTime(this.state.dayClicked);
-        select.setMonth(this.state.selectedMonth);
-        date.setDate(1);
-        date.setMonth(this.state.selectedMonth);
         
         let daysArr = [];
         let days = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();

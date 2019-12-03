@@ -17,6 +17,15 @@ class Calendar extends Component {
     }
   }
 
+  componentDidMount(){
+    let time = this.props.timeToBook;
+    time.date && this.setState({
+      dayClicked: time.date,
+      start: time.start,
+      end: time.end || 24
+    })
+  }
+
 
 
   createMonth = () => {
@@ -71,10 +80,9 @@ class Calendar extends Component {
 
   //determining the selected date in order to display the hours belonging the that specific date
   displayDay = (event) => {
-   
-    event.target.className === "calendar-date calendar-date--active" &&
+   event.target.className === "calendar-date calendar-date--active" &&
         this.setState({
-            dayClicked: event.target.dataset.calendarDate,
+            dayClicked: parseInt(event.target.dataset.calendarDate),
             start:null,
             end:null,
             booked: false
@@ -104,8 +112,8 @@ bookRide = (event, item) => {
   let user = this.props.user.id
   let driver = this.props.driver.id
   let timeTotal = this.state.end - this.state.start
-  let date1 = new Date(new Date(parseInt(this.state.dayClicked)).setUTCHours(this.state.start+6));
-  let date2 = new Date(new Date(parseInt(this.state.dayClicked)).setUTCHours(this.state.end+6));
+  let date1 = new Date(new Date(this.state.dayClicked).setUTCHours(this.state.start+6));
+  let date2 = new Date(new Date(this.state.dayClicked).setUTCHours(this.state.end+6));
 
   if (user && driver && timeTotal && !!item.address) {
     fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
@@ -134,13 +142,6 @@ bookRide = (event, item) => {
     }
   }
 
-//displaying the complete date and hour of the ride's starting point 
-getBookingTime = () => {
-  let date = new Date();
-  date.setTime(this.state.dayClicked);
-  date.setHours(this.state.start)
-  return date+"";
-}
 
 reset = () => {
   this.setState({
@@ -152,7 +153,7 @@ reset = () => {
 
 
 render() {
-
+console.log(this.state.end)
     return (
       <div>
         {this.state.booked ?
@@ -204,7 +205,7 @@ render() {
                 <div className="book">
                           <TripForm time={this.state.end - this.state.start} 
                                     driver={this.props.driver}
-                                    date={this.getBookingTime()}
+                                    date={{day: this.state.dayClicked, start: this.state.start, end: this.state.end}}
                                     submit={this.bookRide} />
                 </div>
         </div>}

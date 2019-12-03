@@ -15,7 +15,8 @@ const DriversList = (props) => {
                     select={props.select} 
                     driver={driver} 
                     hoursTotal={props.hoursTotal} 
-                    filter={props.filter}/> :
+                    filter={props.filter}
+                    timeToBook={props.timeToBook} /> :
             <IntroProfiles key={driver.id} driver={driver}/>
             })
           }

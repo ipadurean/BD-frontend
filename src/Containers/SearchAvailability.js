@@ -26,10 +26,20 @@ class SearchAvailability extends Component {
     })
   }
 
-  renderHours = () => {
+  renderHours1 = () => {
     let count = 0;
     let hours = []
-    while (count < 24){
+    while (count < (this.state.end || 24)){
+        hours.push(<option key={count}>{count+":00"}</option>);
+        count +=1;
+    }
+    return hours
+  }
+
+  renderHours2 = () => {
+    let count = this.state.start || 0;
+    let hours = []
+    while (count <= 24){
         hours.push(<option key={count}>{count+":00"}</option>);
         count +=1;
     }
@@ -43,18 +53,16 @@ class SearchAvailability extends Component {
   }
 
   selectDate = (event) =>{
-    let date = new Date();
-    date.setTime(event.target.dataset.calendarDate)
     event.target.className === "calendar-date calendar-date--active" &&
     this.setState({
       dateClicked: false,
-      selectedDate: date
+      selectedDate: parseInt(event.target.dataset.calendarDate)
     })
   }
 
   searchAvailable = () =>{
-    let s = parseInt(this.state.start)
-    let e = parseInt(this.state.end) || 24
+    let s = this.state.start
+    let e = this.state.end || 24
     let arr = this.state.trips.map(el => {
       el.end_time = new Date(el.end_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
       el.start_time = new Date(el.start_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
@@ -62,7 +70,7 @@ class SearchAvailability extends Component {
   })
     
         if (this.state.selectedDate && e > s ){
-        let d = this.state.selectedDate.toLocaleString().slice(0,10);
+        let d = new Date(this.state.selectedDate).toLocaleString().slice(0,10);
         let intersectedDate = arr.filter(trip => trip.start_time.slice(0,10) === d);
         let intersectedTime = intersectedDate.filter(trip => {
                                   let start = new Date(trip.start_time).getHours();
@@ -78,8 +86,9 @@ class SearchAvailability extends Component {
   }
 
   handleChange = (event) =>{
+    console.log(event.target)
       this.setState({
-        [event.target.name] : event.target.value
+        [event.target.name] : parseInt(event.target.value)
       })
   }
 
@@ -88,7 +97,7 @@ class SearchAvailability extends Component {
   }
 
   render(){
-  
+  console.log(this.state.start, this.state.end)
     return(
       <div className="search-container">
         <div className="form-container">
@@ -98,17 +107,17 @@ class SearchAvailability extends Component {
               
                   <Form.Control 
                                 autoComplete="off"
-                                defaultValue={this.state.selectedDate.toString().slice(4, 15)} 
+                                defaultValue={this.state.selectedDate && new Date(this.state.selectedDate).toString().slice(4,15)} 
                                 onClick={this.clickDate} id="date-home" 
                                 placeholder="Choose Date">
                   </Form.Control>
                     <Form.Control name="start" id="time-home" as="select">
                       <option>Start Time</option>
-                      {this.renderHours()}
+                      {this.renderHours1()}
                     </Form.Control>
                     <Form.Control name="end" id="time-home" as="select">
                     <option>End Time</option>
-                      {this.renderHours()}
+                      {this.renderHours2()}
                     </Form.Control>
                     <button onClick={this.searchAvailable} type="button" id="filter">Search</button>
                     <button onClick={this.reset} type="reset" id="reset">Reset</button>
@@ -122,7 +131,7 @@ class SearchAvailability extends Component {
                              select={this.props.select}
                              logged={this.props.logged}
                              filter={this.state.filter}
-                             hoursTotal={parseInt(this.state.end)||24 - parseInt(this.state.start)} /> 
+                             timeToBook={{date: this.state.selectedDate, start: this.state.start, end: this.state.end}} /> 
           
       </div>
     )

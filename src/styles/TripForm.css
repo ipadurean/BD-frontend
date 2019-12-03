@@ -1,4 +1,23 @@
 
+table {
+  margin: 15px 0;
+  width: 400px;
+}
+
+table th{
+  padding: 1%;
+  height: 40px;
+  text-align: right;
+}
+
+.fake-input{
+  background-color: rgb(232, 241, 252);
+  padding: 1% 5%;
+  border: 1px solid rgb(197, 196, 196);
+  border-radius: 3px;
+  height: 30px;
+  width: 150px;
+}
 
 
 

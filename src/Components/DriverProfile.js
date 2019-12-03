@@ -51,7 +51,7 @@ class DriverProfile extends Component {
               </div>
           </div>
             
-              <Calendar user={this.state.user} driver={this.props.driver} />
+              <Calendar user={this.state.user} driver={this.props.driver} timeToBook={this.props.timeToBook} />
         </div>
       )
     }

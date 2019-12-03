@@ -23,16 +23,33 @@ class Trip extends Component {
   }
 
 render(){
-  
+ 
   return (
      <div className="trip-form">
-       <p>You are booking a ride with: <b>{this.props.driver.name}</b></p>
-       <p>For: <b>{this.props.date.slice(0,15)} at: {this.props.date.slice(16,18)}:00</b> </p>
-       <p>Total time booked: <b>{this.props.time}</b> hours</p>
-       <p>Total: <b>${this.props.time*this.props.driver.rate}</b></p>
+       <table>
+          <tr>
+             <th>You are booking a ride with: </th>
+             <th><div className="fake-input">{this.props.driver.name}</div></th>
+          </tr>
+          <tr>
+              <th>For:</th>
+              <th><div className="fake-input">{this.props.date.day && new Date(this.props.date.day).toString().slice(0,15)}</div></th> 
+          </tr>
+          <tr>
+              <th>At: </th>
+              <th><div className="fake-input">{this.props.date.start && <span>{this.props.date.start}:00</span>}</div></th>
+         </tr>
+         <tr>
+            <th>Total time booked:</th>
+            <th><div className="fake-input">{this.props.time} hours</div></th>
+         </tr>
+         <tr>
+            <th>Total: </th>
+            <th><div className="fake-input">${this.props.time*this.props.driver.rate}</div></th>
+         </tr>
+       </table>
        <form  onSubmit={(e) => this.props.submit(e,this.state)} >
           <FormGroup  controlId="address" bssize="large">
-         
              <FormControl
                 className="req"
                 type="address"
