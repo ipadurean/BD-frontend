@@ -37,12 +37,13 @@ class Calendar extends Component {
     
     let daysArr = [];
     let daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
+   
     let d = 1;
        for (let i=0; i<date.getDay(); i++){
          daysArr.push( <div key={i+100} className="calendar-date calendar-date--disabled"></div>)
         }
        while (d <= daysInMonth) {
-            d < now.getDate() && now.getMonth() === this.state.selectedMonth?
+            date.setDate(d+1) < now.getTime()?
                 daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} >{d}</div>) :
             this.state.dayClicked && d === select.getDate()?
                 daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--selected" data-calendar-date={date.setDate(d)} >{d}</div>):

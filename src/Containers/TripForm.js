@@ -27,6 +27,7 @@ render(){
   return (
      <div className="trip-form">
        <table>
+         <tbody>
           <tr>
              <th>You are booking a ride with: </th>
              <th><div className="fake-input">{this.props.driver.name}</div></th>
@@ -47,6 +48,7 @@ render(){
             <th>Total: </th>
             <th><div className="fake-input">${this.props.time*this.props.driver.rate}</div></th>
          </tr>
+         </tbody>
        </table>
        <form  onSubmit={(e) => this.props.submit(e,this.state)} >
           <FormGroup  controlId="address" bssize="large">
