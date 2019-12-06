@@ -3,12 +3,11 @@
 }
 
 .trip-container {
-  border: 1px solid rgb(238, 238, 238);
-  cursor: pointer;
+  border: 1px solid rgb(241, 241, 241);
 }
 
 #trip-header {
-  background-color: aliceblue;
+  background-color: rgb(241, 245, 248);
   padding: 1em;
   width: 100%;
   cursor: pointer;
@@ -29,5 +28,8 @@
 
 #trip-body {
   margin: 3%;
-  
+}
+
+#trip-body button{
+  margin-left: 80%
 }

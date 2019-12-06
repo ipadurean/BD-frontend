@@ -14,6 +14,9 @@
 #back {
   width: 60px;
   margin-bottom: 50px;
+  background-color: rgb(213, 221, 236);
+  border-radius: 30px;
+  border: 1px solid rgb(194, 180, 180);
 }
 
 .bio {

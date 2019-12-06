@@ -97,11 +97,11 @@ class SearchAvailability extends Component {
   }
 
   render(){
-  console.log(this.state.start, this.state.end)
+ 
     return(
       <div className="search-container">
         <div className="form-container">
-            <h4>Search for available drivers:</h4>
+            <h4>Search for available chauffeurs:</h4>
           <Form onChange={this.handleChange} id="form">
               <Row id="row">
               
