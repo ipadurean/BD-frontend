@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DriversList from './Components/DriversList';
 import Header from './Components/Header';
-import { Router, Route, Redirect } from 'react-router-dom';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import History from './Containers/History';
 import Login from './Containers/Login';
 import Home from './Containers/Home';
@@ -35,8 +35,10 @@ class App extends Component {
               user: {id: user.id, username: user.username}
               })
             }
-          })
-        };
+      })
+  };
+
+  
 
     fetch('https://radiant-fjord-35660.herokuapp.com/drivers')
       .then(res => res.json())
@@ -67,6 +69,9 @@ class App extends Component {
           }
         })
       }
+
+
+    
 
 
   sortByRate = () => {
@@ -107,13 +112,12 @@ class App extends Component {
 
 
   render(){
-
+     console.log(this.state.loggedIn)
       return(
+        <div>
+        <Header />
           <Router history={history}>
-            <div>
-              <Header />
-               
-             
+            <Switch>
               <Route exact path='/' render={()=>{
                  return this.state.loggedIn? <Home  drivers={this.state.filter || this.state.drivers} 
                                                     history={history} 
@@ -152,9 +156,9 @@ class App extends Component {
                                                          <History drivers={this.state.drivers} />}} />
               <Route path="/register" exact component={Register} />
               <Route path='/about' exact component={About} />
-              
-            </div>
-          </Router>
+            </Switch>   
+         </Router>
+      </div>
       )
   }
 }

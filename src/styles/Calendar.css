@@ -150,7 +150,8 @@
     flex-direction: column;
     flex: 0 0 14.28%;
     max-width: 14.28%;
-    padding: 10px;
+    padding: 7px;
+    height: 40px;
 }
 
 
@@ -158,14 +159,23 @@
     cursor: pointer;
 }
 
-
-
-.calendar #calendar-date--today {
-    background-color: var(--calendar-today-bg-color);
-    color: var(--calendar-today-color);
+.cal {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 30px;
+    height:30px;
+    align-items: center;
+    
 }
 
-.calendar .calendar-date--selected {
+.calendar #calendar-date--today .cal{
+    background-color: var(--calendar-today-bg-color);
+    color: var(--calendar-today-color);
+    
+}
+
+.calendar .calendar-date--selected .cal{
     background-color: var(--calendar-selected-bg-color);
     color: var(--calendar-selected-color);
 }

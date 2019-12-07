@@ -30,7 +30,6 @@
 #description {
   grid-area: 1/2/2/3;
   padding-left: 3%;
-  
   text-align: center;
 }
 
@@ -70,3 +69,19 @@
     text-align: center;
     max-height: 35px;
   }
+
+  .svg-icon {
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+  }
+  
+  .svg-icon:hover{
+    stroke: #678fbe;
+  }
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill: #a5b6ce;
+  }
+ 
