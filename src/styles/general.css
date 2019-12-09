@@ -31,7 +31,7 @@
 
 
 .header {
-  background-image:url("https://i.ytimg.com/vi/x0UNhUfgVk0/maxresdefault.jpg");
+  background-image:url("https://bookadriver.s3.us-east-2.amazonaws.com/Rolls%2BRoyce%2BPhantom%2BWhite%2BReg%2BPlate.jpg");
   height: 8vw;
   display: flex;
   background-position: 50%;
@@ -42,14 +42,13 @@
   font-family: "Coda", sans-serif;
   align-items: left;
   font-size: 4vw;
-  -webkit-text-stroke: 1px rgb(0, 0, 0);
-  color:rgb(122, 122, 122);
+  -webkit-text-stroke: 2px rgb(247, 243, 243);
+  color:rgb(175, 167, 167);
   text-shadow:
-    3px  3px 3px rgb(235, 235, 235),
-    0px -3px 0 rgb(241, 241, 241),  
-    0px -3px 5px rgb(233, 233, 233),
-    3px -3px 8px rgb(230, 230, 230),
-    0px -2px 7px rgb(233, 233, 233);
+    3px  -2px 4px rgb(63, 56, 56), 
+    1px -3px 1px rgb(0, 0, 0),
+    2px -1px 2px rgb(29, 27, 27),
+    0px -2px 3px rgb(61, 54, 54);
   margin-top: 15px;
   margin-left: 15px;
 }

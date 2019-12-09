@@ -13,7 +13,7 @@ const Driver = (props) => {
             <img id="img" alt="img" src={props.driver.photo}/>
           <div id="vehicle"><p> ~ {props.driver.car} ~ </p></div>
           <div id="total">{props.filter && <p>Total: ${props.driver.rate * ((props.timeToBook.end || 24) - props.timeToBook.start)}</p>}</div>
-          <button id="select">Book ride with this driver</button>
+          <button id="select">Book ride with this chauffeur</button>
       </div> 
   )
 }

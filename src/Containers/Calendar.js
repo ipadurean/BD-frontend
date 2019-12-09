@@ -131,7 +131,9 @@ bookRide = (event, item) => {
           end_time: date2,
           total: this.props.driver.rate * timeTotal,
           note: item.extra,
-          address: item.address
+          address: item.address, 
+          review: "",
+          rating: 4
         })
       })
       .then(res => res.json())

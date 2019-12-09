@@ -41,10 +41,12 @@ class History extends Component {
     );
   }
 
+ 
+
   getPastTrips = () => {
     let pastTrips = this.state.trips.filter(el => new Date(el.end_time).getTime() < this.state.currentTime)
     return pastTrips.map(el => {
-      return   <Trip cancel={() => this.cancelRide(el.id)} key={el.id} driver={this.props.drivers.filter(item => item.id === el.driver_id)[0]} trip={el} />
+      return   <Trip review={!el.review} key={el.id} driver={this.props.drivers.filter(item => item.id === el.driver_id)[0]} trip={el} />
     })
   }
 

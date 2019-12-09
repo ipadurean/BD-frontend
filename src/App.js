@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DriversList from './Components/DriversList';
 import Header from './Components/Header';
 import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import History from './Containers/History';
@@ -112,7 +111,7 @@ class App extends Component {
 
 
   render(){
-     console.log(this.state.loggedIn)
+     
       return(
         <div>
         <Header />
@@ -146,8 +145,7 @@ class App extends Component {
                             </div>
                           </Navbar>  
                           <Login onSubmit={this.logIn.bind(this)} />
-                          <DriversList drivers={this.state.drivers}
-                                      logged={this.state.loggedIn} />
+                          
                                       
                         </div>}
                       }/>
