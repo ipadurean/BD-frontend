@@ -44,11 +44,11 @@ class DriverProfile extends Component {
                       <em>Rating {this.props.driver.rating}*</em>
                    </div>
                 <div className="description">{this.props.driver.description}</div>
-                 <h5>Rate: ${this.props.driver.rate}/hour</h5>
+                 <div id="hourly-rate">Rate: ${this.props.driver.rate}/hour</div>
               </div>
               
               <div className="vehicle">
-                <h5>{this.props.driver.car}</h5>
+                <div id="vehicle-model">{this.props.driver.car}</div>
                 <img className="car-photo" alt="car" src={this.props.driver.car_photo}/>
               </div>
           </div>

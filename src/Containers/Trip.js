@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Review from './Review'
+import ReviewForm from './ReviewForm'
 import '../styles/History.css'
 
 
@@ -51,7 +51,7 @@ class Trip extends Component {
               {this.props.review && !this.state.clickReview && <button onClick={this.addReview}>Add Review</button>}
               {this.state.clickReview && <button onClick={this.cancelReview}>Cancel</button>}
           </div>}
-          {this.state.clickReview && <Review trip={this.props.trip}/>}
+          {this.state.clickReview && <ReviewForm trip={this.props.trip}/>}
           
         </div>
       )

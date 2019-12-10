@@ -34,8 +34,9 @@
 }
 
 .vehicle {
- margin-bottom: 5px;
- padding: 1%;
+ margin: 5px 0;
+ border-radius: 5px;
+ box-shadow: 2px 2px 3px 3px #bdbaba;
 }
 
 .username {
@@ -46,11 +47,10 @@
 }
 
 .car-photo {
-  border-radius: 5px;
+  
   width: 450px;
   height: 250px;
   object-fit: cover;
-  box-shadow: 2px 2px 3px 3px #bdbaba;
   }
 
   #profile-photo{
@@ -61,13 +61,22 @@
     border-radius: 18em;
   }
 
-  .driver-card h5 {
-    color: white;
-    padding: 1%;
-    border-radius: 5px;
-    background-color: rgb(98, 112, 126);
+  #vehicle-model {
+    height: 35px;
+    font-size: 20px;
+    background-color: rgb(243, 247, 252);
     text-align: center;
-    max-height: 35px;
+    
+  }
+
+  #hourly-rate {
+    font-size: 20px;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    box-shadow: 2px 2px 3px 3px #bdbaba;
+    height: 30px;
   }
 
   .svg-icon {

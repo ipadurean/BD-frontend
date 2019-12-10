@@ -37,8 +37,8 @@ class NavBar extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
                 <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
-                  <NavDropdown.Item onClick={this.props.sortByRating} >by Highest rated</NavDropdown.Item>
-                  <NavDropdown.Item onClick={this.props.sortByRate} >by Hourly Rate</NavDropdown.Item>
+                  <NavDropdown.Item onClick={this.props.sortByRating} >by Highest Rated</NavDropdown.Item>
+                  <NavDropdown.Item onClick={this.props.sortByRate} >by Lowest Hourly Rate</NavDropdown.Item>
                 </NavDropdown>
               
                   <Form onChange={this.handleChange} inline className="search-drivers">
