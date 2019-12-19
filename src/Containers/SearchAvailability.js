@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/SearchAvailability.css';
-import { Form, Row } from "react-bootstrap";
+import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from '../Components/CalendarHome';
 import DriversList from '../Components/DriversList';
 
@@ -64,8 +64,8 @@ class SearchAvailability extends Component {
     let s = this.state.start
     let e = this.state.end || 24
     let arr = this.state.trips.map(el => {
-      el.end_time = new Date(el.end_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
-      el.start_time = new Date(el.start_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
+          el.end_time = new Date(el.end_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
+          el.start_time = new Date(el.start_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
       return el
   })
     
@@ -119,8 +119,8 @@ class SearchAvailability extends Component {
                     <option>End Time</option>
                       {this.renderHours2()}
                     </Form.Control>
-                    <button onClick={this.searchAvailable} type="button" id="filter">Search</button>
-                    <button onClick={this.reset} type="reset" id="reset">Reset</button>
+                    <Button variant="light" onClick={this.searchAvailable} type="button" id="filter">Search</Button>
+                    <Button variant="light" onClick={this.reset} type="reset" id="reset">Reset</Button>
               </Row>
             </Form>
             <div id="available"> 

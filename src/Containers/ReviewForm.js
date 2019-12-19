@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl } from "react-bootstrap";
+import '../styles/ReviewForm.css'
 
 class Review extends Component {
    constructor(){
@@ -40,7 +41,7 @@ class Review extends Component {
 render(){
  
     return (
-      <div>
+      <div className="review-form">
         {this.state.submitted?
           <h4>Your review has been posted!</h4> :
           <form  onSubmit={(e) => this.handleSubmit(this.props.trip.id, e)} >

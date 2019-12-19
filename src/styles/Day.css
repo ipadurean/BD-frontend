@@ -16,6 +16,10 @@
   box-shadow: 1px 1px 1px 1px #f0eae1;
  }
 
+ #selected{
+  background-color: rgb(131, 147, 179);
+ }
+
  .ruler .busy {
   background-color: white;
   border: 1px solid rgb(212, 221, 206);

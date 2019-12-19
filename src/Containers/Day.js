@@ -45,16 +45,16 @@ class Day extends Component {
           for(let k=i; k<24; k++){
               hours.push(<div data-val={0} key={k} className="busy"></div>)
           } return hours;
-          } else if(bookedHours.includes(i)){
-            hours.push(<div data-val={0} key={i} className="busy"></div>)
-          } else if (i === a) {
-            hours.push(<div  style={{background: "#a2c0da"}} data-val={i} key={i} className="hr"></div>)
-          }
-          else if(i>=a && i<b) {
-              hours[i] = <div  style={{background: "#a2c0da"}} data-val={i} key={i} className="hr"></div>
-          } else {
-            hours.push(<div data-val={i} key={i} className="hr"></div>)
-          }
+      } else if(bookedHours.includes(i)){
+        hours.push(<div data-val={0} key={i} className="busy"></div>)
+      } else if (i === a) {
+        hours.push(<div data-val={i} key={i} className="hr" id="selected"></div>)
+      }
+      else if(i>=a && i<b) {
+          hours[i] = <div data-val={i} key={i} className="hr" id="selected"></div>
+      } else {
+        hours.push(<div data-val={i} key={i} className="hr"></div>)
+      }
     i++;
     }
     return hours;

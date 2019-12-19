@@ -1,10 +1,10 @@
 :root {
-    --calendar-bg-color: rgb(248, 248, 241);
+    --calendar-bg-color: rgba(247, 245, 232, 0.425);
     --calendar-border-radius: 10px;
-    --calendar-border-color: #e7e9ed;
+    --calendar-border-color: #d6d8dd;
     --calendar-today-bg-color: rgb(239, 243, 252);
     --calendar-today-color: #333;
-    --calendar-selected-bg-color: #a2c0da;
+    --calendar-selected-bg-color: #6e7f8f;
     --calendar-selected-color: #fff;
     --calendar-selected-radius: 10px;
 }
@@ -17,6 +17,7 @@
 }
 
 .calendar-container {
+    
     display: grid;
     grid-template-rows: 470px;
     grid-template-columns: 400px 57px;
@@ -24,7 +25,7 @@
 
 
 .book {
-    background-color: var(--calendar-bg-color);
+    background: var(--calendar-bg-color);
     min-width: 456px !important;
     max-width: 500px !important;
     min-height: 460px !important;
@@ -38,7 +39,7 @@
 .day {
  width: 50px;
  grid-area: 1/2/2/3;
- background-color: var(--calendar-bg-color);
+ background: var(--calendar-bg-color);
  margin-left: 4px;
  border-radius: var(--calendar-border-radius);
  padding-left: 5px;
@@ -63,9 +64,8 @@
 .calendar {
     grid-area: 1/1/2/2;
     display: block !important;
-    background-color: var(--calendar-bg-color);
+    background: var(--calendar-bg-color);
     border-radius: var(--calendar-border-radius);
-    
     box-shadow: 1px 1px 2px 1px silver;
     min-width: 400px !important;
     max-width: 400px !important;
@@ -103,6 +103,7 @@
     padding: 10px;
     text-transform: uppercase;
     border-radius: var(--calendar-border-radius);
+    
 }
 
 .calendar .calendar-header svg {
@@ -120,6 +121,7 @@
     display: flex;
     flex-wrap: wrap;
     border-radius: var(--calendar-border-radius);
+    border: 1px solid var(--calendar-border-color);
 }
 
 .calendar .calendar-week span {
@@ -129,9 +131,10 @@
     font-size: 1em;
     font-weight: bold;
     max-width: 14.28%;
-    padding: 15px 0px;
+    padding: 7px 0px;
     text-align: center;
     text-transform: uppercase;
+    
    
 }
 
@@ -140,6 +143,7 @@
     display: flex;
     flex-wrap: wrap;
     border-radius: var(--calendar-border-radius);
+    border: 1px solid var(--calendar-border-color);
 }
 
 .calendar .calendar-date {

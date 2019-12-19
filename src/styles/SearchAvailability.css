@@ -14,7 +14,7 @@
 }
 
 .form-container{
-  background-color: rgb(148, 156, 163);
+  background:linear-gradient(0.9turn, #3f3f3c, #949090, #534f4a);
   border-radius: 5px;
   height: 160px;
 }
@@ -30,16 +30,13 @@
 }
 
 #filter{
-  margin: 2px 1px 1px 5px;
-  background-color: rgb(194, 207, 192);
-  border-radius: 5px;
+  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
   width:100px;
 }
 
 #reset {
-  margin: 1.5px;
-  background-color:  rgb(194, 207, 192);
-  border-radius: 5px;
+  margin: 1px;
+  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
   width:80px;
 }
 
