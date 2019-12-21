@@ -86,7 +86,7 @@ class SearchAvailability extends Component {
   }
 
   handleChange = (event) =>{
-    console.log(event.target)
+    
       this.setState({
         [event.target.name] : parseInt(event.target.value)
       })
@@ -111,11 +111,11 @@ class SearchAvailability extends Component {
                                 onClick={this.clickDate} id="date-home" 
                                 placeholder="Choose Date">
                   </Form.Control>
-                    <Form.Control name="start" id="time-home" as="select">
+                    <Form.Control name="start" className="time-home" as="select">
                       <option>Start Time</option>
                       {this.renderHours1()}
                     </Form.Control>
-                    <Form.Control name="end" id="time-home" as="select">
+                    <Form.Control name="end" className="time-home" as="select">
                     <option>End Time</option>
                       {this.renderHours2()}
                     </Form.Control>

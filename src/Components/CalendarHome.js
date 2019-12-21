@@ -30,12 +30,12 @@ class CalendarHome extends Component {
             daysArr.push( <div key={i+100} className="calendar-date calendar-date--disabled"></div>)
             }
           while (d <= days) {
-                date.setDate(d+1) < now.getTime()?
-                    daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} >{d}</div>) :
                 this.state.dayClicked && d === select.getDate()?
                     daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--selected" data-calendar-date={date.setDate(d)} >{d}</div>):
                 d === now.getDate() && now.getMonth() === date.getMonth()?
                     daysArr.push( <div key={d} className="calendar-date calendar-date--active" id="calendar-date--today" data-calendar-date={date.setDate(d)} >{d}</div>):
+                date.setDate(d) < now.getTime()?
+                    daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} >{d}</div>) :
                     daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date.setDate(d)} data-calendar-status="active">{d}</div>)
                 d++
             }
@@ -84,15 +84,14 @@ class CalendarHome extends Component {
             <div id="myCalendar" className="calendar-home" >
                 <div className="calendar-header">
                     <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
-                      <svg height="18" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                      <svg height="18" version="1.1" viewBox="0 0 24 24" width="24">
                         <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
                       </svg>
                     </button>
                     <div className="calendar-header__label" data-calendar-label="month">{this.getMonthYear()}</div>
                     <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next">
-                      <svg height="18" version="1.1" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z">
-                        </path>
+                      <svg height="18" version="1.1" viewBox="0 0 24 24" width="24">
+                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
                       </svg>
                     </button>
                   </div>
