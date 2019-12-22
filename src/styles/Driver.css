@@ -7,7 +7,7 @@
   height: 120px;
   margin: 1%;
   display: flex;
-  border-top: 2px solid rgb(230, 242, 248)
+  border-top: 2px solid rgb(245, 240, 230)
   
 }
 
@@ -15,7 +15,7 @@
   margin: 3% 1%;
   border-radius: 10px;
   background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
-  border: 1px solid rgb(202, 202, 218);
+  border: 1px solid rgb(209, 197, 175);
   box-shadow: 1px 1px 1px 1px #757272;
 }
 

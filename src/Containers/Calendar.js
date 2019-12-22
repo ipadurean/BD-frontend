@@ -4,6 +4,8 @@ import '../styles/Calendar.css';
 import TripForm from './TripForm';
 import Invoice from '../Components/Invoice';
 
+const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"]  
+
 
 class Calendar extends Component {
   constructor() {
@@ -41,16 +43,16 @@ class Calendar extends Component {
    
     let d = 1;
        for (let i=0; i<date.getDay(); i++){
-         daysArr.push(<div key={i+100} className="calendar-date calendar-date--disabled"><div className="cal"></div></div>)
+         daysArr.push(<div key={i+100} className={disabled}><div className="cal"></div></div>)
         }
        while (d <= daysInMonth) {
             this.state.dayClicked && d === select.getDate()?
-                  daysArr.push( <div key={d} className="calendar-date calendar-date--active calendar-date--selected" data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>):
+                  daysArr.push( <div key={d} className={selected} data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>):
             d === now.getDate() && now.getMonth() === date.getMonth()?
-                  daysArr.push( <div key={d} className="calendar-date calendar-date--active" id="calendar-date--today" data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>):
+                  daysArr.push( <div key={d} className={active} id="calendar-date--today" data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>):
             date.setDate(d) < now.getTime()?
-                daysArr.push( <div key={d} className="calendar-date calendar-date--disabled" data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>) :
-                daysArr.push( <div key={d} className="calendar-date calendar-date--active" data-calendar-date={date.setDate(d)} data-calendar-status="active"><div className="cal">{d}</div></div>)
+                  daysArr.push( <div key={d} className={disabled} data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>) :
+                  daysArr.push( <div key={d} className={active} data-calendar-date={date.setDate(d)}><div className="cal">{d}</div></div>)
             d++
         }
     return daysArr;
@@ -62,14 +64,18 @@ class Calendar extends Component {
     this.state.selectedMonth &&
       this.setState(prevState => ({
       selectedMonth: prevState.selectedMonth - 1,
-      dayClicked: false
+      dayClicked: false,
+      start:null,
+      end:null
     }))
   }
 
   monthNext = () => {
     this.setState(prevState => ({
       selectedMonth: prevState.selectedMonth + 1,
-      dayClicked: false
+      dayClicked: false,
+      start:null,
+      end:null
     }))
   }
 
@@ -82,7 +88,7 @@ class Calendar extends Component {
 
   //determining the selected date in order to display the hours belonging the that specific date
   displayDay = (event) => {
-   event.target.parentNode.className === "calendar-date calendar-date--active" &&
+   event.target.parentNode.className === active &&
         this.setState({
             dayClicked: parseInt(event.target.parentNode.dataset.calendarDate),
             start:null,
@@ -183,13 +189,13 @@ render() {
                       </button>
                     </div>
                                 <div className="calendar-week">
-                                  <span>Sun</span>
-                                  <span>Mon</span>
-                                  <span>Tue</span>
-                                  <span>Wed</span>
-                                  <span>Thu</span>
-                                  <span>Fri</span>
-                                  <span>Sat</span>
+                                    <span>Sun</span>
+                                    <span>Mon</span>
+                                    <span>Tue</span>
+                                    <span>Wed</span>
+                                    <span>Thu</span>
+                                    <span>Fri</span>
+                                    <span>Sat</span>
                                 </div>
                         <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
                             {this.createMonth()}
@@ -197,13 +203,12 @@ render() {
                         </div>
                   </div>
                   <div className="day">
-                        {this.state.dayClicked &&
-                                        <Day day={this.state.dayClicked} 
-                                              select={this.handleClick}
-                                              start={this.state.start}
-                                              end={this.state.end}
-                                              driver={this.props.driver}
-                                            />}
+                         {this.state.dayClicked &&  <Day  day={this.state.dayClicked} 
+                                                          select={this.handleClick}
+                                                          start={this.state.start}
+                                                          end={this.state.end}
+                                                          driver={this.props.driver}
+                                                     />}
                   </div>
               </div>
                   <div className="book">
