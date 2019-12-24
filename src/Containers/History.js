@@ -71,7 +71,7 @@ class History extends Component {
       return (
         <div className="trip-history">
            <div className="nav-container">
-             <Navbar bg="light" expand="lg">
+             <Navbar expand="lg">
                  <Navbar.Brand href="/">Home</Navbar.Brand>
              </Navbar>
            </div>

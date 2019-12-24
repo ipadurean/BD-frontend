@@ -1,6 +1,6 @@
 .search-container{
   padding: 5%;
-  background-color: rgb(247, 247, 247);
+  /* background-color: rgb(77, 74, 74); */
 }
 
 .time-home{
@@ -17,6 +17,7 @@
   background:linear-gradient(0.9turn, #3f3f3c, #949090, #534f4a);
   border-radius: 5px;
   height: 160px;
+  box-shadow: 1px 0px 2px 3px rgb(136, 134, 134);
 }
 
 .form-container h4{

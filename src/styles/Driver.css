@@ -1,17 +1,16 @@
-#vehicle{
+#vehicle {
   width: 40%;
 }
 
 .driver-brief {
-  
+  background:linear-gradient(0.9turn, #ffffff, #ecebe6, #ffffff);
   height: 120px;
-  margin: 1%;
   display: flex;
-  border-top: 2px solid rgb(245, 240, 230)
-  
+  margin: 8px;
+  border-radius: 5px;
 }
 
-#select{
+#select {
   margin: 3% 1%;
   border-radius: 10px;
   background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);

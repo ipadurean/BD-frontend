@@ -20,13 +20,13 @@
     
     display: grid;
     grid-template-rows: 470px;
-    grid-template-columns: 400px 57px;
+    grid-template-columns: 399px 72px;
 }
 
 
 .book {
     background: var(--calendar-bg-color);
-    min-width: 456px !important;
+    min-width: 450px !important;
     max-width: 500px !important;
     min-height: 460px !important;
     max-height: 460px !important;
@@ -37,7 +37,7 @@
 }
 
 .day {
- width: 50px;
+ width: 65px;
  grid-area: 1/2/2/3;
  background: var(--calendar-bg-color);
  margin-left: 4px;

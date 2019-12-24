@@ -1,3 +1,8 @@
+.home-container {
+  /* background-color: rgb(77, 74, 74); */
+  /* padding: 1%; */
+}
+
 .Home .lander {
   padding: 80px 0;
   text-align: center;
@@ -17,7 +22,5 @@
    margin-right: 100px;
 }
 
-.home-container {
-  padding: 1%;
-}
+
 

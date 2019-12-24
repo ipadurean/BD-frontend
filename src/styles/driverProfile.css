@@ -1,5 +1,6 @@
 .driver-container {
   padding: 2%;
+  background-color: rgb(247, 247, 247);
 }
 
 .driver-card {
@@ -70,6 +71,7 @@
   }
 
   #hourly-rate {
+    background-color: white;
     font-size: 20px;
     display:flex;
     align-items: center;
@@ -83,6 +85,8 @@
     width: 3em;
     height: 3em;
     cursor: pointer;
+    background: none;
+    border: 0;
   }
   
   .svg-icon:hover{

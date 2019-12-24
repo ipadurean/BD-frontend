@@ -24,12 +24,12 @@ class NavBar extends Component {
     return (
       <div className="nav-container">
        { this.props.selected?
-        <Navbar bg="light" expand="lg">
+        <Navbar expand="lg">
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Brand href="/about">About</Navbar.Brand>
           <Navbar.Brand href="/history">Ride History</Navbar.Brand>
         </Navbar> :
-        <Navbar bg="light" expand="lg">
+        <Navbar expand="lg">
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Brand href="/about">About</Navbar.Brand>
           <Navbar.Brand href="/history">Ride History</Navbar.Brand>
@@ -49,7 +49,7 @@ class NavBar extends Component {
                  
               </Nav>
                  <div id="bttn">
-                    <Button variant="light" onClick={this.props.logout} href="/" >Logout</Button>
+                    <Button variant="danger" onClick={this.props.logout} href="/" >Logout</Button>
                  </div> 
               </Navbar.Collapse>
         </Navbar>}
