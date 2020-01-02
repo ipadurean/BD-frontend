@@ -171,9 +171,12 @@ render() {
                    driver={this.props.driver}
                    reset={this.reset} /> :
           <div className="booking-container">
+            
             <div className="calendar-container">
+            
               <div id="myCalendar" className="calendar" >
-                <h6 id="calendar-note">Please select a date:</h6>
+              <p className="username">Select date and time: </p>
+                
                   <div className="calendar-header">
                       <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
                         <svg height="24" version="1.1" viewBox="0 0 24 24" width="24">

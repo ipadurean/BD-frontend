@@ -1,6 +1,6 @@
 .search-container{
   padding: 5%;
-  /* background-color: rgb(77, 74, 74); */
+  background-color: rgb(248, 249, 250);
 }
 
 .time-home{
@@ -14,14 +14,14 @@
 }
 
 .form-container{
-  background:linear-gradient(0.9turn, #3f3f3c, #949090, #534f4a);
+  background-image: linear-gradient(to bottom, #404345, #9e9993);
   border-radius: 5px;
   height: 160px;
-  box-shadow: 1px 0px 2px 3px rgb(136, 134, 134);
+  box-shadow: 1px 0px 2px 3px rgb(207, 207, 207);
 }
 
 .form-container h4{
-  color: white;
+  color: rgb(226, 232, 235);
   padding: 1% 4%;
 }
 

@@ -1,6 +1,7 @@
 .driver-container {
+  
   padding: 2%;
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(252, 252, 249);
 }
 
 .driver-card {
@@ -24,8 +25,8 @@
  display: grid;
  grid-template-columns: 180px 270px;
  margin-left: 3px;
- max-width: 450px !important;
- min-width: 450px !important;
+ max-width: 480px !important;
+ min-width: 480px !important;
 }
 
 #description {
@@ -56,9 +57,9 @@
 
   #profile-photo{
     float: left;
-    margin-top: 2px;
-    height: 10em;
-    width: 10em;
+    margin: 5px;
+    height: 8em;
+    width: 8em;
     border-radius: 18em;
   }
 
@@ -71,13 +72,8 @@
   }
 
   #hourly-rate {
-    background-color: white;
+    color: rgb(185, 136, 121);
     font-size: 20px;
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 15px;
-    box-shadow: 2px 2px 3px 3px #bdbaba;
     height: 30px;
   }
 

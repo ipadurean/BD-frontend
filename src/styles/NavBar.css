@@ -1,5 +1,11 @@
 .nav-container {
-  background:linear-gradient(0.6turn, #c4bfb1, #e2ded7, #c7c2bb);
+  box-shadow: 0 2px 5px -2px rgb(226, 226, 226);
+  margin-bottom: 5px;
+  /* background-image: linear-gradient(to bottom, rgb(150, 150, 150), #494747); */
+}
+
+#logout{
+  background-color: rgb(173, 152, 137);
 }
 
 .search-drivers {

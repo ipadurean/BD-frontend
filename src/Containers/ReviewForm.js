@@ -6,8 +6,7 @@ class Review extends Component {
    constructor(){
      super()
      this.state = {
-       review: "",
-       submitted: false
+       review: ""
      }
    }
 
@@ -22,29 +21,15 @@ class Review extends Component {
     return this.state.review.length > 0
   }
 
-   handleSubmit = (tripId, event) => {
-    event.preventDefault()
-    fetch(`https://radiant-fjord-35660.herokuapp.com/trips/${tripId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        "Accept": 'application/json'
-      },
-      body: JSON.stringify({
-        review: this.state.review
-      })
-    })
-    .then(res => res.json())
-    .then(this.setState({submitted: true}))
-  }
+  
 
 render(){
  
     return (
       <div className="review-form">
-        {this.state.submitted?
+        {this.props.submitted?
           <h4>Your review has been posted!</h4> :
-          <form  onSubmit={(e) => this.handleSubmit(this.props.trip.id, e)} >
+          <form  onSubmit={(e) => this.props.submit(e, this.state.review)} >
               <FormGroup  controlId="address" bssize="large">
                   <FormControl as="textarea"
                       onChange={this.handleChange}

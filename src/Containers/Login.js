@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl } from "react-bootstrap";
+import { Button, FormGroup, FormControl, Form } from "react-bootstrap";
 import '../styles/Login.css';
 
 export default class Login extends Component {
@@ -41,8 +41,9 @@ export default class Login extends Component {
         <h6>Password: pass</h6>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="username" bssize="large">
-            
+          <Form.Label>Username</Form.Label>
             <FormControl
+            label="Username"
               autoFocus
               type="text"
               placeholder= "username"
@@ -51,8 +52,9 @@ export default class Login extends Component {
             />
           </FormGroup>
           <FormGroup  controlId="password" bssize="large">
-            
+            <Form.Label>Password</Form.Label>
             <FormControl
+            
               value={this.state.password}
               onChange={this.handleChange}
               type="password"

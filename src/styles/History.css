@@ -1,22 +1,12 @@
 .nav-container {
-  background:linear-gradient(0.6turn, #c4bfb1, #e2ded7, #c7c2bb);
+  box-shadow: 0 14px 6px -6px rgb(48, 47, 47);
 }
 
 .trip-history {
   margin: 3%;
 }
 
-.trip-container {
-  border: 1px solid rgb(241, 241, 241);
-  border-radius: 5px;
-}
 
-#trip-header {
-  background-color: rgb(245, 241, 231);
-  padding: 1em;
-  width: 100%;
-  cursor: pointer;
-}
 
 .user {
   margin: 50px;
@@ -27,14 +17,4 @@
   margin-top: 40px;
 }
 
-#date {
-  margin-left:10em;
-}
 
-#trip-body {
-  margin: 3%;
-}
-
-#trip-body button{
-  margin-left: 80%
-}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl } from "react-bootstrap";
+import { FormGroup, FormControl, Form } from "react-bootstrap";
 import '../styles/TripForm.css';
 
 class Trip extends Component {
@@ -52,20 +52,21 @@ render(){
        </table>
        <form  onSubmit={(e) => this.props.submit(e,this.state)} >
           <FormGroup  controlId="address" bssize="large">
+          <Form.Label>Pick-up address *</Form.Label>
              <FormControl
                 className="req"
                 type="address"
-                placeholder="enter pick-up address*"
+                placeholder="enter pick-up address"
                 value={this.state.address}
                 onChange={this.handleChange}
               />
-              </FormGroup>
+            </FormGroup>
             <FormGroup controlId="extra" bssize="large">
-              
+            <Form.Label>Note (optional)</Form.Label>  
               <FormControl as="textarea"
                 value={this.state.extra}
                 onChange={this.handleChange}
-                placeholder="add note to driver (optional)"
+                placeholder="add note to driver"
                 type="text"
               />
             </FormGroup>

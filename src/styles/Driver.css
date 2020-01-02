@@ -3,15 +3,16 @@
 }
 
 .driver-brief {
-  background:linear-gradient(0.9turn, #ffffff, #ecebe6, #ffffff);
   height: 120px;
   display: flex;
   margin: 8px;
   border-radius: 5px;
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px #f1f0f0;
 }
 
 #select {
-  margin: 3% 1%;
+  margin: 3%;
   border-radius: 10px;
   background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
   border: 1px solid rgb(209, 197, 175);

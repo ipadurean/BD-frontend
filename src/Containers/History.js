@@ -76,21 +76,21 @@ class History extends Component {
              </Navbar>
            </div>
             <div className="user" >
-                <h3>Hello <em>{this.state.user.username}</em>! This is the history of your trips:</h3>
+                <h3>Hello <em>{this.state.user.username}</em>! This is the history of your rides:</h3>
            
                 {!!this.getCurrentTrips().length && 
                   <div>
-                    <h5>Current trips:</h5>
+                    <h5>Current rides:</h5>
                       {this.getCurrentTrips()}
                   </div>}
                 {!!this.getFutureTrips().length && 
                   <div>
-                    <h5>Upcoming trips:</h5>
+                    <h5>Upcoming rides:</h5>
                       {this.getFutureTrips()}
                   </div>}
                 {!!this.getPastTrips().length && 
                 <div>
-                    <h5>Past trips:</h5>
+                    <h5>Past rides:</h5>
                       {this.getPastTrips()}
                 </div>}
             </div>
