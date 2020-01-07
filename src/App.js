@@ -30,11 +30,11 @@ class App extends Component {
         .then(user => {
           if (!user.error) {
             this.setState({
-              loggedIn: true,
+              loggedIn: user.id,
               user: {id: user.id, username: user.username}
               })
             }
-      })
+        })
   };
 
   
@@ -53,24 +53,21 @@ class App extends Component {
   
     logout(){
       localStorage.removeItem('jwt')
-      this.setState({ isLoggedIn: false, user:{}})
+      this.setState({ loggedIn: false, user:{}})
     }
 
     logIn(loginParams){
        Auth.login(loginParams)
-         .then( user => {
+         .then(user => {
           if (!user.error) {
             localStorage.setItem('jwt', user.token);
             this.setState({
-              loggedIn: true,
+              loggedIn: user.id,
               user: {id: user.id, username: user.username}
             })
           }
         })
-      }
-
-
-    
+    }
 
 
   sortByRate = () => {
@@ -97,10 +94,10 @@ class App extends Component {
 
   searchDrivers = (keyword) => {
     keyword?
-   this.setState({
-        filter: this.state.drivers.filter(el => (el.username + " " + el.description+ " " + el.car).toLowerCase().includes(keyword.toLowerCase()))
+      this.setState({
+            filter: this.state.drivers.filter(el => (el.username + " " + el.description+ " " + el.car).toLowerCase().includes(keyword.toLowerCase()))
       }):
-    alert("type something!")
+      alert("type something!")
    }
 
    resetSearch = () => {
@@ -111,44 +108,44 @@ class App extends Component {
 
 
   render(){
-    
+
       return(
         <div>
         <Header />
           <Router history={history}>
             <Switch>
               <Route exact path='/' render={()=>{
-                 return this.state.loggedIn? <Home  drivers={this.state.filter || this.state.drivers} 
-                                                    history={history} 
-                                                    user={this.state.user}
-                                                    logged={this.state.loggedIn}
-                                                    logout={this.logout} 
-                                                    sortByRate={this.sortByRate}
-                                                    sortByRating={this.sortByRating} 
-                                                    search={this.searchDrivers} 
-                                                    reset={this.resetSearch}
-                                                    change={this.handleChange} /> : 
-              <Redirect to="/login"/>
+                 return localStorage.getItem('jwt') ? 
+                        <Home     drivers={this.state.filter || this.state.drivers} 
+                                  history={history} 
+                                  user={this.state.user}
+                                  logged={this.state.loggedIn}
+                                  logout={this.logout} 
+                                  sortByRate={this.sortByRate}
+                                  sortByRating={this.sortByRating} 
+                                  search={this.searchDrivers} 
+                                  reset={this.resetSearch}
+                                  change={this.handleChange} /> :
+                        <Redirect to="/login"/>
               
             }} />
               <Route path='/login' render={() =>{
-                        return this.state.loggedIn ? <Redirect to="/"/> : 
-                        <div className="app">
-                          <Navbar>
-                            <div>
-                              <span className="bttn">
-                                <Button href="/login" variant="outline-success">Login</Button>
-                                </span>
-                              <span className="bttn">
-                                <Button href="register" variant="outline-success">Sign up</Button>
-                                </span>
-                            </div>
-                          </Navbar>  
-                          <Login onSubmit={this.logIn.bind(this)} />
-                          
-                                      
-                        </div>}
-                      }/>
+                    return this.state.loggedIn ? 
+                        <Redirect to="/"/> : 
+                            <div className="app">
+                              <Navbar>
+                                <div>
+                                  <span className="bttn">
+                                    <Button href="/login" variant="outline-success">Login</Button>
+                                    </span>
+                                  <span className="bttn">
+                                    <Button href="register" variant="outline-success">Sign up</Button>
+                                  </span>
+                                </div>
+                            </Navbar>  
+                            <Login onSubmit={this.logIn.bind(this)} />
+                            </div>}
+              }/>
               <Route exact path="/history" render={() => {
                                                   return this.state.loggedIn && 
                                                          <History drivers={this.state.drivers} />}} />

@@ -16,10 +16,9 @@ export default class Home extends Component {
       timeToBook:{}
     }
   }
-  
- 
 
-  selectDriver = (driver, time) => {
+   
+    selectDriver = (driver, time) => {
     this.setState({ 
       selectedDriver: driver,
       timeToBook: time 

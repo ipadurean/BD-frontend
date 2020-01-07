@@ -7,6 +7,7 @@ import '../styles/Trip.css'
 class Trip extends Component {
   constructor(){
     super()
+    this.boxRef = React.createRef();
     this.state = {
       open: false,
       clickReview: false,
@@ -21,6 +22,9 @@ class Trip extends Component {
         clickReview: false
       }
     })
+    !this.state.open &&  this.boxRef.current.scrollIntoView({
+      behavior: 'smooth',
+    });
   }
 
   addReview = () => {
@@ -53,7 +57,7 @@ class Trip extends Component {
 
     render(){
         return (
-          <div className="trip-container">
+          <div className="trip-container" ref={this.boxRef}>
             <p onClick={this.handleClick} id="trip-header"><b>Trip number: {this.props.trip.id + 1000} </b><span id="date"><b>For: </b><em>{new Date(this.props.trip.start_time).toString().slice(0,10)}</em></span></p>
             {this.state.open && 
                   <div id="trip-body">

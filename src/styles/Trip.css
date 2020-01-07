@@ -1,12 +1,14 @@
 .trip-container {
+  min-width: 800px;
+  margin: 2px;
   border: 1px solid rgb(241, 241, 241);
   border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgb(229, 226, 226);
 }
 
 #trip-header {
-  background-color: rgb(245, 241, 231);
+  background-color: rgb(161, 178, 185);
   padding: 1em;
-  width: 100%;
   cursor: pointer;
 }
 
@@ -15,7 +17,8 @@
 }
 
 #trip-body {
-  margin: 3%;
+  background-color: rgb(255, 255, 255);
+  padding: 3%;
 }
 
 #trip-body button{
