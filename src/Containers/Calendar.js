@@ -120,8 +120,8 @@ bookRide = (event, item) => {
   let user = this.props.user.id
   let driver = this.props.driver.id
   let timeTotal = this.state.end - this.state.start
-  let date1 = new Date(new Date(this.state.dayClicked).setUTCHours(this.state.start+6));
-  let date2 = new Date(new Date(this.state.dayClicked).setUTCHours(this.state.end+6));
+  let date1 = new Date(new Date(this.state.dayClicked).setHours(this.state.start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+  let date2 = new Date(new Date(this.state.dayClicked).setHours(this.state.end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
 
   if (user && driver && timeTotal && !!item.address) {
     fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
@@ -163,7 +163,7 @@ reset = () => {
 
 
 render() {
-
+console.log(this.state)
     return (
       <div>
         {this.state.booked ?

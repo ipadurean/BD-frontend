@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ReviewForm from './ReviewForm'
-import '../styles/Trip.css'
+import ReviewForm from './ReviewForm';
+import '../styles/Trip.css';
+import TimeZone from '../timeZone';
 
 
 
@@ -68,10 +69,10 @@ class Trip extends Component {
                                                 <p><i>{this.props.trip.review}</i></p>
                                           </div>}
                       <p>Date: <b>{new Date(this.props.trip.start_time).toString().slice(0, 15)}</b></p>
-                      <p>From: <b>{new Date(this.props.trip.start_time).toString().slice(16, 18)}:00</b> to:<b>{new Date(this.props.trip.end_time).toString().slice(16, 18)}:00</b></p>
+                      <p>From: <b>{TimeZone.toCentralTime(this.props.trip.start_time).slice(16, 21)}</b> to:<b>{TimeZone.toCentralTime(this.props.trip.end_time).slice(16, 21)}</b></p>
                       <p>Pick up address: {this.props.trip.address}</p>
                       <p>Total cost: <b>${this.props.trip.total}</b></p>
-                      <p><em>The ride was booked on: {new Date(this.props.trip.created_at).toString().slice(0, 21)}</em></p>
+                      <p><em>The ride was booked on: {new Date(this.props.trip.created_at).toString()}</em></p>
                       {this.props.cancel && <button onClick={this.props.cancel}>Cancel Ride</button>}
                       {this.props.review && !this.state.clickReview && <button onClick={this.addReview}>Add Review</button>}
                       {!this.state.submitted && this.state.clickReview && <button onClick={this.cancelReview}>Cancel</button>}

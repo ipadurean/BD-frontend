@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../styles/Day.css'
+import '../styles/Day.css';
+import TimeZone from '../timeZone';
 
 class Day extends Component {
   constructor(){
@@ -19,10 +20,9 @@ class Day extends Component {
   filterTrips = (items) => {
   
     let bookedHours = [];
-    let date = new Date();
-    date.setTime(this.props.day);
-    let arr = items.filter(el => new Date(el.start_time).toString().slice(0, 15) === date.toString().slice(0, 15));
-    let newArr = arr.map(el => [new Date(el.start_time).getHours(), new Date(el.end_time).getHours()||24])
+    let date = new Date(this.props.day);
+    let arr = items.filter(el => TimeZone.toCentralTime(el.start_time).slice(0, 15) === date.toString().slice(0, 15));
+    let newArr = arr.map(el => [parseInt(TimeZone.toCentralTime(el.start_time).slice(16, 18)), parseInt(TimeZone.toCentralTime(el.end_time).slice(16, 18))||24])
         for(let i=0; i<newArr.length; i++){
             for(let k=newArr[i][0]; k<newArr[i][1]; k++){
               bookedHours.push(k)

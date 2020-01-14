@@ -3,6 +3,7 @@ import '../styles/SearchAvailability.css';
 import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from '../Components/CalendarHome';
 import DriversList from '../Components/DriversList';
+import TimeZone from '../timeZone';
 
 class SearchAvailability extends Component {
   constructor(){
@@ -60,18 +61,18 @@ class SearchAvailability extends Component {
     })
   }
 
-  searchAvailable = () =>{
+  searchAvailable = () => {
     let s = this.state.start
     let e = this.state.end || 24
     let arr = this.state.trips.map(el => {
-          el.end_time = new Date(el.end_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
-          el.start_time = new Date(el.start_time).toLocaleString("en-US", {timeZone: "America/Chicago"})
-      return el
-  })
-    
+          el.end_time = TimeZone.toCentralTime(el.end_time)
+          el.start_time = TimeZone.toCentralTime(el.start_time)
+    return el
+    })
+    console.log(arr)
         if (this.state.selectedDate && e > s ){
-        let d = new Date(this.state.selectedDate).toLocaleString().slice(0,10);
-        let intersectedDate = arr.filter(trip => trip.start_time.slice(0,10) === d);
+        let d = new Date(this.state.selectedDate).toString().slice(4,15);
+        let intersectedDate = arr.filter(trip => trip.start_time.slice(4,15) === d);
         let intersectedTime = intersectedDate.filter(trip => {
                                   let start = new Date(trip.start_time).getHours();
                                   let end = new Date(trip.end_time).getHours() || 24;
