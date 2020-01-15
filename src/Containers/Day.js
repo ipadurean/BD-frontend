@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Day.css';
-import TimeZone from '../timeZone';
+import TimeZone from '../Services/timeZone';
 
 class Day extends Component {
   constructor(){
@@ -28,43 +28,42 @@ class Day extends Component {
               bookedHours.push(k)
             }
         }
-        return bookedHours.sort((a,b) => a-b);
+    return bookedHours.sort((a,b) => a-b);
   }
 
  
 
   renderHours = () => {
-    const bookedHours = this.filterTrips(this.state.trips);
-    let hours = [];
-    let i = 0;
-    let a = parseInt(this.props.start);
-    let b = parseInt(this.props.end);
+      const bookedHours = this.filterTrips(this.state.trips);
+      let hours = [];
+      let i = 0;
+      let a = parseInt(this.props.start);
+      let b = parseInt(this.props.end);
 
-    while (i < 24){
-      if(i>a && bookedHours.includes(i)){
-          for(let k=i; k<24; k++){
-              hours.push(<div data-val={0} key={k} className="busy">N/A</div>)
-          } return hours;
-      } else if(bookedHours.includes(i)){
-        hours.push(<div data-val={0} key={i} className="busy">N/A</div>)
-      } else if (i === a) {
-      hours.push(<div data-val={i} key={i} className="hr" id="selected">{i%12||12}:00 {i<12?"am":"pm"}</div>)
-      } else if(i>=a && i<b) {
-      hours[i] = <div data-val={i} key={i} className="hr" id="selected">{i%12||12}:00 {i<12?"am":"pm"}</div>
-      } else {
-      hours.push(<div data-val={i} key={i} className="hr">{i%12||12}:00 {i<12?"am":"pm"}</div>)
+      while (i < 24){
+          if(i>a && bookedHours.includes(i)){
+              for(let k=i; k<24; k++){
+                  hours.push(<div data-val={0} key={k} className="busy">N/A</div>)
+              } return hours;
+          } else if(bookedHours.includes(i)){
+            hours.push(<div data-val={0} key={i} className="busy">N/A</div>)
+          } else if (i === a) {
+          hours.push(<div data-val={i} key={i} className="hr" id="selected">{i%12||12}:00 {i<12?"am":"pm"}</div>)
+          } else if(i>=a && i<b) {
+          hours[i] = <div data-val={i} key={i} className="hr" id="selected">{i%12||12}:00 {i<12?"am":"pm"}</div>
+          } else {
+          hours.push(<div data-val={i} key={i} className="hr">{i%12||12}:00 {i<12?"am":"pm"}</div>)
+          }
+      i++;
       }
-    i++;
-    }
-    return hours;
+      return hours;
   }
 
  
 
-   render(){
-   
-    return (<div onClick={this.props.select} className="ruler">{this.renderHours()}</div>)
-   }
+  render(){
+      return (<div onClick={this.props.select} className="ruler">{this.renderHours()}</div>)
+  }
 
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/calendarHome.css';
+import Week from './Week';
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"] 
 
@@ -95,15 +96,7 @@ class CalendarHome extends Component {
                       </svg>
                     </button>
                   </div>
-                              <div className="calendar-week">
-                                <span>Sun</span>
-                                <span>Mon</span>
-                                <span>Tue</span>
-                                <span>Wed</span>
-                                <span>Thu</span>
-                                <span>Fri</span>
-                                <span>Sat</span>
-                              </div>
+                  <Week />
                       <div onClick={(event) => this.props.select(event)} className="calendar-body" data-calendar-area="month">
                           {this.createMonth()}
                           

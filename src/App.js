@@ -6,7 +6,7 @@ import Login from './Containers/Login';
 import Home from './Containers/Home';
 import Register from "./Containers/Register";
 import './styles/App.css';
-import Auth from './authAdapter';
+import Auth from './Services/authAdapter';
 import About from './Components/About'
 import { createBrowserHistory } from 'history';
 import { Navbar, Button } from "react-bootstrap";

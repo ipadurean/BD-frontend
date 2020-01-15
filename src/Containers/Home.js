@@ -31,10 +31,7 @@ export default class Home extends Component {
 
 
 
-  
-  
-  
-    render(){
+  render(){
 
       return(
        <div className="home-container">

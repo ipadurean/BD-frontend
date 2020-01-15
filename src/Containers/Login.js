@@ -54,7 +54,6 @@ export default class Login extends Component {
           <FormGroup  controlId="password" bssize="large">
             <Form.Label>Password</Form.Label>
             <FormControl
-            
               value={this.state.password}
               onChange={this.handleChange}
               type="password"
@@ -65,9 +64,8 @@ export default class Login extends Component {
             block
             bssize="large"
             disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
+            type="submit" >
+              Login
           </Button>
         </form>
       </div>

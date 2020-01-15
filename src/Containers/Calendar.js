@@ -3,6 +3,7 @@ import Day from './Day';
 import '../styles/Calendar.css';
 import TripForm from './TripForm';
 import Invoice from '../Components/Invoice';
+import Week from '../Components/Week';
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"]  
 
@@ -163,47 +164,34 @@ reset = () => {
 
 
 render() {
-console.log(this.state)
+
     return (
       <div>
-        {this.state.booked ?
+         {this.state.booked ?
           <Invoice trip={this.state.booked} 
                    driver={this.props.driver}
                    reset={this.reset} /> :
           <div className="booking-container">
-            
-            <div className="calendar-container">
-            
-              <div id="myCalendar" className="calendar" >
-              <p className="username">Select date and time: </p>
-                
-                  <div className="calendar-header">
-                      <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
-                        <svg height="24" version="1.1" viewBox="0 0 24 24" width="24">
-                          <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
-                        </svg>
-                      </button>
-                      <div className="calendar-header__label" data-calendar-label="month">{this.getMonthYear()}</div>
-                      <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next">
-                        <svg height="24" version="1.1" viewBox="0 0 24 24" width="24">
-                          <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z">
-                          </path>
-                        </svg>
-                      </button>
-                    </div>
-                                <div className="calendar-week">
-                                    <span>Sun</span>
-                                    <span>Mon</span>
-                                    <span>Tue</span>
-                                    <span>Wed</span>
-                                    <span>Thu</span>
-                                    <span>Fri</span>
-                                    <span>Sat</span>
-                                </div>
-                        <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
-                            {this.createMonth()}
-                            
-                        </div>
+              <div className="calendar-container">
+                  <div id="myCalendar" className="calendar" >
+                      <p className="username">Select date and time: </p>
+                          <div className="calendar-header">
+                             <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
+                                 <svg height="24" version="1.1" viewBox="0 0 24 24" width="24">
+                                     <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+                                 </svg>
+                             </button>
+                             <div className="calendar-header__label" data-calendar-label="month">{this.getMonthYear()}</div>
+                             <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next">
+                                 <svg height="24" version="1.1" viewBox="0 0 24 24" width="24">
+                                     <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                                 </svg>
+                             </button>
+                          </div>
+                          <Week />
+                          <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
+                                {this.createMonth()}
+                          </div>
                   </div>
                   <div className="day">
                          {this.state.dayClicked &&  <Day  day={this.state.dayClicked} 
@@ -214,12 +202,12 @@ console.log(this.state)
                                                      />}
                   </div>
               </div>
-                  <div className="book">
-                            <TripForm time={this.state.end - this.state.start} 
-                                      driver={this.props.driver}
-                                      date={{day: this.state.dayClicked, start: this.state.start, end: this.state.end}}
-                                      submit={this.bookRide} />
-                  </div>
+              <div className="book">
+                  <TripForm time={this.state.end - this.state.start} 
+                            driver={this.props.driver}
+                            date={{day: this.state.dayClicked, start: this.state.start, end: this.state.end}}
+                            submit={this.bookRide} />
+              </div>
           </div>}
     </div> 
   

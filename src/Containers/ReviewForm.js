@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl } from "react-bootstrap";
+import { Button, FormGroup, FormControl } from "react-bootstrap";
 import '../styles/ReviewForm.css'
 
 class Review extends Component {
@@ -36,7 +36,7 @@ render(){
                       type="text"
                     />
               </FormGroup>
-              <input type="submit" value="Submit" disabled={!this.validateForm()}/>
+              <Button variant="success" size="sm" type="submit" value="Submit" disabled={!this.validateForm()}>Submit</Button>
 
           </form>}
       </div>

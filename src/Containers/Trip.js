@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReviewForm from './ReviewForm';
 import '../styles/Trip.css';
-import TimeZone from '../timeZone';
+import TimeZone from '../Services/timeZone';
+import { Button } from "react-bootstrap";
 
 
 
@@ -59,10 +60,10 @@ class Trip extends Component {
     render(){
         return (
           <div className="trip-container" ref={this.boxRef}>
-            <p onClick={this.handleClick} id="trip-header"><b>Trip number: {this.props.trip.id + 1000} </b><span id="date"><b>For: </b><em>{new Date(this.props.trip.start_time).toString().slice(0,10)}</em></span></p>
+            <div onClick={this.handleClick} id="trip-header"><b>Trip number: {this.props.trip.id + 1000} </b><span id="date"><b>For: </b><em>{new Date(this.props.trip.start_time).toString().slice(0,10)}</em></span></div>
             {this.state.open && 
                   <div id="trip-body">
-                    <img id="img" alt="img" src={this.props.driver.photo}/>
+                      <img id="img" alt="img" src={this.props.driver.photo}/>
                       <h4>Driver name: {this.props.driver.name}</h4>
                       {this.props.trip.review && <div className="review-body">
                                                 <h6><b>Your review:</b></h6>
@@ -73,9 +74,9 @@ class Trip extends Component {
                       <p>Pick up address: {this.props.trip.address}</p>
                       <p>Total cost: <b>${this.props.trip.total}</b></p>
                       <p><em>The ride was booked on: {new Date(this.props.trip.created_at).toString()}</em></p>
-                      {this.props.cancel && <button onClick={this.props.cancel}>Cancel Ride</button>}
-                      {this.props.review && !this.state.clickReview && <button onClick={this.addReview}>Add Review</button>}
-                      {!this.state.submitted && this.state.clickReview && <button onClick={this.cancelReview}>Cancel</button>}
+                      {this.props.cancel && <Button variant="danger" size="sm" onClick={this.props.cancel}>Cancel Ride </Button>}
+                      {this.props.review && !this.state.clickReview && <Button size="sm" onClick={this.addReview}>Add Review</Button>}
+                      {!this.state.submitted && this.state.clickReview && <Button size="sm" onClick={this.cancelReview}>Cancel</Button>}
                   </div>}
             {this.state.clickReview && <ReviewForm submit={this.handleSubmit} 
                                                    submitted={this.state.submitted} 

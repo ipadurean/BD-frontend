@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/History.css';
 import Trip from './Trip';
-import Auth from '../authAdapter';
+import Auth from '../Services/authAdapter';
 import { Navbar } from "react-bootstrap";
 
 class History extends Component {
@@ -70,11 +70,11 @@ class History extends Component {
 
       return (
         <div className="trip-history">
-           <div className="nav-container">
-             <Navbar expand="lg">
-                 <Navbar.Brand href="/">Home</Navbar.Brand>
-             </Navbar>
-           </div>
+            <div className="nav-container">
+               <Navbar expand="lg">
+                  <Navbar.Brand href="/">Home</Navbar.Brand>
+               </Navbar>
+            </div>
             <div className="user" >
                 <h3>Hello <em>{this.state.user.username}</em>! This is the history of your rides:</h3>
            
