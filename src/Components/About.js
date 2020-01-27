@@ -14,7 +14,7 @@ const About = () => {
             </Navbar>
             </div>
             <div  className="about">
-              <p><b>BookAChauffeur</b> is an app that connects chauffeurs with customers. 
+              <p><b>Chauffeur</b> is an app that connects chauffeurs with customers. 
                   It allows users to select a private chauffeur from a list based on the different features from his/her individual profile. 
                   Then they can click on a date, select hours needed and ultimately booking a ride. 
               </p>
