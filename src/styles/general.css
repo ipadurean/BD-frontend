@@ -69,18 +69,32 @@
  
 }
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+    top: 100px;
+  }
+
+  to {
+    top: 450px;
+    opacity: 1;
+    margin-bottom: 20%;
+  }
+}
+
 .invoice {
-  animation: fadeIn 1s;
+  top: 450px;
+  position: absolute;
+  animation: fadein 2s;
   background-color: rgb(240, 244, 248);
   border: 1px solid rgb(253, 253, 253);
   box-shadow: 1px 10px 15px 15px  #a39f9f;
-  position: absolute;
   z-index: 1;
-  margin: 10% 17%;
+  left: 100px;
+  right: 100px;
   border-radius: 5px;
   padding: 5% 10%;
-  width: 60%;
-  
+  margin: 20% 0;
 }
 
 .invoice p{
@@ -101,4 +115,11 @@
   
   padding: 10% 5%;
 }
+
+.back {
+  border: 0;
+  background-color: rgb(240, 244, 248)
+}
+
+
 
