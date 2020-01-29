@@ -27,6 +27,7 @@ class Trip extends Component {
     !this.state.open &&  this.boxRef.current.scrollIntoView({
       behavior: 'smooth',
     });
+    this.boxRef.current.style.transition = 'height 5s';
   }
 
   addReview = () => {
@@ -58,11 +59,12 @@ class Trip extends Component {
   }
 
     render(){
+      
         return (
           <div className="trip-container" ref={this.boxRef}>
             <div onClick={this.handleClick} id="trip-header"><b>Trip number: {this.props.trip.id + 1000} </b><span id="date"><b>For: </b><em>{new Date(this.props.trip.start_time).toString().slice(0,10)}</em></span></div>
             {this.state.open && 
-                  <div id="trip-body">
+                  <div id="trip-body" >
                       <img id="img" alt="img" src={this.props.driver.photo}/>
                       <h4>Driver name: {this.props.driver.name}</h4>
                       {this.props.trip.review && <div className="review-body">

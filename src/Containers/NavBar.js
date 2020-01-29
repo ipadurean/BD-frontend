@@ -48,8 +48,8 @@ class NavBar extends Component {
                   </Form>
                  
               </Nav>
-                 <div id="bttn">
-                    <Button variant="outline-danger" onClick={this.props.logout} href="/" >Logout</Button>
+                 <div>
+                    <Button id="bttn" variant="light" onClick={this.props.logout} href="/" >Logout</Button>
                  </div> 
               </Navbar.Collapse>
         </Navbar>}

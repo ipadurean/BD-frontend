@@ -2,7 +2,6 @@
 @import url(https://weloveiconfonts.com/api/?family=entypo);
 
 
-
 .about {
   padding: 10%;
 }
@@ -36,19 +35,22 @@
   display: flex;
   background-position: 50%;
   right: 0;
+  align-items: center;
 }
 
 #logo {
-  font-family: "Coda", sans-serif;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
   align-items: left;
-  font-size: 4vw;
-  -webkit-text-stroke: 2px rgb(247, 243, 243);
-  color:rgb(131, 124, 97);
-  text-shadow:
-    3px  -2px 4px rgb(63, 56, 56), 
-    1px -3px 1px rgb(0, 0, 0),
-    2px -1px 2px rgb(29, 27, 27),
-    0px -2px 3px rgb(61, 54, 54);
+  font-size: 6vw;
+  -webkit-text-stroke: 0.15vw rgb(252, 252, 252);
+  color:rgb(151, 123, 31);
+  /* text-shadow:
+    3px  -2px 4px rgb(212, 212, 212), 
+    1px -3px 1px rgb(201, 199, 199),
+    2px -1px 2px rgb(199, 187, 187),
+    0px -2px 3px rgb(202, 198, 198); */
   margin-top: 15px;
   margin-left: 15px;
 }
@@ -68,6 +70,7 @@
 }
 
 .invoice {
+  animation: fadeIn 1s;
   background-color: rgb(240, 244, 248);
   border: 1px solid rgb(253, 253, 253);
   box-shadow: 1px 10px 15px 15px  #a39f9f;

@@ -17,3 +17,8 @@
     margin: 1px;
     background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
 }
+
+#bttn {
+   color: rgb(238, 31, 31);
+   background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
+}

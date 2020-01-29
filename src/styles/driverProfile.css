@@ -1,5 +1,7 @@
+
+
 .driver-container {
-  
+  animation: fadeIn 1s;
   padding: 2%;
   background-color: rgb(252, 252, 249);
 }
@@ -78,19 +80,8 @@
   }
 
   .svg-icon {
-    width: 3em;
-    height: 3em;
     cursor: pointer;
-    background: none;
     border: 0;
   }
   
-  .svg-icon:hover{
-    stroke: #696967;
-  }
-  .svg-icon path,
-  .svg-icon polygon,
-  .svg-icon rect {
-    fill: #3f3c3c;
-  }
  
