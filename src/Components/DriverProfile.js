@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/driverProfile.css'
 import Calendar from '../Containers/Calendar';
 import Auth from '../Services/authAdapter';
-import back from '../Assets/back.svg'
 
 
 
@@ -35,7 +34,9 @@ class DriverProfile extends Component {
       return (
             <div className="driver-container">
               <button onClick={this.props.back} className="svg-icon">
-                  <img src={back} alt="back"/><span> Back</span>
+                  <svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" >
+                      <polygon points="7.41 1.41 6 0 0 6 6 12 7.41 10.59 2.83 6"></polygon>
+                  </svg><span> Back</span>
               </button>
               <div className="driver-card">
                   <div className="bio">

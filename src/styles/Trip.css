@@ -17,8 +17,20 @@
   margin-left:10em;
 }
 
+@keyframes slidein {
+  from {
+    opacity: 0;
+    margin: 200px;
+  }
+
+  to {
+    opacity: 1;
+    margin: 0;
+  }
+}
+
 #trip-body {
-  animation: fadeIn 1s;
+  animation: slidein 1s;
   background-color: rgb(255, 255, 255);
   padding: 3%;
 }

@@ -1,26 +1,30 @@
 @keyframes fadeIn {
   0% {
     opacity: 0;
+    margin-bottom: 20px;
   }
   100% {
     opacity: 1;
+    margin-bottom: 2px;
   }
 }
 
 .ruler {
-  animation: fadeIn 1s;
+  
   display: flex;
   flex-direction: column;
   height: auto;
  }
 
  .ruler .hr {
+  box-shadow: 1px 1px 1px 1px rgb(255, 255, 255);
+  animation: fadeIn 1s;
   font-size: 12px;
   background-color: rgb(239, 243, 252);
-  border: 0.7px solid rgb(168, 157, 124);
-  width: 55px;
-  height: 18px;
-  margin:1px;
+  border: 1px solid rgb(139, 117, 48);
+  width: 60px;
+  height: 16px;
+  margin: 2px;
   border-radius: 10px;
   cursor: pointer;
   display: flex;
@@ -40,10 +44,11 @@
  }
 
  .ruler .busy {
+  animation: fadeIn 1s;
   font-size: 12px;
   background-color: white;
   border: 1px solid rgb(212, 221, 206);
-  width: 55px;
+  width: 60px;
   height: 18px;
   margin:1px;
   border-radius: 10px;
