@@ -1,28 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Driver from './Driver';
-import IntroProfiles from './IntroProfiles';
-import '../styles/general.css'
+import '../styles/general.css';
+import { connect } from "react-redux";
 
 
-const DriversList = (props) => {
-
- 
+class DriversList extends Component {
+render(){
+ console.log(this.props)
       return (
         <div className="list">
-          {props.drivers.map(driver => {
-            return  props.logged?
-                <Driver key={driver.id} 
-                        select={props.select} 
+          {this.props.drivers.drivers.map(driver => {
+            return  <Driver key={driver.id} 
+                        select={this.props.select} 
                         driver={driver} 
-                        hoursTotal={props.hoursTotal} 
-                        filter={props.filter}
-                        timeToBook={props.timeToBook} /> :
-                <IntroProfiles key={driver.id} driver={driver}/>
+                        hoursTotal={this.props.hoursTotal} 
+                        filter={this.props.filter}
+                        timeToBook={this.props.timeToBook} /> 
                 })
           }
         </div>
         );
       }
-  
+    }  
+      function mapStateToProps(state){
+        return state
+      }
 
-export default DriversList;
+export default connect(mapStateToProps, null)(DriversList);

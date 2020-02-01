@@ -20,12 +20,10 @@
 @keyframes slidein {
   from {
     opacity: 0;
-    margin: 200px;
   }
 
   to {
     opacity: 1;
-    margin: 0;
   }
 }
 

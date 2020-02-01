@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/NavBar.css';
+import { logout } from '../Actions/logout';
+import { connect } from "react-redux";
 
 class NavBar extends Component {
   constructor(){
@@ -15,6 +17,11 @@ class NavBar extends Component {
     this.setState({
       keyword: event.target.value
     })
+  }
+
+  logout = () => {
+    this.props.logout();
+    localStorage.removeItem('jwt')
   }
 
 
@@ -49,7 +56,7 @@ class NavBar extends Component {
                  
               </Nav>
                  <div>
-                    <Button id="bttn" variant="light" onClick={this.props.logout} href="/" >Logout</Button>
+                    <Button id="bttn" variant="light" onClick={this.logout} href="/" >Logout</Button>
                  </div> 
               </Navbar.Collapse>
         </Navbar>}
@@ -59,5 +66,9 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+function mapDispatchToProps(dispatch){
+  return { logout: () => dispatch(logout()) }
+}
+ 
+export default connect(null, mapDispatchToProps)(NavBar)
 

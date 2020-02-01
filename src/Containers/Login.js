@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, Form } from "react-bootstrap";
 import '../styles/Login.css';
+import { connect } from "react-redux";
+import { loginAction } from '../Actions/login';
 
-export default class Login extends Component {
+
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -24,16 +27,17 @@ export default class Login extends Component {
   }
 
   handleSubmit = event => {
+
     event.preventDefault();
-    this.props.onSubmit(this.state);
-    this.setState({
-      username: "",
-      password: ""
-    })
+    this.props.login(this.state)
+    // this.setState({
+    //   username: "",
+    //   password: ""
+    // })
   }
 
   render() {
-    
+   
     return (
       <div className="Login">
         <h5>For Demo please login !</h5>
@@ -72,3 +76,11 @@ export default class Login extends Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch){
+  return { 
+    login: (loginParams) => dispatch(loginAction(loginParams))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

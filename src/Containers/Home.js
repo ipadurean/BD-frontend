@@ -3,10 +3,13 @@ import '../styles/Home.css';
 import DriverProfile from "../Components/DriverProfile";
 import NavBar from './NavBar'
 import SearchAvailability from "./SearchAvailability";
+import { connect } from "react-redux";
+import { authorize } from '../Actions/authorize';
+import { fetchDrivers }  from '../Actions/fetchDrivers';
 
 
 
-export default class Home extends Component {
+class Home extends Component {
 
   constructor() {
     super()
@@ -15,6 +18,11 @@ export default class Home extends Component {
       presentTrips: null,
       timeToBook:{}
     }
+  }
+
+  componentDidMount(){
+     this.props.authorize()
+     this.props.fetchDrivers()
   }
 
    
@@ -32,28 +40,37 @@ export default class Home extends Component {
 
 
   render(){
-
+  console.log(this.props)
       return(
        <div className="home-container">
-           <p>  Welcome <em>{this.props.user.username}</em> !</p>  
-           <NavBar  logged={this.props.logged} 
-                    logout={this.props.logout} 
-                    sortByRate={this.props.sortByRate}
-                    sortByRating={this.props.sortByRating} 
-                    search={this.props.search} 
-                    reset={this.props.reset}
-                    change={this.props.change}
+           <p>  Welcome <em>{this.props.auth.user.username}</em> !</p>  
+           <NavBar  
+          
                     selected={this.state.selectedDriver} />
            {this.state.selectedDriver ?
            <DriverProfile  driver={this.state.selectedDriver} 
                            back={this.back}
                            timeToBook={this.state.timeToBook} /> :
-           <SearchAvailability drivers={this.props.drivers}
+           <SearchAvailability drivers={this.props.drivers.drivers}
                                select={this.selectDriver}
-                               logged={this.props.logged} 
+                               
                                driver={this.state.selectedDriver} /> 
            }
        </div>  
         )
     }
 }
+
+
+function mapStateToProps(state){
+  return state
+}
+
+function mapDispatchToProps(dispatch){
+  return { 
+    authorize: () => dispatch(authorize()),
+    fetchDrivers: () => dispatch(fetchDrivers())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
