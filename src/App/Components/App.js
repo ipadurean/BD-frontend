@@ -1,23 +1,27 @@
 import React, { Component } from "react";
 import Header from './Header';
-import { Router, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import History from '../../History/Components/History';
 import Home from '../../Home/Components/Home';
 import Register from "../../Auth/Components/Register";
 import Login from '../../Auth/Components/Login'
-import '../../styles/App.css';
+import '../../Styles/App.css';
 import About from './About'
-import { createBrowserHistory } from 'history';
+
 import { Navbar, Button } from "react-bootstrap";
 import { connect } from "react-redux";
+import DriverProfile from "../../Booking/Components/DriverProfile";
+import { fetchDrivers }  from '../Ducks/actions';
 
 
-const history = createBrowserHistory()
+
 
 class App extends Component {
  
 
-  
+  componentDidMount(){
+    this.props.fetchDrivers()
+  }
       
 
   
@@ -59,43 +63,50 @@ class App extends Component {
 
 
   render(){
-  //  console.log(this.props)
+   
+    const { drivers } = this.props
+   
       return(
         <div>
         <Header />
-        {/* {this.props.loading && <div className="loading">Loading...</div>} */}
-          <Router history={history}>
+        {drivers.loading && <div className="loading">Loading...</div>}
+          <Router>
             <Switch>
-              <Route exact path='/' render={()=>{
-                 return   localStorage.getItem('jwt')? 
-                   <Home  history={history}  /> :
+                <Route exact path='/' render={()=> {
+                    return localStorage.getItem('jwt')? 
+                        <Home /> :
                         <Redirect to="/login"/>
-              
-            }} />
-              <Route path='/login' render={() =>{
-                    return this.props.auth.authorized ? 
-                        <Redirect to="/"/> : 
-                            <div className="app">
-                              <Navbar>
-                                <div>
-                                  <span className="bttn">
-                                    <Button href="/login" variant="outline-success">Login</Button>
-                                    </span>
-                                  <span className="bttn">
-                                    <Button href="register" variant="outline-success">Sign up</Button>
-                                  </span>
-                                </div>
-                            </Navbar>  
-                            <Login />
-                            </div>}
-              }/>
-              <Route exact path="/history" render={() => {
-                                                  return this.props.loggedIn && 
-                                                         <History drivers={this.props.drivers} />}} />
-              <Route path="/register" exact component={Register} />
-              <Route path='/about' exact component={About} />
+                
+                }} />
+                <Route exact path='/login' render={() => {
+                      return this.props.auth.authorized ? 
+                          <Redirect to="/"/> : 
+                              <div className="app">
+                                  <Navbar>
+                                      <div>
+                                        <span className="bttn">
+                                          <Button href="/login" variant="outline-success">Login</Button>
+                                          </span>
+                                        <span className="bttn">
+                                          <Button href="register" variant="outline-success">Sign up</Button>
+                                        </span>
+                                      </div>
+                                  </Navbar>  
+                                  <Login />
+                              </div>}
+                }/>
+               
+                <Route path="/history" render={() => {
+                      return  <History drivers={drivers} />}} />
+                <Route path="/register" component={Register} />
+                <Route path='/about' component={About} />
+                <Route path="/:name"  render={({ match }) => {
+                           let { name } = match.params
+                            const driver = drivers.drivers.find(el => el.name === name)
+                           
+                        return driver && <DriverProfile driver={driver}/>}} />
             </Switch>   
-         </Router>
+          </Router>
       </div>
       )
   }
@@ -104,8 +115,14 @@ class App extends Component {
 
 
 function mapStateToProps(state){
-  return state
+  return {drivers: state.drivers}
+}
+
+function mapDispatchToProps(dispatch){
+  return { 
+    fetchDrivers: () => dispatch(fetchDrivers())
+  }
 }
 
 
-export default connect(mapStateToProps, null)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

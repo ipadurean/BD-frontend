@@ -1,17 +1,27 @@
-#vehicle {
-  width: 40%;
-}
-
-.driver-brief {
+.driver-card{
   height: 120px;
-  display: flex;
-  margin: 8px;
+  margin: 10px;
   border-radius: 5px;
   background-color: white;
   box-shadow: 1px 1px 1px 1px #f1f0f0;
 }
 
+#vehicle {
+  width: 40%;
+}
+
+.driver-brief {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: calc(500px + 10vw);
+
+}
+
 #select {
+  color: rgb(68, 68, 68);
+  width: calc(100px + 10vw);
+  height: calc(40px + 1vw);
   margin: 3%;
   border-radius: 10px;
   background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);

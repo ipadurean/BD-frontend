@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../../styles/SearchAvailability.css';
+import '../../Styles/SearchAvailability.css';
 import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from '../Components/CalendarHome';
 import DriversList from './DriversList';
-import TimeZone from '../../timeZone';
+import TimeZone from '../../Utils/timeZone';
 
 class SearchAvailability extends Component {
   constructor(){
@@ -128,7 +128,6 @@ class SearchAvailability extends Component {
                </div>
             </div>
             <DriversList drivers={this.state.filter || this.props.drivers}
-                         select={this.props.select}
                          logged={this.props.logged}
                          filter={this.state.filter}
                          timeToBook={{date: this.state.selectedDate, start: this.state.start, end: this.state.end}} /> 

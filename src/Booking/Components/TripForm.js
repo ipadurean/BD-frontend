@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, Form } from "react-bootstrap";
-import '../../styles/TripForm.css';
+import '../../Styles/TripForm.css';
 
 class Trip extends Component {
    constructor(){

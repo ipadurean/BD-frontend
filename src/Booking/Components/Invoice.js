@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../styles/general.css';
-import TimeZone from '../../timeZone';
+import '../../Styles/general.css';
+import TimeZone from '../../Utils/timeZone';
 
 
 const Invoice = (props) => {

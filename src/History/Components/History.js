@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import '../../styles/History.css';
+import '../../Styles/History.css';
 import Trip from './Trip';
 import { Navbar } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 class History extends Component {
   constructor(){
@@ -58,7 +59,7 @@ class History extends Component {
         <div className="trip-history">
             <div className="nav-container">
                <Navbar expand="lg">
-                  <Navbar.Brand href="/">Home</Navbar.Brand>
+                  <Link to="/">Home</Link>
                </Navbar>
             </div>
             <div className="user" >

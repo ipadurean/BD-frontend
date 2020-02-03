@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../styles/calendarHome.css';
+import '../../Styles/calendarHome.css';
 import Week from '../../Booking/Components/Week';
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"] 

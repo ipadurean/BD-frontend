@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReviewForm from './ReviewForm';
-import '../../styles/Trip.css';
-import TimeZone from '../../timeZone';
+import '../../Styles/Trip.css';
+import TimeZone from '../../Utils/timeZone';
 import { Button } from "react-bootstrap";
 
 

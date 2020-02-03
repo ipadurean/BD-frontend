@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
-import '../../styles/ReviewForm.css'
+import '../../Styles/ReviewForm.css'
 
 class Review extends Component {
    constructor(){

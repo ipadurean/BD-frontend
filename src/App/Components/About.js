@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from "react-bootstrap";
-import '../../styles/general.css'
+import '../../Styles/general.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -10,7 +11,7 @@ const About = () => {
         <div>
           <div className="nav-container">
              <Navbar bg="light" expand="lg">
-                 <Navbar.Brand href="/">Home</Navbar.Brand>
+                 <Link to="/">Home</Link>
             </Navbar>
             </div>
             <div  className="about">
