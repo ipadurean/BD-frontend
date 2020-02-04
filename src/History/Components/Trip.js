@@ -3,12 +3,16 @@ import ReviewForm from './ReviewForm';
 import '../../Styles/Trip.css';
 import TimeZone from '../../Utils/timeZone';
 import { Button } from "react-bootstrap";
+import { deleteTrip } from '../Ducks/actions';
+import { connect } from "react-redux";
 
 
 
 class Trip extends Component {
+
   constructor(){
     super()
+     
     this.boxRef = React.createRef();
     this.state = {
       open: false,
@@ -17,6 +21,8 @@ class Trip extends Component {
     }
   }
 
+  
+
   handleClick = () => {
     this.setState(prevState =>{ 
       return {
@@ -24,10 +30,9 @@ class Trip extends Component {
         clickReview: false
       }
     })
-    !this.state.open &&  this.boxRef.current.scrollIntoView({
-      behavior: 'smooth',
-    });
-    this.boxRef.current.style.transition = 'height 5s';
+    // !this.state.open &&  this.boxRef.current.scrollIntoView({
+    //   behavior: 'smooth',
+    // });
   }
 
   addReview = () => {
@@ -42,47 +47,39 @@ class Trip extends Component {
     })
   }
 
-  handleSubmit = (event, review) => {
-    event.preventDefault()
-    fetch(`https://radiant-fjord-35660.herokuapp.com/trips/${this.props.trip.id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        "Accept": 'application/json'
-      },
-      body: JSON.stringify({
-        review
-      })
-    })
-    .then(res => res.json())
-    .then(this.setState({submitted: true}))
-  }
+  cancelRide = (e) => {
+    e.preventDefault()
+    this.props.delete(this.props.trip.id)
+ }
+
+ 
 
     render(){
-      
+      console.log(this.props)
+      const { trip, cancel, review, driver } = this.props 
         return (
-          <div className="trip-container" ref={this.boxRef}>
-            <div onClick={this.handleClick} id="trip-header"><b>Trip number: {this.props.trip.id + 1000} </b><span id="date"><b>For: </b><em>{new Date(this.props.trip.start_time).toString().slice(0,10)}</em></span></div>
+          <div className={this.state.open? "fixed" : "trip-container"} ref={this.boxRef}>
+            <div onClick={this.handleClick} id="trip-header"><b>Trip number: {trip.id + 1000} </b><span id="date"><b>For: </b><em>{new Date(trip.start_time).toString().slice(0,10)}</em></span></div>
             {this.state.open && 
                   <div id="trip-body" >
-                      <img id="img" alt="img" src={this.props.driver.photo}/>
-                      <h4>Driver name: {this.props.driver.name}</h4>
-                      {this.props.trip.review && <div className="review-body">
+                      <img id="img" alt="img" src={driver.photo}/>
+                      <h4>Driver name: {driver.name}</h4>
+                      {trip.review && <div className="review-body">
                                                 <h6><b>Your review:</b></h6>
-                                                <p><i>{this.props.trip.review}</i></p>
+                                                <p><i>{trip.review}</i></p>
                                           </div>}
-                      <p>Date: <b>{new Date(this.props.trip.start_time).toString().slice(0, 15)}</b></p>
-                      <p>From: <b>{TimeZone.toCentralTime(this.props.trip.start_time).slice(16, 21)}</b> to:<b>{TimeZone.toCentralTime(this.props.trip.end_time).slice(16, 21)}</b></p>
-                      <p>Pick up address: {this.props.trip.address}</p>
-                      <p>Total cost: <b>${this.props.trip.total}</b></p>
-                      <p><em>The ride was booked on: {new Date(this.props.trip.created_at).toString()}</em></p>
-                      {this.props.cancel && <Button variant="danger" size="sm" onClick={this.props.cancel}>Cancel Ride </Button>}
-                      {this.props.review && !this.state.clickReview && <Button size="sm" onClick={this.addReview}>Add Review</Button>}
+                      <p>Date: <b>{new Date(trip.start_time).toString().slice(0, 15)}</b></p>
+                      <p>From: <b>{TimeZone.toCentralTime(trip.start_time).slice(16, 21)}</b> to:<b>{TimeZone.toCentralTime(trip.end_time).slice(16, 21)}</b></p>
+                      <p>Pick up address: {trip.address}</p>
+                      <p>Total cost: <b>${trip.total}</b></p>
+                      <p><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></p>
+                      {cancel && <Button variant="danger" size="sm" onClick={this.cancelRide}>Cancel Ride </Button>}
+                      {review && !this.state.clickReview && <Button size="sm" onClick={this.addReview}>Add Review</Button>}
                       {!this.state.submitted && this.state.clickReview && <Button size="sm" onClick={this.cancelReview}>Cancel</Button>}
                   </div>}
             {this.state.clickReview && <ReviewForm submit={this.handleSubmit} 
                                                    submitted={this.state.submitted} 
-                                                   trip={this.props.trip}/>}
+                                                   trip={trip}/>}
           </div>
         )
     }
@@ -90,9 +87,16 @@ class Trip extends Component {
   
 
 
+function mapStateToProps(state){
+  return state
+}
+
+function mapDispatchToProps(dispatch){
+  return { 
+     delete: (tripId) => dispatch(deleteTrip(tripId))
+  }
+}
 
 
 
-
-
-export default Trip;
+export default connect(mapStateToProps, mapDispatchToProps)(Trip)

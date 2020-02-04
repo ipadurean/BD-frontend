@@ -14,7 +14,7 @@ export const authorize = () => {
     });
 
     const user = await response.json();
-    return dispatch({ type: 'ADD_USER', payload: {id: user.id, username: user.username}});
+    return dispatch({ type: 'ADD_USER', payload: {id: user.id, username: user.username, trips: user.trips}});
   };
 }
 

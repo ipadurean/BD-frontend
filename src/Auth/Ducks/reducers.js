@@ -7,6 +7,10 @@ export default function auth(state = {authorized: false, user: {}}, action){
     case 'LOGOUT':
       return {authorized: false, user: action.payload};
 
+    case 'DELETE_TRIP':
+      const updatedTrips = state.user.trips.filter(el => el.id !== action.tripId )
+       return {...state, user: {...state.user, trips: updatedTrips}}
+
     default:
       return state;
   }

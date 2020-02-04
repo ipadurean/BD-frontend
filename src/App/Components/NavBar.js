@@ -33,14 +33,14 @@ class NavBar extends Component {
       <div className="nav-container">
        { this.props.selected?
         <Navbar expand="lg">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/history">Ride History</Link>
+          <Link to="/"><Navbar.Brand>Home</Navbar.Brand></Link>
+          <Link to="/about"><Navbar.Brand>About</Navbar.Brand></Link>
+          <Link to="/history"><Navbar.Brand>Ride History</Navbar.Brand></Link>
         </Navbar> :
         <Navbar expand="lg">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/history">Ride History</Link>
+          <Link to="/"><Navbar.Brand>Home</Navbar.Brand></Link>
+          <Link to="/about"><Navbar.Brand>About</Navbar.Brand></Link>
+          <Link to="/history"><Navbar.Brand>Ride History</Navbar.Brand></Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
