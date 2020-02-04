@@ -15,10 +15,11 @@
   background-color: rgb(252, 252, 249);
 }
 
-.driver-card {
+.driver-description {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  height: 280px;
   margin-bottom: 4%;
   
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styles/driverProfile.css';
-import Calendar from './Calendar';
+import BookingCalendar from './BookingCalendar';
 import { connect } from "react-redux";
 
 
@@ -34,7 +34,7 @@ class DriverProfile extends Component {
                       <polygon points="7.41 1.41 6 0 0 6 6 12 7.41 10.59 2.83 6"></polygon>
                   </svg><span> Back</span>
               </button> */}
-              <div className="driver-card">
+              <div className="driver-description">
                   <div className="bio">
                       <div className="photo">
                           <div className="username">{driver.name} <h6>Chauffeur</h6></div>
@@ -51,7 +51,7 @@ class DriverProfile extends Component {
                   </div>
               </div>
             
-              <Calendar />
+              <BookingCalendar driver={driver} />
         </div>
       )
     }

@@ -53,7 +53,7 @@ render(){
         {this.props.submitted?
           <h4>Your review has been posted!</h4> :
           <form onSubmit={(e) => this.props.submit(e, this.state.review)} >
-              <FormGroup  controlId="address" bssize="large">
+              <FormGroup  controlId="review" bssize="large">
                   <FormControl as="textarea"
                                onChange={this.handleChange}
                                type="text"

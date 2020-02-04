@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Day from './Day';
-import '../../Styles/Calendar.css';
+import '../../Styles/bookingCalendar.css';
 import TripForm from './TripForm';
 import Invoice from './Invoice';
-import Week from '../Components/Week';
+import Week from './Week';
+import { connect } from "react-redux";
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"]  
 
 
-class Calendar extends Component {
+class BookingCalendar extends Component {
   constructor() {
     super()
     this.state = {
@@ -21,12 +22,12 @@ class Calendar extends Component {
   }
 
   componentDidMount(){
-    let time = this.props.timeToBook;
-    time.date && this.setState({
-      selectedMonth: new Date(time.date).getMonth() + (new Date(time.date).getYear() - new Date().getYear())*12,
-      dayClicked: time.date,
-      start: time.start,
-      end: time.end || 24
+    const { selectedDate, start, end} = this.props.timeToBook;
+    selectedDate && this.setState({
+      selectedMonth: new Date(selectedDate).getMonth() + (new Date(selectedDate).getYear() - new Date().getYear())*12,
+      dayClicked: selectedDate,
+      start: start,
+      end: end || 24
     })
   }
 
@@ -164,7 +165,7 @@ reset = () => {
 
 
 render() {
-
+console.log(this.props)
     return (
       <div>
          {this.state.booked ?
@@ -213,8 +214,11 @@ render() {
   
     )
   }
-
-
 }
 
-export default Calendar;
+
+function mapStateToProps(state){
+  return {user: state.auth.user, timeToBook: state.home.timeToBook}
+}
+
+export default connect(mapStateToProps, null)(BookingCalendar);

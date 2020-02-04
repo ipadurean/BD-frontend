@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styles/NavBar.css';
 import { logout } from '../../Auth/Ducks/actions';
@@ -52,11 +52,11 @@ class NavBar extends Component {
                   <NavDropdown.Item onClick={this.props.sortByRate} >by Lowest Hourly Rate</NavDropdown.Item>
                 </NavDropdown>
               
-                  <Form onChange={this.handleChange} inline className="search-drivers">
+                  {/* <Form onChange={this.handleChange} inline className="search-drivers">
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                     <Button variant="light" onClick={() => this.props.search(this.state.keyword)} >Search</Button>
                     <Button variant="light" onClick={() => this.props.reset()} >Reset</Button>
-                  </Form>
+                  </Form> */}
                  
               </Nav>
                  <div>
