@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import auth from '../Auth/Ducks/reducers'
+import authReducer from '../Auth/Ducks/reducers'
 import fetchDriversReducer from '../App/Ducks/reducers';
+import homeReducer from '../Home/Ducks/reducers';
 
 
 export default combineReducers({
-  auth,
-  drivers: fetchDriversReducer
+  auth: authReducer,
+  drivers: fetchDriversReducer,
+  home: homeReducer
 });

@@ -5,6 +5,8 @@ import '../../Styles/NavBar.css';
 import { logout } from '../../Auth/Ducks/actions';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+
 
 class NavBar extends Component {
   constructor(){
@@ -22,7 +24,8 @@ class NavBar extends Component {
 
   logout = () => {
     this.props.logout();
-    localStorage.removeItem('jwt')
+    localStorage.removeItem('jwt');
+    this.props.history.push('/login')
   }
 
 
@@ -71,5 +74,5 @@ function mapDispatchToProps(dispatch){
   return { logout: () => dispatch(logout()) }
 }
  
-export default connect(null, mapDispatchToProps)(NavBar)
+export default connect(null, mapDispatchToProps)(withRouter(NavBar))
 

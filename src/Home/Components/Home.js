@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import '../../Styles/Home.css';
-import NavBar from '../../App/Components/NavBar'
 import SearchAvailability from "./SearchAvailability";
 import { connect } from "react-redux";
 
@@ -10,19 +9,14 @@ import { connect } from "react-redux";
 class Home extends Component {
 
   
-
-
-
-  render(){
- 
-      return(
-       <div className="home-container">
-           <p>  Welcome <em>{this.props.auth.user.username}</em> !</p>  
-           <NavBar  />
-           <SearchAvailability drivers={this.props.drivers.drivers} /> 
-           }
-       </div>  
-        )
+    render(){
+    
+          return(
+              <div className="home-container">
+                  <p>  Welcome <em>{this.props.auth.user.username}</em> !</p>  
+                  <SearchAvailability /> 
+              </div>  
+          )
     }
 }
 

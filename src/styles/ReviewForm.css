@@ -2,7 +2,13 @@
   padding: 3%;
   position: absolute;
   right: 0;
-  top: 20px;
+  top: 45px;
   left: 50%;
   min-height: 300px;
 }
+
+#address {
+  height: 200px;
+}
+
+

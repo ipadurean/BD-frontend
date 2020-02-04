@@ -4,6 +4,11 @@ import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from '../Components/CalendarHome';
 import DriversList from './DriversList';
 import TimeZone from '../../Utils/timeZone';
+import { fetchTrips } from '../Ducks/actions';
+import { connect } from "react-redux";
+import { timeToBook } from '../Ducks/actions'
+
+
 
 class SearchAvailability extends Component {
   constructor(){
@@ -13,18 +18,13 @@ class SearchAvailability extends Component {
       selectedDate: "",
       start: null,
       end: null,
-      trips: [],
       filter: false
     }
     
   }
 
   componentDidMount(){
-    fetch("https://radiant-fjord-35660.herokuapp.com/trips")
-    .then(res => res.json())
-    .then(data => {
-      this.setState({trips: data})
-    })
+     this.props.getTrips()
   }
 
   renderHours1 = () => {
@@ -62,9 +62,11 @@ class SearchAvailability extends Component {
   }
 
   searchAvailable = () => {
+    const { selectedDate, start, end } = this.state
+    this.props.sendTimeToBook(selectedDate, start, end)
     let s = this.state.start
     let e = this.state.end || 24
-    let arr = this.state.trips.map(el => {
+    let arr = this.props.trips.map(el => {
           el.end_time = TimeZone.toCentralTime(el.end_time)
           el.start_time = TimeZone.toCentralTime(el.start_time)
     return el
@@ -83,6 +85,7 @@ class SearchAvailability extends Component {
                 this.setState({
                   filter: filterDrivers
                 })
+            
         }
   }
 
@@ -97,27 +100,27 @@ class SearchAvailability extends Component {
   }
 
   render(){
- 
+
     return(
         <div className="search-container">
             <div className="form-container">
                <h4>Search for available chauffeurs:</h4>
                <Form onChange={this.handleChange} id="form">
                   <Row id="row">
-                    <Form.Control 
-                                autoComplete="off"
-                                defaultValue={this.state.selectedDate && new Date(this.state.selectedDate).toString().slice(4,15)} 
-                                onClick={this.clickDate} id="date-home" 
-                                placeholder="Choose Date">
+                    <Form.Control autoComplete="off"
+                                  defaultValue={this.state.selectedDate && new Date(this.state.selectedDate).toString().slice(4,15)} 
+                                  onClick={this.clickDate} 
+                                  id="date-home" 
+                                  placeholder="Choose Date">
                     </Form.Control>
-                    <Form.Control name="start" className="time-home" as="select">
+                    <select name="start" className="time-home" as="select">
                       <option>Start Time</option>
                       {this.renderHours1()}
-                    </Form.Control>
-                    <Form.Control name="end" className="time-home" as="select">
+                    </select>
+                    <select name="end" className="time-home" as="select">
                     <option>End Time</option>
                       {this.renderHours2()}
-                    </Form.Control>
+                    </select>
                     <Button variant="light" onClick={this.searchAvailable} type="button" id="filter">Search</Button>
                     <Button variant="light" onClick={this.reset} type="reset" id="reset">Reset</Button>
                   </Row>
@@ -127,13 +130,22 @@ class SearchAvailability extends Component {
                   {this.state.filter &&  <p id="note">For this date and time there are a total of <b>{this.state.filter.length}</b> drivers available:</p>}
                </div>
             </div>
-            <DriversList drivers={this.state.filter || this.props.drivers}
-                         logged={this.props.logged}
-                         filter={this.state.filter}
-                         timeToBook={{date: this.state.selectedDate, start: this.state.start, end: this.state.end}} /> 
+            <DriversList filter={this.state.filter} /> 
         </div>
     )
   }
 }
 
-export default SearchAvailability;
+
+function mapStateToProps(state){
+  return {drivers: state.drivers.drivers, trips: state.home.trips}
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    getTrips: () => dispatch(fetchTrips()),
+    sendTimeToBook: (selectedDate, start, end) => dispatch(timeToBook(selectedDate, start, end))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchAvailability);

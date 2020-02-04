@@ -1,4 +1,4 @@
-export default function auth(state = {authorized: false, user: {}}, action){
+export default function authReducer(state = {authorized: false, user: {}}, action){
   switch (action.type) {
  
     case 'ADD_USER':

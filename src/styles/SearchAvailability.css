@@ -3,25 +3,25 @@
   background-color: rgb(248, 249, 250);
 }
 
-.time-home{
+.time-home {
   width: 100px;
-  margin:1px
+  margin:2px
 }
 
-#date-home{
+#date-home {
   width: 200px;
-  margin:1px;
+  margin:2px;
 }
 
 .form-container{
   background-image: linear-gradient(to bottom, #4d4d4d 0%, #1a1a1a 100%);
   border-radius: 5px;
-  height: 160px;
+  height: 140px;
   box-shadow: 1px 0px 2px 3px rgb(207, 207, 207);
 }
 
 .form-container h4{
-  color: rgb(252, 252, 252);
+  color: rgb(233, 248, 252);
   padding: 1% 4%;
 }
 
@@ -31,13 +31,14 @@
 }
 
 #filter{
+  margin: 2px;
   background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
   border: 1px solid black;
   width:100px;
 }
 
 #reset {
-  margin-left: 1px;
+  margin: 2px;
   border: 1px solid black;
   background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
   width:80px;

@@ -55,7 +55,7 @@ class Trip extends Component {
  
 
     render(){
-      console.log(this.props)
+     
       const { trip, cancel, review, driver } = this.props 
         return (
           <div className={this.state.open? "fixed" : "trip-container"} ref={this.boxRef}>

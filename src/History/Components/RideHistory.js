@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../../Styles/History.css';
 import Trip from './Trip';
-import { Navbar } from "react-bootstrap";
-import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
 
@@ -41,11 +39,6 @@ render(){
 
       return (
         <div className="trip-history">
-            <div className="nav-container">
-               <Navbar expand="lg">
-                    <Link to="/"><Navbar.Brand>Home</Navbar.Brand></Link>
-               </Navbar>
-            </div>
             <div className="user" >
                 <h3>Hello <em>{user.username}</em>! This is the history of your rides:</h3>
          

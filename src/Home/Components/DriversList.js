@@ -6,11 +6,11 @@ import { connect } from "react-redux";
 
 const DriversList = (state) => {
 
-    const { drivers } = state
+    const drivers = state.filter || state.drivers.drivers
  
       return (
         <div className="list">
-          {drivers.drivers.map(driver => {
+          {drivers.map(driver => {
             return  <Driver key={driver.id} 
                             driver={driver}  /> 
                 })

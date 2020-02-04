@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styles/driverProfile.css';
-// import Calendar from './Calendar';
+import Calendar from './Calendar';
 import { connect } from "react-redux";
 
 
@@ -24,7 +24,7 @@ class DriverProfile extends Component {
 
 
   render(){
-    // console.log(this.props)
+    console.log(this.props)
     const { driver } = this.props
     
       return (
@@ -51,7 +51,7 @@ class DriverProfile extends Component {
                   </div>
               </div>
             
-              {/* <Calendar user={user} driver={driver} timeToBook={this.props.timeToBook} /> */}
+              <Calendar />
         </div>
       )
     }

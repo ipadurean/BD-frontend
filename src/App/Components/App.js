@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import DriverProfile from "../../Booking/Components/DriverProfile";
 import { fetchDrivers }  from '../Ducks/actions';
 import { authorize } from '../../Auth/Ducks/actions';
+import NavBar from '../../App/Components/NavBar';
 
 
 
@@ -72,6 +73,7 @@ class App extends Component {
         <Header />
         {drivers.loading && <div className="loading">Loading...</div>}
           <Router>
+            <NavBar />
             <Switch>
                 <Route exact path='/' render={()=> {
                     return localStorage.getItem('jwt')? 
@@ -89,7 +91,7 @@ class App extends Component {
                                           <Button href="/login" variant="outline-success">Login</Button>
                                           </span>
                                         <span className="bttn">
-                                          <Button href="register" variant="outline-success">Sign up</Button>
+                                          <Button href="/register" variant="outline-success">Sign up</Button>
                                         </span>
                                       </div>
                                   </Navbar>  

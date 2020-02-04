@@ -85,7 +85,7 @@ class CalendarHome extends Component {
             <div id="myCalendar" className="calendar-home" >
                 <div className="calendar-header">
                     <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
-                      <svg height="18" version="1.1" viewBox="0 0 24 24" width="24">
+                      <svg height="18" viewBox="0 0 24 24" width="24">
                         <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
                       </svg>
                     </button>
