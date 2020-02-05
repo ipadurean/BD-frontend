@@ -24,7 +24,7 @@ class DriverProfile extends Component {
 
 
   render(){
-    console.log(this.props)
+    // console.log(this.props)
     const { driver } = this.props
     
       return (

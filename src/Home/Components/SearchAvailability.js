@@ -25,6 +25,7 @@ class SearchAvailability extends Component {
 
   componentDidMount(){
      this.props.getTrips()
+  
   }
 
   renderHours1 = () => {
@@ -64,13 +65,13 @@ class SearchAvailability extends Component {
   searchAvailable = () => {
     const { selectedDate, start, end } = this.state
     this.props.sendTimeToBook(selectedDate, start, end)
-    let s = this.state.start
-    let e = this.state.end || 24
-    let arr = this.props.trips.map(el => {
-          el.end_time = TimeZone.toCentralTime(el.end_time)
-          el.start_time = TimeZone.toCentralTime(el.start_time)
-    return el
-    })
+        let s = this.state.start
+        let e = this.state.end || 24
+        let arr = this.props.trips.map(el => {
+              el.end_time = TimeZone.toCentralTime(el.end_time)
+              el.start_time = TimeZone.toCentralTime(el.start_time)
+        return el
+        })
     
         if (this.state.selectedDate && e > s ){
             let d = new Date(this.state.selectedDate).toString().slice(4,15);
@@ -100,7 +101,8 @@ class SearchAvailability extends Component {
   }
 
   render(){
-
+ 
+  //  console.log(this.props)
     return(
         <div className="search-container">
             <div className="form-container">
@@ -138,7 +140,7 @@ class SearchAvailability extends Component {
 
 
 function mapStateToProps(state){
-  return {drivers: state.drivers.drivers, trips: state.home.trips}
+  return {drivers: state.drivers.drivers, trips: state.home.trips, time: state.home}
 }
 
 function mapDispatchToProps(dispatch){

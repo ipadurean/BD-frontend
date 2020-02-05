@@ -7,7 +7,6 @@ import Register from "../../Auth/Components/Register";
 import Login from '../../Auth/Components/Login'
 import '../../Styles/App.css';
 import About from './About'
-import { Navbar, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import DriverProfile from "../../Booking/Components/DriverProfile";
 import { fetchDrivers }  from '../Ducks/actions';
@@ -22,7 +21,7 @@ class App extends Component {
 
   componentDidMount(){
     this.props.fetchDrivers();
-    localStorage.getItem("jwt") && this.props.authorize();
+    localStorage.getItem('jwt') && this.props.authorize();
   }
       
 
@@ -65,7 +64,7 @@ class App extends Component {
 
 
   render(){
-   
+   console.log(this.props)
     const { drivers } = this.props
    
       return(
@@ -84,20 +83,7 @@ class App extends Component {
                 <Route exact path='/login' render={() => {
                     return this.props.auth.authorized ? 
                           <Redirect to="/"/> : 
-                              <div className="app">
-                                  <Navbar>
-                                      <div>
-                                        <span className="bttn">
-                                          <Button href="/login" variant="outline-success">Login</Button>
-                                          </span>
-                                        <span className="bttn">
-                                          <Button href="/register" variant="outline-success">Sign up</Button>
-                                        </span>
-                                      </div>
-                                  </Navbar>  
-                                  <Login />
-                              </div>}
-                }/>
+                          <Login /> }}/>
                
                 <Route exact path="/history" render={() => {
                     return this.props.auth.authorized ? 

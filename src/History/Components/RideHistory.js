@@ -7,8 +7,7 @@ import { connect } from "react-redux";
 class RideHistory extends Component {
 
 
-
-  getPastTrips = (tr, dr) => {
+ getPastTrips = (tr, dr) => {
     let currentTime = new Date().getTime()
     let pastTrips = tr.filter(el => new Date(el.end_time).getTime() < currentTime)
     return pastTrips.map(el => {
@@ -35,6 +34,7 @@ class RideHistory extends Component {
  
   
 render(){
+  console.log(this.props)
     const {user, drivers} = this.props
 
       return (
