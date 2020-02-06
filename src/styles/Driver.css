@@ -14,6 +14,7 @@
 }
 
 .driver-brief {
+  color: rgb(63, 71, 82);
   margin: 0 50px;
   display: flex;
   align-items: center;

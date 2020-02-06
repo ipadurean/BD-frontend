@@ -10,8 +10,6 @@
 }
 
 .booking-container {
-   /* position:absolute;
-   top: 300px; */
    box-shadow: 1px 1px 1px 1px  #e6e7e9;
    border-radius: 5px;
    background-image: linear-gradient(to bottom, rgb(245, 247, 246), #f5f7f8);
@@ -73,20 +71,10 @@
 
 
 .calendar .calendar-btn {
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-appearance: button;
     background: none;
     border: 0;
-    color: inherit;
-    cursor: pointer;
-    font: inherit;
-    line-height: normal;
-    min-width: 27px;
     outline: none;
-    overflow: visible;
-    padding: 0;
-    text-align: center;
+   
 }
 
 .calendar :active {
@@ -105,11 +93,9 @@
     
 }
 
-.calendar .calendar-header svg {
-    fill: var(--calendar-today-color);
-}
 
 .calendar .calendar-header__label {
+    color: rgb(77, 77, 77);
     font-weight: bold;
     text-align: center;
     width: 100%;

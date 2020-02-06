@@ -5,6 +5,9 @@ import TripForm from './TripForm';
 import Invoice from './Invoice';
 import Week from './Week';
 import { connect } from "react-redux";
+import { bookRide } from '../Ducks/actions';
+import leftArrow from '../../Utils/Assets/left-arrow.svg';
+import rightArrow from '../../Utils/Assets/right-arrow.svg';
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"]  
 
@@ -16,8 +19,7 @@ class BookingCalendar extends Component {
       selectedMonth: new Date().getMonth(),
       dayClicked:false,
       start:null,
-      end:null,
-      booked: false
+      end:null
     }
   }
 
@@ -94,8 +96,7 @@ class BookingCalendar extends Component {
         this.setState({
             dayClicked: parseInt(event.target.parentNode.dataset.calendarDate),
             start:null,
-            end:null,
-            booked: false
+            end:null
         }) 
   }
 
@@ -118,58 +119,41 @@ handleClick = (event) => {
 }
 
 bookRide = (event, item) => {
+
   event.preventDefault();
   let user = this.props.user.id
   let driver = this.props.driver.id
   let timeTotal = this.state.end - this.state.start
   let date1 = new Date(new Date(this.state.dayClicked).setHours(this.state.start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
   let date2 = new Date(new Date(this.state.dayClicked).setHours(this.state.end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
-
-  if (user && driver && timeTotal && !!item.address) {
-    fetch('https://radiant-fjord-35660.herokuapp.com/trips', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          "Accept": 'application/json'
-        },
-        body: JSON.stringify({
-          user_id: user, 
-          driver_id:driver ,
-          time_booked: timeTotal,
-          start_time: date1,
-          end_time: date2,
-          total: this.props.driver.rate * timeTotal,
-          note: item.extra,
-          address: item.address, 
-          review: "",
-          rating: 4
-        })
-      })
-      .then(res => res.json())
-      .then(trip => 
-        this.setState({
-          booked: trip
-        })
-      )
-    }
+  const bookingBody = {
+    user_id: user, 
+    driver_id:driver ,
+    time_booked: timeTotal,
+    start_time: date1,
+    end_time: date2,
+    total: this.props.driver.rate * timeTotal,
+    note: item.extra,
+    address: item.address, 
+    review: "",
+    rating: 4
   }
-
-
-reset = () => {
-  this.setState({
-    dayClicked: false,
-    booked: false
-  })
+  if (user && driver && timeTotal && !!item.address) {
+      this.props.book(bookingBody)
+  }
 }
 
 
 
+
+
 render() {
-// console.log(this.props)
+  const { booking } = this.props
+console.log(this.props)
     return (
       <div>
-         {this.state.booked ?
-          <Invoice trip={this.state.booked} 
+         {booking.booked ?
+          <Invoice trip={booking.trip} 
                    driver={this.props.driver}
                    reset={this.reset} /> :
           <div className="booking-container">
@@ -178,15 +162,11 @@ render() {
                       <p className="username">Select date and time: </p>
                           <div className="calendar-header">
                              <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
-                                 <svg height="24" version="1.1" viewBox="0 0 24 24" width="24">
-                                     <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
-                                 </svg>
+                                <img src={leftArrow} alt="left"></img>
                              </button>
                              <div className="calendar-header__label" data-calendar-label="month">{this.getMonthYear()}</div>
                              <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next">
-                                 <svg height="24" version="1.1" viewBox="0 0 24 24" width="24">
-                                     <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
-                                 </svg>
+                                 <img src={rightArrow} alt="right"></img>
                              </button>
                           </div>
                           <Week />
@@ -218,7 +198,13 @@ render() {
 
 
 function mapStateToProps(state){
-  return {user: state.auth.user, timeToBook: state.home.timeToBook}
+  return {user: state.auth.user, timeToBook: state.home.timeToBook, booking: state.booking}
 }
 
-export default connect(mapStateToProps, null)(BookingCalendar);
+function mapDispatchToProps(dispatch){
+  return {
+    book: (obj) => dispatch(bookRide(obj))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookingCalendar);

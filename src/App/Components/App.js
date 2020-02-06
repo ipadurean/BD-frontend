@@ -64,8 +64,8 @@ class App extends Component {
 
 
   render(){
-   console.log(this.props)
-    const { drivers } = this.props
+  //  console.log(this.props)
+    const { drivers, auth } = this.props
    
       return(
         <div>
@@ -81,12 +81,12 @@ class App extends Component {
                 
                 }} />
                 <Route exact path='/login' render={() => {
-                    return this.props.auth.authorized ? 
+                    return auth.authorized ? 
                           <Redirect to="/"/> : 
                           <Login /> }}/>
                
                 <Route exact path="/history" render={() => {
-                    return this.props.auth.authorized ? 
+                    return auth.authorized ? 
                         <RideHistory /> :
                         <Redirect to="/history"/> }} />
                 <Route exact path="/register" component={Register} />
