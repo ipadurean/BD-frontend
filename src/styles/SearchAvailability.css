@@ -45,8 +45,8 @@
 }
 
 #note {
-  font-size: 2vw;
-  padding: 6%;
+  font-size: calc(10px + 0.8vw);
+  margin: 50px;
 }
 
 #row{

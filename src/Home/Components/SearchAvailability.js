@@ -4,24 +4,13 @@ import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from '../Components/CalendarHome';
 import DriversList from './DriversList';
 import TimeZone from '../../Utils/timeZone';
-import { fetchTrips } from '../Ducks/actions';
+import { fetchTrips, startTime, endTime, dateClicked, filterDrivers, resetSearch } from '../Ducks/actions';
 import { connect } from "react-redux";
-import { timeToBook } from '../Ducks/actions'
 
 
 
 class SearchAvailability extends Component {
-  constructor(){
-    super()
-    this.state = {
-      dateClicked: false,
-      selectedDate: "",
-      start: null,
-      end: null,
-      filter: false
-    }
-    
-  }
+  
 
   componentDidMount(){
      this.props.getTrips()
@@ -31,7 +20,7 @@ class SearchAvailability extends Component {
   renderHours1 = () => {
     let count = 0;
     let hours = []
-    while (count < (this.state.end || 24)){
+    while (count < (this.props.home.end || 24)){
         hours.push(<option key={count}>{count+":00"}</option>);
         count +=1;
     }
@@ -39,7 +28,7 @@ class SearchAvailability extends Component {
   }
 
   renderHours2 = () => {
-    let count = this.state.start || 0;
+    let count = this.props.home.start || 0;
     let hours = []
     while (count <= 24){
         hours.push(<option key={count}>{count+":00"}</option>);
@@ -49,77 +38,67 @@ class SearchAvailability extends Component {
   }
 
   clickDate = () =>{
-    this.setState({
-      dateClicked: true
-    })
+    this.props.clickDate()
   }
 
-  selectDate = (event) =>{
-    event.target.className === "calendar-date calendar-date--active" &&
-    this.setState({
-      dateClicked: false,
-      selectedDate: parseInt(event.target.dataset.calendarDate)
-    })
-  }
+ 
 
   searchAvailable = () => {
-    const { selectedDate, start, end } = this.state
-    this.props.sendTimeToBook(selectedDate, start, end)
-        let s = this.state.start
-        let e = this.state.end || 24
-        let arr = this.props.trips.map(el => {
+  //  debugger;
+    const { trips, selectedDate, start, end } = this.props.home
+    const { drivers } = this.props
+        let arr = trips.map(el => {
               el.end_time = TimeZone.toCentralTime(el.end_time)
               el.start_time = TimeZone.toCentralTime(el.start_time)
         return el
         })
     
-        if (this.state.selectedDate && e > s ){
-            let d = new Date(this.state.selectedDate).toString().slice(4,15);
+        if (selectedDate && (end || 24) > start ){
+            let d = new Date(selectedDate).toString().slice(4,15);
             let intersectedDate = arr.filter(trip => trip.start_time.slice(4,15) === d);
             let intersectedTime = intersectedDate.filter(trip => {
-                                      let start = new Date(trip.start_time).getHours();
-                                      let end = new Date(trip.end_time).getHours() || 24;
-                                      return (s > start && s < end) || (e > start && e < end) || (s <= start && e >= end)
+                                      let s = new Date(trip.start_time).getHours();
+                                      let e = new Date(trip.end_time).getHours() || 24;
+                                      return (start > s && start < e) || (end > s && end < e) || (start <= s && end >= e)
                                   })
             let busyDrivers = intersectedTime.map(trip => trip.driver_id)
-            let filterDrivers = this.props.drivers.filter(driver => !busyDrivers.includes(driver.id))
-                this.setState({
-                  filter: filterDrivers
-                })
+            let driversAvailable = drivers.filter(driver => !busyDrivers.includes(driver.id))
+          
+            this.props.filter(driversAvailable)
             
         }
   }
 
+
   handleChange = (event) =>{
-      this.setState({
-        [event.target.name] : parseInt(event.target.value)
-      })
+      this.props[event.target.name](parseInt(event.target.value))
   }
 
   reset = () => {
-    this.setState({filter: false})
+     this.props.reset()
   }
 
   render(){
- 
-  //  console.log(this.props)
+   
+    const { home } = this.props
+  
     return(
         <div className="search-container">
             <div className="form-container">
                <h4>Search for available chauffeurs:</h4>
-               <Form onChange={this.handleChange} id="form">
+               <Form id="form">
                   <Row id="row">
                     <Form.Control autoComplete="off"
-                                  defaultValue={this.state.selectedDate && new Date(this.state.selectedDate).toString().slice(4,15)} 
+                                  defaultValue={home.selectedDate? new Date(home.selectedDate).toString().slice(4,15): ""} 
                                   onClick={this.clickDate} 
                                   id="date-home" 
                                   placeholder="Choose Date">
                     </Form.Control>
-                    <select name="start" className="time-home" as="select">
+                    <select onChange={this.handleChange} name="start" className="time-home" as="select">
                       <option>Start Time</option>
                       {this.renderHours1()}
                     </select>
-                    <select name="end" className="time-home" as="select">
+                    <select onChange={this.handleChange} name="end" className="time-home" as="select">
                     <option>End Time</option>
                       {this.renderHours2()}
                     </select>
@@ -128,11 +107,11 @@ class SearchAvailability extends Component {
                   </Row>
                </Form>
                <div id="available"> 
-                  {this.state.dateClicked && <CalendarHome select={this.selectDate} />}
-                  {this.state.filter &&  <p id="note">For this date and time there are a total of <b>{this.state.filter.length}</b> drivers available:</p>}
+                  {home.clicked && <CalendarHome />}
+                  {home.driversAvailable &&  <p id="note">For this date and time there are a total of <b>{home.driversAvailable.length}</b> drivers available:</p>}
                </div>
             </div>
-            <DriversList filter={this.state.filter} /> 
+            <DriversList /> 
         </div>
     )
   }
@@ -140,13 +119,17 @@ class SearchAvailability extends Component {
 
 
 function mapStateToProps(state){
-  return {drivers: state.drivers.drivers, trips: state.home.trips, time: state.home}
+  return {drivers: state.drivers.drivers, home: state.home}
 }
 
 function mapDispatchToProps(dispatch){
   return {
     getTrips: () => dispatch(fetchTrips()),
-    sendTimeToBook: (selectedDate, start, end) => dispatch(timeToBook(selectedDate, start, end))
+    clickDate: () => dispatch(dateClicked()),
+    start: (time) => dispatch(startTime(time)),
+    end: (time) => dispatch(endTime(time)),
+    filter: (drivers) => dispatch(filterDrivers(drivers)),
+    reset: () => dispatch(resetSearch())
   }
 }
 

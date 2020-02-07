@@ -1,20 +1,19 @@
 .driver-card{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  /* height: 120px; */
-  margin: 10px;
+  margin: 3vh;
   border-radius: 5px;
   background-color: white;
   box-shadow: 1px 1px 1px 1px #f1f0f0;
 }
 
-#vehicle {
-  width: 40%;
-}
-
 .driver-brief {
   color: rgb(63, 71, 82);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
   margin: 0 50px;
   display: flex;
   align-items: center;
@@ -24,8 +23,11 @@
 }
 
 #select {
+ 
+  font-size: calc(6px + 0.8vw);
+  font-weight: 300;
   margin: 0 50px;
-  color: rgb(68, 68, 68);
+  color: rgb(75, 58, 58);
   width: calc(100px + 10vw);
   height: calc(40px + 1vw);
   margin: 3%;

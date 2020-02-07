@@ -69,41 +69,7 @@
  
 }
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-    top: 100px;
-  }
 
-  to {
-    top: 450px;
-    opacity: 1;
-    margin-bottom: 20%;
-  }
-}
-
-.invoice {
-  top: 450px;
-  position: absolute;
-  animation: fadein 2s;
-  background-color: rgb(240, 244, 248);
-  border: 1px solid rgb(253, 253, 253);
-  box-shadow: 1px 10px 15px 15px  #a39f9f;
-  z-index: 1;
-  left: 100px;
-  right: 100px;
-  border-radius: 5px;
-  padding: 5% 10%;
-  margin: 20% 0;
-}
-
-.invoice p{
-   border-bottom: 1px solid rgb(230, 229, 229);
-}
-
-.invoice button {
-  margin-top: 60px
-}
 
 #booking-time{
   color: rgb(101, 107, 139);
@@ -116,10 +82,7 @@
   padding: 10% 5%;
 }
 
-.back {
-  border: 0;
-  background-color: rgb(240, 244, 248)
-}
+
 
 
 

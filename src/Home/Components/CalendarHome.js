@@ -3,6 +3,8 @@ import '../../Styles/calendarHome.css';
 import Week from '../../Booking/Components/Week';
 import leftArrow from '../../Utils/Assets/left-arrow.svg';
 import rightArrow from '../../Utils/Assets/right-arrow.svg';
+import { selectDate } from '../Ducks/actions';
+import { connect } from "react-redux";
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"] 
 
@@ -44,6 +46,12 @@ class CalendarHome extends Component {
             }
         
         return daysArr;
+      }
+
+      selectDate = (event) =>{
+        if (event.target.className === "calendar-date calendar-date--active") {
+          this.props.select(parseInt(event.target.dataset.calendarDate))
+        }
       }
 
 
@@ -93,15 +101,21 @@ class CalendarHome extends Component {
                     <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next">
                         <img src={rightArrow} alt="right"></img>
                     </button>
-                  </div>
-                  <Week />
-                      <div onClick={(event) => this.props.select(event)} className="calendar-body" data-calendar-area="month">
-                          {this.createMonth()}
-                          
-                      </div>
-                  </div>
+                </div>
+                <Week />
+                <div onClick={this.selectDate} className="calendar-body" data-calendar-area="month">
+                    {this.createMonth()}
+                </div>
+            </div>
         )
       }
 }
 
-export default CalendarHome;
+
+function mapDispatchToProps(dispatch){
+  return {
+    select: (date) => dispatch(selectDate(date)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CalendarHome);

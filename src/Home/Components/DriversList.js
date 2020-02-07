@@ -2,17 +2,21 @@ import React from 'react';
 import Driver from './Driver';
 import '../../Styles/general.css';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 
 
-const DriversList = (state) => {
+const DriversList = (props) => {
 
-    const drivers = state.filter || state.drivers.drivers
+  
+   const { driversAll, driversAvailable } = props;
+   let drivers = driversAvailable || driversAll
  
       return (
         <div className="list">
           {drivers.map(driver => {
-            return  <Driver key={driver.id} 
-                            driver={driver}  /> 
+              return  <Link to={`/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>
+                          <Driver key={driver.id}  driver={driver}  /> 
+                      </Link>
                 })
           }
         </div>
@@ -20,7 +24,7 @@ const DriversList = (state) => {
 }
   
 function mapStateToProps(state){
-  return state
+  return {driversAll: state.drivers.drivers, driversAvailable: state.home.driversAvailable }
 }
 
 export default connect(mapStateToProps, null)(DriversList);

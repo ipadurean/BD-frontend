@@ -13,25 +13,16 @@ const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "
 
 
 class BookingCalendar extends Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       selectedMonth: new Date().getMonth(),
-      dayClicked:false,
-      start:null,
-      end:null
+      dayClicked: props.home.selectedDate,
+      start: props.home.start,
+      end: props.home.end
     }
   }
 
-  componentDidMount(){
-    const { selectedDate, start, end} = this.props.timeToBook;
-    selectedDate && this.setState({
-      selectedMonth: new Date(selectedDate).getMonth() + (new Date(selectedDate).getYear() - new Date().getYear())*12,
-      dayClicked: selectedDate,
-      start: start,
-      end: end || 24
-    })
-  }
 
 
 
@@ -198,7 +189,7 @@ console.log(this.props)
 
 
 function mapStateToProps(state){
-  return {user: state.auth.user, timeToBook: state.home.timeToBook, booking: state.booking}
+  return { home: state.home , booking: state.booking, user: state.auth.user }
 }
 
 function mapDispatchToProps(dispatch){
