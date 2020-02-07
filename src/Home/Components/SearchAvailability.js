@@ -28,7 +28,7 @@ class SearchAvailability extends Component {
   }
 
   renderHours2 = () => {
-    let count = this.props.home.start || 0;
+    let count = this.props.home.start || 1;
     let hours = []
     while (count <= 24){
         hours.push(<option key={count}>{count+":00"}</option>);
@@ -44,7 +44,7 @@ class SearchAvailability extends Component {
  
 
   searchAvailable = () => {
-  //  debugger;
+
     const { trips, selectedDate, start, end } = this.props.home
     const { drivers } = this.props
         let arr = trips.map(el => {
@@ -53,7 +53,7 @@ class SearchAvailability extends Component {
         return el
         })
     
-        if (selectedDate && (end || 24) > start ){
+        if (selectedDate && end > start ){
             let d = new Date(selectedDate).toString().slice(4,15);
             let intersectedDate = arr.filter(trip => trip.start_time.slice(4,15) === d);
             let intersectedTime = intersectedDate.filter(trip => {
@@ -71,6 +71,7 @@ class SearchAvailability extends Component {
 
 
   handleChange = (event) =>{
+    console.log(parseInt(event.target.value))
       this.props[event.target.name](parseInt(event.target.value))
   }
 

@@ -2,10 +2,10 @@ import React from 'react';
 import '../../Styles/Driver.css';
 import { connect } from "react-redux";
 
-import { timeToBook } from '../Ducks/actions';
+
 
 const Driver = (props) => {
- const { driver } = props
+ const { driver, home } = props
 
  
     return (
@@ -13,12 +13,12 @@ const Driver = (props) => {
            
                 <div className="driver-brief">
                     <div className="title">
-                        <h5>{driver.username}</h5><span>Rating {driver.rating}*</span>
+                        <h5><b>{driver.username}</b></h5><span>Rating {driver.rating}*</span>
                         <p>Rate: ${driver.rate}/hour</p>
                     </div>
                     <img id="img" alt="img" src={driver.photo}/>
-                    <div id="vehicle"><p> ~ {driver.car} ~ </p></div>
-            {/* <div id="total">{filter && <p>Total: ${driver.rate * ((selectedTime.end || 24) - selectedTime.start)}</p>}</div> */}
+                    <div id="vehicle"><i> ~ {driver.car} ~ </i></div>
+                    {home.driversAvailable && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}
                 </div>
                 <button id="select">Book ride with this chauffeur</button>
            
@@ -30,10 +30,5 @@ function mapStateToProps(state){
   return state
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-      sendTimeToBook: (selectedDate, start, end) => dispatch(timeToBook(selectedDate, start, end))
-    }
-  }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Driver);
+export default connect(mapStateToProps)(Driver);

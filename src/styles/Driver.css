@@ -9,7 +9,7 @@
 
 .driver-brief {
   color: rgb(63, 71, 82);
-  font-family: Roboto;
+  font-family: "Coda", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -23,9 +23,9 @@
 }
 
 #select {
- 
+  font-family: Roboto;
   font-size: calc(6px + 0.8vw);
-  font-weight: 300;
+  font-weight: 400;
   margin: 0 50px;
   color: rgb(75, 58, 58);
   width: calc(100px + 10vw);
@@ -46,6 +46,19 @@
   border-radius: 50%;
 }
 
+.title {
+  width: 150px;
+}
+
 #total {
-  width: 50px;
+  font-family: Cambria;
+  background-color: rgb(245, 242, 239);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: calc(10px + 0.7vw);
+  font-weight: 500;
+  color: rgb(62, 119, 71);
+  position: absolute;
+  left: calc(300px + 30%);
+  width: calc(40px + 1.5vw);
 }

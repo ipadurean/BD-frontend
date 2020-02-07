@@ -1,9 +1,16 @@
 import React from 'react';
 import '../../Styles/Invoice.css';
 import TimeZone from '../../Utils/timeZone';
+import { resetBooked } from '../Ducks/actions';
+import { connect } from "react-redux";
 
 
 const Invoice = (props) => {
+
+
+  function resetBook() {
+      props.reset()
+  }
    
       return (
         <div className="invoice">
@@ -14,7 +21,7 @@ const Invoice = (props) => {
             <p>The pick up address is: <b>{props.trip.address}</b></p>
             <p>Total cost: <b>${props.trip.total}</b></p>
             <div>
-              <button onClick={props.reset} className="back">
+              <button onClick={resetBook} className="back">
                   <svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" >
                         <polygon points="7.41 1.41 6 0 0 6 6 12 7.41 10.59 2.83 6"></polygon>
                   </svg><span> Back</span>
@@ -26,9 +33,13 @@ const Invoice = (props) => {
   
 
 
+function mapDispatchToProps(dispatch){
+  return {
+    reset: () => dispatch(resetBooked())
+  }
+}
 
 
 
 
-
-export default Invoice;
+export default connect(null, mapDispatchToProps)(Invoice);

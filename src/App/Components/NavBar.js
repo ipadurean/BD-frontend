@@ -34,16 +34,10 @@ class NavBar extends Component {
 
     return (
       <div className="nav-container">
-       { this.props.selected?
         <Navbar expand="lg">
-          <Link to="/"><Navbar.Brand>Home</Navbar.Brand></Link>
+          <a href="/"><Navbar.Brand>Home</Navbar.Brand></a>
           <Link to="/about"><Navbar.Brand>About</Navbar.Brand></Link>
-          <Link to="/history"><Navbar.Brand>Ride History</Navbar.Brand></Link>
-        </Navbar> :
-        <Navbar expand="lg">
-          <Link to="/"><Navbar.Brand>Home</Navbar.Brand></Link>
-          <Link to="/about"><Navbar.Brand>About</Navbar.Brand></Link>
-          <Link to="/history"><Navbar.Brand>Ride History</Navbar.Brand></Link>
+          <a href="/history"><Navbar.Brand>Ride History</Navbar.Brand></a>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
@@ -63,7 +57,7 @@ class NavBar extends Component {
                     <Button id="bttn" variant="light" onClick={this.logout} to="/" >Logout</Button>
                  </div> 
               </Navbar.Collapse>
-        </Navbar>}
+        </Navbar>
         
       </div>
     );

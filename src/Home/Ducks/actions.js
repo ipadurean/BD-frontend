@@ -12,11 +12,6 @@ export const fetchTrips = () => {
   };
 }
 
-export const timeToBook = (selectedDate, start, end) => {
-  return {
-    type: 'ADD_TIME_TO_BOOK', payload:{selectedDate, start, end}
-  }
-}
 
 export const selectDate = (date) => {
   return {

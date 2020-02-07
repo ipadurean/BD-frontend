@@ -17,3 +17,9 @@ export const bookRide = (bookingBody) => {
         })
     }
 }
+
+export const resetBooked = () => {
+  return {
+    type: 'RESET_BOOKED'
+  }
+}
