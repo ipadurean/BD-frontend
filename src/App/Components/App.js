@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from './Header';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import RideHistory from '../../History/Components/RideHistory';
 import Home from '../../Home/Components/Home';
 import Register from "../../Auth/Components/Register";
@@ -12,6 +12,7 @@ import DriverProfile from "../../Booking/Components/DriverProfile";
 import { fetchDrivers }  from '../Ducks/actions';
 import { authorize } from '../../Auth/Ducks/actions';
 import NavBar from '../../App/Components/NavBar';
+import { withRouter } from 'react-router';
 
 
 
@@ -21,7 +22,7 @@ class App extends Component {
 
   componentDidMount(){
     this.props.fetchDrivers();
-    localStorage.getItem('jwt') && this.props.authorize();
+    localStorage.getItem('jwt') && this.props.authorize(this.props.history);
   }
       
 
@@ -64,14 +65,14 @@ class App extends Component {
 
 
   render(){
-  //  console.log(this.props)
+   console.log(this.props)
     const { drivers, auth } = this.props
    
       return(
         <div>
         <Header />
         {drivers.loading && <div className="loading">Loading...</div>}
-          <Router>
+          
             <NavBar />
             <Switch>
                 <Route exact path='/' render={()=> {
@@ -86,9 +87,7 @@ class App extends Component {
                           <Login /> }}/>
                
                 <Route exact path="/history" render={() => {
-                    return auth.authorized ? 
-                        <RideHistory /> :
-                        <Redirect to="/history"/> }} />
+                    return auth.authorized && <RideHistory /> }} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path='/about' component={About} />
                 <Route exact path="/:name"  render={({ match }) => {
@@ -97,7 +96,7 @@ class App extends Component {
                           return driver? <DriverProfile driver={driver}/> :
                                          <div>Page not found</div>}} />
             </Switch>   
-          </Router>
+          
       </div>
       )
   }
@@ -112,9 +111,9 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return { 
     fetchDrivers: () => dispatch(fetchDrivers()),
-    authorize: () => dispatch(authorize())
+    authorize: (history) => dispatch(authorize(history))
   }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App))

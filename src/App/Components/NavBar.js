@@ -35,9 +35,9 @@ class NavBar extends Component {
     return (
       <div className="nav-container">
         <Navbar expand="lg">
-          <a href="/"><Navbar.Brand>Home</Navbar.Brand></a>
+          <Navbar.Brand href="/">Home</Navbar.Brand>
           <Link to="/about"><Navbar.Brand>About</Navbar.Brand></Link>
-          <a href="/history"><Navbar.Brand>Ride History</Navbar.Brand></a>
+          <Navbar.Brand href="/history">Ride History</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">

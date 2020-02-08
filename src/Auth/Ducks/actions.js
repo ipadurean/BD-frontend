@@ -1,21 +1,22 @@
 const baseUrl = 'https://radiant-fjord-35660.herokuapp.com';
 const token = localStorage.getItem('jwt');
 
-export const authorize = () => {
+export const authorize = (history) => {
     
 if(token){
     return function(dispatch) {
         fetch(`${baseUrl}/current_user`, {
-              headers: {
-                'content-type': 'application/json',
-                'accept': 'application/json',
-                'Authorization': `Bearer ${token}`
-              }
+                headers: {
+                    'content-type': 'application/json',
+                    'accept': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
             })
             .then(res => res.json())
             .then(user => {
                     if (user.errors){
                             alert(user.errors);
+                            history.push('/login');
                             localStorage.removeItem('jwt');
                         return dispatch ({type: 'LOG_OUT'})
                     } else {
