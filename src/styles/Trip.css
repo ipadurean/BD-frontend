@@ -43,10 +43,12 @@
 
 .review-body{
   padding: 3%;
-  background-color: rgb(227, 230, 240);
+  background-color: rgb(235, 245, 243);
   position: absolute;
   border-radius: 25px;
-  right: 20px;
+  margin: 2%;
   top: 70px;
   left: 50%;
+  max-height: 200px;
+  overflow: scroll;
 }
