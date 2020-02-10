@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
+import { Navbar, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styles/NavBar.css';
 import { logout } from '../../Auth/Ducks/actions';
@@ -40,19 +40,19 @@ class NavBar extends Component {
           <Navbar.Brand href="/history" className="nav-btn">Ride History</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="mr-auto">
+              {/* <Nav className="mr-auto">
                 <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
                   <NavDropdown.Item onClick={this.props.sortByRating} >by Highest Rated</NavDropdown.Item>
                   <NavDropdown.Item onClick={this.props.sortByRate} >by Lowest Hourly Rate</NavDropdown.Item>
                 </NavDropdown>
               
-                  {/* <Form onChange={this.handleChange} inline className="search-drivers">
+                  <Form onChange={this.handleChange} inline className="search-drivers">
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                     <Button variant="light" onClick={() => this.props.search(this.state.keyword)} >Search</Button>
                     <Button variant="light" onClick={() => this.props.reset()} >Reset</Button>
-                  </Form> */}
+                  </Form>
                  
-              </Nav>
+              </Nav> */}
                  <div>
                     <Button id="bttn" variant="light" onClick={this.logout} to="/" >Logout</Button>
                  </div> 
