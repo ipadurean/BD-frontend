@@ -5,7 +5,7 @@ import RideHistory from '../../History/Components/RideHistory';
 import Home from '../../Home/Components/Home';
 import Register from "../../Auth/Components/Register";
 import Login from '../../Auth/Components/Login'
-import '../../Styles/App.css';
+import '../Styles/App.css';
 import About from './About'
 import { connect } from "react-redux";
 import DriverProfile from "../../Booking/Components/DriverProfile";

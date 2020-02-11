@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../Styles/Day.css';
+import '../Styles/Day.css';
 import TimeZone from '../../Utils/timeZone';
 
 class Day extends Component {

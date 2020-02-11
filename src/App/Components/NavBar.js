@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../Styles/NavBar.css';
+import '../Styles/NavBar.css';
 import { logout } from '../../Auth/Ducks/actions';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';

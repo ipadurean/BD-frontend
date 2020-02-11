@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../Styles/calendarHome.css';
+import '../Styles/calendarHome.css';
 import Week from '../../Booking/Components/Week';
 import leftArrow from '../../Utils/Assets/left-arrow.svg';
 import rightArrow from '../../Utils/Assets/right-arrow.svg';

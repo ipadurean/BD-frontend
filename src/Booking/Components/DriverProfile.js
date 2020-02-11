@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../Styles/driverProfile.css';
+import '../Styles/driverProfile.css';
 import BookingCalendar from './BookingCalendar';
 import { connect } from "react-redux";
 

@@ -1,3 +1,7 @@
+.list {
+  padding: 10% 5%;
+}
+
 .driver-card{
   display: flex;
   flex-direction: row;

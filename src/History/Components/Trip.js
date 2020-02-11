@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReviewForm from './ReviewForm';
-import '../../Styles/Trip.css';
+import '../Styles/Trip.css';
 import TimeZone from '../../Utils/timeZone';
 import { Button } from "react-bootstrap";
 import { deleteTrip } from '../Ducks/actions';

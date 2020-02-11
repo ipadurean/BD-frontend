@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, Form, Navbar } from "react-bootstrap";
-import '../../Styles/Login.css';
+import '../Styles/Login.css';
 import { connect } from "react-redux";
 import { loginAction } from '../Ducks/actions';
 

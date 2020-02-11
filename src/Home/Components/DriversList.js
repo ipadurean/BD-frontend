@@ -1,6 +1,6 @@
 import React from 'react';
 import Driver from './Driver';
-import '../../Styles/general.css';
+import '../Styles/Driver.css';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 
