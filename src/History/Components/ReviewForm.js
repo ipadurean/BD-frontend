@@ -15,7 +15,7 @@ class Review extends Component {
    
     handleChange = (event) => {
         this.setState({
-          review: event.target.value
+          review: event.target.value + ` (${this.props.auth.user.username})`
         })
     }
 
@@ -32,6 +32,7 @@ class Review extends Component {
 
 render(){
     const { submitted } = this.props.rideHistory
+    console.log(this.state)
     return (
         <div className="review-form">
             {submitted?

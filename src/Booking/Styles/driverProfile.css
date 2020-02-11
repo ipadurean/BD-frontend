@@ -18,23 +18,22 @@
   justify-content: space-around;
 }
 
-/* .driver-description {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: 280px;
-  margin-bottom: 4%;
-  
-} */
+#reviews-title {
+  width: 90vw;
+  margin-top: 2vw;
+}
 
+.reviewList {
+  padding: 1vw;
+  margin-bottom: 2vw;
+  background-color: rgb(250, 254, 255);
+  border: 1px solid white;
+  width: 90vw;
+  border-radius: 10px;
+  height: 200px;
+  overflow: scroll;
+}
 
-/* #back {
-  width: 60px;
-  margin-bottom: 50px;
-  background-color: rgb(213, 221, 236);
-  border-radius: 30px;
-  border: 1px solid rgb(194, 180, 180);
-} */
 
 .bio {
   margin: 2% 15%;

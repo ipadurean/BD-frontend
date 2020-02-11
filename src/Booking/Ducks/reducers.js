@@ -1,6 +1,10 @@
-export default function bookingReducer(state = {booked: false, trip: {}}, action){
+export default function bookingReducer(state = {booked: false, trip: {}, driverTrips: []}, action){
   
   switch (action.type) {
+
+    case 'ADD_DRIVER':
+      return {...state, driverTrips: action.payload}
+
     case 'BOOK_RIDE':
       return { booked: true, trip: action.payload};
 

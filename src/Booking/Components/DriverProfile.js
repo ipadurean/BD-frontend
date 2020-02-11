@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Styles/driverProfile.css';
 import BookingCalendar from './BookingCalendar';
 import { connect } from "react-redux";
+import { fetchDriver } from '../Ducks/actions';
+import ReviewCard from './ReviewCard';
 
 
 
@@ -11,15 +13,15 @@ import { connect } from "react-redux";
 class DriverProfile extends Component {
   
     componentDidMount() {
-      window.scrollTo(100, 200)
+      window.scrollTo(100, 200);
+      this.props.getDriver(this.props.driver.id)
     }  
 
 
 
     render(){
-    // console.log(this.props)
-    const { driver } = this.props
     
+    const { driver, booking } = this.props
         return (
             <div className="driver-container">
                 <div className="bio">
@@ -36,6 +38,12 @@ class DriverProfile extends Component {
                     <div id="vehicle-model">{driver.car}</div>
                     <img className="car-photo" alt="car" src={driver.car_photo}/>
                 </div>
+                <h5 id="reviews-title">Reviews:</h5>
+                <div className="reviewList">
+                    {booking.driverTrips.map(trip => {
+                        return trip.review && <ReviewCard key={trip.id} review={trip.review} />
+                    })}
+                </div>
                 <BookingCalendar driver={driver} />
             </div>
       )
@@ -44,8 +52,14 @@ class DriverProfile extends Component {
 }
 
 function mapStateToProps(state){
-  return state
+    return state
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        getDriver: (id) => dispatch(fetchDriver(id))
+    }
 }
 
 
-export default connect(mapStateToProps, null)(DriverProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(DriverProfile);

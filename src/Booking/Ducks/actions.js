@@ -19,7 +19,19 @@ export const bookRide = (bookingBody) => {
 }
 
 export const resetBooked = () => {
-  return {
-    type: 'RESET_BOOKED'
-  }
+    return {
+      type: 'RESET_BOOKED'
+    }
+}
+
+export const fetchDriver = (id) => {
+ 
+    return function(dispatch){
+      fetch(`${baseUrl}/drivers/${id}`)
+      .then(res => res.json())
+      .then(driver => {
+        dispatch({ type: 'ADD_DRIVER', payload: driver.trips });
+      })
+    };
+  
 }

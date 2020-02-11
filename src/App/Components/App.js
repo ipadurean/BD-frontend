@@ -65,7 +65,7 @@ class App extends Component {
 
 
   render(){
-   console.log(this.props)
+   
     const { drivers, auth } = this.props
    
       return(
