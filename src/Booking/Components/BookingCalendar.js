@@ -140,9 +140,9 @@ bookRide = (event, item) => {
 
 render() {
   const { booking } = this.props
-console.log(this.props)
+
     return (
-      <div>
+      <div className="grid-container">
          {booking.booked ?
           <Invoice trip={booking.trip} 
                    driver={this.props.driver}

@@ -34,7 +34,7 @@ class DriverProfile extends Component {
                       <polygon points="7.41 1.41 6 0 0 6 6 12 7.41 10.59 2.83 6"></polygon>
                   </svg><span> Back</span>
               </button> */}
-              <div className="driver-description">
+             
                   <div className="bio">
                       <div className="photo">
                           <div className="username">{driver.name} <h6>Chauffeur</h6></div>
@@ -49,7 +49,7 @@ class DriverProfile extends Component {
                       <div id="vehicle-model">{driver.car}</div>
                       <img className="car-photo" alt="car" src={driver.car_photo}/>
                   </div>
-              </div>
+              
             
               <BookingCalendar driver={driver} />
         </div>

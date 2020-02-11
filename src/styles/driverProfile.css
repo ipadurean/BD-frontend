@@ -10,47 +10,51 @@
 }
 
 .driver-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
   animation: slidein 1s;
   padding: 2%;
   background-color: rgb(252, 252, 249);
 }
 
-.driver-description {
+/* .driver-description {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   height: 280px;
   margin-bottom: 4%;
   
-}
+} */
 
 
-#back {
+/* #back {
   width: 60px;
   margin-bottom: 50px;
   background-color: rgb(213, 221, 236);
   border-radius: 30px;
   border: 1px solid rgb(194, 180, 180);
-}
+} */
 
 .bio {
- display: grid;
- grid-template-columns: 180px 270px;
- margin-left: 3px;
- max-width: 480px !important;
- min-width: 480px !important;
-}
-
-#description {
-  grid-area: 1/2/2/3;
+  align-self: center;
+  justify-self: center;
+  grid-area: 1/1/2/2;
   padding: 10px;
   text-align: center;
+  margin-left: 3px;
+  max-width: 480px !important;
+  min-width: 480px !important;
 }
 
+
 .vehicle {
- margin: 5px 0;
- border-radius: 5px;
- box-shadow: 2px 2px 3px 3px #bdbaba;
+  grid-area: 1/2/2/3;
+  width: 450px;
+  align-self: center;
+  justify-self: center;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px 3px #bdbaba;
 }
 
 .username {

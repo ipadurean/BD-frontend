@@ -33,13 +33,12 @@ class NavBar extends Component {
 
 
     return (
-      <div className="nav-container">
-        <Navbar expand="lg">
-          <Navbar.Brand href="/" className="nav-btn">Home</Navbar.Brand>
-          <Link to="/about"><Navbar.Brand className="nav-btn">About</Navbar.Brand></Link>
-          <Navbar.Brand href="/history" className="nav-btn">Ride History</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+        <div className="nav-container">
+            <Navbar expand="lg">
+                <Navbar.Brand href="/" className="nav-btn">Home</Navbar.Brand>
+                <Link to="/about"><Navbar.Brand className="nav-btn">About</Navbar.Brand></Link>
+                <Navbar.Brand href="/history" className="nav-btn">Ride History</Navbar.Brand>
+         
               {/* <Nav className="mr-auto">
                 <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
                   <NavDropdown.Item onClick={this.props.sortByRating} >by Highest Rated</NavDropdown.Item>
@@ -53,13 +52,9 @@ class NavBar extends Component {
                   </Form>
                  
               </Nav> */}
-                 <div>
-                    <Button id="bttn" variant="light" onClick={this.logout} to="/" >Logout</Button>
-                 </div> 
-              </Navbar.Collapse>
-        </Navbar>
-        
-      </div>
+                <Button id="bttn" variant="light" onClick={this.logout} to="/" >Logout</Button>
+            </Navbar>
+        </div>
     );
   }
 }
