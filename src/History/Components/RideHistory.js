@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Styles/History.css';
+import '../styles/History.css';
 import Trip from './Trip';
 import { connect } from "react-redux";
 

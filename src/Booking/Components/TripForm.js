@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, Form } from "react-bootstrap";
-import '../Styles/TripForm.css';
+import '../styles/TripForm.css';
 
 class Trip extends Component {
    constructor(){
@@ -12,7 +12,7 @@ class Trip extends Component {
 }
 
 
-   handleChange = event => {
+   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
     });

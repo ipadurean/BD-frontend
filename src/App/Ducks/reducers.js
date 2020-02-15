@@ -1,14 +1,20 @@
-export default function fetchDriversReducer(state = {loading: false, drivers: []}, action){
+import types from './types.js';
 
-      switch (action.type) {
+const initialState = {
+  loading: false,
+  drivers: []
+}
 
-      case 'LOADING_DRIVERS':
+export default function fetchDriversReducer(state = initialState , action) {
+
+  switch (action.type) {
+    case types.LOADING_DRIVERS:
       return {...state, loading: true };
 
-      case 'ADD_DRIVERS':
+     case types.ADD_DRIVERS:
       return { loading:false, drivers: action.payload };
 
-      default:
+    default:
       return state;
       }
 };

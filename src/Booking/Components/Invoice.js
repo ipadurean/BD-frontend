@@ -1,7 +1,7 @@
 import React from 'react';
-import '../Styles/Invoice.css';
-import TimeZone from '../../Utils/timeZone';
-import { resetBooked } from '../Ducks/actions';
+import '../styles/Invoice.css';
+import TimeZone from '../../utils/timeZone';
+import { resetBooked } from '../ducks/actions';
 import { connect } from "react-redux";
 
 

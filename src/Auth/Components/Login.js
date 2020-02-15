@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, Form, Navbar } from "react-bootstrap";
-import '../Styles/Login.css';
+import '../styles/Login.css';
 import { connect } from "react-redux";
-import { loginAction } from '../Ducks/actions';
+import { loginAction } from '../ducks/operations';
 
 
 class Login extends Component {
@@ -19,13 +19,13 @@ class Login extends Component {
     return this.state.username.length > 0 && this.state.password.length > 0;
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
     });
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.login(this.state)
   }
@@ -33,7 +33,7 @@ class Login extends Component {
   render() {
    
     return (
-      <div className="Login">
+      <div className="login">
         <Navbar>
             <div>
               <span className="bttn">

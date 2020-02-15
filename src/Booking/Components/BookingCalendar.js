@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Day from './Day';
-import '../Styles/bookingCalendar.css';
+import '../styles/bookingCalendar.css';
 import TripForm from './TripForm';
 import Invoice from './Invoice';
 import Week from './Week';
 import { connect } from "react-redux";
-import { bookRide } from '../Ducks/actions';
-import leftArrow from '../../Utils/Assets/left-arrow.svg';
-import rightArrow from '../../Utils/Assets/right-arrow.svg';
+import { bookRide } from '../ducks/actions';
+import leftArrow from '../../utils/assets/left-arrow.svg';
+import rightArrow from '../../utils/assets/right-arrow.svg';
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"]  
 

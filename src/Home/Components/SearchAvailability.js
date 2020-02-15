@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../Styles/SearchAvailability.css';
+import '../styles/SearchAvailability.css';
 import { Form, Row, Button } from "react-bootstrap";
-import CalendarHome from '../Components/CalendarHome';
+import CalendarHome from './CalendarHome';
 import DriversList from './DriversList';
-import TimeZone from '../../Utils/timeZone';
-import { fetchTrips, startTime, endTime, dateClicked, filterDrivers, resetSearch } from '../Ducks/actions';
+import TimeZone from '../../utils/timeZone';
+import { fetchTrips, startTime, endTime, dateClicked, filterDrivers, resetSearch } from '../ducks/actions';
 import { connect } from "react-redux";
 
 

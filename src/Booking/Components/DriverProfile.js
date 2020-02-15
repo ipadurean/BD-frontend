@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Styles/driverProfile.css';
+import '../styles/driverProfile.css';
 import BookingCalendar from './BookingCalendar';
 import { connect } from "react-redux";
-import { fetchDriver } from '../Ducks/actions';
+import { fetchDriver } from '../ducks/actions';
 import ReviewCard from './ReviewCard';
 
 

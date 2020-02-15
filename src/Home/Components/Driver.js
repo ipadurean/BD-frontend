@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/Driver.css';
+import '../styles/Driver.css';
 import { connect } from "react-redux";
 
 

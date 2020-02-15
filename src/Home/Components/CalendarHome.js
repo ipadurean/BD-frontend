@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../Styles/calendarHome.css';
-import Week from '../../Booking/Components/Week';
-import leftArrow from '../../Utils/Assets/left-arrow.svg';
-import rightArrow from '../../Utils/Assets/right-arrow.svg';
-import { selectDate } from '../Ducks/actions';
+import '../styles/calendarHome.css';
+import Week from '../../booking/components/Week';
+import leftArrow from '../../utils/assets/left-arrow.svg';
+import rightArrow from '../../utils/assets/right-arrow.svg';
+import { selectDate } from '../ducks/actions';
 import { connect } from "react-redux";
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"] 

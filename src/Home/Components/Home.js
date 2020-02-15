@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import '../Styles/Home.css';
+import '../styles/Home.css';
 import SearchAvailability from "./SearchAvailability";
 import { connect } from "react-redux";
 

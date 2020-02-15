@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import authReducer from '../Auth/Ducks/reducers'
-import fetchDriversReducer from '../App/Ducks/reducers';
-import homeReducer from '../Home/Ducks/reducers';
-import bookingReducer from '../Booking/Ducks/reducers';
-import rideHistoryReducer from '../History/Ducks/reducers';
+import authReducer from '../auth/ducks/reducers'
+import fetchDriversReducer from '../app/ducks/reducers';
+import homeReducer from '../home/ducks/reducers';
+import bookingReducer from '../booking/ducks/reducers';
+import rideHistoryReducer from '../history/ducks/reducers';
 
 
 export default combineReducers({

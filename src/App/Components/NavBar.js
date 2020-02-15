@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Navbar, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Styles/NavBar.css';
-import { logout } from '../../Auth/Ducks/actions';
+import '../styles/NavBar.css';
+import { logout } from '../../auth/ducks/actions';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
@@ -34,10 +33,9 @@ class NavBar extends Component {
 
     return (
         <div className="nav-container">
-            <Navbar expand="lg">
-                <Navbar.Brand href="/" className="nav-btn">Home</Navbar.Brand>
-                <Link to="/about"><Navbar.Brand className="nav-btn">About</Navbar.Brand></Link>
-                <Navbar.Brand href="/history" className="nav-btn">Ride History</Navbar.Brand>
+          <a href="/" className="nav-btn">Home</a>
+          <Link to="/about" className="nav-btn">About</Link>
+          <a href="/history" className="nav-btn">Ride History</a>
          
               {/* <Nav className="mr-auto">
                 <NavDropdown title="Sort drivers" id="basic-nav-dropdown">
@@ -52,8 +50,7 @@ class NavBar extends Component {
                   </Form>
                  
               </Nav> */}
-                <Button id="bttn" variant="light" onClick={this.logout} to="/" >Logout</Button>
-            </Navbar>
+          <button id="bttn" onClick={this.logout} to="/" >Logout</button>
         </div>
     );
   }

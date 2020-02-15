@@ -1,5 +1,8 @@
 .home-container {
-  padding: 1%
+  padding: 1%;
+  position: relative;
+  top: 8vw;
+  z-index: 0;
 }
 
 .Home .lander {
