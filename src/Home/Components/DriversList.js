@@ -7,20 +7,19 @@ import { Link } from 'react-router-dom';
 
 const DriversList = (props) => {
 
-  
-   const { driversAll, driversAvailable } = props;
-   let drivers = driversAvailable || driversAll
+  const { driversAll, driversAvailable } = props;
+  let drivers = driversAvailable || driversAll
  
-      return (
-        <div className="list">
-          {drivers.map(driver => {
-              return  <Link to={`/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>
-                          <Driver key={driver.id}  driver={driver}  /> 
-                      </Link>
-                })
-          }
-        </div>
-        );
+  return (
+    <div className="list">
+      {drivers.map(driver => {
+        return  <Link to={`/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>
+                      <Driver key={driver.id}  driver={driver}  /> 
+                </Link>
+        })
+      }
+    </div>
+  );
 }
   
 function mapStateToProps(state){

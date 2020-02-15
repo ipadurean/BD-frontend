@@ -3,7 +3,7 @@ import ReviewForm from './ReviewForm';
 import '../styles/Trip.css';
 import TimeZone from '../../utils/timeZone';
 import { Button } from "react-bootstrap";
-import { deleteTrip } from '../ducks/actions';
+import { fetchDelete } from '../ducks/operations';
 import { connect } from "react-redux";
 
 
@@ -88,7 +88,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return { 
-     delete: (tripId) => dispatch(deleteTrip(tripId))
+     delete: (tripId) => dispatch(fetchDelete(tripId))
   }
 }
 

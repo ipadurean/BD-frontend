@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import Header from './Header'
+import Header from '../components/Header'
 import { Route, Redirect, Switch } from 'react-router-dom'
 import RideHistory from '../../history/components/RideHistory'
 import Home from '../../home/components/Home'
-import Register from '../../auth/components/Register'
-import Login from '../../auth/components/Login'
+import Register from '../../auth/containers/Register'
+import Login from '../../auth/containers/Login'
 import '../styles/App.css'
-import About from './About'
+import About from '../components/About'
 import { connect } from 'react-redux'
-import DriverProfile from '../../booking/components/DriverProfile'
+import DriverProfile from '../../booking/containers/DriverProfile'
 import { fetchDrivers } from '../ducks/operations'
 import { authorize } from '../../auth/ducks/operations'
-import NavBar from '../../app/components/NavBar'
+import NavBar from './NavBar'
 import { withRouter } from 'react-router'
 
 class App extends Component {
@@ -59,8 +59,6 @@ class App extends Component {
   }
 }
 
-
-
 function mapStateToProps(state) {
     return state
 }
@@ -71,6 +69,5 @@ function mapDispatchToProps(dispatch) {
         authorize: (history) => dispatch(authorize(history))
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App))

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import '../styles/ReviewForm.css';
-import { addReview } from '../ducks/actions';
+import { addReview } from '../ducks/operations';
 import { connect } from "react-redux";
 
 class Review extends Component {

@@ -1,37 +1,21 @@
-const baseUrl = 'https://radiant-fjord-35660.herokuapp.com';
+import types from './types'
 
-export const bookRide = (bookingBody) => {
-  
-    return function (dispatch) {
-        fetch(`${baseUrl}/trips`, { 
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              "Accept": 'application/json'
-            },
-            body: JSON.stringify(bookingBody)
-          })
-          .then(res => res.json())
-          .then(trip => {
-            dispatch ({type: 'BOOK_RIDE', payload: trip})
-        })
-    }
+export const bookRide = (trip) => {
+  return {
+    type: types.BOOK_RIDE,
+    payload: trip
+  }
 }
 
 export const resetBooked = () => {
-    return {
-      type: 'RESET_BOOKED'
-    }
+  return {
+    type: types.RESET_BOOKED
+  }
 }
 
-export const fetchDriver = (id) => {
- 
-    return function(dispatch){
-      fetch(`${baseUrl}/drivers/${id}`)
-      .then(res => res.json())
-      .then(driver => {
-        dispatch({ type: 'ADD_DRIVER', payload: driver.trips });
-      })
-    };
-  
+export const addDriverTrips = (driver) => {
+  return {
+    type: types.ADD_DRIVER_TRIPS,
+    payload: driver.trips
+  }
 }

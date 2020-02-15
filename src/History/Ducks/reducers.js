@@ -1,7 +1,14 @@
-export default function rideHistoryReducer(state={review: "", submitted: false}, action){
+import types from './types'
+
+const initialState = {
+  review: "",
+  submitted: false
+}
+
+export default function rideHistoryReducer(state = initialState, action) {
 
     switch (action.type) {
-        case 'SUBMIT_REVIEW':
+        case types.SUBMIT_REVIEW:
           return { submitted: true }
         
         default:

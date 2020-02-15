@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import '../styles/SearchAvailability.css';
 import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from './CalendarHome';
-import DriversList from './DriversList';
+import DriversList from '../components/DriversList';
 import TimeZone from '../../utils/timeZone';
-import { fetchTrips, startTime, endTime, dateClicked, filterDrivers, resetSearch } from '../ducks/actions';
+import { startTime, endTime, dateClicked, filterDrivers, resetSearch } from '../ducks/actions';
+import { fetchTrips } from '../ducks/operations';
 import { connect } from "react-redux";
 
 
 
 class SearchAvailability extends Component {
   
-
   componentDidMount(){
      this.props.getTrips()
-  
   }
 
   renderHours1 = () => {
@@ -40,8 +39,6 @@ class SearchAvailability extends Component {
   clickDate = () =>{
     this.props.clickDate()
   }
-
- 
 
   searchAvailable = () => {
 
@@ -69,7 +66,6 @@ class SearchAvailability extends Component {
         }
   }
 
-
   handleChange = (event) =>{
     console.log(parseInt(event.target.value))
       this.props[event.target.name](parseInt(event.target.value))
@@ -84,36 +80,36 @@ class SearchAvailability extends Component {
     const { home } = this.props
   
     return(
-        <div className="search-container">
-            <div className="form-container">
-               <h4>Search for available chauffeurs:</h4>
-               <Form id="form">
-                  <Row id="row">
-                    <Form.Control autoComplete="off"
-                                  defaultValue={home.selectedDate? new Date(home.selectedDate).toString().slice(4,15): ""} 
-                                  onClick={this.clickDate} 
-                                  id="date-home" 
-                                  placeholder="Choose Date">
-                    </Form.Control>
-                    <select onChange={this.handleChange} name="start" className="time-home" as="select">
-                      <option>Start Time</option>
-                      {this.renderHours1()}
-                    </select>
-                    <select onChange={this.handleChange} name="end" className="time-home" as="select">
-                    <option>End Time</option>
-                      {this.renderHours2()}
-                    </select>
-                    <Button variant="light" onClick={this.searchAvailable} type="button" id="filter">Search</Button>
-                    <Button variant="light" onClick={this.reset} type="reset" id="reset">Reset</Button>
-                  </Row>
-               </Form>
-               <div id="available"> 
-                  {home.clicked && <CalendarHome />}
-                  {home.driversAvailable &&  <p id="note">For this date and time there are a total of <b>{home.driversAvailable.length}</b> drivers available:</p>}
-               </div>
-            </div>
-            <DriversList /> 
+      <div className="search-container">
+        <div className="form-container">
+          <h4>Search for available chauffeurs:</h4>
+          <Form id="form">
+            <Row id="row">
+              <Form.Control autoComplete="off"
+                            defaultValue={home.selectedDate? new Date(home.selectedDate).toString().slice(4,15): ""} 
+                            onClick={this.clickDate} 
+                            id="date-home" 
+                            placeholder="Choose Date">
+              </Form.Control>
+              <select onChange={this.handleChange} name="start" className="time-home" as="select">
+                <option>Start Time</option>
+                {this.renderHours1()}
+              </select>
+              <select onChange={this.handleChange} name="end" className="time-home" as="select">
+              <option>End Time</option>
+                {this.renderHours2()}
+              </select>
+              <Button variant="light" onClick={this.searchAvailable} type="button" id="filter">Search</Button>
+              <Button variant="light" onClick={this.reset} type="reset" id="reset">Reset</Button>
+            </Row>
+          </Form>
+          <div id="available"> 
+            {home.clicked && <CalendarHome />}
+            {home.driversAvailable &&  <p id="note">For this date and time there are a total of <b>{home.driversAvailable.length}</b> drivers available:</p>}
+          </div>
         </div>
+        <DriversList /> 
+      </div>
     )
   }
 }

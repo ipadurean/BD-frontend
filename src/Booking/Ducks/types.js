@@ -1,0 +1,9 @@
+const ADD_DRIVER_TRIPS = 'ADD_DRIVER_TRIPS';
+const BOOK_RIDE = 'BOOK_RIDE';
+const RESET_BOOKED = 'RESET_BOOKED';
+
+export default {
+  ADD_DRIVER_TRIPS,
+  BOOK_RIDE,
+  RESET_BOOKED
+}

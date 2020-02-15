@@ -1,14 +1,22 @@
-export default function bookingReducer(state = {booked: false, trip: {}, driverTrips: []}, action){
+import types from './types'
+
+const initialState = {
+  booked: false,
+  trip: {},
+  driverTrips: []
+}
+
+export default function bookingReducer(state = initialState , action) {
   
   switch (action.type) {
 
-    case 'ADD_DRIVER':
+    case types.ADD_DRIVER:
       return {...state, driverTrips: action.payload}
 
-    case 'BOOK_RIDE':
+    case types.BOOK_RIDE:
       return { booked: true, trip: action.payload};
 
-    case 'RESET_BOOKED':
+    case types.RESET_BOOKED:
       return {booked: false, trips: {}}
 
     default:
