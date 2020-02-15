@@ -3,6 +3,7 @@ import '../styles/Invoice.css';
 import TimeZone from '../../utils/timeZone';
 import { resetBooked } from '../ducks/actions';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
 
 const Invoice = (props) => {
@@ -30,6 +31,11 @@ const Invoice = (props) => {
         </div>
     </div>
   )
+}
+
+Invoice.propTypes = {
+  trip: PropTypes.object,
+  driver: PropTypes.object
 }
   
 function mapDispatchToProps(dispatch){

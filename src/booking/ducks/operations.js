@@ -13,10 +13,10 @@ export const fetchBooking = (bookingBody) => {
       },
       body: JSON.stringify(bookingBody)
     })
-    .then(res => res.json())
-    .then(trip => {
-      dispatch(bookRide(trip))
-    })
+      .then(res => res.json())
+      .then(trip => {
+        dispatch(bookRide(trip))
+      })
   }
 }
 

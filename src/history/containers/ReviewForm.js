@@ -3,8 +3,9 @@ import { Button, FormGroup, FormControl } from "react-bootstrap";
 import '../styles/ReviewForm.css';
 import { addReview } from '../ducks/operations';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
-class Review extends Component {
+class ReviewForm extends Component {
   constructor(){
       super()
       this.state = {
@@ -30,6 +31,7 @@ class Review extends Component {
   
   render(){
     const { submitted } = this.props.rideHistory
+    console.log(submitted)
    
     return (
       <div className="review-form">
@@ -50,6 +52,9 @@ class Review extends Component {
   }
 }
 
+ReviewForm.propTypes = {
+  submitted: PropTypes.bool
+}
 
 function mapStateToProps(state){
   return state
@@ -61,4 +66,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Review);
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewForm);

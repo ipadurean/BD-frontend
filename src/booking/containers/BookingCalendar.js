@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { fetchBooking } from '../ducks/operations';
 import leftArrow from '../../utils/assets/left-arrow.svg';
 import rightArrow from '../../utils/assets/right-arrow.svg';
+import PropTypes from 'prop-types';
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"]  
 
@@ -127,13 +128,13 @@ class BookingCalendar extends Component {
   }
 
   render() {
-    const { booking } = this.props
+    const { booking, driver } = this.props
 
       return (
         <div className="booking-container">
           {booking.booked ?
           <Invoice trip={booking.trip} 
-                   driver={this.props.driver}
+                   driver={driver}
                    reset={this.reset} /> :
           <div className="booking-before">
             <div className="calendar-container">
@@ -158,13 +159,13 @@ class BookingCalendar extends Component {
                                                     select={this.handleClick}
                                                     start={this.state.start}
                                                     end={this.state.end}
-                                                    driver={this.props.driver}
+                                                    driver={driver}
                                               />}
               </div>
               </div>
               <div className="book">
                 <TripForm time={this.state.end - this.state.start} 
-                          driver={this.props.driver}
+                          driver={driver}
                           date={{day: this.state.dayClicked, start: this.state.start, end: this.state.end}}
                           submit={this.bookRide} />
               </div>
@@ -174,6 +175,12 @@ class BookingCalendar extends Component {
     }
 }
 
+BookingCalendar.propTypes = {
+  home: PropTypes.object,
+  booking: PropTypes.object,
+  user: PropTypes.object,
+  driver: PropTypes.object
+}
 
 function mapStateToProps(state){
   return { home: state.home , booking: state.booking, user: state.auth.user }

@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/History.css';
 import Trip from '../containers/Trip';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
 
 const RideHistory = (props) => {
@@ -53,6 +54,11 @@ const RideHistory = (props) => {
       </div>
     </div>
   );
+}
+
+RideHistory.propTypes = {
+  user: PropTypes.object,
+  drivers: PropTypes.array
 }
 
 function mapStateToProps(state){

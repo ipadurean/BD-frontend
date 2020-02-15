@@ -5,6 +5,7 @@ import TimeZone from '../../utils/timeZone';
 import { Button } from "react-bootstrap";
 import { fetchDelete } from '../ducks/operations';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
 
 
@@ -79,6 +80,12 @@ class Trip extends Component {
   }
 }
   
+Trip.propTypes = {
+  trip: PropTypes.object,
+  cancel: PropTypes.bool,
+  driver: PropTypes.object,
+  review: PropTypes.bool
+}
 
 function mapStateToProps(state){
   return state

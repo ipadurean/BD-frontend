@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/ReviewCard.css';
+import PropTypes from 'prop-types';
 
 const ReviewCard = (props) => {
   return(
@@ -7,6 +8,10 @@ const ReviewCard = (props) => {
       {props.review}
     </div>
   )
+}
+
+ReviewCard.propTypes = {
+  review: PropTypes.string
 }
 
 export default ReviewCard;

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { fetchDriver } from '../ducks/operations';
 import ReviewCard from '../components/ReviewCard';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import PropTypes from 'prop-types';
 
 
 class DriverProfile extends Component {
@@ -44,6 +45,11 @@ class DriverProfile extends Component {
       )
   }
 
+}
+
+DriverProfile.propTypes = {
+  booking: PropTypes.object,
+  driver: PropTypes.object
 }
 
 function mapStateToProps(state){

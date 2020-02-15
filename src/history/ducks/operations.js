@@ -13,9 +13,8 @@ export const fetchDelete = (tripId) => {
 }
 
 export const addReview = (tripId, review) => {
-
+  
   return function (dispatch) {
-    dispatch(submitReview)
     fetch(`${baseUrl}/trips/${tripId}`, {
       method: 'PATCH',
       headers: {
@@ -26,5 +25,7 @@ export const addReview = (tripId, review) => {
         review
       })
     })
+      .then(res => res.json())
+      .then(dispatch(submitReview()))
   }
 }

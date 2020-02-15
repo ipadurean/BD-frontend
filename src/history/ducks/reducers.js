@@ -1,7 +1,6 @@
 import types from './types'
 
 const initialState = {
-  review: "",
   submitted: false
 }
 
