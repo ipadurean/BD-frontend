@@ -1,0 +1,21 @@
+.nav-container {
+  box-shadow: 0 14px 6px -6px rgb(48, 47, 47);
+}
+
+.trip-history {
+  padding: 3%;
+  background-color: rgb(248, 249, 250);
+}
+
+
+
+.user {
+  margin: 50px;
+  padding: 2% 10%;
+}
+
+.user h5 {
+  margin-top: 40px;
+}
+
+

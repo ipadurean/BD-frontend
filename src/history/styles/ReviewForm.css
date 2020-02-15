@@ -1,0 +1,14 @@
+.review-form{
+  padding: 3%;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  left: 50%;
+  min-height: 300px;
+}
+
+#review {
+  height: 200px;
+}
+
+
