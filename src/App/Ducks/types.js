@@ -1,7 +1,0 @@
-const LOADING_DRIVERS = 'LOADING_DRIVERS';
-const ADD_DRIVERS = 'ADD_DRIVERS';
-
-export default {
-  LOADING_DRIVERS,
-  ADD_DRIVERS
-}
