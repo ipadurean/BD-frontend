@@ -100,7 +100,7 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className="Signup">
+      <div className="signup">
         <Navbar>
             <span className="bttn">
                   <Button href="/login" variant="outline-success">Login</Button>

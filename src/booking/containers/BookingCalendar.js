@@ -102,32 +102,33 @@ class BookingCalendar extends Component {
       }
   }
 
-bookRide = (event, item) => {
-  event.preventDefault();
-  let user = this.props.user.id
-  let driver = this.props.driver.id
-  let timeTotal = this.state.end - this.state.start
-  let date1 = new Date(new Date(this.state.dayClicked).setHours(this.state.start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
-  let date2 = new Date(new Date(this.state.dayClicked).setHours(this.state.end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
-  const bookingBody = {
-    user_id: user, 
-    driver_id:driver ,
-    time_booked: timeTotal,
-    start_time: date1,
-    end_time: date2,
-    total: this.props.driver.rate * timeTotal,
-    note: item.extra,
-    address: item.address, 
-    review: "",
-    rating: 4
+  bookRide = (event, item) => {
+    event.preventDefault();
+    let user = this.props.user.id
+    let driver = this.props.driver.id
+    let timeTotal = this.state.end - this.state.start
+    let date1 = new Date(new Date(this.state.dayClicked).setHours(this.state.start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+    let date2 = new Date(new Date(this.state.dayClicked).setHours(this.state.end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+    const bookingBody = {
+      user_id: user, 
+      driver_id:driver ,
+      time_booked: timeTotal,
+      start_time: date1,
+      end_time: date2,
+      total: this.props.driver.rate * timeTotal,
+      note: item.extra,
+      address: item.address, 
+      review: "",
+      rating: 4
+    }
+    if (user && driver && timeTotal && !!item.address) {
+      this.props.book(bookingBody)
+    }
   }
-  if (user && driver && timeTotal && !!item.address) {
-    this.props.book(bookingBody)
-  }
-}
 
   render() {
     const { booking } = this.props
+
       return (
         <div className="booking-container">
           {booking.booked ?
@@ -175,13 +176,13 @@ bookRide = (event, item) => {
 
 
 function mapStateToProps(state){
-    return { home: state.home , booking: state.booking, user: state.auth.user }
+  return { home: state.home , booking: state.booking, user: state.auth.user }
 }
 
 function mapDispatchToProps(dispatch){
-    return {
-        book: (obj) => dispatch(fetchBooking(obj))
-    }
+  return {
+    book: (obj) => dispatch(fetchBooking(obj))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookingCalendar);

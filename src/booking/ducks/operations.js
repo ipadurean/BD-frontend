@@ -13,22 +13,21 @@ export const fetchBooking = (bookingBody) => {
       },
       body: JSON.stringify(bookingBody)
     })
-      .then(res => res.json())
-      .then(trip => {
-        dispatch(bookRide(trip))
-      })
+    .then(res => res.json())
+    .then(trip => {
+      dispatch(bookRide(trip))
+    })
   }
 }
 
 
 export const fetchDriver = (id) => {
 
-  return function (dispatch) {
+  return function(dispatch) {
     fetch(`${baseUrl}/drivers/${id}`)
-      .then(res => res.json())
-      .then(driver => {
-        dispatch(addDriverTrips(driver));
-      })
+    .then(res => res.json())
+    .then(driver => {
+      dispatch(addDriverTrips(driver));
+    })
   };
-
 }

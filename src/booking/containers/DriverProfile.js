@@ -4,9 +4,7 @@ import BookingCalendar from './BookingCalendar';
 import { connect } from "react-redux";
 import { fetchDriver } from '../ducks/operations';
 import ReviewCard from '../components/ReviewCard';
-
-
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 class DriverProfile extends Component {
@@ -18,6 +16,7 @@ class DriverProfile extends Component {
 
   render(){
     const { driver, booking } = this.props
+    
       return (
         <div className="driver-container">
           <div className="bio">
@@ -32,7 +31,7 @@ class DriverProfile extends Component {
             
           <div className="vehicle">
             <div id="vehicle-model">{driver.car}</div>
-            <img className="car-photo" alt="car" src={driver.car_photo}/>
+            <LazyLoadImage effect="blur" className="car-photo" alt="car" src={driver.car_photo} />
           </div>
           <h5 id="reviews-title">Reviews:</h5>
           <div className="reviewList">
@@ -48,13 +47,13 @@ class DriverProfile extends Component {
 }
 
 function mapStateToProps(state){
-    return state
+  return state
 }
 
 function mapDispatchToProps(dispatch){
-    return {
-        getDriver: (id) => dispatch(fetchDriver(id))
-    }
+  return {
+    getDriver: (id) => dispatch(fetchDriver(id))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DriverProfile);

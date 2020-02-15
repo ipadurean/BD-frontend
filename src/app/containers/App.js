@@ -30,7 +30,7 @@ class App extends Component {
           {drivers.loading && <div className="loading">Loading...</div>}
         <NavBar />
         <Switch>
-          <Route exact path='/' render={() => {
+          <Route exact path='/home' render={() => {
             return localStorage.getItem('jwt') ?
               <Home /> :
             <Redirect to="/login" />
@@ -38,7 +38,7 @@ class App extends Component {
                   
           <Route exact path='/login' render={() => {
             return auth.authorized ?
-              <Redirect to="/" /> :
+              <Redirect to="/home" /> :
               <Login />
           }} />
 
@@ -60,14 +60,14 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-    return state
+  return state
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        fetchDrivers: () => dispatch(fetchDrivers()),
-        authorize: (history) => dispatch(authorize(history))
-    }
+  return {
+    fetchDrivers: () => dispatch(fetchDrivers()),
+    authorize: (history) => dispatch(authorize(history))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App))

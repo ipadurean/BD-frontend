@@ -10,7 +10,7 @@ export default function bookingReducer(state = initialState , action) {
   
   switch (action.type) {
 
-    case types.ADD_DRIVER:
+    case types.ADD_DRIVER_TRIPS:
       return {...state, driverTrips: action.payload}
 
     case types.BOOK_RIDE:

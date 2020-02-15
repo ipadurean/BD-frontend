@@ -31,7 +31,8 @@
   border: 1px solid white;
   width: 90vw;
   border-radius: 10px;
-  height: 200px;
+  height: auto;
+  max-height: 200px;
   overflow: scroll;
 }
 
@@ -64,37 +65,35 @@
 }
 
 .car-photo {
-  
   width: 450px;
   height: 250px;
   object-fit: cover;
-  }
+}
 
-  #profile-photo{
-    float: left;
-    margin: 5px;
-    height: 8em;
-    width: 8em;
-    border-radius: 18em;
-  }
+#profile-photo{
+  float: left;
+  margin: 5px;
+  height: 8em;
+  width: 8em;
+  border-radius: 18em;
+}
 
-  #vehicle-model {
-    height: 35px;
-    font-size: 20px;
-    background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
-    text-align: center;
-    
-  }
+#vehicle-model {
+  height: 35px;
+  font-size: 20px;
+  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
+  text-align: center;
+}
 
-  #hourly-rate {
-    color: rgb(185, 136, 121);
-    font-size: 20px;
-    height: 30px;
-  }
+#hourly-rate {
+  color: rgb(185, 136, 121);
+  font-size: 20px;
+  height: 30px;
+}
 
-  .svg-icon {
-    cursor: pointer;
-    border: 0;
-  }
+.svg-icon {
+  cursor: pointer;
+  border: 0;
+}
   
  

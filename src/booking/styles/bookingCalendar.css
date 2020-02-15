@@ -11,174 +11,168 @@
 
 
 .booking-container {
-   box-shadow: 1px 1px 1px 1px  #e6e7e9;
-   border-radius: 5px;
-   background-image: linear-gradient(to bottom, rgb(245, 247, 246), #f5f7f8);
-   margin-bottom: 10%;
-   border: 2px solid white;
+  box-shadow: 1px 1px 1px 1px  #e6e7e9;
+  border-radius: 5px;
+  background-image: linear-gradient(to bottom, rgb(245, 247, 246), #f5f7f8);
+  margin-bottom: 10%;
+  border: 2px solid white;
 }
 
 .booking-before {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 90vw;
-    margin: 3vw;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin: 3vw;
+  justify-content: space-around;
 }
 
 .calendar-container {
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-items: center;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-items: center;
 }
 
 
 .book {
-    min-width: 450px !important;
-    max-width: 500px !important;
-    min-height: 460px !important;
-    padding: 3%;
+  min-width: 450px !important;
+  max-width: 500px !important;
+  min-height: 460px !important;
+  padding: 3%;
 }
 
 .day {
-    width: 65px;
-    margin: 20px;
-    border-radius: var(--calendar-border-radius);
-    min-height: 460px !important;
-    max-height: 460px !important;
+  width: 65px;
+  margin: 20px;
+  border-radius: var(--calendar-border-radius);
+  min-height: 460px !important;
+  max-height: 460px !important;
 }
 
 #calendar-note {
-    text-shadow: 1px 1px white;
-   
+  text-shadow: 1px 1px white;
 }
 
 
 .calendar *, .calendar *:before, .calendar *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .calendar {
-    margin: 0 1vw;
-    display: block !important;
-    min-width: 300px !important;
-    max-width: 300px !important;
-    min-height: 300px !important;
-    max-height: 300px !important;
-    padding: 3%;
+  margin: 0 1vw;
+  display: block !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+  min-height: 300px !important;
+  max-height: 300px !important;
+  padding: 3%;
 }
 
 
 .calendar .calendar-btn {
-    background: none;
-    border: 0;
-    outline: none;
+  background: none;
+  border: 0;
+  outline: none;
    
 }
 
 .calendar :active {
-        border-radius: var(--calendar-border-radius);
-        box-shadow: 0 0 0 2px rgba(var(--calendar-today-bg-color), 0.1)
-    }
+  border-radius: var(--calendar-border-radius);
+  box-shadow: 0 0 0 2px rgba(var(--calendar-today-bg-color), 0.1)
+}
 
 
 .calendar .calendar-header {
-    margin-top: 30px;
-    align-items: center;
-    display: flex;
-    padding: 10px;
-    text-transform: uppercase;
-    border-radius: var(--calendar-border-radius);
-    
+  margin-top: 30px;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  text-transform: uppercase;
+  border-radius: var(--calendar-border-radius);
 }
 
 
 .calendar .calendar-header__label {
-    color: rgb(77, 77, 77);
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
+  color: rgb(77, 77, 77);
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
 }
 
 .calendar .calendar-week {
-    padding: 5px;
-    background-color: var(--calendar-selected-bg-color);
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 10px 10px 0 0;
-    border: 1px solid var(--calendar-border-color);
+  padding: 5px;
+  background-color: var(--calendar-selected-bg-color);
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid var(--calendar-border-color);
 }
 
 .calendar .calendar-week span {
-    color: var(--calendar-selected-color);
-    flex-direction: column;
-    flex: 0 0 14.28%;
-    font-size: 0.8em;
-    font-weight: bold;
-    max-width: 14.28%;
-    padding: 7px 0px;
-    text-align: center;
-    text-transform: uppercase;
-    
-   
+  color: var(--calendar-selected-color);
+  flex-direction: column;
+  flex: 0 0 14.28%;
+  font-size: 0.8em;
+  font-weight: bold;
+  max-width: 14.28%;
+  padding: 7px 0px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .calendar .calendar-body {
-    padding: 5px;
-    background-color:white;
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 0 0 10px 10px;
-    border: 1px solid var(--calendar-border-color);
+  padding: 5px;
+  background-color:white;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid var(--calendar-border-color);
 }
 
 .calendar .calendar-date {
-    font-size: 0.9em;
-    align-items: center;
-    background-color: #fff;
-    border-radius: var(--calendar-border-radius);
-    display: flex;
-    flex-direction: column; 
-    flex: 0 0 14.28%;
-    max-width: 14.28%;
-    padding: 4px;
+  font-size: 0.9em;
+  align-items: center;
+  background-color: #fff;
+  border-radius: var(--calendar-border-radius);
+  display: flex;
+  flex-direction: column; 
+  flex: 0 0 14.28%;
+  max-width: 14.28%;
+  padding: 4px;
 }
 
 
 .calendar .calendar-date--active {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .cal {
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    width: 30px;
-    height:28px;
-    align-items: center;
-    justify-content: center;
-    
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 30px;
+  height:28px;
+  align-items: center;
+  justify-content: center;
 }
 
 .calendar #calendar-date--today .cal{
-    background-color: var(--calendar-today-bg-color);
-    color: var(--calendar-today-color);
-    
+  background-color: var(--calendar-today-bg-color);
+  color: var(--calendar-today-color);
 }
 
 .calendar .calendar-date--selected .cal{
-    background-color: var(--calendar-selected-bg-color);
-    color: var(--calendar-selected-color);
+  background-color: var(--calendar-selected-bg-color);
+  color: var(--calendar-selected-color);
 }
 
 .calendar .calendar-date--disabled {
-    border-radius: 0;
-    cursor: not-allowed;
-    opacity: 0.2;
-    user-select: none !important;
+  border-radius: 0;
+  cursor: not-allowed;
+  opacity: 0.2;
+  user-select: none !important;
 }
 
 

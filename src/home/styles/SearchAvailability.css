@@ -1,5 +1,5 @@
 .search-container{
-  padding: 5%;
+  padding: 1%;
   background-color: rgb(248, 249, 250);
 }
 
@@ -27,7 +27,6 @@
 
 #form {
   padding: 1% 1% 0%;
-  
 }
 
 #filter{
@@ -54,5 +53,5 @@
 }
 
 #available{
-   height: 40px;
+  height: 40px;
 }

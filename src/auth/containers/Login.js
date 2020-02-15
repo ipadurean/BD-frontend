@@ -14,7 +14,6 @@ class Login extends Component {
     };
   }
 
-  
   validateForm() {
     return this.state.username.length > 0 && this.state.password.length > 0;
   }
@@ -38,7 +37,7 @@ class Login extends Component {
             <div>
               <span className="bttn">
                 <Button href="/login" variant="outline-success">Login</Button>
-                </span>
+              </span>
               <span className="bttn">
                 <Button href="/register" variant="outline-success">Sign up</Button>
               </span>

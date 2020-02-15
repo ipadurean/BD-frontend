@@ -1,5 +1,3 @@
-
-
 .trip-container {
   position: relative;
   min-width: 800px;
@@ -31,7 +29,6 @@
 #date {
   margin-left:10em;
 }
-
 
 #trip-body {
   animation: slidein 0.5s;

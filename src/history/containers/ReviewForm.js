@@ -5,49 +5,46 @@ import { addReview } from '../ducks/operations';
 import { connect } from "react-redux";
 
 class Review extends Component {
-    constructor(){
-        super()
-        this.state = {
-            review: ""
-        }
-    }
+  constructor(){
+      super()
+      this.state = {
+          review: ""
+      }
+  }
 
-   
-    handleChange = (event) => {
-        this.setState({
-          review: event.target.value + ` (${this.props.auth.user.username})`
-        })
-    }
+  handleChange = (event) => {
+    this.setState({
+      review: event.target.value + ` (${this.props.auth.user.username})`
+    })
+  }
 
-    validateForm = () => {
-        return this.state.review.length > 0
-    }
+  validateForm = () => {
+    return this.state.review.length > 0
+  }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
-        this.props.sendReview(this.props.trip.id, this.state.review)
-    }
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.sendReview(this.props.trip.id, this.state.review)
+  }
 
   
-
-render(){
+  render(){
     const { submitted } = this.props.rideHistory
-    console.log(this.state)
+   
     return (
-        <div className="review-form">
-            {submitted?
-              <h4>Your review has been posted!</h4> :
-              <form onSubmit={this.handleSubmit} >
-                  <FormGroup  controlId="review" bssize="large">
-                      <FormControl as="textarea"
-                                  onChange={this.handleChange}
-                                  type="text"
-                                  autoFocus
-                      />
-                  </FormGroup>
-                  <Button variant="success" size="sm" type="submit" value="Submit" disabled={!this.validateForm()}>Submit</Button>
-
-              </form>}
+      <div className="review-form">
+        {submitted?
+          <h4>Your review has been posted!</h4> :
+          <form onSubmit={this.handleSubmit} >
+            <FormGroup  controlId="review" bssize="large">
+              <FormControl as="textarea"
+                          onChange={this.handleChange}
+                          type="text"
+                          autoFocus
+              />
+            </FormGroup>
+            <Button variant="success" size="sm" type="submit" value="Submit" disabled={!this.validateForm()}>Submit</Button>
+          </form>}
       </div>
     )
   }

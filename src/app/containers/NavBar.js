@@ -17,13 +17,12 @@ const NavBar = (props) => {
 
   return (
     <div className="nav-container">
-      <a href="/" className="nav-btn">Home</a>
+      <a href="/home" className="nav-btn">Home</a>
       <Link to="/about" className="nav-btn">About</Link>
       <a href="/history" className="nav-btn">Ride History</a>
       <button id="bttn" onClick={logout} to="/" >Logout</button>
     </div>
   );
-  
 }
 
 function mapDispatchToProps(dispatch){

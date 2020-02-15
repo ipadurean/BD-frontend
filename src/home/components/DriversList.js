@@ -14,7 +14,7 @@ const DriversList = (props) => {
     <div className="list">
       {drivers.map(driver => {
         return  <Link to={`/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>
-                      <Driver key={driver.id}  driver={driver}  /> 
+                  <Driver key={driver.id}  driver={driver}  /> 
                 </Link>
         })
       }

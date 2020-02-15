@@ -20,9 +20,9 @@
 
 
 .calendar-home :active {
-      border-radius: var(--calendar-border-radius);
-      box-shadow: 0 0 0 1px rgba(var(--calendar-today-bg-color), 0.1)
-  }
+  border-radius: var(--calendar-border-radius);
+  box-shadow: 0 0 0 1px rgba(var(--calendar-today-bg-color), 0.1)
+}
 
 
 .calendar-home .calendar-header {
@@ -61,7 +61,6 @@
   max-width: 14.28%;
   padding: 10px 0px;
   text-align: center;
- 
 }
 
 .calendar-home .calendar-body {
@@ -82,13 +81,10 @@
   padding: 5px;
 }
 
-
 .calendar-home .calendar-date--active {
   cursor: pointer;
   font-size: 14px;
 }
-
-
 
 .calendar-home #calendar-date--today {
   background-color: var(--calendar-today-bg-color);
