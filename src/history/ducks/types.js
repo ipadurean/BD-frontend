@@ -1,0 +1,7 @@
+const SUBMIT_REVIEW = 'SUBMIT_REVIEW';
+const DELETE_TRIP = 'DELETE_TRIP'
+
+export default {
+  SUBMIT_REVIEW,
+  DELETE_TRIP
+}

@@ -1,0 +1,71 @@
+.list {
+  padding: 10% 5%;
+}
+
+.driver-card{
+  display: flex;
+  flex-direction: row;
+  margin: 3vh;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.driver-card:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
+}
+
+.driver-brief {
+  color: rgb(63, 71, 82);
+  font-family: "Coda", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: calc(400px + 10vw);
+
+}
+
+#select {
+  font-family: Roboto;
+  font-size: calc(6px + 0.8vw);
+  font-weight: 400;
+  margin: 0 50px;
+  color: rgb(75, 58, 58);
+  width: calc(100px + 10vw);
+  height: calc(40px + 1vw);
+  margin: 3%;
+  border-radius: 10px;
+  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
+  border: 1px solid rgb(209, 197, 175);
+  box-shadow: 1px 1px 1px 1px #757272;
+}
+
+#img {
+  
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #757272;
+  border-radius: 50%;
+}
+
+.title {
+  width: 150px;
+}
+
+#total {
+  font-family: Cambria;
+  background-color: rgb(245, 242, 239);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: calc(10px + 0.7vw);
+  font-weight: 500;
+  color: rgb(62, 119, 71);
+  position: absolute;
+  left: calc(300px + 30%);
+  width: calc(40px + 1.5vw);
+}
