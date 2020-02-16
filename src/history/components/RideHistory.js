@@ -57,8 +57,8 @@ const RideHistory = (props) => {
 }
 
 RideHistory.propTypes = {
-  user: PropTypes.object,
-  drivers: PropTypes.array
+  user: PropTypes.object.isRequired,
+  drivers: PropTypes.array.isRequired
 }
 
 function mapStateToProps(state){

@@ -53,7 +53,7 @@ class ReviewForm extends Component {
 }
 
 ReviewForm.propTypes = {
-  submitted: PropTypes.bool
+  submitted: PropTypes.bool.isRequired
 }
 
 function mapStateToProps(state){

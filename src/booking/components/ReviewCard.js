@@ -11,7 +11,7 @@ const ReviewCard = (props) => {
 }
 
 ReviewCard.propTypes = {
-  review: PropTypes.string
+  review: PropTypes.string.isRequired
 }
 
 export default ReviewCard;

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 
 const Invoice = (props) => {
-  
+  console.log(props)
   const { trip } = props.booking
   const { driver } = props
 
@@ -37,8 +37,15 @@ const Invoice = (props) => {
 }
 
 Invoice.propTypes = {
-  trip: PropTypes.object,
-  driver: PropTypes.object
+  trip: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    created_at: PropTypes.string.isRequired,
+    start_time: PropTypes.string.isRequired,
+    end_time: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    total: PropTypes.number.isRequired
+  }),
+  driver: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {

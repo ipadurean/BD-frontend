@@ -20,7 +20,7 @@ export const authorize = (history) => {
             alert(user.errors);
             history.push('/login');
             localStorage.removeItem('jwt');
-            return dispatch(logout)
+            return dispatch(logout())
           } else {
             return dispatch(addUser(user))
           }

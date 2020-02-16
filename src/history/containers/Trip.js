@@ -81,10 +81,10 @@ class Trip extends Component {
 }
   
 Trip.propTypes = {
-  trip: PropTypes.object,
-  cancel: PropTypes.bool,
-  driver: PropTypes.object,
-  review: PropTypes.bool
+  trip: PropTypes.object.isRequired,
+  cancel: PropTypes.bool.isRequired,
+  driver: PropTypes.object.isRequired,
+  review: PropTypes.bool.isRequired
 }
 
 function mapStateToProps(state){

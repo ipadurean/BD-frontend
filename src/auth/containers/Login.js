@@ -45,7 +45,7 @@ class Login extends Component {
         </Navbar>  
         <h5>For Demo please login !</h5>
         <h6>Username: Guest</h6>
-        <h6>Password: pass</h6>
+        <h6>Password: guestpass</h6>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="username" bssize="large">
           <Form.Label>Username</Form.Label>

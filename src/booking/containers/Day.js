@@ -36,7 +36,7 @@ class Day extends Component {
    
     const { start, end } = this.props
     const bookedHours = this.filterTrips(this.state.trips);
-    console.log(bookedHours)
+    
     let hours = [];
     let i = 0;
 

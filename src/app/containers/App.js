@@ -29,14 +29,14 @@ class App extends Component {
     return (
       <div>
         <Header />
-          {loading && <div className="loading">Loading...</div>}
+        {loading && <div className="loading">Loading...</div>}
         <NavBar />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/home' render={() => {
             return localStorage.getItem('jwt') ?
               <Home /> :
-            <Redirect to="/login" />
+                <Redirect to="/login" />
           }} />
                   
           <Route exact path='/login' render={() => {
@@ -46,16 +46,16 @@ class App extends Component {
           }} />
 
           <Route exact path="/history" render={() => {
-              return authorized && <RideHistory />
+            return authorized && <RideHistory />
           }} />
           <Route exact path="/register" component={Register} />
           <Route exact path='/about' component={About} />
           <Route exact path="/:name" render={({ match }) => {
-              const { name } = match.params
-              const driver = drivers.find(el => el.name === name)
+            const { name } = match.params
+            const driver = drivers.find(el => el.name === name)
             return booking.booked ? <Invoice driver={driver} /> :
-                    driver ? <DriverProfile driver={driver} /> :
-                    <div>Page not found</div>
+              driver ? <DriverProfile driver={driver} /> :
+                <div>Page not found</div>
           }} />
         </Switch>
       </div>
@@ -64,9 +64,12 @@ class App extends Component {
 }
 
 App.propTypes = {
-  drivers: PropTypes.array,
-  authorized: PropTypes.bool,
-  loading: PropTypes.bool
+  drivers: PropTypes.array.isRequired,
+  authorized: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  booking: PropTypes.shape({
+    booked: PropTypes.bool.isRequired
+  })
 }
 
 function mapStateToProps(state) {
