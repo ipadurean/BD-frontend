@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Day from './Day';
 import '../styles/bookingCalendar.css';
 import TripForm from './TripForm';
-import Invoice from '../components/Invoice';
 import Week from '../components/Week';
 import { connect } from "react-redux";
 import { fetchBooking } from '../ducks/operations';
@@ -128,14 +127,10 @@ class BookingCalendar extends Component {
   }
 
   render() {
-    const { booking, driver } = this.props
+    const { driver } = this.props
 
       return (
         <div className="booking-container">
-          {booking.booked ?
-          <Invoice trip={booking.trip} 
-                   driver={driver}
-                   reset={this.reset} /> :
           <div className="booking-before">
             <div className="calendar-container">
               <div id="myCalendar" className="calendar" >
@@ -169,7 +164,7 @@ class BookingCalendar extends Component {
                           date={{day: this.state.dayClicked, start: this.state.start, end: this.state.end}}
                           submit={this.bookRide} />
               </div>
-          </div>}
+          </div>
         </div> 
         )
     }
@@ -183,7 +178,7 @@ BookingCalendar.propTypes = {
 }
 
 function mapStateToProps(state){
-  return { home: state.home , booking: state.booking, user: state.auth.user }
+  return { home: state.home , user: state.auth.user }
 }
 
 function mapDispatchToProps(dispatch){

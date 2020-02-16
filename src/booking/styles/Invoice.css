@@ -7,7 +7,8 @@
 .invoice {
   position: absolute;
   animation: fadeIn 1s;
-  background-color: rgb(240, 247, 230);
+  padding: 3%;
+  background-color: rgb(231, 235, 225);
   border: 5px solid rgb(253, 253, 253);
   box-shadow: 3px 30px 35px 15px  #c0c0c0;
   z-index: 1;
@@ -16,18 +17,31 @@
   left:100px;
   right:100px;
   border-radius: 5px;
-  padding: 5% 10%;
+  overflow: hidden;
 }
 
-.invoice p{
-   border-bottom: 1px solid rgb(230, 229, 229);
+#trip-details {
+  margin: 5%;
+  line-height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
 }
 
-.invoice button {
-  margin-top: 60px
-}
-
-.back {
+#back {
   border: 0;
-  background-color: rgb(240, 244, 248)
+  background-color: rgb(231, 235, 225);
+}
+
+#trip-num {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: large;
+  font-weight: 500;
+}
+
+#booking-time {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: medium;
+  font-weight: 100;
 }

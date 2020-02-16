@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 
 const Invoice = (props) => {
   
-  const { trip, driver } = props
+  const { trip } = props.booking
+  const { driver } = props
 
   function resetBook() {
     props.reset()
@@ -16,19 +17,21 @@ const Invoice = (props) => {
    
   return (
     <div className="invoice">
-      <p id="num">Trip number: {trip.id + 1000}<span id="booking-time">Booked on: <em>{new Date(trip.created_at).toString()}</em></span></p>
-      <h3>Your ride with {driver.name} was booked!</h3>
-        <p> Date: <b>{TimeZone.toCentralTime(trip.start_time).slice(0, 15)}</b></p>
-        <p>From: <b>{TimeZone.toCentralTime(trip.start_time).slice(16, 18)}:00</b> to:<b>{TimeZone.toCentralTime(trip.end_time).slice(16, 18)}:00</b></p>
-        <p>The pick up address is: <b>{trip.address}</b></p>
-        <p>Total cost: <b>${trip.total}</b></p>
-        <div>
-          <button onClick={resetBook} className="back">
-            <svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" >
-              <polygon points="7.41 1.41 6 0 0 6 6 12 7.41 10.59 2.83 6"></polygon>
-            </svg><span> Back</span>
-          </button>  
-        </div>
+      <div id="trip-num">Trip no:<b>{trip.id + 1000} </b><span id="booking-time"> Booked on: <em>{new Date(trip.created_at).toString()}</em></span></div>
+      <div id="trip-details">
+        <h3>Your ride with {driver.name} was booked!</h3>
+        <div> Date: <b>{TimeZone.toCentralTime(trip.start_time).slice(0, 15)}</b></div>
+        <div>From: <b>{TimeZone.toCentralTime(trip.start_time).slice(16, 18)}:00</b> to:<b>{TimeZone.toCentralTime(trip.end_time).slice(16, 18)}:00</b></div>
+        <div>The pick up address is: <b>{trip.address}</b></div>
+        <div>Total cost: <b>${trip.total}</b></div>
+      </div>
+      <div>
+        <button onClick={resetBook} id="back">
+          <svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" >
+            <polygon points="7.41 1.41 6 0 0 6 6 12 7.41 10.59 2.83 6"></polygon>
+          </svg><span> Back</span>
+        </button>  
+      </div>
     </div>
   )
 }
@@ -37,6 +40,10 @@ Invoice.propTypes = {
   trip: PropTypes.object,
   driver: PropTypes.object
 }
+
+function mapStateToProps(state) {
+  return state
+}
   
 function mapDispatchToProps(dispatch){
   return {
@@ -44,4 +51,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(null, mapDispatchToProps)(Invoice);
+export default connect(mapStateToProps, mapDispatchToProps)(Invoice);

@@ -33,24 +33,26 @@ class Day extends Component {
   }
 
   renderHours = () => {
+   
     const { start, end } = this.props
     const bookedHours = this.filterTrips(this.state.trips);
+    console.log(bookedHours)
     let hours = [];
     let i = 0;
 
-    while (i < 24){
-      if(i > start && bookedHours.includes(i)){
+    while (i < 24) {
+      if(i > parseInt(start) && bookedHours.includes(i)){
           for(let k=i; k<24; k++){
               hours.push(<div data-val={0} key={k} className="busy">N/A</div>)
           } return hours;
       } else if(bookedHours.includes(i)){
         hours.push(<div data-val={0} key={i} className="busy">N/A</div>)
-      } else if (i === start) {
-      hours.push(<div data-val={i} key={i} className="hr" id="selected">{i%12||12}:00 {i<12?"am":"pm"}</div>)
-      } else if(i >= start && i< end) {
-      hours[i] = <div data-val={i} key={i} className="hr" id="selected">{i%12||12}:00 {i<12?"am":"pm"}</div>
+      } else if (i === parseInt(start)) {
+        hours.push(<div data-val={i} key={i} className="hr" id="selected">{i%12||12}:00 {i<12?"am":"pm"}</div>)
+      } else if(i >= parseInt(start) && i < parseInt(end)) {
+        hours[i] = <div data-val={i} key={i} className="hr" id="selected">{i%12||12}:00 {i<12?"am":"pm"}</div>
       } else {
-      hours.push(<div data-val={i} key={i} className="hr">{i%12||12}:00 {i<12?"am":"pm"}</div>)
+        hours.push(<div data-val={i} key={i} className="hr">{i%12||12}:00 {i<12?"am":"pm"}</div>)
       }
       i++;
     }

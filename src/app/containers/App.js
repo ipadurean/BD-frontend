@@ -7,6 +7,7 @@ import Register from '../../auth/containers/Register';
 import Login from '../../auth/containers/Login';
 import '../styles/App.css';
 import About from '../components/About';
+import Invoice from '../../booking/components/Invoice';
 import { connect } from 'react-redux';
 import DriverProfile from '../../booking/containers/DriverProfile';
 import { fetchDrivers } from '../ducks/operations';
@@ -23,7 +24,7 @@ class App extends Component {
   }
 
   render() {
-    const { drivers, loading, authorized } = this.props
+    const { drivers, loading, authorized, booking } = this.props
     
     return (
       <div>
@@ -52,8 +53,9 @@ class App extends Component {
           <Route exact path="/:name" render={({ match }) => {
               const { name } = match.params
               const driver = drivers.find(el => el.name === name)
-              return driver ? <DriverProfile driver={driver} /> :
-                  <div>Page not found</div>
+            return booking.booked ? <Invoice driver={driver} /> :
+                    driver ? <DriverProfile driver={driver} /> :
+                    <div>Page not found</div>
           }} />
         </Switch>
       </div>
@@ -71,7 +73,8 @@ function mapStateToProps(state) {
   return {
     authorized: state.auth.authorized,
     drivers: state.drivers.drivers,
-    loading: state.drivers.loading
+    loading: state.drivers.loading,
+    booking: state.booking
   }
 }
 

@@ -24,7 +24,8 @@ class Trip extends Component {
   }
 
   render(){
-    const { driver, date, time , submit } = this.props
+    const { driver, date, time, submit } = this.props
+    
     return (
       <div className="trip-form">
         <table>

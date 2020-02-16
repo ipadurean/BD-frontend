@@ -43,7 +43,14 @@
   box-shadow: 1px 1px 1px 1px #757272;
 }
 
+@keyframes fadeIn {
+  0% { opacity: 0;}
+  25% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
 #img {
+  animation: fadeIn 1s;
   height: 80px;
   width: 80px;
   margin: 10px;
