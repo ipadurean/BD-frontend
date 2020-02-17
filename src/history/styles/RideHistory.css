@@ -16,4 +16,10 @@
   margin-top: 40px;
 }
 
+#loading {
+  margin: 5vh 45%;
+  font-size: x-large;
+  color: gray;
+}
+
 

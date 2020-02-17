@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 
 const Invoice = (props) => {
-  console.log(props)
+
   const { trip } = props.booking
   const { driver } = props
 

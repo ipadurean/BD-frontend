@@ -1,5 +1,11 @@
 import types from './types';
 
+export const loadingUser = () => {
+  return {
+    type: types.LOADING_USER
+  }
+}
+
 export const addUser = (user) => {
   return {
     type: types.ADD_USER,
@@ -17,9 +23,4 @@ export const logout = () => {
   }
 }
 
-export const deleteTrip = () => {
-  return {
-    type: types.DELETE_TRIP
-  }
-}
 

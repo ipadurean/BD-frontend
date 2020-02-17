@@ -16,44 +16,49 @@ class DriverProfile extends Component {
   }  
 
   render(){
-    const { driver, booking } = this.props
-    
-      return (
-        <div className="driver-container">
-          <div className="bio">
-            <div className="photo">
-              <div className="username">{driver.name} <h6>Chauffeur</h6></div>
-              <img id="profile-photo" alt="img" src={driver.photo}/>
-              <em>Rating {driver.rating}*</em>
-            </div>
-            <div className="description">{driver.description}</div>
-            <div id="hourly-rate">Rate: ${driver.rate}/hour</div>
+    const { driver, driverTrips } = this.props
+    return (
+      <div className="driver-container">
+        <div className="bio">
+          <div className="photo">
+            <div className="username">{driver.name} <h6>Chauffeur</h6></div>
+            <img id="profile-photo" alt="img" src={driver.photo}/>
+            <em>Rating {driver.rating}*</em>
           </div>
-            
-          <div className="vehicle">
-            <div id="vehicle-model">{driver.car}</div>
-            <LazyLoadImage effect="blur" className="car-photo" alt="car" src={driver.car_photo} />
-          </div>
-          <h5 id="reviews-title">Reviews:</h5>
-          <div className="reviewList">
-            {booking.driverTrips.map(trip => {
-              return trip.review && <ReviewCard key={trip.id} review={trip.review} />
-            })}
-          </div>
-          <BookingCalendar driver={driver} />
+          <div className="description">{driver.description}</div>
+          <div id="hourly-rate">Rate: ${driver.rate}/hour</div>
         </div>
-      )
+            
+        <div className="vehicle">
+          <div id="vehicle-model">{driver.car}</div>
+          <LazyLoadImage effect="blur" className="car-photo" alt="car" src={driver.car_photo} />
+        </div>
+        <h5 id="reviews-title">Reviews:</h5>
+        <div className="reviewList">
+          {driverTrips.map(trip => {
+            return trip.review && <ReviewCard key={trip.id} review={trip.review} />
+          })}
+        </div>
+        <BookingCalendar driver={driver} />
+      </div>
+    )
   }
-
 }
 
 DriverProfile.propTypes = {
-  booking: PropTypes.object,
-  driver: PropTypes.object
+  driverTrips: PropTypes.array,
+  driver: PropTypes.shape({
+    name: PropTypes.string,
+    rating: PropTypes.number,
+    rate: PropTypes.number,
+    photo: PropTypes.string,
+    car: PropTypes.string,
+    username: PropTypes.string
+  })
 }
 
 function mapStateToProps(state){
-  return state
+  return { driverTrips: state.booking.driverTrips }
 }
 
 function mapDispatchToProps(dispatch){

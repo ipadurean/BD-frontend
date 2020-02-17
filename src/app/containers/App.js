@@ -24,13 +24,12 @@ class App extends Component {
   }
 
   render() {
-    const { drivers, loading, authorized, booking } = this.props
+    const { drivers, authorized, booking } = this.props
     
     return (
       <div>
         <Header />
-        {loading && <div className="loading">Loading...</div>}
-        <NavBar />
+        {authorized && <NavBar />}
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/home' render={() => {
@@ -66,7 +65,6 @@ class App extends Component {
 App.propTypes = {
   drivers: PropTypes.array.isRequired,
   authorized: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
   booking: PropTypes.shape({
     booked: PropTypes.bool.isRequired
   })
@@ -76,7 +74,6 @@ function mapStateToProps(state) {
   return {
     authorized: state.auth.authorized,
     drivers: state.drivers.drivers,
-    loading: state.drivers.loading,
     booking: state.booking
   }
 }

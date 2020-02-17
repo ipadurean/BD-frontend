@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/Driver.css';
 import { connect } from "react-redux";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import PropTypes from 'prop-types';
 
 const Driver = (props) => {
 
@@ -21,6 +22,21 @@ const Driver = (props) => {
       <button id="select">Book ride with this chauffeur</button>
     </div> 
   )
+}
+
+Driver.propTypes = {
+  home: PropTypes.shape({
+    driversAvailable: PropTypes.array,
+    start: PropTypes.number,
+    end: PropTypes.number
+  }),
+  driver: PropTypes.shape({
+    rating: PropTypes.number,
+    rate: PropTypes.number,
+    photo: PropTypes.string,
+    car: PropTypes.string,
+    username: PropTypes.string
+  })
 }
 
 function mapStateToProps(state){

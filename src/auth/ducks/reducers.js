@@ -2,15 +2,18 @@ import types from './types'
 
 const initialState = {
   authorized: false,
+  loading: false,
   user: {}
 }
 
 export default function authReducer(state = initialState, action) {
   
   switch (action.type) {
+    case types.LOADING_USER:
+      return {...state, loading: true}
  
     case types.ADD_USER:
-      return {...state, authorized: true, user: action.payload};
+      return {...state, loading: false, authorized: true, user: action.payload};
 
     case types.LOGOUT:
       return {authorized: false, user: {}};

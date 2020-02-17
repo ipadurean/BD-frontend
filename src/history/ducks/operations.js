@@ -8,7 +8,7 @@ export const fetchDelete = (tripId) => {
     fetch(`${baseUrl}/trips/${tripId}`, {
       method: 'DELETE',
     })
-    .then(dispatch(deleteTrip(tripId)))
+      .then(dispatch(deleteTrip(tripId)))
   }
 }
 

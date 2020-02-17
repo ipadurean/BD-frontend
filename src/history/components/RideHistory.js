@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/History.css';
+import '../styles/RideHistory.css';
 import Trip from '../containers/Trip';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const RideHistory = (props) => {
 
-  const { user, drivers } = props
+  const { user, drivers, loading } = props
 
   const getPastTrips = (tr, dr) => {
     let currentTime = new Date().getTime()
@@ -37,20 +37,21 @@ const RideHistory = (props) => {
     <div className="trip-history">
       <div className="user" >
         <h3>Hello <em>{user.username}</em>! This is the history of your rides:</h3>
-          <div>
-            <h5>Current rides:</h5>
-            {getCurrentTrips(user.trips, drivers)}
-          </div>
-    
-          <div>
-          <h5>Upcoming rides:</h5>
-            {getFutureTrips(user.trips, drivers)}
-          </div>
-    
-          <div>
-          <h5>Past rides:</h5>
-            {getPastTrips(user.trips, drivers)}
-          </div>
+        {loading && <div id="loading">Loading...</div>}
+        <div>
+          <h5>Current rides:</h5>
+          {getCurrentTrips(user.trips, drivers)}
+        </div>
+  
+        <div>
+        <h5>Upcoming rides:</h5>
+          {getFutureTrips(user.trips, drivers)}
+        </div>
+  
+        <div>
+        <h5>Past rides:</h5>
+          {getPastTrips(user.trips, drivers)}
+        </div>
       </div>
     </div>
   );
@@ -58,11 +59,16 @@ const RideHistory = (props) => {
 
 RideHistory.propTypes = {
   user: PropTypes.object.isRequired,
-  drivers: PropTypes.array.isRequired
+  drivers: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired
 }
 
 function mapStateToProps(state){
-  return {user: state.auth.user, drivers: state.drivers.drivers}
+  return {
+    user: state.auth.user,
+    drivers: state.drivers.drivers,
+    loading: state.auth.loading
+  }
 }
 
 export default connect(mapStateToProps, null)(RideHistory)

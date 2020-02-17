@@ -28,4 +28,4 @@ export default function homeReducer(state = { trips: [], selectedDate: false, st
   default:
     return state;
   }
-};
+}

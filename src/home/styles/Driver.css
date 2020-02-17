@@ -74,3 +74,15 @@
   left: calc(300px + 30%);
   width: calc(40px + 1.5vw);
 }
+
+.loading {
+  position: fixed;
+  top: 60vh;
+  left: 45vw;
+  z-index: 2;
+  font-size: x-large;
+  background-color: rgb(240, 240, 240);
+  padding: 20px;
+  border-radius: 10px;
+  color: gray;
+}

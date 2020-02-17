@@ -31,7 +31,6 @@ class ReviewForm extends Component {
   
   render(){
     const { submitted } = this.props.rideHistory
-    console.log(submitted)
    
     return (
       <div className="review-form">
@@ -53,7 +52,7 @@ class ReviewForm extends Component {
 }
 
 ReviewForm.propTypes = {
-  submitted: PropTypes.bool.isRequired
+  submitted: PropTypes.bool
 }
 
 function mapStateToProps(state){

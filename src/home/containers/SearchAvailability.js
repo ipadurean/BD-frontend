@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 class SearchAvailability extends Component {
   
   componentDidMount(){
-     this.props.getTrips()
+    this.props.getTrips()
   }
 
   renderHours1 = () => {
@@ -41,42 +41,38 @@ class SearchAvailability extends Component {
   }
 
   searchAvailable = () => {
-
     const { trips, selectedDate, start, end } = this.props.home
     const { drivers } = this.props
-        let arr = trips.map(el => {
-              el.end_time = TimeZone.toCentralTime(el.end_time)
-              el.start_time = TimeZone.toCentralTime(el.start_time)
+      let arr = trips.map(el => {
+        el.end_time = TimeZone.toCentralTime(el.end_time)
+        el.start_time = TimeZone.toCentralTime(el.start_time)
         return el
-        })
+      })
     
         if (selectedDate && end > start ){
-            let d = new Date(selectedDate).toString().slice(4,15);
-            let intersectedDate = arr.filter(trip => trip.start_time.slice(4,15) === d);
-            let intersectedTime = intersectedDate.filter(trip => {
-                                      let s = new Date(trip.start_time).getHours();
-                                      let e = new Date(trip.end_time).getHours() || 24;
-                                      return (start > s && start < e) || (end > s && end < e) || (start <= s && end >= e)
-                                  })
-            let busyDrivers = intersectedTime.map(trip => trip.driver_id)
-            let driversAvailable = drivers.filter(driver => !busyDrivers.includes(driver.id))
-          
-            this.props.filter(driversAvailable)
-            
+          let d = new Date(selectedDate).toString().slice(4,15);
+          let intersectedDate = arr.filter(trip => trip.start_time.slice(4,15) === d);
+          let intersectedTime = intersectedDate.filter(trip => {
+            let s = new Date(trip.start_time).getHours();
+            let e = new Date(trip.end_time).getHours() || 24;
+            return (start > s && start < e) || (end > s && end < e) || (start <= s && end >= e)
+          })
+          let busyDrivers = intersectedTime.map(trip => trip.driver_id)
+          let driversAvailable = drivers.filter(driver => !busyDrivers.includes(driver.id))
+        
+          this.props.filter(driversAvailable)
         }
   }
 
   handleChange = (event) =>{
-    console.log(parseInt(event.target.value))
-      this.props[event.target.name](parseInt(event.target.value))
+    this.props[event.target.name](parseInt(event.target.value))
   }
 
   reset = () => {
-     this.props.reset()
+    this.props.reset()
   }
 
   render(){
-   
     const { home } = this.props
   
     return(

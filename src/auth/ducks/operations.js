@@ -1,4 +1,4 @@
-import { addUser, logout } from './actions';
+import { addUser, logout, loadingUser } from './actions';
 
 const baseUrl = 'https://radiant-fjord-35660.herokuapp.com'
 const token = localStorage.getItem('jwt')
@@ -7,6 +7,7 @@ export const authorize = (history) => {
 
   if (token) {
     return function (dispatch) {
+      dispatch(loadingUser())
       fetch(`${baseUrl}/current_user`, {
         headers: {
           'content-type': 'application/json',
@@ -45,7 +46,7 @@ export const loginAction = (loginParams) => {
       .then(res => res.json())
       .then(user => {
         if (user.error) {
-          //handle error case
+         alert(user.error)
         } else {
           localStorage.setItem('jwt', user.token);
           return dispatch(addUser(user));

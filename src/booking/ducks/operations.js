@@ -25,9 +25,9 @@ export const fetchDriver = (id) => {
 
   return function(dispatch) {
     fetch(`${baseUrl}/drivers/${id}`)
-    .then(res => res.json())
-    .then(driver => {
-      dispatch(addDriverTrips(driver));
-    })
+      .then(res => res.json())
+      .then(driver => {
+        dispatch(addDriverTrips(driver));
+      })
   };
 }
