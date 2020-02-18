@@ -81,7 +81,7 @@
 #vehicle-model {
   height: 35px;
   font-size: 20px;
-  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
+  background: linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
   text-align: center;
 }
 
@@ -94,6 +94,11 @@
 .svg-icon {
   cursor: pointer;
   border: 0;
+}
+
+.star {
+  width: 15px;
+  margin-bottom: 15px;
 }
   
  

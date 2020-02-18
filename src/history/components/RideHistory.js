@@ -27,7 +27,7 @@ const RideHistory = (props) => {
 
   const getFutureTrips = (tr, dr) => {
     let currentTime = new Date().getTime()
-    let futureTrips = tr.filter(el => new Date(el.start_time).getTime() > currentTime)
+    let futureTrips = tr.filter(el => new Date(el.start_time).getTime() > currentTime).sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime())
     return futureTrips.map(el => {
       return  <Trip  cancel={true} key={el.id} driver={dr.filter(item => item.id === el.driver_id)[0]} trip={el} />
     })
@@ -35,24 +35,22 @@ const RideHistory = (props) => {
 
   return (
     <div className="trip-history">
-      <div className="user" >
-        <h3>Hello <em>{user.username}</em>! This is the history of your rides:</h3>
+        <h5>Hello <em>{user.username}</em>! This is the history of your rides:</h5>
         {loading && <div id="loading">Loading...</div>}
-        <div>
+        <div className="trip-block">
           <h5>Current rides:</h5>
           {getCurrentTrips(user.trips, drivers)}
         </div>
   
-        <div>
-        <h5>Upcoming rides:</h5>
+        <div className="trip-block">
+          <h5>Upcoming rides:</h5>
           {getFutureTrips(user.trips, drivers)}
         </div>
   
-        <div>
-        <h5>Past rides:</h5>
+       <div className="trip-block">
+          <h5>Past rides:</h5>
           {getPastTrips(user.trips, drivers)}
         </div>
-      </div>
     </div>
   );
 }

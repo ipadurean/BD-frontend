@@ -50,7 +50,7 @@ class Login extends Component {
           <FormGroup controlId="username" bssize="large">
           <Form.Label>Username</Form.Label>
             <FormControl
-            label="Username"
+              label="Username"
               autoFocus
               type="text"
               placeholder= "username"

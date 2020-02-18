@@ -17,7 +17,7 @@
 
 .driver-brief {
   color: rgb(63, 71, 82);
-  font-family: "Coda", sans-serif;
+  font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -81,8 +81,12 @@
   left: 45vw;
   z-index: 2;
   font-size: x-large;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(247, 241, 241);
   padding: 20px;
   border-radius: 10px;
-  color: gray;
+  color: rgb(124, 122, 122);
+}
+
+#vehicle {
+  
 }

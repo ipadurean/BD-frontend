@@ -1,33 +1,50 @@
 .trip-container {
   position: relative;
-  min-width: 800px;
-  margin: 2%;
+  width: 60vw;
+  margin: 2% auto;
   border-radius: 5px;
   z-index: 0;
+  border-bottom: 1px solid rgb(206, 206, 206);
+  color: rgb(58, 69, 83);
 }
 
 .trip-container:hover {
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
 }
 
 .fixed {
+  color: rgb(58, 69, 83);
   position: fixed;
-  top: 0;
+  top: 12vh;
   left:10%;
   right:10%;
   margin: 2%;
-  box-shadow: 10px 10px 30px 30px rgb(146, 143, 143);
+  box-shadow: 1px 3px 10px 5px rgb(204, 207, 207);
   z-index: 2;
 }
 
-#trip-header {
-  background-color: rgb(236, 240, 241);
-  padding: 1%;
-  cursor: pointer;
+.fixed #trip-header {
+  border-radius: 0;
+  background-color: rgb(233, 232, 214);
 }
 
-#date {
-  margin-left:10em;
+.fixed #trip-header:hover {
+  background-color: rgb(222, 226, 226);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
+}
+
+#trip-header {
+  background-color: rgb(248, 249, 250);
+  padding: 1%;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.trip-date {
+  position: absolute;
+  right: 5vw;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 #trip-body {
@@ -44,7 +61,7 @@
 
 .review-body{
   padding: 3%;
-  background-color: rgb(235, 245, 243);
+  background-color: rgb(248, 248, 242);
   position: absolute;
   border-radius: 25px;
   margin: 2%;

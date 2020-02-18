@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FormGroup, FormControl, Button, Navbar } from "react-bootstrap";
+import { FormGroup, FormControl, Button, Navbar, Form } from "react-bootstrap";
 import '../styles/Register.css';
 
 export default class Register extends Component {
@@ -7,11 +7,9 @@ export default class Register extends Component {
     super(props);
 
     this.state = {
-      isLoading: false,
       name: "",
       password: "",
-      confirmPassword: "",
-      newUser: null
+      confirmPassword: ""
     };
   }
 
@@ -43,72 +41,58 @@ export default class Register extends Component {
 
  
 
-  renderForm() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <FormGroup>
-        <FormControl
-         type="text"
-         placeholder="First Name"
-         />
-        </FormGroup>
-        <FormGroup>
-        <FormControl
-         type="text"
-         placeholder="Last Name"
-         />
-        </FormGroup>
-        <FormGroup controlId="email" bssize="large">
-          <FormControl
-            autoFocus
-            type="email"
-            placeholder="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-        <FormGroup controlId="password" bssize="large">
-          
-          <FormControl
-            value={this.state.password}
-            onChange={this.handleChange}
-            placeholder="password"
-            type="password"
-          />
-        </FormGroup>
-        <FormGroup controlId="confirmPassword" bssize="large">
-          
-          <FormControl
-            value={this.state.confirmPassword}
-            onChange={this.handleChange}
-            placeholder="confirm pasword"
-            type="password"
-          />
-        </FormGroup>
-        {/* <LoaderButton
-          block
-          bsSize="large"
-          disabled={!this.validateForm()}
-          type="submit"
-          isLoading={this.state.isLoading}
-          text="Signup"
-          loadingText="Signing up…"
-        /> */}
-      </form>
-    );
-  }
-
   render() {
     return (
       <div className="signup">
         <Navbar>
             <span className="bttn">
                   <Button href="/login" variant="outline-success">Login</Button>
-             </span>
+            </span>
         </Navbar>
-        {this.state.newUser === null
-          ? this.renderForm()
-          : this.renderForm()}
+        <form onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <Form.Label>First Name</Form.Label>
+            <FormControl
+              type="text"
+              placeholder="first name"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Form.Label>Last Name</Form.Label>
+            <FormControl
+              type="text"
+              placeholder="last name"
+            />
+          </FormGroup>
+          <FormGroup controlId="email" bssize="large">
+            <Form.Label>Email</Form.Label>
+            <FormControl
+              autoFocus
+              type="email"
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="password" bssize="large">
+            <Form.Label>Password</Form.Label>
+            <FormControl
+              value={this.state.password}
+              onChange={this.handleChange}
+              placeholder="password"
+              type="password"
+            />
+          </FormGroup>
+          <FormGroup controlId="confirmPassword" bssize="large">
+            <Form.Label>Confirm Password</Form.Label>
+            <FormControl
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+              placeholder="confirm pasword"
+              type="password"
+            />
+          </FormGroup>
+        </form>
       </div>
     );
   }

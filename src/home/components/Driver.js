@@ -3,6 +3,7 @@ import '../styles/Driver.css';
 import { connect } from "react-redux";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
+import star from '../../utils/assets/star-solid.svg'
 
 const Driver = (props) => {
 
@@ -12,8 +13,8 @@ const Driver = (props) => {
     <div className="driver-card">
       <div className="driver-brief">
         <div className="title">
-          <h5><b>{driver.username}</b></h5><span>Rating {driver.rating}*</span>
-          <p>Rate: ${driver.rate}/hour</p>
+          <h5><b>{driver.username}</b></h5><span>Rating <b>{driver.rating}</b><img className="star" alt="star" src={star} /></span>
+          <p>Rate: <b>${driver.rate}/hour</b></p>
         </div>
         <LazyLoadImage id="img" alt="img" effect="opacity" src={driver.photo} />
         <div id="vehicle"><i> ~ {driver.car} ~ </i></div>

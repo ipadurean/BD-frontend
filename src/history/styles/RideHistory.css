@@ -1,19 +1,11 @@
-.nav-container {
-  box-shadow: 0 14px 6px -6px rgb(48, 47, 47);
-}
-
 .trip-history {
-  padding: 3%;
+  color: rgb(52, 70, 110);
   background-color: rgb(248, 249, 250);
+  padding: calc(100px + 2vw) 2vw;
 }
 
-.user {
-  margin: 50px;
-  padding: 2% 10%;
-}
-
-.user h5 {
-  margin-top: 40px;
+.trip-block {
+  margin: 5vw;
 }
 
 #loading {

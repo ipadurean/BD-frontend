@@ -1,7 +1,7 @@
 @media all and (min-width: 480px) {
   .login {
     position: fixed;
-    top: 10vw;
+    top: 5vw;
     padding-left: 60px;
     height: 100vh;
     left: 0;

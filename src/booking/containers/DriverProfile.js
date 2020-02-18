@@ -6,7 +6,7 @@ import { fetchDriver } from '../ducks/operations';
 import ReviewCard from '../components/ReviewCard';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
-
+import star from '../../utils/assets/star-solid.svg'
 
 class DriverProfile extends Component {
   
@@ -23,7 +23,10 @@ class DriverProfile extends Component {
           <div className="photo">
             <div className="username">{driver.name} <h6>Chauffeur</h6></div>
             <img id="profile-photo" alt="img" src={driver.photo}/>
-            <em>Rating {driver.rating}*</em>
+            <div>
+              <em>Rating {driver.rating} </em>
+              <img className="star" alt="star" src={star} />
+            </div>
           </div>
           <div className="description">{driver.description}</div>
           <div id="hourly-rate">Rate: ${driver.rate}/hour</div>

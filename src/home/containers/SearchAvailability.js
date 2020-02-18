@@ -78,7 +78,7 @@ class SearchAvailability extends Component {
     return(
       <div className="search-container">
         <div className="form-container">
-          <h4>Search for available chauffeurs:</h4>
+          <div id="form-title">Search for available chauffeurs:</div>
           <Form id="form">
             <Row id="row">
               <Form.Control autoComplete="off"
