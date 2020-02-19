@@ -1,32 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/NavBar.css';
 import { logout } from '../../auth/ducks/actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import { fetchDrivers } from '../ducks/operations';
 
 
-const NavBar = (props) => {
-  
-  const logout = () => {
-    props.logout();
-    localStorage.removeItem('jwt');
-    props.history.push('/login')
+class NavBar extends Component {
+  constructor() {
+    super()
+    this.state = {
+      query: ''
+    }
   }
 
-  return (
-    <div className="nav-container">
-      <a href="/home" className="nav-btn">Home</a>
-      <Link to="/about" className="nav-btn">About</Link>
-      <a href="/history" className="nav-btn">Ride History</a>
-      <button id="bttn" onClick={logout} to="/" >Logout</button>
-    </div>
-  );
+  logout = () => {
+    this.props.logout();
+    localStorage.removeItem('jwt');
+    this.props.history.push('/login')
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      query: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.fetchDrivers(this.state.query);
+    this.setState({
+      query: ''
+    });
+    this.refs.input.value = '';
+  }
+
+  render() {
+    return (
+      <div className="nav-container">
+        <a href="/home" style={{'textDecoration': 'none' }} className="nav-btn">Home</a>
+        <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-btn">About</Link>
+        <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-btn">Ride History</a>
+        <form onSubmit={this.handleSubmit} className="search-drivers">
+          <input onChange={this.handleChange} type="text" ref="input" />
+          <button className="bttn" id="search">Search</button>
+        </form>
+        <button className="bttn" id="logout" onClick={logout} to="/" >Logout</button>
+      </div>
+    );
+  }
 }
 
 function mapDispatchToProps(dispatch){
-  return { logout: () => dispatch(logout()) }
+  return {
+    logout: () => dispatch(logout()),
+    fetchDrivers: (query) => dispatch(fetchDrivers(query)),
+  }
 }
  
 export default connect(null, mapDispatchToProps)(withRouter(NavBar))

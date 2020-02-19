@@ -18,9 +18,9 @@ export const authorize = (history) => {
         .then(res => res.json())
         .then(user => {
           if (user.errors) {
-            alert(user.errors);
             history.push('/login');
             localStorage.removeItem('jwt');
+            console.log(user.errors);
             return dispatch(logout())
           } else {
             return dispatch(addUser(user))

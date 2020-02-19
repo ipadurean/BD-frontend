@@ -16,7 +16,7 @@
   padding: 2%;
   background-color: rgb(252, 252, 249);
   justify-content: space-around;
-  padding-top: 8vw;
+  padding-top: calc(100px + 2vw);
 }
 
 #reviews-title {
