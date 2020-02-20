@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { fetchDrivers } from '../ducks/operations';
+import { resetSearch } from '../../home/ducks/actions'
 
 
 class NavBar extends Component {
@@ -30,6 +31,7 @@ class NavBar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.reset()
     this.props.fetchDrivers(this.state.query);
     this.setState({
       query: ''
@@ -57,6 +59,7 @@ function mapDispatchToProps(dispatch){
   return {
     logout: () => dispatch(logout()),
     fetchDrivers: (query) => dispatch(fetchDrivers(query)),
+    reset: () => dispatch(resetSearch())
   }
 }
  

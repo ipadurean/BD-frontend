@@ -45,8 +45,13 @@ class SearchAvailability extends Component {
     this.props.search()
   }
 
-  handleChange = (event) =>{
+  handleChange = (event) => {
     this.props[event.target.name](parseInt(event.target.value))
+  }
+
+  validateForm = () => {
+    const { selectedDate, start, end } = this.props.home;
+    return selectedDate && start && end
   }
 
   reset = () => {
@@ -55,7 +60,7 @@ class SearchAvailability extends Component {
 
   render(){
     const { home, drivers } = this.props
-  console.log(this.props)
+  
     return(
       <div className="search-container">
         <div className="form-container">
@@ -76,7 +81,7 @@ class SearchAvailability extends Component {
                 <option>End Time</option>
                 {this.renderHours2()}
               </select>
-              <Button variant="light" onClick={this.searchAvailable} type="button" id="filter">Search</Button>
+              <Button variant="light" onClick={this.searchAvailable} disabled={!this.validateForm()} type="button" id="filter">Search</Button>
               <Button variant="light" onClick={this.reset} type="reset" id="reset">Reset</Button>
             </Row>
           </Form>
