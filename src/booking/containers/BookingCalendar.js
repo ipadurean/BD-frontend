@@ -8,6 +8,7 @@ import { fetchBooking } from '../ducks/operations';
 import leftArrow from '../../utils/assets/left-arrow.svg';
 import rightArrow from '../../utils/assets/right-arrow.svg';
 import PropTypes from 'prop-types';
+import TimeZone from '../../utils/timeZone';
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"]  
 
@@ -107,8 +108,8 @@ class BookingCalendar extends Component {
     let user = this.props.user.id
     let driver = this.props.driver.id
     let timeTotal = this.state.end - this.state.start
-    let date1 = new Date(new Date(this.state.dayClicked).setHours(this.state.start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
-    let date2 = new Date(new Date(this.state.dayClicked).setHours(this.state.end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+    let date1 = TimeZone.toCentralTime(new Date(this.state.dayClicked).setHours(this.state.start));
+    let date2 = TimeZone.toCentralTime(new Date(this.state.dayClicked).setHours(this.state.end));
     const bookingBody = {
       user_id: user, 
       driver_id:driver ,

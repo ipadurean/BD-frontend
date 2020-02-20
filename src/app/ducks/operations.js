@@ -2,11 +2,11 @@ import { loadingDrivers, addDrivers } from './actions';
 
 const baseUrl = 'https://radiant-fjord-35660.herokuapp.com';
 
-export const fetchDrivers = (query='') => {
+export const fetchDrivers = (query, start, end) => {
 
   return function (dispatch) {
     dispatch(loadingDrivers());
-    fetch(`${baseUrl}/drivers?q=${query}`)
+    fetch(`${baseUrl}/drivers?filter=${query}&from=${start}&to=${end}`)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -14,13 +14,8 @@ export const fetchDrivers = (query='') => {
           throw new Error(response.error);
         }
       })
-      .then(drivers => {
-        console.log(drivers)
-        if (drivers.length) {
+        .then(drivers => {
           return dispatch(addDrivers(drivers));
-        } else {
-          throw new Error(drivers.error);
-        }
       })
         .catch(error => console.log(error))
   };

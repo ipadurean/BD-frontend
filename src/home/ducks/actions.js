@@ -1,11 +1,5 @@
 import types from './types'
 
-export const addTrips = (trips) => {
-  return {
-    type: types.ADD_TRIPS,
-    payload: trips
-  }
-}
 
 export const selectDate = (date) => {
   return {
@@ -30,14 +24,13 @@ export const endTime = (time) => {
 
 export const dateClicked = () => {
   return {
-    type: types.ADD_CLICKED
+    type: types.DATE_CLICKED
   }
 }
 
-export const filterDrivers = (drivers) => {
+export const addSearch = () => {
   return {
-    type: types.FILTER_DRIVERS,
-    payload: drivers
+    type: types.ADD_SEARCH
   }
 }
 

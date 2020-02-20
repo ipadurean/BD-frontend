@@ -27,7 +27,7 @@
   outline: none;
 }
 
-.bttn {
+.button {
   background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
 }
 
@@ -36,11 +36,11 @@
   margin-left: auto;
 }
 
-.bttn:hover{
+.button:hover{
   box-shadow: 1px 1px 1px 1px #757272;
 }
 
-.nav-btn{
+.nav-item {
   font-size: large;
   text-decoration: none;
   color: rgb(107, 107, 107) !important;
@@ -49,6 +49,6 @@
   border-right: 3px solid rgb(246, 246, 250);
 }
 
-.nav-btn:hover {
+.nav-item:hover {
    color: rgb(47, 52, 78) !important;
 }

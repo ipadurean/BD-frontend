@@ -14,7 +14,7 @@
 }
 
 .form-container{
-  background-image: linear-gradient(to bottom, #4d4d4d 0%, #1a1a1a 100%);
+  background-image: linear-gradient(to bottom, #4d4d4d 0%, #535353 100%);
   border-radius: 5px;
   height: calc(50px + 4vw);
   box-shadow: 1px 0px 2px 3px rgb(207, 207, 207);

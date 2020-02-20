@@ -4,64 +4,45 @@ import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from './CalendarHome';
 import DriversList from '../components/DriversList';
 import TimeZone from '../../utils/timeZone';
-import { startTime, endTime, dateClicked, filterDrivers, resetSearch } from '../ducks/actions';
-import { fetchTrips } from '../ducks/operations';
+import { startTime, endTime, dateClicked, resetSearch, addSearch } from '../ducks/actions';
 import { connect } from "react-redux";
+import { fetchDrivers } from '../../app/ducks/operations';
 
 
 
 class SearchAvailability extends Component {
   
-  componentDidMount(){
-    this.props.getTrips()
-  }
 
   renderHours1 = () => {
     let count = 0;
     let hours = []
-    while (count < (this.props.home.end || 24)){
-        hours.push(<option key={count}>{count+":00"}</option>);
-        count +=1;
-    }
+      while (count < (this.props.home.end || 24)){
+          hours.push(<option key={count}>{count+":00"}</option>);
+          count +=1;
+      }
     return hours
   }
 
   renderHours2 = () => {
     let count = this.props.home.start || 1;
     let hours = []
-    while (count <= 24){
-        hours.push(<option key={count}>{count+":00"}</option>);
-        count +=1;
-    }
+      while (count <= 24){
+          hours.push(<option key={count}>{count+":00"}</option>);
+          count +=1;
+      }
     return hours
   }
 
-  clickDate = () =>{
+  clickDate = () => {
     this.props.clickDate()
   }
 
   searchAvailable = () => {
-    const { trips, selectedDate, start, end } = this.props.home
-    const { drivers } = this.props
-      let arr = trips.map(el => {
-        el.end_time = TimeZone.toCentralTime(el.end_time)
-        el.start_time = TimeZone.toCentralTime(el.start_time)
-        return el
-      })
-    
-        if (selectedDate && end > start ){
-          let d = new Date(selectedDate).toString().slice(4,15);
-          let intersectedDate = arr.filter(trip => trip.start_time.slice(4,15) === d);
-          let intersectedTime = intersectedDate.filter(trip => {
-            let s = new Date(trip.start_time).getHours();
-            let e = new Date(trip.end_time).getHours() || 24;
-            return (start > s && start < e) || (end > s && end < e) || (start <= s && end >= e)
-          })
-          let busyDrivers = intersectedTime.map(trip => trip.driver_id)
-          let driversAvailable = drivers.filter(driver => !busyDrivers.includes(driver.id))
-        
-          this.props.filter(driversAvailable)
-        }
+    const { selectedDate, start, end } = this.props.home;
+    const date1 = TimeZone.toCentralTime(new Date(selectedDate).setHours(start));
+    const date2 = TimeZone.toCentralTime(new Date(selectedDate).setHours(end));
+    this.props.getAvailableDrivers('undefined', date1, date2);
+    this.props.search()
   }
 
   handleChange = (event) =>{
@@ -73,8 +54,8 @@ class SearchAvailability extends Component {
   }
 
   render(){
-    const { home } = this.props
-  
+    const { home, drivers } = this.props
+  console.log(this.props)
     return(
       <div className="search-container">
         <div className="form-container">
@@ -92,7 +73,7 @@ class SearchAvailability extends Component {
                 {this.renderHours1()}
               </select>
               <select onChange={this.handleChange} name="end" className="time-home" as="select">
-              <option>End Time</option>
+                <option>End Time</option>
                 {this.renderHours2()}
               </select>
               <Button variant="light" onClick={this.searchAvailable} type="button" id="filter">Search</Button>
@@ -100,8 +81,8 @@ class SearchAvailability extends Component {
             </Row>
           </Form>
           <div id="available"> 
-            {home.clicked && <CalendarHome />}
-            {home.driversAvailable &&  <p id="note">For this date and time there are a total of <b>{home.driversAvailable.length}</b> drivers available:</p>}
+            {home.clickDate && <CalendarHome />}
+            <div id="note">There are a total of <b>{drivers.length}</b> drivers available:</div>
           </div>
         </div>
         <DriversList /> 
@@ -117,11 +98,11 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    getTrips: () => dispatch(fetchTrips()),
     clickDate: () => dispatch(dateClicked()),
     start: (time) => dispatch(startTime(time)),
     end: (time) => dispatch(endTime(time)),
-    filter: (drivers) => dispatch(filterDrivers(drivers)),
+    getAvailableDrivers: (q, from, to) => dispatch(fetchDrivers(q, from, to)),
+    search: () => dispatch(addSearch()),
     reset: () => dispatch(resetSearch())
   }
 }

@@ -40,14 +40,14 @@ class NavBar extends Component {
   render() {
     return (
       <div className="nav-container">
-        <a href="/home" style={{'textDecoration': 'none' }} className="nav-btn">Home</a>
-        <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-btn">About</Link>
-        <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-btn">Ride History</a>
+        <a href="/home" style={{'textDecoration': 'none' }} className="nav-item">Home</a>
+        <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-item">About</Link>
+        <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a>
         <form onSubmit={this.handleSubmit} className="search-drivers">
           <input onChange={this.handleChange} type="text" ref="input" />
-          <button className="bttn" id="search">Search</button>
+          <button className="button" id="search">Search</button>
         </form>
-        <button className="bttn" id="logout" onClick={logout} to="/" >Logout</button>
+        <button className="button" id="logout" onClick={this.logout} >Logout</button>
       </div>
     );
   }

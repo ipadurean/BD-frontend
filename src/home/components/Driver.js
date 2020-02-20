@@ -18,7 +18,7 @@ const Driver = (props) => {
         </div>
         <LazyLoadImage id="img" alt="img" effect="opacity" src={driver.photo} />
         <div id="vehicle"><i> ~ {driver.car} ~ </i></div>
-        {home.driversAvailable && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}
+        {home.clickSearch && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}
       </div>
       <button id="select">Book ride with this chauffeur</button>
     </div> 
@@ -27,9 +27,9 @@ const Driver = (props) => {
 
 Driver.propTypes = {
   home: PropTypes.shape({
-    driversAvailable: PropTypes.array,
     start: PropTypes.number,
-    end: PropTypes.number
+    end: PropTypes.number,
+    clickSearch: PropTypes.bool
   }),
   driver: PropTypes.shape({
     rating: PropTypes.number,
