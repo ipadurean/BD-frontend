@@ -1,8 +1,10 @@
 .home-container {
-  padding: 1%;
+  padding: calc(7vh + 7vw) 2vw;
   position: relative;
-  top: 8vw;
   z-index: 0;
+  background-color: inherit;
+  min-height: 100vh;
+  height: auto;
 }
 
 .Home .lander {

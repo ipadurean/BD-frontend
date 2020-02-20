@@ -52,3 +52,12 @@
 .nav-item:hover {
    color: rgb(47, 52, 78) !important;
 }
+
+.welcome {
+  font-family: Lato;
+  color: blue;
+  margin: 0 1vw;
+  background-color: white;
+  padding: 3px 10px;
+  border-radius: 5px;
+}

@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { fetchDrivers } from '../ducks/operations';
-import { resetSearch } from '../../home/ducks/actions'
+import { resetSearch } from '../../home/ducks/actions';
+import PropTypes from 'prop-types';
 
 
 class NavBar extends Component {
@@ -40,11 +41,14 @@ class NavBar extends Component {
   }
 
   render() {
+
+    const { user, loading } = this.props
     return (
       <div className="nav-container">
         <a href="/home" style={{'textDecoration': 'none' }} className="nav-item">Home</a>
         <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-item">About</Link>
         <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a>
+        {loading ? <div>Loading...</div> : <div className="welcome">Welcome <em>{user.username}</em> !</div>} 
         <form onSubmit={this.handleSubmit} className="search-drivers">
           <input onChange={this.handleChange} type="text" ref="input" />
           <button className="button" id="search">Search</button>
@@ -52,6 +56,20 @@ class NavBar extends Component {
         <button className="button" id="logout" onClick={this.logout} >Logout</button>
       </div>
     );
+  }
+}
+
+NavBar.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string
+  })
+}
+
+function mapStateToProps(state) {
+  return {
+    user: state.auth.user,
+    loading: state.auth.loading
   }
 }
 
@@ -63,5 +81,5 @@ function mapDispatchToProps(dispatch){
   }
 }
  
-export default connect(null, mapDispatchToProps)(withRouter(NavBar))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar))
 

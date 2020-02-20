@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/SearchAvailability.css';
 import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from './CalendarHome';
-import DriversList from '../components/DriversList';
 import TimeZone from '../../utils/timeZone';
 import { startTime, endTime, dateClicked, resetSearch, addSearch } from '../ducks/actions';
 import { connect } from "react-redux";
@@ -10,21 +9,22 @@ import { fetchDrivers } from '../../app/ducks/operations';
 
 
 
-class SearchAvailability extends Component {
+const SearchAvailability = (props) => {
   
+  const { home, drivers } = props
 
-  renderHours1 = () => {
+  const renderHours1 = () => {
     let count = 0;
     let hours = []
-      while (count < (this.props.home.end || 24)){
+      while (count < (props.home.end || 24)){
           hours.push(<option key={count}>{count+":00"}</option>);
           count +=1;
       }
     return hours
   }
 
-  renderHours2 = () => {
-    let count = this.props.home.start || 1;
+  const renderHours2 = () => {
+    let count = props.home.start || 1;
     let hours = []
       while (count <= 24){
           hours.push(<option key={count}>{count+":00"}</option>);
@@ -33,33 +33,30 @@ class SearchAvailability extends Component {
     return hours
   }
 
-  clickDate = () => {
-    this.props.clickDate()
+  const clickDate = () => {
+    props.clickDate()
   }
 
-  searchAvailable = () => {
-    const { selectedDate, start, end } = this.props.home;
+  const searchAvailable = () => {
+    const { selectedDate, start, end } = props.home;
     const date1 = TimeZone.toCentralTime(new Date(selectedDate).setHours(start));
     const date2 = TimeZone.toCentralTime(new Date(selectedDate).setHours(end));
-    this.props.getAvailableDrivers('undefined', date1, date2);
-    this.props.search()
+    props.getAvailableDrivers('undefined', date1, date2);
+    props.search()
   }
 
-  handleChange = (event) => {
-    this.props[event.target.name](parseInt(event.target.value))
+  const handleChange = (event) => {
+    props[event.target.name](parseInt(event.target.value))
   }
 
-  validateForm = () => {
-    const { selectedDate, start, end } = this.props.home;
+  const validateForm = () => {
+    const { selectedDate, start, end } = props.home;
     return selectedDate && start && end
   }
 
-  reset = () => {
-    this.props.reset()
+  const reset = () => {
+    props.reset()
   }
-
-  render(){
-    const { home, drivers } = this.props
   
     return(
       <div className="search-container">
@@ -69,20 +66,20 @@ class SearchAvailability extends Component {
             <Row id="row">
               <Form.Control autoComplete="off"
                             defaultValue={home.selectedDate? new Date(home.selectedDate).toString().slice(4,15): ""} 
-                            onClick={this.clickDate} 
+                            onClick={clickDate} 
                             id="date-home" 
                             placeholder="Choose Date">
               </Form.Control>
-              <select onChange={this.handleChange} name="start" className="time-home" as="select">
+              <select onChange={handleChange} name="start" className="time-home" as="select">
                 <option>Start Time</option>
-                {this.renderHours1()}
+                {renderHours1()}
               </select>
-              <select onChange={this.handleChange} name="end" className="time-home" as="select">
+              <select onChange={handleChange} name="end" className="time-home" as="select">
                 <option>End Time</option>
-                {this.renderHours2()}
+                {renderHours2()}
               </select>
-              <Button variant="light" onClick={this.searchAvailable} disabled={!this.validateForm()} type="button" id="filter">Search</Button>
-              <Button variant="light" onClick={this.reset} type="reset" id="reset">Reset</Button>
+              <Button variant="light" onClick={searchAvailable} disabled={!validateForm()} type="button" id="filter">Search</Button>
+              <Button variant="light" onClick={reset} type="reset" id="reset">Reset</Button>
             </Row>
           </Form>
           <div id="available"> 
@@ -90,10 +87,9 @@ class SearchAvailability extends Component {
             <div id="note">There are a total of <b>{drivers.length}</b> drivers available:</div>
           </div>
         </div>
-        <DriversList /> 
       </div>
     )
-  }
+  
 }
 
 
