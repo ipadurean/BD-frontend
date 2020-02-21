@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, Form, Navbar } from "react-bootstrap";
+import { Button, FormGroup, FormControl, Form } from "react-bootstrap";
 import '../styles/Login.css';
 import { connect } from "react-redux";
 import { loginAction } from '../ducks/operations';
@@ -33,16 +33,6 @@ class Login extends Component {
    
     return (
       <div className="login">
-        <Navbar>
-            <div>
-              <span className="bttn">
-                <Button href="/login" variant="outline-success">Login</Button>
-              </span>
-              <span className="bttn">
-                <Button href="/register" variant="outline-success">Sign up</Button>
-              </span>
-            </div>
-        </Navbar>  
         <h5>For Demo please login !</h5>
         <h6>Username: Guest</h6>
         <h6>Password: guestpass</h6>

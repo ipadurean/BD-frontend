@@ -59,13 +59,13 @@ class Trip extends Component {
           </div>
           {this.state.open && 
           <div id="trip-body" >
-            <img id="img" alt="img" src={driver.photo}/>
+            <img id="trip-img" alt="img" src={driver.photo}/>
             <h4>Driver name: {driver.name}</h4>
             {trip.review && <div className="review-body">
                               <h6><span>Your review:</span></h6>
                               <div><i>{trip.review}</i></div>
                             </div>}
-              <div>Date: <span>{new Date(trip.start_time).toString().slice(0, 15)}</span></div>
+            <div>Date: <span>{TimeZone.toCentralTime(trip.start_time).slice(0, 15)}</span></div>
               <div>From: <span>{TimeZone.toCentralTime(trip.start_time).slice(16, 21)}</span> to:<span>{TimeZone.toCentralTime(trip.end_time).slice(16, 21)}</span></div>
               <div>Pick up address: {trip.address}</div>
               <div>Total cost: <span>${trip.total}</span></div>

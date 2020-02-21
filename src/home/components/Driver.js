@@ -16,7 +16,7 @@ const Driver = (props) => {
           <div id="username">{driver.username}</div><span>Rating <b>{driver.rating}</b><img className="star" alt="star" src={star} /></span>
           <div>Rate: <b>${driver.rate}/hour</b></div>
         </div>
-        <LazyLoadImage id="img" alt="img" effect="opacity" src={driver.photo} />
+        <LazyLoadImage id="driver-img" alt="img" effect="opacity" src={driver.photo} />
         <div id="vehicle"><i> ~ {driver.car} ~ </i></div>
         {home.clickSearch && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}
       </div>

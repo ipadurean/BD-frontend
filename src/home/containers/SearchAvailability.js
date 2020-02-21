@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/SearchAvailability.css';
-import { Form, Row, Button } from "react-bootstrap";
 import CalendarHome from './CalendarHome';
 import TimeZone from '../../utils/timeZone';
 import { startTime, endTime, dateClicked, resetSearch, addSearch } from '../ducks/actions';
@@ -11,7 +10,7 @@ import { fetchDrivers } from '../../app/ducks/operations';
 
 const SearchAvailability = (props) => {
   
-  const { home, drivers } = props
+  const { home } = props
 
   const renderHours1 = () => {
     let count = 0;
@@ -57,38 +56,28 @@ const SearchAvailability = (props) => {
   const reset = () => {
     props.reset()
   }
-  
-    return(
-      <div className="search-container">
-        <div className="form-container">
-          <div id="form-title">Search for available chauffeurs:</div>
-          <Form id="form">
-            <Row id="row">
-              <Form.Control autoComplete="off"
-                            defaultValue={home.selectedDate? new Date(home.selectedDate).toString().slice(4,15): ""} 
-                            onClick={clickDate} 
-                            id="date-home" 
-                            placeholder="Choose Date">
-              </Form.Control>
-              <select onChange={handleChange} name="start" className="time-home" as="select">
-                <option>Start Time</option>
-                {renderHours1()}
-              </select>
-              <select onChange={handleChange} name="end" className="time-home" as="select">
-                <option>End Time</option>
-                {renderHours2()}
-              </select>
-              <Button variant="light" onClick={searchAvailable} disabled={!validateForm()} type="button" id="filter">Search</Button>
-              <Button variant="light" onClick={reset} type="reset" id="reset">Reset</Button>
-            </Row>
-          </Form>
-          <div id="calendar"> 
-            {home.clickDate && <CalendarHome />}
-          </div>
-          <div id="note">There are a total of <b>{drivers.length}</b> drivers available:</div>
-        </div>
+
+  return(
+    <div className="search-container">
+      <div id="form-title">Search for available chauffeurs:</div>
+      <form id="form-container">
+        <div id="date-box" onClick={clickDate}>{home.selectedDate? new Date(home.selectedDate).toString().slice(4,15): "Select Date"}</div>
+        <select onChange={handleChange} name="start" className="time-home" as="select">
+          <option>Start Time</option>
+            {renderHours1()}
+        </select>
+        <select onChange={handleChange} name="end" className="time-home" as="select">
+          <option>End Time</option>
+          {renderHours2()}
+        </select>
+        <button onClick={searchAvailable} disabled={!validateForm()} type="button" id="filter">Search</button>
+        <button onClick={reset} type="reset" id="reset">Reset</button>
+      </form>
+      <div id="calendar"> 
+        {home.clickDate && <CalendarHome />}
       </div>
-    )
+    </div>
+  )
   
 }
 

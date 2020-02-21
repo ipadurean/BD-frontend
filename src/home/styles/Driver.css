@@ -1,5 +1,5 @@
 .driver-list {
-  padding: 10vw 5vw;
+  padding: 3vw;
 }
 
 .driver-card{
@@ -50,13 +50,20 @@
   100% { opacity: 1;}
 }
 
-#img {
+#driver-img {
   animation: fadeIn 1s;
   height: calc(10px + 5vw);
   width: calc(10px + 5vw);
   margin: 5px;
   box-shadow: 1px 1px 1px 1px #757272;
   border-radius: 50%;
+}
+
+#note {
+  font-size: calc(5px + 1vw);
+  padding: 1vw;
+  color: rgb(90, 102, 110);
+  font-style: oblique;
 }
 
 .title {

@@ -45,6 +45,8 @@
   position: absolute;
   right: 5vw;
   font-family: 'Courier New', Courier, monospace;
+  font-size: calc(5px + 1vw);
+  padding: 5px 1vw;
 }
 
 #trip-body {
@@ -69,4 +71,19 @@
   left: 50%;
   max-height: 200px;
   overflow: scroll;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0;}
+  25% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+#trip-img {
+  animation: fadeIn 1s;
+  height: calc(10px + 5vw);
+  width: calc(10px + 5vw);
+  margin: 5px;
+  box-shadow: 1px 1px 1px 1px #757272;
+  border-radius: 50%;
 }

@@ -7,10 +7,10 @@
   align-items: center;
   left: 0;
   right: 0;
-  padding: 0 1vw;
+  padding: 1vw;
   top: 0;
   z-index: 1;
-  height: calc(3vh + 2vw);
+  height: calc(4vh + 2vw);
 }
 
 .search-drivers {
@@ -55,10 +55,24 @@
 
 .welcome {
   font-family: Lato;
-  font-size: calc(5px + 1vw);
+  font-size: calc(3px + 1vw);
   color: blue;
   margin: 0 1vw;
   background-color: white;
   padding: 3px 10px;
   border-radius: 5px;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0;}
+  25% { opacity: 0;}
+  100% { opacity: 1;}
+}
+
+#login {
+  animation: fadeIn 1s;
+}
+
+#register {
+  animation: fadeIn 1s;
 }

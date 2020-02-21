@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const RideHistory = (props) => {
 
-  const { user, drivers, loading } = props
+  const { user, drivers, loading, authorized } = props
 
   const getPastTrips = (tr, dr) => {
     let currentTime = new Date().getTime()
@@ -35,22 +35,25 @@ const RideHistory = (props) => {
 
   return (
     <div className="trip-history">
-        <h5>Hello <em>{user.username}</em>! This is the history of your rides:</h5>
-        {loading && <div id="loading">Loading...</div>}
-        <div className="trip-block">
-          <h5>Current rides:</h5>
-          {getCurrentTrips(user.trips, drivers)}
-        </div>
-  
-        <div className="trip-block">
-          <h5>Upcoming rides:</h5>
-          {getFutureTrips(user.trips, drivers)}
-        </div>
-  
-       <div className="trip-block">
-          <h5>Past rides:</h5>
-          {getPastTrips(user.trips, drivers)}
-        </div>
+      {authorized &&
+        <div>
+          <h5>Hello <em>{user.username}</em>! This is the history of your rides:</h5>
+          {loading && <div id="loading">Loading...</div>}
+          <div className="trip-block">
+            <h5>Current rides:</h5>
+            {getCurrentTrips(user.trips, drivers)}
+          </div>
+    
+          <div className="trip-block">
+            <h5>Upcoming rides:</h5>
+            {getFutureTrips(user.trips, drivers)}
+          </div>
+    
+          <div className="trip-block">
+            <h5>Past rides:</h5>
+            {getPastTrips(user.trips, drivers)}
+          </div>
+        </div>}
     </div>
   );
 }
@@ -58,14 +61,16 @@ const RideHistory = (props) => {
 RideHistory.propTypes = {
   user: PropTypes.object.isRequired,
   drivers: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  authorized: PropTypes.bool.isRequired
 }
 
 function mapStateToProps(state){
   return {
     user: state.auth.user,
     drivers: state.drivers.drivers,
-    loading: state.auth.loading
+    loading: state.auth.loading,
+    authorized: state.auth.authorized,
   }
 }
 

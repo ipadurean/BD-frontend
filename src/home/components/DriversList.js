@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 
 const DriversList = (props) => {
 
-  const { driversAll, driversAvailable, loading } = props;
-  let drivers = driversAvailable || driversAll
+  const { drivers, loading } = props;
  
   return (
     <div className="driver-list">
+      <div id="note">* There are a total of <b>{drivers.length}</b> drivers available:</div>
       {loading && <div className="loading">Loading...</div>}
       {drivers.map(driver => {
         return  <Link to={`/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>
@@ -25,15 +25,13 @@ const DriversList = (props) => {
 }
 
 DriversList.propTypes = {
-  driversAll: PropTypes.array.isRequired,
-  driversAvailable: PropTypes.array,
+  drivers: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired
 }
   
 function mapStateToProps(state){
   return {
-    driversAll: state.drivers.drivers,
-    driversAvailable: state.home.driversAvailable,
+    drivers: state.drivers.drivers,
     loading: state.drivers.loading}
 }
 

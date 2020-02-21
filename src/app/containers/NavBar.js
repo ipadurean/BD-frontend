@@ -43,19 +43,25 @@ class NavBar extends Component {
 
   render() {
 
-    const { user, loading } = this.props
+    const { user, loading, authorized } = this.props
     return (
       <div className="nav-container">
         <Header />
         {loading ? <div>Loading...</div> : <div className="welcome">Welcome <em>{user.username}</em> !</div>}
         <a href="/home" style={{'textDecoration': 'none' }} className="nav-item">Home</a>
         <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-item">About</Link>
-        <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a> 
+        <Link to="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</Link> 
         <form onSubmit={this.handleSubmit} className="search-drivers">
           <input onChange={this.handleChange} type="text" ref="input" />
           <button className="button" id="search">Search</button>
         </form>
-        <button className="button" id="logout" onClick={this.logout} >Logout</button>
+        {authorized ?
+          <button className="button" id="logout" onClick={this.logout}>Logout</button> :
+          <div>
+            <a href="/login"><button className="button" id="login">Login</button></a>
+            <a href="/register"><button className="button" id="register">Register</button></a>
+          </div>
+          }
       </div>
     );
   }
@@ -71,7 +77,8 @@ NavBar.propTypes = {
 function mapStateToProps(state) {
   return {
     user: state.auth.user,
-    loading: state.auth.loading
+    loading: state.auth.loading,
+    authorized: state.auth.authorized
   }
 }
 

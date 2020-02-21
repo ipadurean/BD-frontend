@@ -9,11 +9,11 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 1px 1px 2px 1px silver;
-  min-width: 250px !important;
-  max-width: 250px !important;
-  min-height: 270px !important;
-  max-height: 270px !important;
-  padding: 5px;
+  min-width: 200px;
+  width: 20vw;
+  min-height: 220px;
+  height: auto;
+  padding: calc(2px + 1vw);
   position: absolute;
   z-index: 1;
 }
@@ -28,7 +28,7 @@
 .calendar-home .calendar-header {
   align-items: center;
   display: flex;
-  padding: 3px;
+  padding: calc(2px + 1vw);
   text-transform: uppercase;
   border-radius: var(--calendar-border-radius);
 }
@@ -41,9 +41,10 @@
 }
 
 .calendar-home .calendar-header__label {
+  font-size: calc(2px + 1vw);
   font-weight: bold;
   text-align: center;
-  width: 100%;
+  margin: auto;
 }
 
 .calendar-home .calendar-week {
@@ -56,10 +57,10 @@
   color: rgb(99, 99, 185);
   flex-direction: column;
   flex: 0 0 14.28%;
-  font-size: 0.9em;
+  font-size: calc(5px + 0.6vw);
   font-weight: bold;
   max-width: 14.28%;
-  padding: 10px 0px;
+  padding: 1vw 0px;
   text-align: center;
 }
 
@@ -68,6 +69,7 @@
   display: flex;
   flex-wrap: wrap;
   border-radius: var(--calendar-border-radius);
+  font-size: calc(8px + 0.5vw);
 }
 
 .calendar-home .calendar-date {
@@ -78,12 +80,11 @@
   flex-direction: column;
   flex: 0 0 14.28%;
   max-width: 14.28%;
-  padding: 5px;
+  padding: 0.4vw;
 }
 
 .calendar-home .calendar-date--active {
   cursor: pointer;
-  font-size: 14px;
 }
 
 .calendar-home #calendar-date--today {
@@ -94,7 +95,6 @@
 .calendar-home .calendar-date--selected {
   background-color: var(--calendar-selected-bg-color);
   color: var(--calendar-selected-color);
-  font-size: 14px;
 }
 
 .calendar-home .calendar-date--disabled {
@@ -102,5 +102,4 @@
   cursor: not-allowed;
   opacity: 0.2;
   user-select: none !important;
-  font-size: 14px;
 }

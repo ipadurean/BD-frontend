@@ -1,25 +1,37 @@
 .search-container{
   padding: 1%;
-  background-color: rgb(248, 249, 250);
-}
-
-.time-home {
-  width: 100px;
-  margin:2px
-}
-
-#date-home {
-  width: 200px;
-  margin:2px;
-}
-
-.form-container{
   background-image: linear-gradient(to bottom, #4d4d4d 0%, #535353 100%);
   border-radius: 5px;
   height: calc(50px + 4vw);
   box-shadow: 1px 0px 2px 3px rgb(207, 207, 207);
-  
 }
+
+.time-home {
+  width: 100px;
+  margin:2px;
+  font-size: calc(3px + 1vw);
+  color: rgb(78, 77, 77);
+  width: 10vw;
+  outline: none;
+}
+
+#date-box {
+  margin:2px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid rgb(68, 68, 68);
+  width: 15vw;
+  padding: 3px 2%;
+}
+
+#form-container {
+  display: flex;
+  flex-direction: row;
+  padding: 3px 5px;
+  font-size: calc(3px + 1vw);
+  color: rgb(75, 74, 74);
+}
+
 
 #form-title{
   color: rgb(186, 202, 207);
@@ -27,9 +39,6 @@
   font-size: calc(8px + 1vw)
 }
 
-#form {
-  padding: 1% 1% 0%;
-}
 
 #filter{
   margin: 2px;
@@ -43,12 +52,6 @@
   border: 1px solid black;
   background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
   width:80px;
-}
-
-#note {
-  font-size: calc(10px + 0.8vw);
-  padding: 5vw 1vw;
-  color: rgb(90, 102, 110);
 }
 
 #row {

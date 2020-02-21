@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FormGroup, FormControl, Button, Navbar, Form } from "react-bootstrap";
+import { FormGroup, FormControl, Form } from "react-bootstrap";
 import '../styles/Register.css';
 
 export default class Register extends Component {
@@ -44,11 +44,6 @@ export default class Register extends Component {
   render() {
     return (
       <div className="signup">
-        <Navbar>
-            <span className="bttn">
-                  <Button href="/login" variant="outline-success">Login</Button>
-            </span>
-        </Navbar>
         <form onSubmit={this.handleSubmit}>
           <FormGroup>
             <Form.Label>First Name</Form.Label>

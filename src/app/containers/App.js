@@ -23,41 +23,29 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
+  
     const { drivers, authorized, booking } = this.props
     
     return (
       <div>
-        {authorized && <NavBar />}
+        <NavBar />
         <Switch>
-          <Route exact path='/' render={() => {
-            return localStorage.getItem('jwt') ?
-              <Home /> :
-              <Redirect to="/login" />
-          }} />
-          <Route path='/home' render={() => {
-            return localStorage.getItem('jwt') ?
-              <Home /> :
-              <Redirect to="/login" />
-          }} />
-                  
-          <Route exact path='/login' render={() => {
-            return authorized ?
-              <Redirect to="/home" /> :
-              <Login />
+          <Route exact path='/' component={Home} />
+          <Route path='/home' component={Home} />
+          <Route path='/login' render={() => {
+            return !authorized ? <Login /> :
+              <Redirect to="/home" />
           }} />
 
-          <Route exact path="/history" render={() => {
-            return authorized && <RideHistory />
-          }} />
+          <Route path="/history" component={RideHistory} />
           <Route exact path="/register" component={Register} />
           <Route exact path='/about' component={About} />
           <Route exact path="/:name" render={({ match }) => {
             const { name } = match.params
             const driver = drivers.find(el => el.name === name)
             return booking.booked ? <Invoice driver={driver} /> :
-              driver ? <DriverProfile driver={driver} /> :
-                <div>Page not found</div>
+                   driver ? <DriverProfile driver={driver} /> :
+                   <div>Page not found</div>
           }} />
         </Switch>
       </div>
@@ -68,6 +56,7 @@ class App extends Component {
 App.propTypes = {
   drivers: PropTypes.array.isRequired,
   authorized: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
   booking: PropTypes.shape({
     booked: PropTypes.bool.isRequired
   })
@@ -76,6 +65,7 @@ App.propTypes = {
 function mapStateToProps(state) {
   return {
     authorized: state.auth.authorized,
+    loading: state.auth.loading,
     drivers: state.drivers.drivers,
     booking: state.booking
   }
