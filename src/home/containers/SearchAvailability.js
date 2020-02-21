@@ -82,10 +82,10 @@ const SearchAvailability = (props) => {
               <Button variant="light" onClick={reset} type="reset" id="reset">Reset</Button>
             </Row>
           </Form>
-          <div id="available"> 
+          <div id="calendar"> 
             {home.clickDate && <CalendarHome />}
-            <div id="note">There are a total of <b>{drivers.length}</b> drivers available:</div>
           </div>
+          <div id="note">There are a total of <b>{drivers.length}</b> drivers available:</div>
         </div>
       </div>
     )

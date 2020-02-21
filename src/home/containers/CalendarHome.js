@@ -84,7 +84,7 @@ class CalendarHome extends Component {
 
   render(){
     return(
-      <div id="myCalendar" className="calendar-home" >
+      <div className="calendar-home" >
         <div className="calendar-header">
           <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
             <img src={leftArrow} alt="left" />

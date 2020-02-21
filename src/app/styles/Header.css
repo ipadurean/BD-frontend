@@ -1,19 +1,14 @@
 
 
 .header {
-  background-image: linear-gradient(to top, #1d232b 0%, #4b5053 100%);
-  height: calc(20px + 3vw);
   display: flex;
-  right: 0;
-  left: 0;
   align-items: center;
   justify-items: center;
-  position: fixed;
   z-index: 2;
 }
 
 #logo {
-  font-family: Lato;
+  font-family: Acme;
   align-items: left;
   font-size: calc(8px + 3vw);
   -webkit-text-stroke: 0.1vw rgb(252, 252, 252);

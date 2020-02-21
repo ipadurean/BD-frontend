@@ -12,7 +12,7 @@ const DriversList = (props) => {
   let drivers = driversAvailable || driversAll
  
   return (
-    <div className="list">
+    <div className="driver-list">
       {loading && <div className="loading">Loading...</div>}
       {drivers.map(driver => {
         return  <Link to={`/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>

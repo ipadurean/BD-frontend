@@ -13,8 +13,8 @@ const Driver = (props) => {
     <div className="driver-card">
       <div className="driver-brief">
         <div className="title">
-          <h5><b>{driver.username}</b></h5><span>Rating <b>{driver.rating}</b><img className="star" alt="star" src={star} /></span>
-          <p>Rate: <b>${driver.rate}/hour</b></p>
+          <div id="username">{driver.username}</div><span>Rating <b>{driver.rating}</b><img className="star" alt="star" src={star} /></span>
+          <div>Rate: <b>${driver.rate}/hour</b></div>
         </div>
         <LazyLoadImage id="img" alt="img" effect="opacity" src={driver.photo} />
         <div id="vehicle"><i> ~ {driver.car} ~ </i></div>

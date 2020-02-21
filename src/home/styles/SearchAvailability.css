@@ -47,13 +47,15 @@
 
 #note {
   font-size: calc(10px + 0.8vw);
-  margin: 50px;
+  padding: 5vw 1vw;
+  color: rgb(90, 102, 110);
 }
 
-#row{
+#row {
   margin-left: 3%;
 }
 
-#available{
-  height: 40px;
+#calendar {
+  position: relative;
+  top: 0;
 }

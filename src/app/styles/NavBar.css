@@ -8,9 +8,9 @@
   left: 0;
   right: 0;
   padding: 0 1vw;
-  top: calc(20px + 3vw);
+  top: 0;
   z-index: 1;
-  height: 40px;
+  height: calc(3vh + 2vw);
 }
 
 .search-drivers {
@@ -20,10 +20,10 @@
 
 .search-drivers input {
   outline: none;
+  width: 15vw;
 }
 
 #search {
-  position: absolute;
   outline: none;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .nav-item {
-  font-size: large;
+  font-size: calc(5px + 1vw);
   text-decoration: none;
   color: rgb(107, 107, 107) !important;
   line-height: 32px;
@@ -55,6 +55,7 @@
 
 .welcome {
   font-family: Lato;
+  font-size: calc(5px + 1vw);
   color: blue;
   margin: 0 1vw;
   background-color: white;

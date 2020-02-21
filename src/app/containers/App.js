@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import RideHistory from '../../history/components/RideHistory';
 import Home from '../../home/components/Home';
@@ -24,18 +23,22 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { drivers, authorized, booking } = this.props
     
     return (
       <div>
-        <Header />
         {authorized && <NavBar />}
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/' render={() => {
+            return localStorage.getItem('jwt') ?
+              <Home /> :
+              <Redirect to="/login" />
+          }} />
           <Route path='/home' render={() => {
             return localStorage.getItem('jwt') ?
               <Home /> :
-                <Redirect to="/login" />
+              <Redirect to="/login" />
           }} />
                   
           <Route exact path='/login' render={() => {

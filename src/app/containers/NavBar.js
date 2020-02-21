@@ -8,6 +8,7 @@ import { withRouter } from 'react-router';
 import { fetchDrivers } from '../ducks/operations';
 import { resetSearch } from '../../home/ducks/actions';
 import PropTypes from 'prop-types';
+import Header from '../components/Header'
 
 
 class NavBar extends Component {
@@ -45,10 +46,11 @@ class NavBar extends Component {
     const { user, loading } = this.props
     return (
       <div className="nav-container">
+        <Header />
+        {loading ? <div>Loading...</div> : <div className="welcome">Welcome <em>{user.username}</em> !</div>}
         <a href="/home" style={{'textDecoration': 'none' }} className="nav-item">Home</a>
         <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-item">About</Link>
-        <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a>
-        {loading ? <div>Loading...</div> : <div className="welcome">Welcome <em>{user.username}</em> !</div>} 
+        <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a> 
         <form onSubmit={this.handleSubmit} className="search-drivers">
           <input onChange={this.handleChange} type="text" ref="input" />
           <button className="button" id="search">Search</button>
