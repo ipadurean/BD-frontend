@@ -35,10 +35,9 @@ const RideHistory = (props) => {
 
   return (
     <div className="trip-history">
-      {authorized &&
+      {authorized ?
         <div>
           <h5>Hello <em>{user.username}</em>! This is the history of your rides:</h5>
-          {loading && <div id="loading">Loading...</div>}
           <div className="trip-block">
             <h5>Current rides:</h5>
             {getCurrentTrips(user.trips, drivers)}
@@ -53,7 +52,8 @@ const RideHistory = (props) => {
             <h5>Past rides:</h5>
             {getPastTrips(user.trips, drivers)}
           </div>
-        </div>}
+        </div> :
+        loading && <div id="loading">Loading...</div>}
     </div>
   );
 }

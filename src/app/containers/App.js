@@ -18,13 +18,14 @@ import PropTypes from 'prop-types';
 class App extends Component {
 
   componentDidMount() {
+    const token = localStorage.getItem('jwt');
+    token && this.props.authorizeUser(this.props.history)
     this.props.fetchDrivers();
-    localStorage.getItem('jwt') && this.props.authorize(this.props.history);
   }
 
   render() {
-  
-    const { drivers, authorized, booking } = this.props
+    const token = localStorage.getItem('jwt');
+    const { drivers, authorized, booking } = this.props;
     
     return (
       <div>
@@ -36,16 +37,20 @@ class App extends Component {
             return !authorized ? <Login /> :
               <Redirect to="/home" />
           }} />
-
-          <Route path="/history" component={RideHistory} />
           <Route exact path="/register" component={Register} />
           <Route exact path='/about' component={About} />
+          <Route path="/history" render={() => {
+            return token ? <RideHistory /> :
+              <Redirect to='/login' />
+          }} />
           <Route exact path="/:name" render={({ match }) => {
             const { name } = match.params
             const driver = drivers.find(el => el.name === name)
-            return booking.booked ? <Invoice driver={driver} /> :
-                   driver ? <DriverProfile driver={driver} /> :
-                   <div>Page not found</div>
+            
+            return !token ? <Redirect to='/login' /> :
+                    booking.booked ? <Invoice driver={driver} /> :
+                    driver ? <DriverProfile driver={driver} /> :
+                    <div>Page not found</div>
           }} />
         </Switch>
       </div>
@@ -74,7 +79,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     fetchDrivers: () => dispatch(fetchDrivers()),
-    authorize: (history) => dispatch(authorize(history))
+    authorizeUser: (history) => dispatch(authorize(history))
   }
 }
 
