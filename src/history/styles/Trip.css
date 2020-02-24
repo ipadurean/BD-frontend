@@ -1,4 +1,5 @@
 .trip-container {
+  padding: 10px;
   position: relative;
   width: 60vw;
   margin: 2% auto;
@@ -25,7 +26,7 @@
 
 .fixed #trip-header {
   border-radius: 0;
-  background-color: rgb(233, 232, 214);
+  background-color: rgb(233, 232, 224);
 }
 
 .fixed #trip-header:hover {
@@ -42,18 +43,18 @@
 }
 
 .trip-date {
-  position: absolute;
-  right: 5vw;
   font-family: 'Courier New', Courier, monospace;
-  font-size: calc(5px + 1vw);
+  font-size: calc(5px + 0.8vw);
+  margin-top: auto;
   padding: 5px 1vw;
 }
 
 #trip-body {
+  font-size: calc(5px + 0.7vw);
   line-height: 40px;
   animation: slidein 0.5s;
   background-color: rgb(255, 255, 255);
-  padding: 3%;
+  padding: 0 3%;
   height: 420px;
 }
 
@@ -61,7 +62,9 @@
   margin-left: 80%
 }
 
-.review-body{
+.review-body {
+  font-size: calc(5px + 0.7vw);
+  line-height: 18px;
   padding: 3%;
   background-color: rgb(248, 248, 242);
   position: absolute;

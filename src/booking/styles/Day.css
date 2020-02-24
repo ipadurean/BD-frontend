@@ -4,18 +4,19 @@
   100% { opacity: 1;}
 }
 
-.ruler {
+.day-bar {
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: 480px;
+  overflow: scroll;
 }
 
-.ruler .hr {
-  box-shadow: 1px 1px 1px 1px rgb(255, 255, 255);
+.day-bar .hr {
+  box-shadow: 1px 1px 1px 1px rgb(182, 181, 181);
   animation: fadeIn 1s;
   font-size: 12px;
-  background-color: rgb(252, 250, 245);
-  border: 1px solid rgb(139, 117, 48);
+  background:#e4dcc5;
+  border: 1px solid rgb(248, 248, 248);
   width: 60px;
   height: 16px;
   margin: 2px;
@@ -27,8 +28,8 @@
 }
 
 
-#selected{
-  background-color: #6e7f8f;
+#selected {
+  background: #606c77;
   color: white;
   display: flex;
   align-items: center;
@@ -36,7 +37,7 @@
   font-size: 12px;
 }
 
-.ruler .busy {
+.day-bar .busy {
   animation: fadeIn 1s;
   font-size: 12px;
   background-color: white;

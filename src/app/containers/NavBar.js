@@ -50,7 +50,7 @@ class NavBar extends Component {
         {loading ? <div>Loading...</div> : <div className="welcome">Welcome <em>{user.username}</em> !</div>}
         <a href="/home" style={{'textDecoration': 'none' }} className="nav-item">Home</a>
         <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-item">About</Link>
-        <Link to="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</Link> 
+        <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a> 
         <form onSubmit={this.handleSubmit} className="search-drivers">
           <input onChange={this.handleChange} type="text" ref="input" />
           <button className="button" id="search">Search</button>
@@ -68,7 +68,7 @@ class NavBar extends Component {
 }
 
 NavBar.propTypes = {
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   user: PropTypes.shape({
     username: PropTypes.string
   })

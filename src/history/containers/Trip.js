@@ -60,7 +60,7 @@ class Trip extends Component {
           {this.state.open && 
           <div id="trip-body" >
             <img id="trip-img" alt="img" src={driver.photo}/>
-            <h4>Driver name: {driver.name}</h4>
+            <h6>Driver name: {driver.name}</h6>
             {trip.review && <div className="review-body">
                               <h6><span>Your review:</span></h6>
                               <div><i>{trip.review}</i></div>

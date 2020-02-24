@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Day from './Day';
+import Day from '../components/Day';
 import '../styles/bookingCalendar.css';
 import TripForm from './TripForm';
 import Week from '../components/Week';
@@ -17,9 +17,7 @@ class BookingCalendar extends Component {
     super()
     this.state = {
       selectedMonth: new Date().getMonth(),
-      dayClicked: props.home.selectedDate,
-      start: props.home.start,
-      end: props.home.end
+      dayClicked: props.home.selectedDate
     }
   }
 
@@ -85,22 +83,7 @@ class BookingCalendar extends Component {
   }
 
   //selecting the starting hour and ending hour for booking
-  handleClick = (event) => {
-    let x = parseInt(event.target.dataset.val)
-      if(event.target.className === "hr"){
-        this.state.start===null?
-          this.setState({start: x, end: x+1}) :
-        (x-this.state.start)<=0 ?
-          this.setState({start:x, end: x+1}) :
-        this.state.end - this.state.start >1 ?
-          this.setState({start: x, end: x+1}):
-        (x-this.state.start)>0?
-          this.setState({end: x+1}):
-          this.setState({start:null, end:null})
-      } else {
-        this.setState({start:null, end:null})
-      }
-  }
+ 
 
   bookRide = (event, item) => {
     event.preventDefault();
@@ -150,12 +133,7 @@ class BookingCalendar extends Component {
                   </div>
               </div>
               <div className="day">
-                  {this.state.dayClicked &&  <Day  day={this.state.dayClicked} 
-                                                    select={this.handleClick}
-                                                    start={this.state.start}
-                                                    end={this.state.end}
-                                                    driver={driver}
-                                              />}
+                  {this.state.dayClicked && <Day  day={this.state.dayClicked}  />}
               </div>
               </div>
               <div className="book">

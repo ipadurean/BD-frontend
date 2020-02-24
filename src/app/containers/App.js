@@ -61,7 +61,6 @@ class App extends Component {
 App.propTypes = {
   drivers: PropTypes.array.isRequired,
   authorized: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
   booking: PropTypes.shape({
     booked: PropTypes.bool.isRequired
   })
