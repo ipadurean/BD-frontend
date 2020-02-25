@@ -19,3 +19,17 @@ export const addDriverTrips = (driver) => {
     payload: driver.trips
   }
 }
+
+export const setTime = (value) => {
+  return {
+    type: types.SET_TIME,
+    payload: value
+  }
+}
+
+export const selectDay = (value) => {
+  return {
+    type: types.SELECT_DAY,
+    payload: value
+  }
+}

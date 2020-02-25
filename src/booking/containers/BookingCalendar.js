@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Day from '../components/Day';
+import Day from './Day';
 import '../styles/bookingCalendar.css';
 import TripForm from './TripForm';
 import Week from '../components/Week';
@@ -8,24 +8,25 @@ import { fetchBooking } from '../ducks/operations';
 import leftArrow from '../../utils/assets/left-arrow.svg';
 import rightArrow from '../../utils/assets/right-arrow.svg';
 import PropTypes from 'prop-types';
+import { selectDay } from '../ducks/actions';
 
 const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"]  
 
 
 class BookingCalendar extends Component {
-  constructor(props) {
+  constructor() {
     super()
     this.state = {
       selectedMonth: new Date().getMonth(),
-      dayClicked: props.home.selectedDate
     }
   }
 
   createMonth = () => {
+    const { daySelected } = this.props;
     let now = new Date();
     let date = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
     let select = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
-        select.setTime(this.state.dayClicked);
+        select.setTime(daySelected);
     let daysArr = [];
     let daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
 
@@ -34,7 +35,7 @@ class BookingCalendar extends Component {
         daysArr.push(<div key={i+100} className={disabled}><div className="cal"></div></div>)
       }
       while (d <= daysInMonth) {
-        this.state.dayClicked && d === select.getDate()?
+        daySelected && d === select.getDate()?
           daysArr.push( <div key={d} className={selected} data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>):
         d === now.getDate() && now.getMonth() === date.getMonth()?
           daysArr.push( <div key={d} className={active} id="calendar-date--today" data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>):
@@ -47,22 +48,18 @@ class BookingCalendar extends Component {
   }
 
   monthPrev = () => {
-      this.state.selectedMonth &&
-        this.setState(prevState => ({
+    this.state.selectedMonth &&
+      this.setState(prevState => ({
         selectedMonth: prevState.selectedMonth - 1,
-        dayClicked: false,
-        start:null,
-        end:null
-      }))
+      }));
+    this.props.setDay(null)
   }
 
   monthNext = () => {
       this.setState(prevState => ({
         selectedMonth: prevState.selectedMonth + 1,
-        dayClicked: false,
-        start:null,
-        end:null
       }))
+    this.props.setDay(null)
   }
 
   getMonthYear = () => {
@@ -72,45 +69,37 @@ class BookingCalendar extends Component {
       return months[this.state.selectedMonth % 12] + " " + date.getFullYear()
   }
 
- //determining the selected date in order to display the hours belonging the that specific date
+ 
   displayDay = (event) => {
-      event.target.parentNode.className === active &&
-          this.setState({
-              dayClicked: parseInt(event.target.parentNode.dataset.calendarDate),
-              start:null,
-              end:null
-          }) 
+    event.target.parentNode.className === active && this.props.setDay(parseInt(event.target.parentNode.dataset.calendarDate))
   }
-
-  //selecting the starting hour and ending hour for booking
  
 
   bookRide = (event, item) => {
+    const { start, end, user, driver } = this.props
     event.preventDefault();
-    let user = this.props.user.id
-    let driver = this.props.driver.id
-    let timeTotal = this.state.end - this.state.start
-    let date1 = new Date(new Date(this.state.dayClicked).setHours(this.state.start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
-    let date2 = new Date(new Date(this.state.dayClicked).setHours(this.state.end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+    // let timeTotal = this.state.end - this.state.start
+    let date1 = new Date(new Date(start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+    let date2 = new Date(new Date(end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
     const bookingBody = {
-      user_id: user, 
-      driver_id:driver ,
-      time_booked: timeTotal,
+      user_id: user.id, 
+      driver_id:driver.id ,
+      // time_booked: timeTotal,
       start_time: date1,
       end_time: date2,
-      total: this.props.driver.rate * timeTotal,
+      // total: driver.rate * timeTotal,
       note: item.extra,
       address: item.address, 
       review: "",
       rating: 4
     }
-    if (user && driver && timeTotal && !!item.address) {
+    if (user && driver && !!item.address) {
       this.props.book(bookingBody)
     }
   }
 
   render() {
-    const { driver } = this.props
+    const { driver, daySelected } = this.props
 
       return (
         <div className="booking-container">
@@ -133,14 +122,13 @@ class BookingCalendar extends Component {
                   </div>
               </div>
               <div className="day">
-                  {this.state.dayClicked && <Day  day={this.state.dayClicked}  />}
+                  {daySelected && <Day />}
               </div>
               </div>
               <div className="book">
-                <TripForm time={this.state.end - this.state.start} 
-                          driver={driver}
-                          date={{day: this.state.dayClicked, start: this.state.start, end: this.state.end}}
-                          submit={this.bookRide} />
+                {/* <TripForm driver={driver}
+                          selectedDay={daySelected}
+                          submit={this.bookRide} /> */}
               </div>
           </div>
         </div> 
@@ -156,12 +144,19 @@ BookingCalendar.propTypes = {
 }
 
 function mapStateToProps(state){
-  return { home: state.home , user: state.auth.user }
+  return {
+    home: state.home,
+    user: state.auth.user,
+    daySelected: state.booking.daySelected,
+    start: state.booking.time.start,
+    end: state.booking.time.end
+  }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    book: (obj) => dispatch(fetchBooking(obj))
+    book: (obj) => dispatch(fetchBooking(obj)),
+    setDay: (value) => dispatch(selectDay(value))
   }
 }
 

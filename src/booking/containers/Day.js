@@ -3,29 +3,15 @@ import '../styles/Day.css';
 import TimeZone from '../../utils/timeZone';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
+import { setTime } from '../ducks/actions'
 
 class Day extends Component {
-  constructor(props) {
-    super()
-    this.state = {
-      start: props.home.start,
-      end: props.home.end,
-    }
-  }
-
-  componentWillReceiveProps() {
-    this.setState({
-      start: null,
-      end: null
-    })
-  }
  
 
-  //Filter trips belonging to selected driver, based on selected date, and return his booked hours
-  bookedHours = (selectedDay) => {
+  bookedHours = (day) => {
     const { driverTrips } = this.props
     let bookedHours = [];
-    let date = new Date(selectedDay);
+    let date = new Date(day);
     let arr = driverTrips.filter(el => TimeZone.toCentralTime(el.start_time).slice(0, 15) === date.toString().slice(0, 15));
     let newArr = arr.map(el => [parseInt(TimeZone.toCentralTime(el.start_time).slice(16, 18)), parseInt(TimeZone.toCentralTime(el.end_time).slice(16, 18))||24])
       for(let i=0; i<newArr.length; i++){
@@ -37,15 +23,15 @@ class Day extends Component {
   }
 
 
-  renderHours = (selectedDay) => {
-    const { start, end} = this.state
+  renderHours = (day) => {
+    
+    const { start, end} = this.props
     const dateValue = (hour) => {
-      return new Date(new Date(selectedDay).setHours(hour)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+      return new Date(new Date(day).setHours(hour)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
     }
     let hours = [];
     let i = -12;
     while (i < 36) {
-      // console.log(this.bookedHours(dateValue(i)))
       if (i > parseInt(start) && this.bookedHours(dateValue(i)).includes(new Date(dateValue(i+1)).getHours())){
             for(let k=i; k<36; k++){
                 hours.push(<div data-val={null} key={k} className="busy">N/A</div>)
@@ -65,29 +51,30 @@ class Day extends Component {
   }
 
   handleClick = (event) => {
+    const { start, end } = this.props
     let x = parseInt(event.target.dataset.val)
-    console.log(x)
+    // console.log(x)
     if (event.target.className === "hr") {
-      this.state.start === null ?
-        this.setState({ start: x, end: x + 1 }) :
-        (x - this.state.start) <= 0 ?
-          this.setState({ start: x, end: x + 1 }) :
-          this.state.end - this.state.start > 1 ?
-            this.setState({ start: x, end: x + 1 }) :
-            (x - this.state.start) > 0 ?
-              this.setState({ end: x + 1 }) :
-              this.setState({ start: null, end: null })
+      start === null ?
+        this.props.setTime({start: x, end: x+1}) :
+        (x - start) <= 0 ?
+          this.props.setTime({ start: x, end: x + 1 }) :
+          end - start > 1 ?
+            this.props.setTime({ start: x, end: x + 1 }) :
+            (x - start) > 0 ?
+              this.props.setTime({start, end: x + 1 }) :
+              this.props.setTime({ start: null, end: null })
     } else {
-      this.setState({ start: null, end: null })
+      this.props.setTime({ start: null, end: null })
     }
   }
 
   render() {
-    const { day } = this.props
-    console.log(this.state)
+    const { daySelected } = this.props
+   
     return (
       <div onClick={this.handleClick} className="day-bar">
-        {this.renderHours(day)}
+        {this.renderHours(daySelected)}
       </div>)
   }
 }
@@ -103,8 +90,17 @@ Day.propTypes = {
 function mapStateToProps(state) {
   return {
     driverTrips: state.booking.driverTrips,
-    home: state.home
+    home: state.home,
+    daySelected: state.booking.daySelected,
+    start: state.booking.time.start,
+    end: state.booking.time.end
   }
 }
 
-export default connect(mapStateToProps, null)(Day)
+function mapDispatchToProps(dispatch) {
+  return {
+    setTime: (value) => dispatch(setTime(value))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Day)
