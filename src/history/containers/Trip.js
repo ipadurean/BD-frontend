@@ -47,7 +47,7 @@ class Trip extends Component {
 
   render(){
    
-    const { trip, cancel, driver, review } = this.props 
+    const { trip, cancel, review } = this.props 
     
       return (
         <div className={this.state.open? "fixed" : "trip-container"}>
@@ -59,8 +59,8 @@ class Trip extends Component {
           </div>
           {this.state.open && 
           <div id="trip-body" >
-            <img id="trip-img" alt="img" src={driver.photo}/>
-            <h6>Driver name: {driver.name}</h6>
+            <img id="trip-img" alt="img" src={trip.driver_photo}/>
+            <h6>Driver name: {trip.driver_name}</h6>
             {trip.review && <div className="review-body">
                               <h6><span>Your review:</span></h6>
                               <div><i>{trip.review}</i></div>

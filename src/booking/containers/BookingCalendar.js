@@ -83,7 +83,8 @@ class BookingCalendar extends Component {
     let date2 = new Date(new Date(daySelected).setHours(end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
     const bookingBody = {
       user_id: user.id, 
-      driver_id:driver.id ,
+      driver_id: driver.id,
+      driver_photo: driver.photo,
       time_booked: timeTotal,
       start_time: date1,
       end_time: date2,

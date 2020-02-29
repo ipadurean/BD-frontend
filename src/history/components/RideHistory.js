@@ -7,29 +7,29 @@ import PropTypes from 'prop-types';
 
 const RideHistory = (props) => {
 
-  const { user, drivers, loading, authorized } = props
+  const { user, loading, authorized } = props
 
-  const getPastTrips = (tr, dr) => {
+  const getPastTrips = () => {
     let currentTime = new Date().getTime()
-    let pastTrips = tr.filter(el => new Date(el.end_time).getTime() < currentTime)
+    let pastTrips = user.trips.filter(el => new Date(el.end_time).getTime() < currentTime)
     return pastTrips.map(el => {
-      return  <Trip review={!el.review} key={el.id} driver={dr.filter(item => item.id === el.driver_id)[0]} trip={el} />
+      return  <Trip review={!el.review} key={el.id} trip={el} />
     })
   }
 
-  const getCurrentTrips = (tr, dr) => {
+  const getCurrentTrips = () => {
     let currentTime = new Date().getTime()
-    let currentTrips = tr.filter(el => new Date(el.end_time).getTime() > currentTime && new Date(el.start_time).getTime() < currentTime)
+    let currentTrips = user.trips.filter(el => new Date(el.end_time).getTime() > currentTime && new Date(el.start_time).getTime() < currentTime)
     return currentTrips.map(el => {
-      return  <Trip key={el.id} driver={dr.filter(item => item.id === el.driver_id)[0]} trip={el} />
+      return  <Trip key={el.id} trip={el} />
     })
   }
 
-  const getFutureTrips = (tr, dr) => {
+  const getFutureTrips = () => {
     let currentTime = new Date().getTime()
-    let futureTrips = tr.filter(el => new Date(el.start_time).getTime() > currentTime).sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime())
+    let futureTrips = user.trips.filter(el => new Date(el.start_time).getTime() > currentTime).sort((a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime())
     return futureTrips.map(el => {
-      return  <Trip  cancel={true} key={el.id} driver={dr.filter(item => item.id === el.driver_id)[0]} trip={el} />
+      return  <Trip  cancel={true} key={el.id} trip={el} />
     })
   }
 
@@ -40,17 +40,17 @@ const RideHistory = (props) => {
           <h5>Hello <em>{user.username}</em>! This is the history of your rides:</h5>
           <div className="trip-block">
             <h5>Current rides:</h5>
-            {getCurrentTrips(user.trips, drivers)}
+            {getCurrentTrips()}
           </div>
     
           <div className="trip-block">
             <h5>Upcoming rides:</h5>
-            {getFutureTrips(user.trips, drivers)}
+            {getFutureTrips()}
           </div>
     
           <div className="trip-block">
             <h5>Past rides:</h5>
-            {getPastTrips(user.trips, drivers)}
+            {getPastTrips()}
           </div>
         </div> :
         loading && <div id="loading">Loading...</div>}
