@@ -85,6 +85,7 @@ class BookingCalendar extends Component {
       user_id: user.id, 
       driver_id: driver.id,
       driver_photo: driver.photo,
+      driver_name: driver.name,
       time_booked: timeTotal,
       start_time: date1,
       end_time: date2,
