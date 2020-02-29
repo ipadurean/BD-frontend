@@ -16,7 +16,7 @@ export default function homeReducer(state = { selectedDate: false, start: null, 
   case types.ADD_END:
       return { ...state, end: action.payload };
     
-    case types.ADD_SEARCH:
+    case types.CLICK_SEARCH:
       return {...state, clickSearch: true}
 
   case types.RESET_SEARCH:

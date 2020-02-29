@@ -1,4 +1,4 @@
-const ADD_SEARCH = 'ADD_SEARCH';
+const CLICK_SEARCH = 'CLICK_SEARCH';
 const DATE_CLICKED = 'DATE_CLICKED';
 const ADD_DATE = 'ADD_DATE';
 const ADD_START = 'ADD_START';
@@ -6,7 +6,7 @@ const ADD_END = 'ADD_END';
 const RESET_SEARCH = 'RESET_SEARCH';
 
 export default {
-  ADD_SEARCH,
+  CLICK_SEARCH,
   DATE_CLICKED,
   ADD_DATE,
   ADD_START,

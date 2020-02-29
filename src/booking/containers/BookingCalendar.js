@@ -14,10 +14,10 @@ const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "
 
 
 class BookingCalendar extends Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
-      selectedMonth: new Date().getMonth(),
+      selectedMonth: new Date(props.daySelected || Date.now()).getMonth(),
     }
   }
 

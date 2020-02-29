@@ -28,9 +28,9 @@ export const dateClicked = () => {
   }
 }
 
-export const addSearch = () => {
+export const clickSearch = () => {
   return {
-    type: types.ADD_SEARCH
+    type: types.CLICK_SEARCH
   }
 }
 
