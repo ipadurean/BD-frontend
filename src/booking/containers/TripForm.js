@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, FormControl, Form } from "react-bootstrap";
 import '../styles/TripForm.css';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 
 class Trip extends Component {
   constructor(){
@@ -20,11 +21,12 @@ class Trip extends Component {
   }
 
   validateForm = () => {
-    return this.state.address.length > 0 && this.props.time > 0;
+    const { start, end } = this.props
+    return this.state.address.length > 0 && start && end;
   }
 
   render(){
-    const { driver, date, time, submit } = this.props
+    const { driver, daySelected, start, end, submit } = this.props 
     
     return (
       <div className="trip-form">
@@ -36,19 +38,19 @@ class Trip extends Component {
             </tr>
             <tr>
                 <th>For:</th>
-                <th><div className="fake-input">{date.day && new Date(date.day).toString().slice(0,15)}</div></th> 
+              <th><div className="fake-input">{daySelected && new Date(new Date(daySelected).setHours(start)).toString().slice(0,15)}</div></th> 
             </tr>
             <tr>
                 <th>At: </th>
-                <th><div className="fake-input">{date.start && <span>{date.start}:00</span>}</div></th>
+              <th><div className="fake-input">{new Date(new Date(daySelected).setHours(start)).toString().slice(15, 21)}</div></th>
             </tr>
             <tr>
                 <th>Total time booked:</th>
-                <th><div className="fake-input">{time} hours</div></th>
+                <th><div className="fake-input">{end - start} hours</div></th>
             </tr>
             <tr>
                 <th>Total: </th>
-                <th><div className="fake-input">${time * driver.rate}</div></th>
+                <th><div className="fake-input">${(end - start) * driver.rate}</div></th>
             </tr>
           </tbody>
         </table>
@@ -86,4 +88,12 @@ Trip.propTypes = {
   submit: PropTypes.func
 }
 
-export default Trip;
+function mapStateToProps(state) {
+  return {
+    daySelected: state.booking.daySelected,
+    start: state.booking.time.start,
+    end: state.booking.time.end
+  }
+}
+
+export default connect(mapStateToProps, null)(Trip);

@@ -14,8 +14,9 @@
   box-shadow: 1px 1px 1px 1px  #e6e7e9;
   border-radius: 5px;
   background-image: linear-gradient(to bottom, rgb(245, 247, 246), #f5f7f8);
-  margin-bottom: 10%;
+  margin-bottom: 10vw;
   border: 2px solid white;
+  height: auto;
 }
 
 .booking-before {
@@ -23,12 +24,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 90vw;
-  margin: 3vw;
+  margin: 2vw;
   justify-content: space-around;
 }
 
 .calendar-container {
-  margin: 10px;
+  margin: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -37,6 +38,7 @@
 
 
 .book {
+  margin: 50px 10px;
   min-width: 450px !important;
   max-width: 500px !important;
   min-height: 460px !important;
@@ -45,10 +47,9 @@
 
 .day {
   width: 65px;
-  margin: 20px;
-  border-radius: var(--calendar-border-radius);
-  min-height: 460px !important;
-  max-height: 460px !important;
+  margin: 50px;
+  min-height: 480px !important;
+  max-height: 480px !important;
 }
 
 #calendar-note {
@@ -61,7 +62,7 @@
 }
 
 .calendar {
-  margin: 0 1vw;
+  margin: 100px 1vw;
   display: block !important;
   min-width: 300px !important;
   max-width: 300px !important;

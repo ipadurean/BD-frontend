@@ -12,7 +12,7 @@
 .driver-container {
   display: flex;
   flex-wrap: wrap;
-  animation: slidein 1s;
+  animation: slidein 0.5s;
   padding: 2%;
   background-color: rgb(252, 252, 249);
   justify-content: space-around;

@@ -76,18 +76,18 @@ class BookingCalendar extends Component {
  
 
   bookRide = (event, item) => {
-    const { start, end, user, driver } = this.props
+    const { start, end, user, driver, daySelected } = this.props
     event.preventDefault();
-    // let timeTotal = this.state.end - this.state.start
-    let date1 = new Date(new Date(start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
-    let date2 = new Date(new Date(end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+    const timeTotal = end - start
+    let date1 = new Date(new Date(daySelected).setHours(start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+    let date2 = new Date(new Date(daySelected).setHours(end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
     const bookingBody = {
       user_id: user.id, 
       driver_id:driver.id ,
-      // time_booked: timeTotal,
+      time_booked: timeTotal,
       start_time: date1,
       end_time: date2,
-      // total: driver.rate * timeTotal,
+      total: driver.rate * timeTotal,
       note: item.extra,
       address: item.address, 
       review: "",
@@ -122,13 +122,12 @@ class BookingCalendar extends Component {
                   </div>
               </div>
               <div className="day">
-                  {daySelected && <Day />}
+                {daySelected && <Day />}
               </div>
               </div>
               <div className="book">
-                {/* <TripForm driver={driver}
-                          selectedDay={daySelected}
-                          submit={this.bookRide} /> */}
+                <TripForm driver={driver}
+                          submit={this.bookRide} />
               </div>
           </div>
         </div> 

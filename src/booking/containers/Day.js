@@ -3,7 +3,9 @@ import '../styles/Day.css';
 import TimeZone from '../../utils/timeZone';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import { setTime } from '../ducks/actions'
+import { setTime } from '../ducks/actions';
+import arrowUp from '../../utils/assets/arrow-up.svg';
+import arrowDown from '../../utils/assets/arrow-down.svg';
 
 class Day extends Component {
  
@@ -30,7 +32,7 @@ class Day extends Component {
       return new Date(new Date(day).setHours(hour)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
     }
     let hours = [];
-    let i = -12;
+    let i = 0;
     while (i < 36) {
       if (i > parseInt(start) && this.bookedHours(dateValue(i)).includes(new Date(dateValue(i+1)).getHours())){
             for(let k=i; k<36; k++){
@@ -39,11 +41,11 @@ class Day extends Component {
       } else if (this.bookedHours(dateValue(i)).includes(new Date(dateValue(i+1)).getHours())){
           hours.push(<div data-val={null} key={i} className="busy">N/A</div>)
         } else if (i === parseInt(start)) {
-          hours.push(<div data-val={i} key={i} calendar-date={dateValue(i)} className="hr" id="selected">{dateValue(i).slice(16, 21)}</div>)
+          hours.push(<div data-val={i} key={i} className="hr" id="selected">{dateValue(i).slice(16, 21)}</div>)
         } else if(i >= parseInt(start) && i < parseInt(end)) {
-          hours[i+12] = <div data-val={i} key={i} calendar-date={dateValue(i)} className="hr" id="selected">{dateValue(i).slice(16, 21)}</div>
+          hours[i+12] = <div data-val={i} key={i} className="hr" id="selected">{dateValue(i).slice(16, 21)}</div>
         } else {
-          hours.push(<div data-val={i} key={i} calendar-date={dateValue(i)} className="hr">{dateValue(i).slice(16, 21)}</div>)
+        hours.push(<div data-val={i} key={i} className="hr">{dateValue(i).slice(16, 21)}</div>)
         }
         i++;
       }
@@ -53,28 +55,34 @@ class Day extends Component {
   handleClick = (event) => {
     const { start, end } = this.props
     let x = parseInt(event.target.dataset.val)
-    // console.log(x)
+    
     if (event.target.className === "hr") {
       start === null ?
         this.props.setTime({start: x, end: x+1}) :
-        (x - start) <= 0 ?
-          this.props.setTime({ start: x, end: x + 1 }) :
-          end - start > 1 ?
-            this.props.setTime({ start: x, end: x + 1 }) :
-            (x - start) > 0 ?
-              this.props.setTime({start, end: x + 1 }) :
-              this.props.setTime({ start: null, end: null })
+      (x - start) <= 0 ?
+        this.props.setTime({ start: x, end: x + 1 }) :
+      end - start > 1 ?
+        this.props.setTime({ start: x, end: x + 1 }) :
+      (x - start) > 0 ?
+        this.props.setTime({start, end: x + 1 }) :
+        this.props.setTime({ start: null, end: null })
     } else {
       this.props.setTime({ start: null, end: null })
     }
+  }
+
+  scrollDown = () => {
+    return this.refs['day-bar'].scrollTo(50, 200)
   }
 
   render() {
     const { daySelected } = this.props
    
     return (
-      <div onClick={this.handleClick} className="day-bar">
-        {this.renderHours(daySelected)}
+      <div ref="day-bar" onClick={this.handleClick} className="day-bar">
+        <img onClick={this.scrollUp} alt="up" className="arrows" src={arrowUp} />
+          <div className="hours">{this.renderHours(daySelected)}</div>
+        <img onClick={this.scrollDown} alt="down" className="arrows" src={arrowDown} />
       </div>)
   }
 }

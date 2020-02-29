@@ -11,6 +11,7 @@
 
 .trip-container:hover {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
+  transition: transform 0.3s,box-shadow 0.3s;
 }
 
 .fixed {
@@ -35,17 +36,20 @@
 }
 
 #trip-header {
+  display: flex;
   background-color: rgb(248, 249, 250);
   padding: 1%;
   cursor: pointer;
   border-radius: 20px;
   padding: 10px;
+  height: 30px;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .trip-date {
   font-family: 'Courier New', Courier, monospace;
   font-size: calc(5px + 0.8vw);
-  margin-top: auto;
   padding: 5px 1vw;
 }
 
@@ -83,7 +87,7 @@
 }
 
 #trip-img {
-  animation: fadeIn 1s;
+  animation: fadeIn 0.3s;
   height: calc(10px + 5vw);
   width: calc(10px + 5vw);
   margin: 5px;
