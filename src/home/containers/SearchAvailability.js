@@ -13,11 +13,17 @@ const SearchAvailability = (props) => {
   
   const { selectedDate, start, end, clickDate } = props.home;
 
+  const displayHours = (value) => {
+    return  value > 23 ?
+            value % 24 + ':00 + 1 day' :
+            value + ':00'
+  }
+
   const renderHours1 = () => {
     let count = 0;
     let hours = []
-      while (count < (end || 24)){
-          hours.push(<option key={count}>{count+":00"}</option>);
+      while (count < (end || 36)){
+        hours.push(<option data-val={count} key={count}>{displayHours(count)}</option>);
           count +=1;
       }
     return hours
@@ -26,8 +32,8 @@ const SearchAvailability = (props) => {
   const renderHours2 = () => {
     let count = start || 1;
     let hours = []
-      while (count <= 24){
-          hours.push(<option key={count}>{count+":00"}</option>);
+      while (count <= 36){
+        hours.push(<option data-val={count} key={count}>{displayHours(count)}</option>);
           count +=1;
       }
     return hours
@@ -40,6 +46,7 @@ const SearchAvailability = (props) => {
   const searchAvailable = () => {
     const date1 = TimeZone.toCentralTime(new Date(selectedDate).setHours(start));
     const date2 = TimeZone.toCentralTime(new Date(selectedDate).setHours(end));
+    console.log(date1, date2)
     props.getAvailableDrivers('undefined', date1, date2);
     props.search();
     props.sendDate(selectedDate);
@@ -47,15 +54,17 @@ const SearchAvailability = (props) => {
   }
 
   const handleChange = (event) => {
-    props[event.target.name](parseInt(event.target.value))
+    const { name, options } = event.target
+    props[name](parseInt(options[options.selectedIndex].dataset.val))
   }
 
   const validateForm = () => {
-    return selectedDate && start && end
+    return selectedDate && (typeof(start) === 'number') && end
   }
 
   const reset = () => {
-    props.reset()
+    props.reset();
+    props.getAvailableDrivers()
   }
 
   return(

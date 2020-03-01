@@ -28,7 +28,8 @@ export default function bookingReducer(state = initialState , action) {
       return { ...state, booked: true, trip: action.payload};
 
     case types.RESET_BOOKED:
-      return {...state, booked: false, trip: {}}
+      return {
+        ...state, booked: false, daySelected: false, time: { start: null, end: null}, trip: {}}
 
     default:
       return state;

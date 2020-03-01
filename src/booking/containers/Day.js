@@ -11,13 +11,27 @@ class Day extends Component {
  
 
   bookedHours = (day) => {
+    
     const { driverTrips } = this.props
     let bookedHours = [];
-    let date = new Date(day);
-    let arr = driverTrips.filter(el => TimeZone.toCentralTime(el.start_time).slice(0, 15) === date.toString().slice(0, 15));
-    let newArr = arr.map(el => [parseInt(TimeZone.toCentralTime(el.start_time).slice(16, 18)), parseInt(TimeZone.toCentralTime(el.end_time).slice(16, 18))||24])
-      for(let i=0; i<newArr.length; i++){
-          for(let k=newArr[i][0]; k<newArr[i][1]; k++){
+    const date1 = new Date(day);
+    const date2 = new Date(new Date(day).setHours(36));
+    
+    const filteredTrips = driverTrips.filter(el => {
+      const startDate = new Date(TimeZone.toCentralTime(el.start_time)).getTime();
+      const endDate = new Date(TimeZone.toCentralTime(el.end_time)).getTime();
+      return startDate >= date1.getTime() && endDate <= date2.getTime()
+    })
+   
+    const newArr = filteredTrips.map(el => {
+      const hour = 3600000;
+      const start = new Date(TimeZone.toCentralTime(el.start_time)).getTime() - date1;
+      const end = new Date(TimeZone.toCentralTime(el.end_time)).getTime() - date1;
+      return [start/hour, end/hour]
+    })
+    
+    for (let i = 0; i < newArr.length; i++){
+          for(let k = newArr[i][0]; k < newArr[i][1]; k++){
             bookedHours.push(k)
           }
       }
@@ -34,11 +48,11 @@ class Day extends Component {
     let hours = [];
     let i = 0;
     while (i < 36) {
-      if (i > parseInt(start) && this.bookedHours(dateValue(i)).includes(new Date(dateValue(i+1)).getHours())){
+      if (i > parseInt(start) && this.bookedHours(day).includes(i)) {
             for(let k=i; k<36; k++){
                 hours.push(<div data-val={null} key={k} className="busy">N/A</div>)
             } return hours;
-      } else if (this.bookedHours(dateValue(i)).includes(new Date(dateValue(i+1)).getHours())){
+      } else if (this.bookedHours(day).includes(i)) {
           hours.push(<div data-val={null} key={i} className="busy">N/A</div>)
         } else if (i === parseInt(start)) {
           hours.push(<div data-val={i} key={i} className="hr" id="selected">{dateValue(i).slice(16, 21)}</div>)
@@ -48,7 +62,7 @@ class Day extends Component {
         hours.push(<div data-val={i} key={i} className="hr">{dateValue(i).slice(16, 21)}</div>)
         }
         i++;
-      }
+    }
     return hours;
   }
 

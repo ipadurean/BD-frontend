@@ -9,7 +9,7 @@
 .time-home {
   width: 100px;
   margin:2px;
-  font-size: calc(3px + 1vw);
+  font-size: calc(5px + 0.8vw);
   color: rgb(78, 77, 77);
   width: 10vw;
   outline: none;
@@ -62,3 +62,4 @@
   position: relative;
   top: 0;
 }
+

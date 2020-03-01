@@ -18,9 +18,11 @@ const Driver = (props) => {
         </div>
         <LazyLoadImage id="driver-img" alt="img" effect="opacity" src={driver.photo} />
         <div id="vehicle"><i> ~ {driver.car} ~ </i></div>
-        {home.clickSearch && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}
       </div>
-      <button id="select">Book ride with this chauffeur</button>
+      <div className="book-ride">
+        {home.clickSearch && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}
+        <button id="select">Book ride with this chauffeur</button>
+      </div>
     </div> 
   )
 }
