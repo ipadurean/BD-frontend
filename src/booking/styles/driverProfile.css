@@ -20,6 +20,7 @@
 }
 
 #reviews-title {
+  color: rgb(74, 119, 74);
   width: 90vw;
   margin-top: 2vw;
 }
@@ -38,6 +39,7 @@
 
 
 .bio {
+  color: gray;
   margin: 2% 15%;
   padding: 10px;
   text-align: center;

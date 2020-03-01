@@ -29,11 +29,7 @@
 .fixed #trip-header {
   border-radius: 0;
   background-color: rgb(233, 232, 224);
-}
-
-.fixed #trip-header:hover {
-  background-color: rgb(222, 226, 226);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
+  cursor: auto;
 }
 
 #trip-header {
@@ -45,7 +41,7 @@
   padding: 10px;
   height: 30px;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .trip-date {
@@ -94,4 +90,8 @@
   margin: 5px;
   box-shadow: 1px 1px 1px 1px #757272;
   border-radius: 50%;
+}
+
+#close {
+  cursor: pointer;
 }

@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import { fetchDelete } from '../ducks/operations';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
+import close from '../../utils/assets/close.svg';
 
 
 
@@ -20,12 +21,10 @@ class Trip extends Component {
   }
 
   handleClick = () => {
-    this.setState(prevState =>{ 
-      return {
-        open: !prevState.open,
+    !this.state.open && this.setState({
+        open: true,
         clickReview: false
-      }
-    })
+      })
   }
 
   addReview = () => {
@@ -45,6 +44,12 @@ class Trip extends Component {
     this.props.delete(this.props.trip.id)
   }
 
+  close = () => {
+    this.setState({
+      open: false
+    })
+  }
+
   render(){
    
     const { trip, cancel, review } = this.props 
@@ -56,6 +61,7 @@ class Trip extends Component {
             <span className="trip-date">
               <span>For: </span><em>{new Date(trip.start_time).toString().slice(0,10)}</em>
             </span>
+            {this.state.open && <img onClick={this.close} alt="close" id="close" src={close} />}
           </div>
           {this.state.open && 
           <div id="trip-body" >
