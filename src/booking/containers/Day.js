@@ -4,8 +4,8 @@ import TimeZone from '../../utils/timeZone';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { setTime } from '../ducks/actions';
-import arrowUp from '../../utils/assets/arrow-up.svg';
-import arrowDown from '../../utils/assets/arrow-down.svg';
+import arrowUp from '../../utils/assets/arrow_drop_up.svg';
+import arrowDown from '../../utils/assets/arrow_drop_down.svg';
 
 class Day extends Component {
  
@@ -86,17 +86,26 @@ class Day extends Component {
   }
 
   scrollDown = () => {
-    return this.refs['day-bar'].scrollTo(50, 200)
+    this.refs['bar'].scrollBy({
+      top: -40,
+      behavior: 'smooth'
+    });
+  }
+
+  scrollUp = () => {
+    this.refs['bar'].scrollBy({
+      top: 40,
+      behavior: 'smooth'
+    });
   }
 
   render() {
     const { daySelected } = this.props
-   
     return (
-      <div ref="day-bar" onClick={this.handleClick} className="day-bar">
-        <img onClick={this.scrollUp} alt="up" className="arrows" src={arrowUp} />
-          <div className="hours">{this.renderHours(daySelected)}</div>
-        <img onClick={this.scrollDown} alt="down" className="arrows" src={arrowDown} />
+      <div  onClick={this.handleClick} className="day-bar">
+        <img onClick={this.scrollDown} alt="up" className="arrows" src={arrowUp} />
+          <div ref="bar" className="hours">{this.renderHours(daySelected)}</div>
+        <img onClick={this.scrollUp} alt="down" className="arrows" src={arrowDown} />
       </div>)
   }
 }
