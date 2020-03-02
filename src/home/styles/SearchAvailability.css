@@ -40,18 +40,17 @@
 }
 
 
-#filter{
+#form-container button {
+  border-radius: 3px;
   margin: 2px;
-  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
-  border: 1px solid black;
-  width:100px;
+  background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
+  border: 1px solid rgb(231, 214, 180);
+  width:80px;
+  outline: none;
 }
 
-#reset {
-  margin: 2px;
-  border: 1px solid black;
-  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
-  width:80px;
+#form-container button:hover {
+  box-shadow: 0px 0.5px 0.5px 1px #f1eeee;
 }
 
 #row {

@@ -44,6 +44,14 @@
   justify-content: space-between;
 }
 
+.review-form-container {
+  position: absolute;
+  right: 15px;
+  top: 40px;
+  left: 50%;
+  min-height: 100px;
+}
+
 .trip-date {
   font-family: 'Courier New', Courier, monospace;
   font-size: calc(5px + 0.8vw);
@@ -51,6 +59,9 @@
 }
 
 #trip-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   font-size: calc(5px + 0.7vw);
   line-height: 40px;
   animation: slidein 0.5s;
@@ -59,8 +70,28 @@
   height: 420px;
 }
 
-#trip-body button{
-  margin-left: 80%
+#trip-body button {
+  width: 90px !important;
+  height: 25px !important;
+  font-size: 14px;
+  line-height: 10px;
+  margin-left: auto;
+  margin-top: auto;
+  border-radius: 3px;
+  background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
+  border: 1px solid rgb(209, 197, 175);
+  box-shadow: 1px 1px 1px 1px #757272;
+}
+
+#trip-body button:hover {
+   color: rgb(238, 31, 31);
+}
+
+.add-review {
+  margin-left: 80%;
+  cursor: pointer;
+  font-weight: 600;;
+  color: rgb(88, 165, 238);
 }
 
 .review-body {
@@ -94,4 +125,10 @@
 
 #close {
   cursor: pointer;
+  border-radius: 20px;
+  padding: 4px;
+}
+
+#close:hover {
+  background-color: rgb(241, 247, 241);
 }

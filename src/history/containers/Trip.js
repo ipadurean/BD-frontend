@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReviewForm from './ReviewForm';
 import '../styles/Trip.css';
 import TimeZone from '../../utils/timeZone';
-import { Button } from "react-bootstrap";
 import { fetchDelete } from '../ducks/operations';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
@@ -46,7 +45,8 @@ class Trip extends Component {
 
   close = () => {
     this.setState({
-      open: false
+      open: false,
+      clickReview: false
     })
   }
 
@@ -64,23 +64,27 @@ class Trip extends Component {
             {this.state.open && <img onClick={this.close} alt="close" id="close" src={close} />}
           </div>
           {this.state.open && 
-          <div id="trip-body" >
-            <img id="trip-img" alt="img" src={trip.driver_photo}/>
-            <h6>Driver name: {trip.driver_name}</h6>
-            {trip.review && <div className="review-body">
-                              <h6><span>Your review:</span></h6>
-                              <div><i>{trip.review}</i></div>
-                            </div>}
-            <div>Date: <span>{TimeZone.toCentralTime(trip.start_time).slice(0, 15)}</span></div>
-              <div>From: <span>{TimeZone.toCentralTime(trip.start_time).slice(16, 21)}</span> to:<span>{TimeZone.toCentralTime(trip.end_time).slice(16, 21)}</span></div>
-              <div>Pick up address: {trip.address}</div>
+            <div id="trip-body" >
+              <img id="trip-img" alt="img" src={trip.driver_photo}/>
+              <h6>Driver name: {trip.driver_name}</h6>
+              {trip.review && <div className="review-body">
+                                <h6><span>Your review:</span></h6>
+                                <div><i>{trip.review}</i></div>
+                              </div>}
+              <div>Date: <span>{TimeZone.toCentralTime(trip.start_time).slice(0, 15)}</span></div>
+                <div>From: <span>{TimeZone.toCentralTime(trip.start_time).slice(16, 21)}</span> to:<span>{TimeZone.toCentralTime(trip.end_time).slice(16, 21)}</span></div>
+                <div>Pick up address: {trip.address}</div>
               <div>Total cost: <span>${trip.total}</span></div>
-              {cancel && <Button variant="danger" size="sm" onClick={this.cancelRide}>Cancel Ride </Button>}
-              {review && !this.state.clickReview && <Button size="sm" onClick={this.addReview}>Add Review</Button>}
-            {!this.state.submitted && this.state.clickReview && <Button size="sm" onClick={this.cancelReview}>Cancel</Button>}
-            <div className="trip-date"><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></div>
-          </div>}
-          {this.state.clickReview && <ReviewForm trip={trip} />}
+            
+              {cancel && <button onClick={this.cancelRide}> Cancel Ride </button>}
+            {review && !this.state.clickReview && <div className="add-review" onClick={this.addReview}><u>Add Review</u></div>}
+              <div className="trip-date"><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></div>
+            </div>}
+          {this.state.clickReview &&
+            <div className="review-form-container">
+              {!this.state.submitted && <img style={{ 'width': '20px', 'float': 'right'}} onClick={this.cancelReview} alt="close" id="close" src={close} />}
+                <ReviewForm trip={trip} />
+            </div>}
         </div>
       )
   }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, FormControl } from "react-bootstrap";
 import '../styles/ReviewForm.css';
 import { addReview } from '../ducks/operations';
 import { connect } from "react-redux";
@@ -15,36 +14,29 @@ class ReviewForm extends Component {
 
   handleChange = (event) => {
     this.setState({
-      review: event.target.value + ` (${this.props.auth.user.username})`
+      review: event.target.value 
     })
   }
 
   validateForm = () => {
-    return this.state.review.length > 0
+    return !this.state.review.length > 0
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.sendReview(this.props.trip.id, this.state.review)
+    this.props.sendReview(this.props.trip.id, this.state.review + ` (${this.props.auth.user.username})`)
   }
 
   
   render(){
     const { submitted } = this.props.rideHistory
-   
     return (
       <div className="review-form">
         {submitted?
           <h4>Your review has been posted!</h4> :
-          <form onSubmit={this.handleSubmit} >
-            <FormGroup  controlId="review" bssize="large">
-              <FormControl as="textarea"
-                          onChange={this.handleChange}
-                          type="text"
-                          autoFocus
-              />
-            </FormGroup>
-            <Button variant="success" size="sm" type="submit" value="Submit" disabled={!this.validateForm()}>Submit</Button>
+          <form id="review" onSubmit={this.handleSubmit} >
+            <textarea type="text" onChange={this.handleChange} />
+            <button type="submit" value="Submit" disabled={this.validateForm()}>Submit</button>
           </form>}
       </div>
     )

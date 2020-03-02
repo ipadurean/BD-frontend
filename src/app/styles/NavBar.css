@@ -28,16 +28,21 @@
 }
 
 .button {
-  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
+  border-radius: 3px;
+  background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
 }
 
-#logout{
-  color: rgb(238, 31, 31);
+#logout {
   margin-left: auto;
 }
 
+#logout:hover{
+  color: rgb(238, 31, 31);
+}
+
 .button:hover{
-  box-shadow: 1px 1px 1px 1px #757272;
+  box-shadow: 0.5px 0.5px 1px 1px #757272;
+  
 }
 
 .nav-item {
