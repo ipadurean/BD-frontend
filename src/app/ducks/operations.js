@@ -5,6 +5,7 @@ const baseUrl = 'https://radiant-fjord-35660.herokuapp.com';
 export const fetchDrivers = (query, start, end) => {
 
   return function (dispatch) {
+   
     dispatch(loadingDrivers());
     fetch(`${baseUrl}/drivers?filter=${query}&from=${start}&to=${end}`)
       .then(response => {

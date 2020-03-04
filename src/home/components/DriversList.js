@@ -15,7 +15,7 @@ const DriversList = (props) => {
       <div id="note">* There are a total of <b>{drivers.length}</b> drivers available:</div>
       {loading && <div className="loading">Loading...</div>}
       {drivers.map(driver => {
-        return  <Link to={`/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>
+        return  <Link to={`/drivers/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>
                   <Driver key={driver.id}  driver={driver}  /> 
                 </Link>
       })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import RideHistory from '../../history/components/RideHistory';
-import Home from '../../home/components/Home';
+import Home from '../../home/containers/Home';
 import Register from '../../auth/containers/Register';
 import Login from '../../auth/containers/Login';
 import '../styles/App.css';
@@ -32,18 +32,21 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/home' component={Home} />
+          <Route exact path='/home' component={Home} />
+          <Route exact path='/home/drivers/search' render={({ location }) => {
+            return <Home query={location.search.slice(2)} />
+          }} />
           <Route path='/login' render={() => {
             return !authorized ? <Login /> :
               <Redirect to="/home" />
           }} />
-          <Route exact path="/register" component={Register} />
+          <Route exact path='/register' component={Register} />
           <Route exact path='/about' component={About} />
           <Route path="/history" render={() => {
             return token ? <RideHistory /> :
               <Redirect to='/login' />
           }} />
-          <Route exact path="/:name" render={({ match }) => {
+          <Route exact path='/drivers/:name' render={({ match }) => {
             const { name } = match.params
             const driver = drivers.find(el => el.name === name)
             
@@ -77,7 +80,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchDrivers: () => dispatch(fetchDrivers()),
+    fetchDrivers: (q) => dispatch(fetchDrivers(q)),
     authorizeUser: (history) => dispatch(authorize(history))
   }
 }

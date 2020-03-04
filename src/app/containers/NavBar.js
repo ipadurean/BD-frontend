@@ -31,10 +31,9 @@ class NavBar extends Component {
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  handleClick = () => {
+    this.props.history.push(`/home/drivers/search?=${this.state.query}`)
     this.props.reset()
-    this.props.fetchDrivers(this.state.query);
     this.setState({
       query: ''
     });
@@ -51,10 +50,10 @@ class NavBar extends Component {
         <a href="/home" style={{'textDecoration': 'none' }} className="nav-item">Home</a>
         <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-item">About</Link>
         <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a> 
-        <form onSubmit={this.handleSubmit} className="search-drivers">
+        <div className="search-drivers">
           <input onChange={this.handleChange} type="text" ref="input" />
-          <button className="button" id="search">Search</button>
-        </form>
+          <button onClick={this.handleClick} className="button" id="search">Search</button>
+        </div>
         {authorized ?
           <button className="button" id="logout" onClick={this.logout}>Logout</button> :
           <div>
@@ -71,7 +70,7 @@ NavBar.propTypes = {
   loading: PropTypes.bool,
   user: PropTypes.shape({
     username: PropTypes.string
-  })
+    })
 }
 
 function mapStateToProps(state) {
