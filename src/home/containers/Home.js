@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import '../styles/Home.css';
 import SearchAvailability from "./SearchAvailability";
 import DriversList from '../components/DriversList';
@@ -6,15 +6,31 @@ import { fetchDrivers } from '../../app/ducks/operations';
 import { connect } from 'react-redux';
 
 
-const Home = (props) => {
+class Home extends Component {
 
-  props.query && props.fetchDrivers(props.query)
-  return (
-    <div className="home-container">
-      <SearchAvailability /> 
-      <DriversList /> 
-    </div>  
-  )
+  componentDidMount() {
+    const { query, fetchDrivers } = this.props;
+    fetchDrivers(query)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { query, fetchDrivers } = this.props;
+    if (JSON.stringify(prevProps.query) !== JSON.stringify(query)) {
+      fetchDrivers(query)
+    }
+  }
+
+  
+ 
+ 
+  render(){
+    return (
+      <div className="home-container">
+        <SearchAvailability />
+        <DriversList />
+      </div>
+    )
+  }
 }
 
 

@@ -14,13 +14,13 @@ import { authorize } from '../../auth/ducks/operations';
 import NavBar from './NavBar';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
+import Parse from '../../utils/parse';
 
 class App extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem('jwt');
     token && this.props.authorizeUser(this.props.history)
-    this.props.fetchDrivers();
   }
 
   render() {
@@ -34,7 +34,8 @@ class App extends Component {
           <Route exact path='/' component={Home} />
           <Route exact path='/home' component={Home} />
           <Route exact path='/home/drivers/search' render={({ location }) => {
-            return <Home query={location.search.slice(2)} />
+            const searchParams = Parse.getParams(location.search)
+            return <Home query={searchParams} />
           }} />
           <Route path='/login' render={() => {
             return !authorized ? <Login /> :

@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/SearchAvailability.css';
 import CalendarHome from './CalendarHome';
-import TimeZone from '../../utils/timeZone';
 import { startTime, endTime, dateClicked, resetSearch, clickSearch } from '../ducks/actions';
 import { connect } from "react-redux";
 import { fetchDrivers } from '../../app/ducks/operations';
@@ -45,10 +44,10 @@ const SearchAvailability = (props) => {
   }
 
   const searchAvailable = () => {
-    const date1 = TimeZone.toCentralTime(new Date(selectedDate).setHours(start));
-    const date2 = TimeZone.toCentralTime(new Date(selectedDate).setHours(end));
-    // props.history.push(`/home/drivers/search?from=${date1}&to=${date2}`)
-    props.getAvailableDrivers('undefined', date1, date2);
+    const date1 = new Date(selectedDate).setHours(start);
+    const date2 = new Date(selectedDate).setHours(end);
+    props.history.push(`/home/drivers/search?from=${date1}&to=${date2}`)
+    // props.getAvailableDrivers('undefined', date1, date2);
     props.search();
     props.sendDate(selectedDate);
     props.sendTime({start, end});

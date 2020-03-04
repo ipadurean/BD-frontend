@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { fetchDrivers } from '../ducks/operations';
 import { resetSearch } from '../../home/ducks/actions';
+import { resetBooked } from '../../booking/ducks/actions'
 import PropTypes from 'prop-types';
 import Header from '../components/Header'
 
@@ -32,8 +33,10 @@ class NavBar extends Component {
   }
 
   handleClick = () => {
-    this.props.history.push(`/home/drivers/search?=${this.state.query}`)
-    this.props.reset()
+    const { history, resetSearch, resetBooked } = this.props;
+    history.push(`/home/drivers/search?keyword=${this.state.query}`);
+    resetSearch();
+    resetBooked();
     this.setState({
       query: ''
     });
@@ -85,7 +88,8 @@ function mapDispatchToProps(dispatch){
   return {
     logout: () => dispatch(logout()),
     fetchDrivers: (query) => dispatch(fetchDrivers(query)),
-    reset: () => dispatch(resetSearch())
+    resetSearch: () => dispatch(resetSearch()),
+    resetBooked: () => dispatch(resetBooked())
   }
 }
  
