@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../styles/SearchAvailability.css';
 import CalendarHome from './CalendarHome';
 import { startTime, endTime, dateClicked, resetSearch, clickSearch } from '../ducks/actions';
@@ -9,86 +9,105 @@ import { withRouter } from 'react-router';
 
 
 
-const SearchAvailability = (props) => {
+class SearchAvailability extends Component {
   
-  const { selectedDate, start, end, clickDate } = props.home;
+  constructor() {
+    super();
+    this.state = {
+      filter: ''
+    }
+  }
 
-  const displayHours = (value) => {
+  displayHours = (value) => {
     return  value > 23 ?
             value % 24 + ':00 + 1 day' :
             value + ':00'
   }
 
-  const renderHours1 = () => {
+  renderHours1 = () => {
+    const { end } = this.props.home
     let count = 0;
     let hours = []
       while (count < (end || 36)){
-        hours.push(<option data-val={count} key={count}>{displayHours(count)}</option>);
+        hours.push(<option data-val={count} key={count}>{this.displayHours(count)}</option>);
           count +=1;
       }
     return hours
   }
 
-  const renderHours2 = () => {
+  renderHours2 = () => {
+    const { start } = this.props.home
     let count = start || 1;
     let hours = []
       while (count <= 36){
-        hours.push(<option data-val={count} key={count}>{displayHours(count)}</option>);
+        hours.push(<option data-val={count} key={count}>{this.displayHours(count)}</option>);
           count +=1;
       }
     return hours
   }
 
-  const clickBox = () => {
-    props.dateClick();
+  clickBox = () => {
+    this.props.dateClick();
   }
 
-  const searchAvailable = () => {
+  searchAvailable = () => {
+    const { search, sendDate, sendTime, history } = this.props
+    const { selectedDate, start, end } = this.props.home
     const date1 = new Date(selectedDate).setHours(start);
     const date2 = new Date(selectedDate).setHours(end);
-    props.history.push(`/home/drivers/search?from=${date1}&to=${date2}`)
-    // props.getAvailableDrivers('undefined', date1, date2);
-    props.search();
-    props.sendDate(selectedDate);
-    props.sendTime({start, end});
+    history.push(`/home/drivers/search?keyword=${this.state.filter}&from=${date1}&to=${date2}`)
+    search();
+    sendDate(selectedDate);
+    sendTime({start, end});
   }
 
-  const handleChange = (event) => {
+  handleChange = (event) => {
     const { name, options } = event.target
-    props[name](parseInt(options[options.selectedIndex].dataset.val))
+    this.props[name](parseInt(options[options.selectedIndex].dataset.val))
   }
 
-  const validateForm = () => {
+  validateForm = () => {
+    const { selectedDate, start, end } = this.props.home;
     return selectedDate && (typeof(start) === 'number') && end
   }
 
-  const reset = () => {
-    props.reset();
-    props.getAvailableDrivers()
+  reset = () => {
+    this.props.reset();
+    this.props.history.push('/home')
+    // this.props.getAvailableDrivers()
   }
 
-  return(
-    <div className="search-container">
-      <div id="form-title">Search for available chauffeurs:</div>
-      <form id="form-container">
-        <div id="date-box" onClick={clickBox}>{selectedDate? new Date(selectedDate).toString().slice(4,15): "Select Date"}</div>
-        <select onChange={handleChange} name="start" className="time-home" as="select">
-          <option>Start Time</option>
-            {renderHours1()}
-        </select>
-        <select onChange={handleChange} name="end" className="time-home" as="select">
-          <option>End Time</option>
-          {renderHours2()}
-        </select>
-        <button onClick={searchAvailable} disabled={!validateForm()} type="button" id="filter">Search</button>
-        <button onClick={reset} type="reset" id="reset">Reset</button>
-      </form>
-      <div id="calendar"> 
-        {clickDate && <CalendarHome />}
+  addFilter = (event) => {
+    this.setState({
+      filter: event.target.value
+    })
+  }
+
+  render() {
+    const { selectedDate, clickDate } = this.props.home;
+    return (
+      <div className="search-container">
+        <div id="form-title">Search for available chauffeurs:</div>
+        <form id="form-container">
+          <div className="input-box" onClick={this.clickBox}>{selectedDate ? new Date(selectedDate).toString().slice(4, 15) : "Select Date"}</div>
+          <select onChange={this.handleChange} name="start" className="time-home" as="select">
+            <option>Start Time</option>
+            {this.renderHours1()}
+          </select>
+          <select onChange={this.handleChange} name="end" className="time-home" as="select">
+            <option>End Time</option>
+            {this.renderHours2()}
+          </select>
+          <input onChange={this.addFilter} className="input-box" placeholder="Add keyword" type="text" />
+          <button onClick={this.searchAvailable} disabled={!this.validateForm()} type="button" id="filter">Search</button>
+          <button onClick={this.reset} type="reset" id="reset">Reset</button>
+        </form>
+        <div id="calendar">
+          {clickDate && <CalendarHome />}
+        </div>
       </div>
-    </div>
-  )
-  
+    )
+  }
 }
 
 
