@@ -66,7 +66,7 @@ class Trip extends Component {
           {this.state.open && 
             <div id="trip-body" >
               <img id="trip-img" alt="img" src={trip.driver_photo}/>
-              <h6>Driver name: {trip.driver_name}</h6>
+            <h6>Driver name: {trip.driver_name}</h6>
               {trip.review && <div className="review-body">
                                 <h6><span>Your review:</span></h6>
                                 <div><i>{trip.review}</i></div>
@@ -78,7 +78,8 @@ class Trip extends Component {
             
               {cancel && <button onClick={this.cancelRide}> Cancel Ride </button>}
             {review && !this.state.clickReview && <div className="add-review" onClick={this.addReview}><u>Add Review</u></div>}
-              <div className="trip-date"><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></div>
+  
+            <div className="trip-date"><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></div>
             </div>}
           {this.state.clickReview &&
             <div className="review-form-container">

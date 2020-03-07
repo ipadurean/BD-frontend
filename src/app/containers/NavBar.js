@@ -54,7 +54,7 @@ class NavBar extends Component {
         <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-item">About</Link>
         <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a> 
         <div className="search-drivers">
-          <input onChange={this.handleChange} type="text" ref="input" />
+          <input onChange={this.handleChange} id="search-box" type="text" ref="input" />
           <button onClick={this.handleClick} className="button" id="search">Search</button>
         </div>
         {authorized ?

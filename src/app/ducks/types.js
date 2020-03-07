@@ -3,5 +3,5 @@ const ADD_DRIVERS = 'ADD_DRIVERS';
 
 export default {
   LOADING_DRIVERS,
-  ADD_DRIVERS
+  ADD_DRIVERS,
 }

@@ -39,3 +39,10 @@ export const resetSearch = () => {
     type: types.RESET_SEARCH
   }
 }
+
+export const sortDrivers = (sortType) => {
+  return {
+    type: types.SORT_DRIVERS,
+    payload: sortType
+  }
+}

@@ -24,6 +24,7 @@
 }
 
 #search {
+  margin: 2px;
   outline: none;
 }
 
@@ -82,4 +83,8 @@
 
 #register {
   animation: fadeIn 1s;
+}
+
+#search-box {
+  width: calc(100px + 5vw)
 }

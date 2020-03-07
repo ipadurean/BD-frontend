@@ -10,7 +10,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 2px 1px silver;
   min-width: 200px;
-  width: calc(100px + 10vw);
+  width: calc(100px + 12vw);
   min-height: 200px;
   height: auto;
   padding: calc(2px + 1vw);

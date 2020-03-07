@@ -11,7 +11,7 @@
   margin:2px;
   font-size: calc(5px + 0.8vw);
   color: rgb(78, 77, 77);
-  width: 10vw;
+  width: calc(50px + 5vw);
   outline: none;
 }
 
@@ -20,7 +20,7 @@
   border-radius: 5px;
   background-color: white;
   border: 1px solid rgb(68, 68, 68);
-  width: 15vw;
+  width: calc(100px + 4vw);
   padding: 3px 2%;
 }
 
@@ -60,5 +60,10 @@
 #calendar {
   position: relative;
   top: 0;
+}
+
+.sort {
+  width: calc(150px + 5vw);
+  margin: 2px 55px;
 }
 

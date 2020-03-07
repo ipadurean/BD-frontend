@@ -4,6 +4,7 @@ const ADD_DATE = 'ADD_DATE';
 const ADD_START = 'ADD_START';
 const ADD_END = 'ADD_END';
 const RESET_SEARCH = 'RESET_SEARCH';
+const SORT_DRIVERS = 'SORT_DRIVERS'
 
 export default {
   CLICK_SEARCH,
@@ -11,5 +12,6 @@ export default {
   ADD_DATE,
   ADD_START,
   ADD_END,
-  RESET_SEARCH
+  RESET_SEARCH,
+  SORT_DRIVERS
 }

@@ -1,6 +1,15 @@
-import types from './types'
+import types from './types';
 
-export default function homeReducer(state = { selectedDate: false, start: null, end: null, clickSearch: false, clickDate: false }, action) {
+const initialState = {
+  selectedDate: false,
+  start: null,
+  end: null,
+  clickSearch: false,
+  clickDate: false,
+  sortType: 'username'
+}
+
+export default function homeReducer(state = initialState, action) {
 
   switch (action.type) {
 
@@ -20,7 +29,10 @@ export default function homeReducer(state = { selectedDate: false, start: null, 
       return {...state, clickSearch: true}
 
   case types.RESET_SEARCH:
-    return {...state, clickSearch: false, selectedDate: false, start: null, end: null }
+      return { ...state, clickSearch: false, selectedDate: false, start: null, end: null }
+    
+    case types.SORT_DRIVERS:
+      return { ...state, sortType: action.payload}
 
   default:
     return state;

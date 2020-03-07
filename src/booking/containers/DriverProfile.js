@@ -18,7 +18,7 @@ class DriverProfile extends Component {
   render(){
     const { driver, driverTrips, authorized } = this.props
     return (
-      <div>
+      <>
         {authorized &&
           <div className="driver-container">
             <div className="bio">
@@ -46,7 +46,7 @@ class DriverProfile extends Component {
             </div>
             <BookingCalendar driver={driver} />
           </div>}
-      </div>
+      </>
     )
   }
 }

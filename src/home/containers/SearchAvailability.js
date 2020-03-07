@@ -3,9 +3,9 @@ import '../styles/SearchAvailability.css';
 import CalendarHome from './CalendarHome';
 import { startTime, endTime, dateClicked, resetSearch, clickSearch } from '../ducks/actions';
 import { connect } from "react-redux";
-import { fetchDrivers } from '../../app/ducks/operations';
 import { selectDay, setTime } from '../../booking/ducks/actions';
 import { withRouter } from 'react-router';
+import { sortDrivers } from '../ducks/actions'
 
 
 
@@ -74,13 +74,16 @@ class SearchAvailability extends Component {
   reset = () => {
     this.props.reset();
     this.props.history.push('/home')
-    // this.props.getAvailableDrivers()
   }
 
   addFilter = (event) => {
     this.setState({
       filter: event.target.value
     })
+  }
+
+  sort = (e) => {
+    this.props.sortBy(e.target.value)
   }
 
   render() {
@@ -90,17 +93,22 @@ class SearchAvailability extends Component {
         <div id="form-title">Search for available chauffeurs:</div>
         <form id="form-container">
           <div className="input-box" onClick={this.clickBox}>{selectedDate ? new Date(selectedDate).toString().slice(4, 15) : "Select Date"}</div>
-          <select onChange={this.handleChange} name="start" className="time-home" as="select">
+          <select onChange={this.handleChange} name="start" className="time-home">
             <option>Start Time</option>
             {this.renderHours1()}
           </select>
-          <select onChange={this.handleChange} name="end" className="time-home" as="select">
+          <select onChange={this.handleChange} name="end" className="time-home">
             <option>End Time</option>
             {this.renderHours2()}
           </select>
           <input onChange={this.addFilter} className="input-box" placeholder="Add keyword" type="text" />
           <button onClick={this.searchAvailable} disabled={!this.validateForm()} type="button" id="filter">Search</button>
           <button onClick={this.reset} type="reset" id="reset">Reset</button>
+          <select onChange={this.sort} type="text" className="sort">
+            <option>Sort drivers</option>
+            <option value="rating">by Highest Rated</option>
+            <option value="rate">by Lowest Hourly Rate</option>
+          </select>
         </form>
         <div id="calendar">
           {clickDate && <CalendarHome />}
@@ -120,11 +128,11 @@ function mapDispatchToProps(dispatch){
     dateClick: () => dispatch(dateClicked()),
     start: (time) => dispatch(startTime(time)),
     end: (time) => dispatch(endTime(time)),
-    getAvailableDrivers: (q, from, to) => dispatch(fetchDrivers(q, from, to)),
     search: () => dispatch(clickSearch()),
     reset: () => dispatch(resetSearch()),
     sendDate: (date) => dispatch(selectDay(date)),
-    sendTime: (time) => dispatch(setTime(time))
+    sendTime: (time) => dispatch(setTime(time)),
+    sortBy: (type) => dispatch(sortDrivers(type))
   }
 }
 

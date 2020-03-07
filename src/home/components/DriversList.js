@@ -8,13 +8,15 @@ import PropTypes from 'prop-types';
 
 const DriversList = (props) => {
 
-  const { drivers, loading } = props;
- 
+  const { drivers, loading, sortType } = props;
+
+  const sortedDrivers = sortType === "rating" ? drivers.sort((a, b) => b[sortType] - a[sortType]) : drivers.sort((a, b) => a[sortType] - b[sortType])
+  
   return (
     <div className="driver-list">
       <div id="note">* There are a total of <b>{drivers.length}</b> drivers available:</div>
       {loading && <div className="loading">Loading...</div>}
-      {drivers.map(driver => {
+      {sortedDrivers.map(driver => {
         return  <Link to={`/drivers/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>
                   <Driver key={driver.id}  driver={driver}  /> 
                 </Link>
@@ -32,7 +34,9 @@ DriversList.propTypes = {
 function mapStateToProps(state){
   return {
     drivers: state.drivers.drivers,
-    loading: state.drivers.loading}
+    loading: state.drivers.loading,
+    sortType: state.home.sortType
+  }
 }
 
 export default connect(mapStateToProps, null)(DriversList);

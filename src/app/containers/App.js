@@ -27,8 +27,9 @@ class App extends Component {
     const token = localStorage.getItem('jwt');
     const { drivers, authorized, booking } = this.props;
     
+   
     return (
-      <div>
+      <>
         <NavBar />
         <Switch>
           <Route exact path='/' component={Home} />
@@ -57,7 +58,7 @@ class App extends Component {
                     <div>Page not found</div>
           }} />
         </Switch>
-      </div>
+      </>
     )
   }
 }

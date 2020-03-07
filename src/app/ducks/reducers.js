@@ -12,7 +12,7 @@ export default function fetchDriversReducer(state = initialState , action) {
       return {...state, loading: true };
 
     case types.ADD_DRIVERS:
-      return { loading:false, drivers: action.payload };
+      return { loading: false, drivers: action.payload };
 
     default:
       return state;
