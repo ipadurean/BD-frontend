@@ -1,4 +1,4 @@
-import { loadingDrivers, addDrivers } from './actions';
+import { addDrivers } from './actions';
 import TimeZone from '../../utils/timeZone';
 
 const baseUrl = 'https://radiant-fjord-35660.herokuapp.com';
@@ -10,7 +10,6 @@ export const fetchDrivers = (query = {}) => {
   
   return function (dispatch) {
    
-    dispatch(loadingDrivers());
     fetch(`${baseUrl}/drivers?filter=${query.keyword}&from=${date1}&to=${date2}`)
       .then(response => {
         if (response.ok) {

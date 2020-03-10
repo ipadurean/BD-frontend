@@ -3,7 +3,8 @@ import types from './types'
 const initialState = {
   booked: false,
   trip: {},
-  driverTrips: [],
+  loading: true,
+  driver: {},
   daySelected: false,
   time: {
     start: null,
@@ -21,8 +22,8 @@ export default function bookingReducer(state = initialState , action) {
     case types.SET_TIME:
       return { ...state, time: action.payload }
 
-    case types.ADD_DRIVER_TRIPS:
-      return {...state, driverTrips: action.payload}
+    case types.ADD_DRIVER:
+      return {...state, loading: false, driver: action.payload}
 
     case types.BOOK_RIDE:
       return { ...state, booked: true, trip: action.payload};

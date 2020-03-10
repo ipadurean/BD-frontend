@@ -53,13 +53,15 @@ class Trip extends Component {
   render(){
    
     const { trip, cancel, review } = this.props 
+    const date1 = TimeZone.toCentralTime(trip.start_time)
+    const date2 = TimeZone.toCentralTime(trip.end_time)
     
       return (
         <div className={this.state.open? "fixed" : "trip-container"}>
           <div onClick={this.handleClick} id="trip-header">
             <span>Trip number: <b>{trip.id + 1000}</b></span>
             <span className="trip-date">
-              <span>For: </span><em>{new Date(trip.start_time).toString().slice(0,10)}</em>
+              <span>For: </span><em>{date1.slice(0,10)}</em>
             </span>
             {this.state.open && <img onClick={this.close} alt="close" id="close" src={close} />}
           </div>
@@ -71,8 +73,8 @@ class Trip extends Component {
                                 <h6><span>Your review:</span></h6>
                                 <div><i>{trip.review}</i></div>
                               </div>}
-              <div>Date: <span>{TimeZone.toCentralTime(trip.start_time).slice(0, 15)}</span></div>
-                <div>From: <span>{TimeZone.toCentralTime(trip.start_time).slice(16, 21)}</span> to:<span>{TimeZone.toCentralTime(trip.end_time).slice(16, 21)}</span></div>
+              <div>Date: <span>{date1.slice(0, 15)}</span></div>
+            <div>From: <span>{date1.slice(16, 21)}</span> to:<span>{date2.slice(16, 21)}</span></div>
                 <div>Pick up address: {trip.address}</div>
               <div>Total cost: <span>${trip.total}</span></div>
             

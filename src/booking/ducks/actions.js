@@ -13,10 +13,10 @@ export const resetBooked = () => {
   }
 }
 
-export const addDriverTrips = (driver) => {
+export const addDriver = (driver) => {
   return {
-    type: types.ADD_DRIVER_TRIPS,
-    payload: driver.trips
+    type: types.ADD_DRIVER,
+    payload: driver
   }
 }
 

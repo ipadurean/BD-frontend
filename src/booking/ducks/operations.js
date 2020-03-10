@@ -1,4 +1,4 @@
-import { bookRide, addDriverTrips } from './actions'
+import { bookRide, addDriver } from './actions'
 
 const baseUrl = 'https://radiant-fjord-35660.herokuapp.com';
 
@@ -21,13 +21,14 @@ export const fetchBooking = (bookingBody) => {
 }
 
 
-export const fetchDriver = (id) => {
-
-  return function(dispatch) {
-    fetch(`${baseUrl}/drivers/${id}`)
+export const fetchDriver = (name) => {
+  
+  return function (dispatch) {
+    fetch(`${baseUrl}/drivers/${name}`)
       .then(res => res.json())
       .then(driver => {
-        dispatch(addDriverTrips(driver));
+        dispatch(addDriver(driver));
       })
+    .catch(error => console.log(error))
   };
 }

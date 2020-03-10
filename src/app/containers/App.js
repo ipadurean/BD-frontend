@@ -25,8 +25,8 @@ class App extends Component {
 
   render() {
     const token = localStorage.getItem('jwt');
-    const { drivers, authorized, booking } = this.props;
-    
+    const { authorized, booking } = this.props;
+  
    
     return (
       <>
@@ -50,11 +50,10 @@ class App extends Component {
           }} />
           <Route exact path='/drivers/:name' render={({ match }) => {
             const { name } = match.params
-            const driver = drivers.find(el => el.name === name)
-            
+           
             return !token ? <Redirect to='/login' /> :
-                    booking.booked ? <Invoice driver={driver} /> :
-                    driver ? <DriverProfile driver={driver} /> :
+              booking.booked ? <Invoice driverName={name} /> :
+                    name ? <DriverProfile driverName={name} /> :
                     <div>Page not found</div>
           }} />
         </Switch>

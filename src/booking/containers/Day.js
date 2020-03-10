@@ -12,12 +12,12 @@ class Day extends Component {
 
   bookedHours = (day) => {
     
-    const { driverTrips } = this.props
+    const { driver } = this.props
     let bookedHours = [];
     const date1 = new Date(day);
     const date2 = new Date(new Date(day).setHours(36));
     
-    const filteredTrips = driverTrips.filter(el => {
+    const filteredTrips = driver.trips.filter(el => {
       const startDate = new Date(TimeZone.toCentralTime(el.start_time)).getTime();
       const endDate = new Date(TimeZone.toCentralTime(el.end_time)).getTime();
       return startDate >= date1.getTime() && endDate <= date2.getTime()
@@ -34,7 +34,8 @@ class Day extends Component {
           for(let k = newArr[i][0]; k < newArr[i][1]; k++){
             bookedHours.push(k)
           }
-      }
+    }
+
     return bookedHours.sort((a,b) => a-b);
   }
 
@@ -115,16 +116,16 @@ Day.propTypes = {
   start: PropTypes.number,
   end: PropTypes.number,
   day: PropTypes.number,
-  driverTrips: PropTypes.array
+ 
 }
 
 function mapStateToProps(state) {
   return {
-    driverTrips: state.booking.driverTrips,
+    driver: state.booking.driver,
     home: state.home,
     daySelected: state.booking.daySelected,
     start: state.booking.time.start,
-    end: state.booking.time.end
+    end: state.booking.time.end,
   }
 }
 
