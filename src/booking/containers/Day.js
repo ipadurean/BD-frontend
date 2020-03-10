@@ -15,27 +15,29 @@ class Day extends Component {
     const { driver } = this.props
     let bookedHours = [];
     const date1 = new Date(day);
-    const date2 = new Date(new Date(day).setHours(36));
+    const date2 = new Date(day).setHours(36);
     
     const filteredTrips = driver.trips.filter(el => {
-      const startDate = new Date(TimeZone.toCentralTime(el.start_time)).getTime();
-      const endDate = new Date(TimeZone.toCentralTime(el.end_time)).getTime();
-      return startDate >= date1.getTime() && endDate <= date2.getTime()
+      const startDate = new Date(el.start_time).getTime();
+      const endDate = new Date(el.end_time).getTime();
+      return startDate >= date1.getTime() && endDate <= date2
     })
-   
+  console.log(filteredTrips)
     const newArr = filteredTrips.map(el => {
       const hour = 3600000;
-      const start = new Date(TimeZone.toCentralTime(el.start_time)).getTime() - date1;
-      const end = new Date(TimeZone.toCentralTime(el.end_time)).getTime() - date1;
-      return [start/hour, end/hour]
-    })
     
+      const start = (new Date(TimeZone.toCentralTime(el.start_time)).getTime() - date1)/hour;
+      const end = (new Date(el.end_time).getTime() - date1)/hour;
+      return [start, end]
+    })
+    console.log(newArr) 
     for (let i = 0; i < newArr.length; i++){
           for(let k = newArr[i][0]; k < newArr[i][1]; k++){
             bookedHours.push(k)
           }
     }
-
+    
+    console.log(bookedHours)
     return bookedHours.sort((a,b) => a-b);
   }
 
@@ -44,7 +46,7 @@ class Day extends Component {
     
     const { start, end} = this.props
     const dateValue = (hour) => {
-      return new Date(new Date(day).setHours(hour)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+      return new Date(new Date(day).setHours(hour)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
     }
     let hours = [];
     let i = 0;

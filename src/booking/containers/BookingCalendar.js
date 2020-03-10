@@ -23,12 +23,13 @@ class BookingCalendar extends Component {
 
   createMonth = () => {
     const { daySelected } = this.props;
-    let now = new Date();
-    let date = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
+    const now = new Date();
+    const date = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
+    console.log(date)
     let select = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
         select.setTime(daySelected);
     let daysArr = [];
-    let daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
+    const daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
 
     let d = 1;
       for (let i=0; i<date.getDay(); i++){
@@ -79,8 +80,8 @@ class BookingCalendar extends Component {
     const { start, end, user, driver, daySelected } = this.props
     event.preventDefault();
     const timeTotal = end - start
-    let date1 = new Date(new Date(daySelected).setHours(start)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
-    let date2 = new Date(new Date(daySelected).setHours(end)).toString().slice(0, 24) + " GMT-0600 (Central Standard Time)";
+    let date1 = new Date(new Date(daySelected).setHours(start)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
+    let date2 = new Date(new Date(daySelected).setHours(end)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
     const bookingBody = {
       user_id: user.id, 
       driver_id: driver.id,

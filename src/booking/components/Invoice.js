@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
 
 const Invoice = (props) => {
 
-  const { trip } = props.booking
-  const { driver } = props
+  const { trip, driver } = props
+ 
 
   function resetBook() {
     props.reset()
@@ -49,7 +49,10 @@ Invoice.propTypes = {
 }
 
 function mapStateToProps(state) {
-  return state
+  return {
+    driver: state.booking.driver,
+    trip: state.booking.trip
+  }
 }
   
 function mapDispatchToProps(dispatch){

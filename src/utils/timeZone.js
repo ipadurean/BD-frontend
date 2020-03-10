@@ -3,10 +3,10 @@ export default class TimeZone {
   static toCentralTime(date) {
     if (date) {
       let d = new Date(date);
-      let difference = d.getTimezoneOffset() - 360;
-      let minutes = d.getMinutes();
+      const difference = d.getTimezoneOffset() - 300;
+      const minutes = d.getMinutes();
       d.setMinutes(difference + minutes)
-      let newDate = d.toString().slice(0, 24) + " GMT-0600 (Central Standard Time)"
+      const newDate = d.toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)"
       return newDate
     } else {
       return 'undefined'
