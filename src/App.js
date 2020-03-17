@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import RideHistory from '../../History/components/RideHistory';
-import Home from '../../Home/containers/Home';
-import Register from '../../Auth/containers/Register';
-import Login from '../../Auth/containers/Login';
-import '../styles/App.css';
-import About from '../components/About';
-import Invoice from '../../Booking/components/Invoice';
+import RideHistory from './History/components/RideHistory';
+import Home from './Home/containers/Home';
+import Register from './Auth/containers/Register';
+import Login from './Auth/containers/Login';
+import './App.css';
+import About from './Main/components/About';
+import Invoice from './Booking/components/Invoice';
 import { connect } from 'react-redux';
-import DriverProfile from '../../Booking/containers/DriverProfile';
-import { fetchDrivers } from '../ducks/operations';
-import { authorize } from '../../Auth/ducks/operations';
-import NavBar from './NavBar';
+import DriverProfile from './Booking/containers/DriverProfile';
+import { fetchDrivers } from './Main/ducks/operations';
+import { authorize } from './Auth/ducks/operations';
+import NavBar from './Main/containers/NavBar';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import Parse from '../../utils/parse';
+import Parse from './utils/parse';
 
 class App extends Component {
 
