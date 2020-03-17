@@ -1,0 +1,40 @@
+
+table {
+  margin: 15px 0;
+  width: 420px;
+}
+
+table th{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 1%;
+  height: 40px;
+  text-align: right;
+}
+
+.fake-input{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  background-color: rgb(232, 241, 252);
+  padding: 1% 5%;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 3px;
+  height: 30px;
+  width: 165px;
+}
+
+
+
+#btn {
+  border-radius: 4px;
+  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
+  border: 1px solid rgb(202, 202, 218);
+  box-shadow: 1px 1px 1px 1px #757272;
+  width: 420px;
+}
+

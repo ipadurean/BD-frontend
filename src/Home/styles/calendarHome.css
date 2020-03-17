@@ -1,0 +1,110 @@
+
+
+ .calendar-home *, .calendar-home *:before, .calendar-home *:after {
+  box-sizing: border-box;
+}
+
+.calendar-home {
+  display: block !important;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 1px silver;
+  min-width: 200px;
+  width: calc(100px + 12vw);
+  min-height: 200px;
+  height: auto;
+  padding: calc(2px + 1vw);
+  position: absolute;
+  z-index: 1;
+}
+
+
+.calendar-home :active {
+  border-radius: var(--calendar-border-radius);
+  box-shadow: 0 0 0 1px rgba(var(--calendar-today-bg-color), 0.1)
+}
+
+
+.calendar-home .calendar-header {
+  display: flex;
+  flex-direction: row;
+  padding: calc(2px + 0.2vw);
+  justify-content: space-around;
+  text-transform: uppercase;
+  border-radius: var(--calendar-border-radius);
+}
+
+.calendar-header .calendar-btn {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.calendar-header .calendar-btn img {
+   width:  calc(10px + 1vw)
+}
+
+.calendar-home .calendar-header__label {
+  font-size: calc(7px + 0.5vw);
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+}
+
+.calendar-home .calendar-week {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: var(--calendar-border-radius);
+}
+
+.calendar-home .calendar-week span {
+  color: rgb(99, 99, 185);
+  flex-direction: column;
+  flex: 0 0 14.28%;
+  font-size: calc(5px + 0.6vw);
+  font-weight: bold;
+  max-width: 14.28%;
+  padding: 1vw 0px;
+  text-align: center;
+}
+
+.calendar-home .calendar-body {
+  background-color:white;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: var(--calendar-border-radius);
+  font-size: calc(8px + 0.5vw);
+}
+
+.calendar-home .calendar-date {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 14.28%;
+  max-width: 14.28%;
+  padding: 0.4vw;
+}
+
+.calendar-home .calendar-date--active {
+  cursor: pointer;
+}
+
+.calendar-home #calendar-date--today {
+  background-color: var(--calendar-today-bg-color);
+  color: var(--calendar-today-color);
+}
+
+.calendar-home .calendar-date--selected {
+  background-color: var(--calendar-selected-bg-color);
+  color: var(--calendar-selected-color);
+}
+
+.calendar-home .calendar-date--disabled {
+  border-radius: 0;
+  cursor: not-allowed;
+  opacity: 0.2;
+  user-select: none !important;
+}

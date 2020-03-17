@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/NavBar.css';
-import { logout } from '../../auth/ducks/actions';
+import { logout } from '../../Auth/ducks/actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { fetchDrivers } from '../ducks/operations';
-import { resetSearch } from '../../home/ducks/actions';
-import { resetBooked } from '../../booking/ducks/actions'
+import { resetSearch } from '../../Home/ducks/actions';
+import { resetBooked } from '../../Booking/ducks/actions'
 import PropTypes from 'prop-types';
 import Header from '../components/Header'
 
