@@ -37,15 +37,19 @@ class Trip extends Component {
               <th><div className="fake-input">{driver.name}</div></th>
             </tr>
             <tr>
-                <th>For:</th>
+                <th>Date:</th>
               <th><div className="fake-input">{daySelected && new Date(new Date(daySelected).setHours(start)).toString().slice(0,15)}</div></th> 
             </tr>
             <tr>
-                <th>At: </th>
+                <th>From: </th>
               <th><div className="fake-input">{new Date(new Date(daySelected).setHours(start)).toString().slice(15, 21)}</div></th>
             </tr>
             <tr>
-                <th>Total time booked:</th>
+              <th>To: </th>
+              <th><div className="fake-input">{new Date(new Date(daySelected).setHours(end)).toString().slice(15, 21)}</div></th>
+            </tr>
+            <tr>
+                <th>Total time selected:</th>
                 <th><div className="fake-input">{end - start} hours</div></th>
             </tr>
             <tr>

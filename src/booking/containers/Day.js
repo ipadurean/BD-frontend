@@ -80,7 +80,7 @@ class Day extends Component {
       (x - start) > 0 ?
         this.props.setTime({start, end: x + 1 }) :
         this.props.setTime({ start: null, end: null })
-    } else {
+    } else if (event.target.className === "busy"){
       this.props.setTime({ start: null, end: null })
     }
   }
