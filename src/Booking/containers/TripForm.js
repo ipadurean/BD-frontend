@@ -14,7 +14,7 @@ class Trip extends Component {
   }
 
 
-   handleChange = (event) => {
+  handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
     });
@@ -37,11 +37,11 @@ class Trip extends Component {
               <th><div className="fake-input">{driver.name}</div></th>
             </tr>
             <tr>
-                <th>Date:</th>
+              <th>Date:</th>
               <th><div className="fake-input">{daySelected && new Date(new Date(daySelected).setHours(start)).toString().slice(0,15)}</div></th> 
             </tr>
             <tr>
-                <th>From: </th>
+              <th>From: </th>
               <th><div className="fake-input">{new Date(new Date(daySelected).setHours(start)).toString().slice(15, 21)}</div></th>
             </tr>
             <tr>
@@ -49,12 +49,12 @@ class Trip extends Component {
               <th><div className="fake-input">{new Date(new Date(daySelected).setHours(end)).toString().slice(15, 21)}</div></th>
             </tr>
             <tr>
-                <th>Total time selected:</th>
-                <th><div className="fake-input">{end - start} hours</div></th>
+              <th>Total time selected:</th>
+              <th><div className="fake-input">{end - start} hours</div></th>
             </tr>
             <tr>
-                <th>Total: </th>
-                <th><div className="fake-input">${(end - start) * driver.rate}</div></th>
+              <th>Total: </th>
+              <th><div className="fake-input">${(end - start) * driver.rate}</div></th>
             </tr>
           </tbody>
         </table>

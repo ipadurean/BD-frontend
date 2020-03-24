@@ -83,6 +83,7 @@
 
 #register {
   animation: fadeIn 1s;
+  margin-left: 3px;
 }
 
 #search-box {
