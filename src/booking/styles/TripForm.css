@@ -12,12 +12,14 @@ table th{
   padding: 1%;
   height: 40px;
   text-align: right;
+  color: rgb(87, 86, 86);
 }
 
 .fake-input{
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
+  color: black;
   font-size: 18px;
   line-height: 24px;
   background-color: rgb(232, 241, 252);
