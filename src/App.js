@@ -4,7 +4,6 @@ import RideHistory from './History/components/RideHistory';
 import Home from './Home/containers/Home';
 import Register from './Auth/containers/Register';
 import Login from './Auth/containers/Login';
-import './App.css';
 import About from './Main/components/About';
 import Invoice from './Booking/components/Invoice';
 import { connect } from 'react-redux';

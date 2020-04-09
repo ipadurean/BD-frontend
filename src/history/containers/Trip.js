@@ -73,7 +73,7 @@ class Trip extends Component {
               {trip.review && <div className="review-body">
                                 <h6><span>Your review:</span></h6>
                                 <div><i>{trip.review}</i></div>
-                              </div>}
+            </div>}
               <div>Date: <span>{date1.slice(0, 15)}</span></div>
             <div>From: <span>{date1.slice(16, 21)}</span> to:<span>{date2.slice(16, 21)}</span></div>
                 <div>Pick up address: {trip.address}</div>
