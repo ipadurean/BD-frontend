@@ -1,13 +1,19 @@
 import React, { Component } from "react";
-import { FormGroup, FormControl, Form } from "react-bootstrap";
+import { connect } from "react-redux";
+import { FormGroup, FormControl, Button } from "react-bootstrap";
 import '../styles/Register.css';
+import { register } from '../ducks/operations';
 
-export default class Register extends Component {
+class Register extends Component {
+  
   constructor(props) {
     super(props);
-
     this.state = {
-      name: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      username: "",
+      phoneNumber: "",
       password: "",
       confirmPassword: ""
     };
@@ -15,13 +21,15 @@ export default class Register extends Component {
 
   validateForm() {
     return (
-      this.state.name.length > 0 &&
+      this.state.firstName.length > 0 &&
+      this.state.lastName.length > 0 &&
+      this.state.email.length > 0 &&
+      this.state.username.length > 0 &&
+      this.state.phoneNumber.length > 0 &&
       this.state.password.length > 0 &&
       this.state.password === this.state.confirmPassword
     );
   }
-
-
 
   handleChange = event => {
     this.setState({
@@ -29,66 +37,87 @@ export default class Register extends Component {
     });
   }
 
-  handleSubmit = async event => {
+  handleSubmit = event => {
     event.preventDefault();
-
-    this.setState({ isLoading: true });
-
-    this.setState({ newUser: "test" });
-
-    this.setState({ isLoading: false });
+    this.props.registerUser({
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
+      phone_number: this.state.phoneNumber
+    })
   }
-
- 
 
   render() {
     return (
       <div className="signup">
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup>
-            <Form.Label>First Name</Form.Label>
+        <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+          <FormGroup controlId="firstName">
             <FormControl
               type="text"
               placeholder="first name"
             />
           </FormGroup>
-          <FormGroup>
-            <Form.Label>Last Name</Form.Label>
+          <FormGroup controlId="lastName">
             <FormControl
               type="text"
               placeholder="last name"
             />
           </FormGroup>
-          <FormGroup controlId="email" bssize="large">
-            <Form.Label>Email</Form.Label>
+          <FormGroup controlId="email">
             <FormControl
-              autoFocus
               type="email"
               placeholder="email"
-              value={this.state.email}
-              onChange={this.handleChange}
             />
           </FormGroup>
-          <FormGroup controlId="password" bssize="large">
-            <Form.Label>Password</Form.Label>
+          <FormGroup controlId="username">
             <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
+              type="text"
+              placeholder="username"
+            />
+          </FormGroup>
+          <FormGroup controlId="phoneNumber">
+            <FormControl
+              type="text"
+              placeholder="phone number"
+            />
+          </FormGroup>
+          <FormGroup controlId="password">
+            <FormControl
               placeholder="password"
               type="password"
             />
           </FormGroup>
-          <FormGroup controlId="confirmPassword" bssize="large">
-            <Form.Label>Confirm Password</Form.Label>
+          <FormGroup controlId="confirmPassword">
             <FormControl
-              value={this.state.confirmPassword}
-              onChange={this.handleChange}
               placeholder="confirm pasword"
               type="password"
             />
           </FormGroup>
+          <Button
+            block
+            bssize="large"
+            disabled={!this.validateForm()}
+            type="submit" >
+            Register
+          </Button>
         </form>
       </div>
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    registerUser: (registerParams) => dispatch(register(registerParams))
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    created: state.auth.created
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

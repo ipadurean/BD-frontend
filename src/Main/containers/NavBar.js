@@ -49,7 +49,7 @@ class NavBar extends Component {
     return (
       <div className="nav-container">
         <Header />
-        {loading ? <div>Loading...</div> : <div className="welcome">Welcome <em>{user.username}</em> !</div>}
+        {loading ? <div>Loading...</div> : <div className="welcome">Welcome <em><b>{user.username}</b></em> !</div>}
         <a href="/home" style={{'textDecoration': 'none' }} className="nav-item">Home</a>
         <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-item">About</Link>
         <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a> 

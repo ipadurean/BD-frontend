@@ -23,4 +23,10 @@ export const logout = () => {
   }
 }
 
+export const createUser = () => {
+  return {
+    type: types.CREATE_USER,
+  }
+}
+
 
