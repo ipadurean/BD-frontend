@@ -3,13 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/NavBar.css';
 import { logout } from '../../Auth/ducks/actions';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { fetchDrivers } from '../ducks/operations';
 import { resetSearch } from '../../Home/ducks/actions';
 import { resetBooked } from '../../Booking/ducks/actions'
 import PropTypes from 'prop-types';
-import Header from '../components/Header'
+import Header from '../components/Header';
+import { FlexHorizontal } from '../../styles/FlexContainers';
+import { StyledNav, NavItem, StyledWelcome } from '../../styles/StyledNav';
+import { ButtonMain } from '../../styles/StyledButtons';
 
 
 class NavBar extends Component {
@@ -44,28 +46,33 @@ class NavBar extends Component {
   }
 
   render() {
-
     const { user, loading, authorized } = this.props
-    return (
-      <div className="nav-container">
-        <Header />
-        {loading ? <div>Loading...</div> : <div className="welcome">Welcome <em><b>{user.username}</b></em> !</div>}
-        <a href="/home" style={{'textDecoration': 'none' }} className="nav-item">Home</a>
-        <Link to="/about" style={{ 'textDecoration': 'none' }} className="nav-item">About</Link>
-        <a href="/history" style={{ 'textDecoration': 'none' }} className="nav-item">Ride History</a> 
-        <div className="search-drivers">
-          <input onChange={this.handleChange} id="search-box" type="text" ref="input" />
-          <button onClick={this.handleClick} className="button" id="search">Search</button>
-        </div>
-        {authorized ?
-          <button className="button" id="logout" onClick={this.logout}>Logout</button> :
-          <div>
-            <a href="/login"><button className="button" id="login">Login</button></a>
-            <a href="/register"><button className="button" id="register">Register</button></a>
-          </div>
-          }
-      </div>
-    );
+      return (
+        <StyledNav>
+          <FlexHorizontal>
+            <Header />
+            <span style={{ 'width': '200px' }}>
+              {loading ?
+                <StyledWelcome>Loading...</StyledWelcome> :
+                <StyledWelcome>Welcome<em><b>{user.username}</b></em> !</StyledWelcome>}
+            </span>
+                <NavItem href="/home" style={{'textDecoration': 'none' }}>Home</NavItem>
+                <NavItem href="/about" style={{ 'textDecoration': 'none' }}>About</NavItem>
+                <NavItem href="/history" style={{ 'textDecoration': 'none' }}>Ride History</NavItem> 
+                <div className="search-drivers">
+                  <input onChange={this.handleChange} id="search-box" type="text" ref="input" />
+                  <ButtonMain onClick={this.handleClick}>Search</ButtonMain>
+                </div>
+              {authorized ?
+                <ButtonMain onClick={this.logout} id="logout">Logout</ButtonMain> :
+                  <>
+                    <a href="/login"><ButtonMain className="button" id="login">Login</ButtonMain></a>
+                    <a href="/register"><ButtonMain className="button" id="register">Register</ButtonMain></a>
+                  </>
+              }
+          </FlexHorizontal>
+        </StyledNav>
+      );
   }
 }
 

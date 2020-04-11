@@ -9,7 +9,7 @@ export default class TimeZone {
         const newDate = d.toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)"
           return newDate
     } else {
-        return 'undefined'
+      return 'undefined'
     }
   }
 

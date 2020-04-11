@@ -1,21 +1,6 @@
-.nav-container {
-  background-color: rgb(216, 230, 231);
-  box-shadow: 0 2px 5px -2px rgb(77, 75, 75);
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  left: 0;
-  right: 0;
-  padding: 1vw;
-  top: 0;
-  z-index: 1;
-  height: calc(4vh + 2vw);
-}
 
 .search-drivers {
   margin: 0 auto;
-  
 }
 
 .search-drivers input {
@@ -28,36 +13,12 @@
   outline: none;
 }
 
-.button {
-  border-radius: 3px;
-  background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
-}
-
 #logout {
   margin-left: auto;
 }
 
 #logout:hover{
   color: rgb(238, 31, 31);
-}
-
-.button:hover{
-  box-shadow: 0.5px 0.5px 1px 1px #757272;
-  
-}
-
-.nav-item {
-  display: inline;
-  font-size: calc(10px + 0.7vw);
-  text-decoration: none;
-  color: rgb(107, 107, 107) !important;
-  line-height: 32px;
-  padding: 0 1vw;
-  border-right: 3px solid rgb(246, 246, 250);
-}
-
-.nav-item:hover {
-   color: rgb(47, 52, 78) !important;
 }
 
 .welcome {

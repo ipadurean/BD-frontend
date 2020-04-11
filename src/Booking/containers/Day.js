@@ -8,9 +8,7 @@ import arrowDown from '../../utils/assets/arrow_drop_down.svg';
 
 class Day extends Component {
  
-
   bookedHours = (day) => {
-    
     const { driver } = this.props
     let bookedHours = [];
     const date1 = new Date(day);

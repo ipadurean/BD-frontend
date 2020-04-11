@@ -1,12 +1,13 @@
 import React from 'react';
-import '../styles/Header.css'
+import { FlexContainer } from '../../styles/FlexContainers';
+import { HeaderLogo } from '../../styles/StyledLogos';
 
 const Header = () => {
     
   return (
-    <div className="header">
-      <div id="logo">Chauffeur</div> 
-    </div>
+    <FlexContainer>
+      <HeaderLogo>Chauffeur</HeaderLogo> 
+    </FlexContainer>
   );
 }
 

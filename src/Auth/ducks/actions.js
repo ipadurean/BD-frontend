@@ -29,4 +29,10 @@ export const createUser = () => {
   }
 }
 
+export const startCreating = () => {
+  return {
+    type: types.CREATING
+  }
+}
+
 

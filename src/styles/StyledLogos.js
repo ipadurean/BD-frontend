@@ -1,25 +1,10 @@
+import styled from 'styled-components';
 
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  z-index: 2;
-}
-
-#logo {
+export const HeaderLogo = styled.div`
   font-family: Acme;
   align-items: left;
   font-size: calc(8px + 3vw);
   -webkit-text-stroke: 0.1vw rgb(252, 252, 252);
   color:rgb(151, 123, 31);
   margin: 10px;
-}
-
-
-
-
-
-
-
-
+`

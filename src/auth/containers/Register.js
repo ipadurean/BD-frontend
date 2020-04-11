@@ -46,13 +46,15 @@ class Register extends Component {
       email: this.state.email,
       password: this.state.password,
       phone_number: this.state.phoneNumber
-    })
+    }, this.props.history)
   }
 
   render() {
+    const { creating } = this.props
     return (
       <div className="signup">
-        <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        {creating ? <div id="creating">Creating account...</div> :
+          <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <FormGroup controlId="firstName">
             <FormControl
               type="text"
@@ -95,14 +97,14 @@ class Register extends Component {
               type="password"
             />
           </FormGroup>
-          <Button
+          <Button id="reg-btn"
             block
             bssize="large"
             disabled={!this.validateForm()}
             type="submit" >
             Register
           </Button>
-        </form>
+        </form>}
       </div>
     );
   }
@@ -110,12 +112,13 @@ class Register extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    registerUser: (registerParams) => dispatch(register(registerParams))
+    registerUser: (registerParams, history) => dispatch(register(registerParams, history))
   }
 }
 
 function mapStateToProps(state) {
   return {
+    creating: state.auth.creating,
     created: state.auth.created
   }
 }

@@ -3,6 +3,7 @@ import types from './types'
 const initialState = {
   authorized: false,
   loading: false,
+  creating: false,
   created: false,
   user: {}
 }
@@ -19,8 +20,11 @@ export default function authReducer(state = initialState, action) {
     case types.LOGOUT:
       return { authorized: false, user: {} };
     
+    case types.CREATING:
+      return { ...state, creating: true }
+    
     case types.CREATE_USER:
-      return { ...state, created: true };
+      return { ...state, creating: false, created: true };
 
     case types.DELETE_TRIP:
       const updatedTrips = state.user.trips.filter(el => el.id !== action.payload)
