@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, Form } from "react-bootstrap";
-import '../styles/Login.css';
 import { connect } from "react-redux";
 import { loginAction } from '../ducks/operations';
+import { LgBlueBtn } from '../../styles/StyledButtons';
+import { MainInput } from '../../styles/StyledInputs';
+import { FlexColumn, StyledContainer } from '../../styles/StyledContainers';
 
 
 class Login extends Component {
@@ -29,50 +30,33 @@ class Login extends Component {
     this.props.login(this.state)
   }
 
-  handleClick = () => {
+  handleClick = (event) => {
+    event.preventDefault();
     this.props.login({username: 'Guest', password: 'guestpass'})
   }
 
   render() {
-   
     return (
-      <div className="login">
+      <StyledContainer>
         <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="username" bssize="large">
-          <Form.Label>Username</Form.Label>
-            <FormControl
-              label="Username"
-              autoFocus
+          <FlexColumn>
+            <MainInput
+              id="username"
               type="text"
               placeholder= "username"
-              value={this.state.username}
               onChange={this.handleChange}
             />
-          </FormGroup>
-          <FormGroup  controlId="password" bssize="large">
-            <Form.Label>Password</Form.Label>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
+            <MainInput
+              id="password"
               type="password"
-              placeholder= "password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bssize="large"
-            disabled={!this.validateForm()}
-            type="submit" >
-            Login
-          </Button>
-          <Button
-            onClick={this.handleClick}
-            block
-            bssize="large" >
-            Continue as Guest
-          </Button>
+              placeholder="password"
+              onChange={this.handleChange}
+              />
+            <LgBlueBtn disabled={!this.validateForm()} style={{ 'outline': 'none' }}>Login</LgBlueBtn>
+            <LgBlueBtn onClick={this.handleClick} style={{'outline':'none'}}>Continue as Guest</LgBlueBtn>
+          </FlexColumn>
         </form>
-      </div>
+      </StyledContainer>
     );
   }
 }

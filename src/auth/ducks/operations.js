@@ -32,9 +32,7 @@ export const authorize = (history) => {
 
 
 export const loginAction = (loginParams) => {
-
   return function (dispatch) {
-    
     fetch(`${baseUrl}/auth`, {
       method: 'POST',
       headers: {
@@ -68,7 +66,12 @@ export const register = (registerParams, history) => {
       body: JSON.stringify(registerParams)
     })
       .then(res => res.json())
-      .then(dispatch(createUser))
-      .then(history.push('/login'))
+      .then(user => {
+        if (user.error) {
+          alert(user.error)
+        } else {
+          return dispatch(createUser())
+        }
+      })
   }
 }

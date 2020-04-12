@@ -7,3 +7,18 @@ export const ButtonMain = styled.button`
     box-shadow: 0.5px 0.5px 1px 1px #757272;
   }
 `
+
+export const LgBlueBtn = styled.button`
+  border-radius: 20px; 
+  width: 300px;
+  background: #0099ff;
+  color: white; 
+  border: none;
+  margin: 5px;
+  padding: 3px;
+  box-shadow: 1px 1px 1px 1px #757272;
+  &:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+  }
+`

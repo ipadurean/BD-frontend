@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { FormGroup, FormControl, Button } from "react-bootstrap";
-import '../styles/Register.css';
 import { register } from '../ducks/operations';
+import { LgBlueBtn, ButtonMain } from '../../styles/StyledButtons';
+import { MainInput } from '../../styles/StyledInputs';
+import { FlexColumn, StyledContainer } from '../../styles/StyledContainers';
 
 class Register extends Component {
   
@@ -19,7 +20,7 @@ class Register extends Component {
     };
   }
 
-  validateForm() {
+  validateForm = () => {
     return (
       this.state.firstName.length > 0 &&
       this.state.lastName.length > 0 &&
@@ -50,62 +51,29 @@ class Register extends Component {
   }
 
   render() {
-    const { creating } = this.props
+    const { creating, created } = this.props
     return (
-      <div className="signup">
-        {creating ? <div id="creating">Creating account...</div> :
-          <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-          <FormGroup controlId="firstName">
-            <FormControl
-              type="text"
-              placeholder="first name"
-            />
-          </FormGroup>
-          <FormGroup controlId="lastName">
-            <FormControl
-              type="text"
-              placeholder="last name"
-            />
-          </FormGroup>
-          <FormGroup controlId="email">
-            <FormControl
-              type="email"
-              placeholder="email"
-            />
-          </FormGroup>
-          <FormGroup controlId="username">
-            <FormControl
-              type="text"
-              placeholder="username"
-            />
-          </FormGroup>
-          <FormGroup controlId="phoneNumber">
-            <FormControl
-              type="text"
-              placeholder="phone number"
-            />
-          </FormGroup>
-          <FormGroup controlId="password">
-            <FormControl
-              placeholder="password"
-              type="password"
-            />
-          </FormGroup>
-          <FormGroup controlId="confirmPassword">
-            <FormControl
-              placeholder="confirm pasword"
-              type="password"
-            />
-          </FormGroup>
-          <Button id="reg-btn"
-            block
-            bssize="large"
-            disabled={!this.validateForm()}
-            type="submit" >
-            Register
-          </Button>
-        </form>}
-      </div>
+      <StyledContainer>
+        {created ?
+          <FlexColumn>
+            <h2>Your account has been created! Please log in!</h2>
+            <a href='/login'><ButtonMain>Login</ButtonMain></a>
+          </FlexColumn> :
+          creating ?
+            <FlexColumn><h2>Creating account...</h2></FlexColumn> :
+              <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                <FlexColumn>
+                  <MainInput id="firstName" type="text" placeholder="first name" />
+                  <MainInput id="lastName" type="text" placeholder="last name" />
+                  <MainInput id="email" type="email" placeholder="email" />
+                  <MainInput id="username" type="text" placeholder="username" />
+                  <MainInput id="phoneNumber" type="text" placeholder="phone number" />
+                  <MainInput id="password" type="password" placeholder="password" /> 
+                  <MainInput id="confirmPassword" type="password" placeholder="confirm pasword" />
+                  <LgBlueBtn style={{ 'outline': 'none' }} disabled={!this.validateForm()}>Register</LgBlueBtn>
+                </FlexColumn>
+              </form>}
+      </StyledContainer>
     );
   }
 }

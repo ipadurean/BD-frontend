@@ -1,13 +1,13 @@
 import React from 'react';
-import { FlexContainer } from '../../styles/FlexContainers';
+import { FlexRow } from '../../styles/StyledContainers';
 import { HeaderLogo } from '../../styles/StyledLogos';
 
 const Header = () => {
     
   return (
-    <FlexContainer>
+    <FlexRow>
       <HeaderLogo>Chauffeur</HeaderLogo> 
-    </FlexContainer>
+    </FlexRow>
   );
 }
 

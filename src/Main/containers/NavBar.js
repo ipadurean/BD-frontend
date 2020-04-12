@@ -9,7 +9,7 @@ import { resetSearch } from '../../Home/ducks/actions';
 import { resetBooked } from '../../Booking/ducks/actions'
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-import { FlexHorizontal } from '../../styles/FlexContainers';
+import { FlexRow } from '../../styles/StyledContainers';
 import { StyledNav, NavItem, StyledWelcome } from '../../styles/StyledNav';
 import { ButtonMain } from '../../styles/StyledButtons';
 
@@ -49,12 +49,12 @@ class NavBar extends Component {
     const { user, loading, authorized } = this.props
       return (
         <StyledNav>
-          <FlexHorizontal>
+          <FlexRow>
             <Header />
             <span style={{ 'width': '200px' }}>
               {loading ?
                 <StyledWelcome>Loading...</StyledWelcome> :
-                <StyledWelcome>Welcome<em><b>{user.username}</b></em> !</StyledWelcome>}
+                <StyledWelcome>Welcome <em><b> {user.username}</b></em> !</StyledWelcome>}
             </span>
                 <NavItem href="/home" style={{'textDecoration': 'none' }}>Home</NavItem>
                 <NavItem href="/about" style={{ 'textDecoration': 'none' }}>About</NavItem>
@@ -70,7 +70,7 @@ class NavBar extends Component {
                     <a href="/register"><ButtonMain className="button" id="register">Register</ButtonMain></a>
                   </>
               }
-          </FlexHorizontal>
+          </FlexRow>
         </StyledNav>
       );
   }
