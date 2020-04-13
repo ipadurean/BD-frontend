@@ -27,7 +27,7 @@ export const FlexColumn = styled.div`
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  padding: 5%;
+  padding: 3%;
   height: 100%;
   overflow: scroll;
 `

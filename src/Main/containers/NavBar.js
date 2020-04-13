@@ -58,7 +58,7 @@ class NavBar extends Component {
             </span>
                 <NavItem href="/home">Home</NavItem>
                 <NavItem href="/about">About</NavItem>
-                <NavItem href="/rides">Rides</NavItem> 
+                <NavItem href="/rides/current">Rides</NavItem> 
                 <div className="search-drivers">
                   <input onChange={this.handleChange} id="search-box" type="text" ref="input" />
                   <ButtonMain onClick={this.handleClick}>Search</ButtonMain>

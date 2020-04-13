@@ -16,9 +16,14 @@ const PastRides = (props) => {
 
   return (
     <>
+      <h6>Your past rides are:</h6>
       {getPastTrips()}
     </>
   );
+}
+
+PastRides.propTypes = {
+  user: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {

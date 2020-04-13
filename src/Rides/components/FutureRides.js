@@ -16,9 +16,14 @@ const FutureRides = (props) => {
 
   return (
     <>
+      <h6>Your future rides are: </h6>
       {getFutureTrips()}
     </>
   );
+}
+
+FutureRides.propTypes = {
+  user: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {

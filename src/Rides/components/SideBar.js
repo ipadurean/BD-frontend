@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FlexColumn } from '../../styles/StyledContainers';
 import { SideItem } from '../../styles/StyledNav';
 
