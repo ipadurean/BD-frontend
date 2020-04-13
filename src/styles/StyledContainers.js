@@ -1,9 +1,8 @@
 import styled from "styled-components"
 
 export const StyledContainer = styled.div`
-  background: inherit;
   min-height: 100vh;
-  padding: 10%;
+  padding-top: calc(4vh + 2vw);;
 `
 
 export const FlexRow = styled.div`
@@ -14,10 +13,28 @@ export const FlexRow = styled.div`
   height: 100%;
 `
 
+export const FlexRowFull = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  height: calc(96vh - 2vw);
+  overflow: hidden;
+`
+
 export const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
+  padding: 5%;
+  height: 100%;
+  overflow: scroll;
+`
+
+export const Loading = styled.div`
+  text-align: center;
+  font-size: calc(2vh + 2vw);
+  color: gray;
 `
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loginAction } from '../ducks/operations';
 import { LgBlueBtn } from '../../styles/StyledButtons';
-import { MainInput } from '../../styles/StyledInputs';
+import { InputPrimary } from '../../styles/StyledInputs';
 import { FlexColumn, StyledContainer } from '../../styles/StyledContainers';
 
 
@@ -40,13 +40,13 @@ class Login extends Component {
       <StyledContainer>
         <form onSubmit={this.handleSubmit}>
           <FlexColumn>
-            <MainInput
+            <InputPrimary
               id="username"
               type="text"
               placeholder= "username"
               onChange={this.handleChange}
             />
-            <MainInput
+            <InputPrimary
               id="password"
               type="password"
               placeholder="password"

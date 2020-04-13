@@ -1,11 +1,13 @@
 import React from 'react';
-import '../styles/RideHistory.css';
 import Trip from '../containers/Trip';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
+import { StyledContainer, FlexColumn, Loading, FlexRowFull } from '../../styles/StyledContainers';
+import { TitlePrimary } from '../../styles/StyledTitles';
+import SideBar from './SideBar';
 
 
-const RideHistory = (props) => {
+const AllRides = (props) => {
 
   const { user, loading, authorized } = props
 
@@ -34,33 +36,32 @@ const RideHistory = (props) => {
   }
 
   return (
-    <div className="trip-history">
+    <StyledContainer>
       {authorized ?
-        <div>
-          <h5>Hello <em>{user.username}</em>! This is the history of your rides:</h5>
-          <div className="trip-block">
-            <h5>Current rides:</h5>
-            {getCurrentTrips()}
-          </div>
-    
-          <div className="trip-block">
-            <h5>Upcoming rides:</h5>
-            {getFutureTrips()}
-          </div>
-    
-          <div className="trip-block">
-            <h5>Past rides:</h5>
-            {getPastTrips()}
-          </div>
-        </div> :
-        loading && <div id="loading">Loading...</div>}
-    </div>
+        <FlexRowFull>
+          <SideBar />
+          <FlexColumn>
+            <TitlePrimary>Hello <em>{user.username}</em>! This is a summary of your rides:</TitlePrimary>
+            
+              {getCurrentTrips()}
+           
+          
+            
+              {getFutureTrips()}
+            
+          
+            
+              {getPastTrips()}
+            
+          </FlexColumn>
+        </FlexRowFull>  :
+        loading && <Loading>Loading...</Loading>}
+    </StyledContainer>
   );
 }
 
-RideHistory.propTypes = {
+AllRides.propTypes = {
   user: PropTypes.object.isRequired,
-  drivers: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   authorized: PropTypes.bool.isRequired
 }
@@ -68,10 +69,9 @@ RideHistory.propTypes = {
 function mapStateToProps(state){
   return {
     user: state.auth.user,
-    drivers: state.drivers.drivers,
     loading: state.auth.loading,
     authorized: state.auth.authorized,
   }
 }
 
-export default connect(mapStateToProps, null)(RideHistory)
+export default connect(mapStateToProps, null)(AllRides)

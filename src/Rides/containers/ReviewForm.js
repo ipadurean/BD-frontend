@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import '../styles/ReviewForm.css';
+import '../style.css';
 import { addReview } from '../ducks/operations';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
+import { StyledContainer } from '../../styles/StyledContainers';
+import { ButtonMain } from '../../styles/StyledButtons';
 
 class ReviewForm extends Component {
   constructor(){
@@ -31,14 +33,14 @@ class ReviewForm extends Component {
   render(){
     const { submitted } = this.props.rideHistory
     return (
-      <div className="review-form">
+      <StyledContainer>
         {submitted?
           <h4>Your review has been posted!</h4> :
           <form id="review" onSubmit={this.handleSubmit} >
             <textarea type="text" onChange={this.handleChange} />
-            <button type="submit" value="Submit" disabled={this.validateForm()}>Submit</button>
+            <ButtonMain type="submit" disabled={this.validateForm()}>Submit</ButtonMain>
           </form>}
-      </div>
+      </StyledContainer>
     )
   }
 }

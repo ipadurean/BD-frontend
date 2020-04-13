@@ -3,7 +3,7 @@ import authReducer from '../Auth/ducks/reducers'
 import fetchDriversReducer from '../Main/ducks/reducers';
 import homeReducer from '../Home/ducks/reducers';
 import bookingReducer from '../Booking/ducks/reducers';
-import rideHistoryReducer from '../History/ducks/reducers';
+import rideHistoryReducer from '../Rides/ducks/reducers';
 
 
 export default combineReducers({

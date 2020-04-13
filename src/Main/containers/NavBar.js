@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/NavBar.css';
+import '../style.css';
 import { logout } from '../../Auth/ducks/actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -56,9 +56,9 @@ class NavBar extends Component {
                 <StyledWelcome>Loading...</StyledWelcome> :
                 <StyledWelcome>Welcome <em><b> {user.username}</b></em> !</StyledWelcome>}
             </span>
-                <NavItem href="/home" style={{'textDecoration': 'none' }}>Home</NavItem>
-                <NavItem href="/about" style={{ 'textDecoration': 'none' }}>About</NavItem>
-                <NavItem href="/history" style={{ 'textDecoration': 'none' }}>Ride History</NavItem> 
+                <NavItem href="/home">Home</NavItem>
+                <NavItem href="/about">About</NavItem>
+                <NavItem href="/rides">Rides</NavItem> 
                 <div className="search-drivers">
                   <input onChange={this.handleChange} id="search-box" type="text" ref="input" />
                   <ButtonMain onClick={this.handleClick}>Search</ButtonMain>

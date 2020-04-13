@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { register } from '../ducks/operations';
 import { LgBlueBtn, ButtonMain } from '../../styles/StyledButtons';
-import { MainInput } from '../../styles/StyledInputs';
-import { FlexColumn, StyledContainer } from '../../styles/StyledContainers';
+import { InputPrimary } from '../../styles/StyledInputs';
+import { FlexColumn, StyledContainer, Loading } from '../../styles/StyledContainers';
 
 class Register extends Component {
   
@@ -57,19 +57,20 @@ class Register extends Component {
         {created ?
           <FlexColumn>
             <h2>Your account has been created! Please log in!</h2>
+            <br /><br />
             <a href='/login'><ButtonMain>Login</ButtonMain></a>
           </FlexColumn> :
           creating ?
-            <FlexColumn><h2>Creating account...</h2></FlexColumn> :
+            <Loading>Creating account...</Loading> :
               <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <FlexColumn>
-                  <MainInput id="firstName" type="text" placeholder="first name" />
-                  <MainInput id="lastName" type="text" placeholder="last name" />
-                  <MainInput id="email" type="email" placeholder="email" />
-                  <MainInput id="username" type="text" placeholder="username" />
-                  <MainInput id="phoneNumber" type="text" placeholder="phone number" />
-                  <MainInput id="password" type="password" placeholder="password" /> 
-                  <MainInput id="confirmPassword" type="password" placeholder="confirm pasword" />
+                  <InputPrimary id="firstName" type="text" placeholder="first name" />
+                  <InputPrimary id="lastName" type="text" placeholder="last name" />
+                  <InputPrimary id="email" type="email" placeholder="email" />
+                  <InputPrimary id="username" type="text" placeholder="username" />
+                  <InputPrimary id="phoneNumber" type="text" placeholder="phone number" />
+                  <InputPrimary id="password" type="password" placeholder="password" /> 
+                  <InputPrimary id="confirmPassword" type="password" placeholder="confirm pasword" />
                   <LgBlueBtn style={{ 'outline': 'none' }} disabled={!this.validateForm()}>Register</LgBlueBtn>
                 </FlexColumn>
               </form>}

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import ReviewForm from './ReviewForm';
-import '../styles/Trip.css';
+import '../style.css';
 import TimeZone from '../../utils/timeZone';
 import { fetchDelete } from '../ducks/operations';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import close from '../../utils/assets/close.svg';
-
-
 
 class Trip extends Component {
 

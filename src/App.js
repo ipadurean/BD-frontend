@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import RideHistory from './History/components/RideHistory';
+import AllRides from './Rides/components/AllRides';
 import Home from './Home/containers/Home';
 import Register from './Auth/containers/Register';
 import Login from './Auth/containers/Login';
@@ -44,8 +44,8 @@ class App extends Component {
           }} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/about' component={About} />
-          <Route path="/history" render={() => {
-            return token ? <RideHistory /> :
+          <Route path="/rides" render={() => {
+            return token ? <AllRides /> :
               <Redirect to='/login' />
           }} />
           <Route exact path='/drivers/:name' render={({ match }) => {
