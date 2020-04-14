@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { loginAction } from '../ducks/operations';
 import { LgBlueBtn } from '../../styles/StyledButtons';
 import { InputPrimary } from '../../styles/StyledInputs';
-import { FlexColumn, StyledContainer } from '../../styles/StyledContainers';
+import { FlexColumn, FlexColumnFull } from '../../styles/StyledContainers';
+import { StyledForm } from '../../styles/StyledForms';
 
 
 class Login extends Component {
@@ -37,8 +38,8 @@ class Login extends Component {
 
   render() {
     return (
-      <StyledContainer>
-        <form onSubmit={this.handleSubmit}>
+      <FlexColumnFull>
+        <StyledForm onSubmit={this.handleSubmit}>
           <FlexColumn>
             <InputPrimary
               id="username"
@@ -55,8 +56,8 @@ class Login extends Component {
             <LgBlueBtn disabled={!this.validateForm()} style={{ 'outline': 'none' }}>Login</LgBlueBtn>
             <LgBlueBtn onClick={this.handleClick} style={{'outline':'none'}}>Continue as Guest</LgBlueBtn>
           </FlexColumn>
-        </form>
-      </StyledContainer>
+        </StyledForm>
+      </FlexColumnFull>
     );
   }
 }

@@ -27,13 +27,14 @@ export const NavItem = styled.a`
 `
 
 export const StyledWelcome = styled.div`
-  display: inline;
+  display: flex;
+  justify-content: space-around;
   font-family: Lato;
   font-size: calc(10px + 0.5vw);
   color: blue;
   margin: 0 1vw;
   background-color: white;
-  padding: 3px 10px;
+  padding: 3px 5px;
   border-radius: 5px;
 `
 

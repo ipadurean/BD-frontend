@@ -12,6 +12,7 @@ import Header from '../components/Header';
 import { FlexRow } from '../../styles/StyledContainers';
 import { StyledNav, NavItem, StyledWelcome } from '../../styles/StyledNav';
 import { ButtonMain } from '../../styles/StyledButtons';
+import { Input2 } from '../../styles/StyledInputs';
 
 
 class NavBar extends Component {
@@ -54,13 +55,13 @@ class NavBar extends Component {
             <span style={{ 'width': '200px' }}>
               {loading ?
                 <StyledWelcome>Loading...</StyledWelcome> :
-                <StyledWelcome>Welcome <em><b> {user.username}</b></em> !</StyledWelcome>}
+                <StyledWelcome>Welcome <b>{user.username}</b> !</StyledWelcome>}
             </span>
                 <NavItem href="/home">Home</NavItem>
                 <NavItem href="/about">About</NavItem>
                 <NavItem href="/rides/current">Rides</NavItem> 
                 <div className="search-drivers">
-                  <input onChange={this.handleChange} id="search-box" type="text" ref="input" />
+                  <Input2 onChange={this.handleChange} type="text" ref="input" />
                   <ButtonMain onClick={this.handleClick}>Search</ButtonMain>
                 </div>
               {authorized ?

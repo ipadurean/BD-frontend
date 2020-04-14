@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { register } from '../ducks/operations';
 import { LgBlueBtn, ButtonMain } from '../../styles/StyledButtons';
 import { InputPrimary } from '../../styles/StyledInputs';
-import { FlexColumn, StyledContainer, Loading } from '../../styles/StyledContainers';
+import { FlexColumn, FlexColumnFull, Loading } from '../../styles/StyledContainers';
+import { StyledForm } from '../../styles/StyledForms';
 
 class Register extends Component {
   
@@ -53,7 +54,7 @@ class Register extends Component {
   render() {
     const { creating, created } = this.props
     return (
-      <StyledContainer>
+      <FlexColumnFull>
         {created ?
           <FlexColumn>
             <h2>Your account has been created! Please log in!</h2>
@@ -62,7 +63,7 @@ class Register extends Component {
           </FlexColumn> :
           creating ?
             <Loading>Creating account...</Loading> :
-              <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+              <StyledForm onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <FlexColumn>
                   <InputPrimary id="firstName" type="text" placeholder="first name" />
                   <InputPrimary id="lastName" type="text" placeholder="last name" />
@@ -73,8 +74,8 @@ class Register extends Component {
                   <InputPrimary id="confirmPassword" type="password" placeholder="confirm pasword" />
                   <LgBlueBtn style={{ 'outline': 'none' }} disabled={!this.validateForm()}>Register</LgBlueBtn>
                 </FlexColumn>
-              </form>}
-      </StyledContainer>
+              </StyledForm>}
+      </FlexColumnFull>
     );
   }
 }

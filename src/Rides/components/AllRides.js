@@ -4,7 +4,7 @@ import FutureRides from './FutureRides';
 import PastRides from './PastRides';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { StyledContainer, FlexColumn, Loading, FlexRowFull } from '../../styles/StyledContainers';
+import { FlexColumnFull, FlexColumn2, FlexColumn, Loading, FlexRowFull, StyledContainer } from '../../styles/StyledContainers';
 import { TitlePrimary } from '../../styles/StyledTitles';
 import SideBar from './SideBar';
 import { Route, Switch } from 'react-router-dom';
@@ -19,18 +19,21 @@ const AllRides = (props) => {
       {authorized ?
         <FlexRowFull>
           <SideBar />
-          <FlexColumn>
+          <FlexColumn2>
             <TitlePrimary>Hello <em>{user.username}</em>! This is a summary of your rides:</TitlePrimary>
             <Switch>
-              <Route path='/rides/current' component={CurrentRides} />
-              <Route path='/rides/future' component={FutureRides} />
-              <Route path='/rides/past' component={PastRides} />
+              <FlexColumn>
+                <Route path='/rides/current' component={CurrentRides} />
+                <Route path='/rides/future' component={FutureRides} />
+                <Route path='/rides/past' component={PastRides} />
+              </FlexColumn>
             </Switch>
-             
-            
-          </FlexColumn>
+          </FlexColumn2>
         </FlexRowFull>  :
-        loading && <Loading>Loading...</Loading>}
+        loading &&
+        <FlexColumnFull>
+          <Loading>Loading...</Loading>
+        </FlexColumnFull>}
     </StyledContainer>
   );
 }
