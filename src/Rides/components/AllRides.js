@@ -4,8 +4,8 @@ import FutureRides from './FutureRides';
 import PastRides from './PastRides';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { FlexColumnFull, FlexColumn2, FlexColumn, Loading, FlexRowFull, StyledContainer } from '../../styles/StyledContainers';
-import { TitlePrimary } from '../../styles/StyledTitles';
+import { FlexColumnFull, FlexColumn2, Loading, FlexRowFull, StyledContainer } from '../../styles/StyledContainers';
+import { Title1 } from '../../styles/StyledText';
 import SideBar from './SideBar';
 import { Route, Switch } from 'react-router-dom';
 
@@ -20,13 +20,13 @@ const AllRides = (props) => {
         <FlexRowFull>
           <SideBar />
           <FlexColumn2>
-            <TitlePrimary>Hello <em>{user.username}</em>! This is a summary of your rides:</TitlePrimary>
+            <Title1>Hello <b>{user.username}</b>! This is a summary of your rides:</Title1>
             <Switch>
-              <FlexColumn>
+              <>
                 <Route path='/rides/current' component={CurrentRides} />
                 <Route path='/rides/future' component={FutureRides} />
                 <Route path='/rides/past' component={PastRides} />
-              </FlexColumn>
+              </>
             </Switch>
           </FlexColumn2>
         </FlexRowFull>  :

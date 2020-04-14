@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { FlexRow } from '../../styles/StyledContainers';
 import { StyledNav, NavItem, StyledWelcome } from '../../styles/StyledNav';
-import { ButtonMain } from '../../styles/StyledButtons';
+import { Button1 } from '../../styles/StyledButtons';
 import { Input2 } from '../../styles/StyledInputs';
 
 
@@ -62,13 +62,13 @@ class NavBar extends Component {
                 <NavItem href="/rides/current">Rides</NavItem> 
                 <div className="search-drivers">
                   <Input2 onChange={this.handleChange} type="text" ref="input" />
-                  <ButtonMain onClick={this.handleClick}>Search</ButtonMain>
+                  <Button1 onClick={this.handleClick}>Search</Button1>
                 </div>
               {authorized ?
-                <ButtonMain onClick={this.logout} id="logout">Logout</ButtonMain> :
+                <Button1 onClick={this.logout} id="logout">Logout</Button1> :
                   <>
-                    <a href="/login"><ButtonMain className="button" id="login">Login</ButtonMain></a>
-                    <a href="/register"><ButtonMain className="button" id="register">Register</ButtonMain></a>
+                    <a href="/login"><Button1 className="button" id="login">Login</Button1></a>
+                    <a href="/register"><Button1 className="button" id="register">Register</Button1></a>
                   </>
               }
           </FlexRow>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loginAction } from '../ducks/operations';
-import { LgBlueBtn } from '../../styles/StyledButtons';
+import { Button2} from '../../styles/StyledButtons';
 import { InputPrimary } from '../../styles/StyledInputs';
 import { FlexColumn, FlexColumnFull } from '../../styles/StyledContainers';
 import { StyledForm } from '../../styles/StyledForms';
@@ -53,8 +53,8 @@ class Login extends Component {
               placeholder="password"
               onChange={this.handleChange}
               />
-            <LgBlueBtn disabled={!this.validateForm()} style={{ 'outline': 'none' }}>Login</LgBlueBtn>
-            <LgBlueBtn onClick={this.handleClick} style={{'outline':'none'}}>Continue as Guest</LgBlueBtn>
+            <Button2 disabled={!this.validateForm()} style={{ 'outline': 'none' }}>Login</Button2>
+            <Button2 onClick={this.handleClick} style={{'outline':'none'}}>Continue as Guest</Button2>
           </FlexColumn>
         </StyledForm>
       </FlexColumnFull>

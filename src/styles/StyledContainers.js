@@ -9,7 +9,7 @@ export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-items: center;
+  justify-items: space-between;
   height: 100%;
 `
 
@@ -29,7 +29,6 @@ export const FlexColumn = styled.div`
   justify-content: center;
   padding: 3%;
   height: 100%;
-  overflow: scroll;
 `
 
 export const FlexColumn2 = styled.div`
@@ -39,8 +38,6 @@ export const FlexColumn2 = styled.div`
   height: 100%;
   overflow: scroll;
 `
-
-
 
 export const FlexColumnFull = styled.div`
   display: flex;
@@ -53,5 +50,15 @@ export const Loading = styled.div`
   text-align: center;
   font-size: calc(2vh + 2vw);
   color: gray;
+`
+
+export const FixedContainer = styled.div`
+  position: fixed;
+  top: 30vh;
+  bottom: auto;
+  left: 30vw;
+  right:auto;
+  border-radius: 5px;
+  z-index: 2;
 `
 

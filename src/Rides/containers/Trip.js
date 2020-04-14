@@ -5,7 +5,9 @@ import TimeZone from '../../utils/timeZone';
 import { fetchDelete } from '../ducks/operations';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import close from '../../utils/assets/close.svg';
+import { FlexRow, FlexColumn2 } from '../../styles/StyledContainers';
+import { Title1, Title2, Text1, Text2, Text3 } from '../../styles/StyledText';
+import { Button1 } from '../../styles/StyledButtons'; 
 
 class Trip extends Component {
 
@@ -56,37 +58,29 @@ class Trip extends Component {
     const date2 = TimeZone.toCentralTime(trip.end_time)
     
       return (
-        <div className={this.state.open? "fixed" : "trip-container"}>
-          <div onClick={this.handleClick} id="trip-header">
-            <span>Trip number: <b>{trip.id + 1000}</b></span>
-            <span className="trip-date">
-              <span>For: </span><em>{date1.slice(0,10)}</em>
-            </span>
-            {this.state.open && <img onClick={this.close} alt="close" id="close" src={close} />}
-          </div>
-          {this.state.open && 
-            <div id="trip-body" >
-              <img id="trip-img" alt="img" src={trip.driver_photo}/>
-            <h6>Driver name: {trip.driver_name}</h6>
-              {trip.review && <div className="review-body">
-                                <h6><span>Your review:</span></h6>
-                                <div><i>{trip.review}</i></div>
-            </div>}
-              <div>Date: <span>{date1.slice(0, 15)}</span></div>
-            <div>From: <span>{date1.slice(16, 21)}</span> to:<span>{date2.slice(16, 21)}</span></div>
-                <div>Pick up address: {trip.address}</div>
-              <div>Total cost: <span>${trip.total}</span></div>
-            
-              {cancel && <button onClick={this.cancelRide}> Cancel Ride </button>}
-            {review && !this.state.clickReview && <div className="add-review" onClick={this.addReview}><u>Add Review</u></div>}
-  
-            <div className="trip-date"><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></div>
-            </div>}
-          {this.state.clickReview &&
-            <div className="review-form-container">
-              {!this.state.submitted && <img style={{ 'width': '20px', 'float': 'right'}} onClick={this.cancelReview} alt="close" id="close" src={close} />}
-                <ReviewForm trip={trip} />
-            </div>}
+        <div className='trip-container'>
+          <FlexRow onClick={this.handleClick} id="trip-header">
+            <Title1>Trip number: <b>{trip.id + 1000}</b></Title1><Title1> For: <Text2><em>{date1.slice(0, 10)}</em></Text2></Title1>
+          </FlexRow>
+            <div id="trip-body">
+              <Title2><img id="trip-img" alt="img" src={trip.driver_photo} /> Driver: <Text2><b>{trip.driver_name}</b></Text2></Title2>
+                {trip.review &&
+                  <div className="review-body">
+                    <Title2>My review:</Title2>
+                    <Text2><i>{trip.review}</i></Text2>
+                  </div>}
+                <FlexColumn2>
+                  <Text1>Pick-up date: <Text2>{date1.slice(0, 15)}</Text2> at: <Text2>{date1.slice(15, 21)}</Text2></Text1>
+                  <Text1>Drop-off date: <Text2>{date2.slice(0, 15)}</Text2> at: <Text2>{date2.slice(15, 21)}</Text2></Text1>
+                  <Text1>Pick up address: <Text2>{trip.address}</Text2></Text1>
+                  <Text1>Total cost: <Text2>${trip.total}</Text2></Text1>
+                </FlexColumn2>
+                  {cancel && <Button1 onClick={this.cancelRide} id="cancel-button"> Cancel Ride </Button1>}
+                  {review && !this.state.clickReview && <div className="add-review" onClick={this.addReview}><u>Add Review</u></div>}
+                  <br />
+                <Text3><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></Text3>
+            </div>
+          {this.state.clickReview && <ReviewForm />}
         </div>
       )
   }

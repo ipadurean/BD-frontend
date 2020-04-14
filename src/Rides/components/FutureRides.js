@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Trip from '../containers/Trip';
 import { connect } from "react-redux";
+import { Title2 } from '../../styles/StyledText';
 
 const FutureRides = (props) => {
   const { user } = props;
@@ -16,7 +17,7 @@ const FutureRides = (props) => {
 
   return (
     <>
-      <h6>Your future rides are: </h6>
+      <Title2>Your future rides: </Title2>
       {getFutureTrips()}
     </>
   );

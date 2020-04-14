@@ -9,7 +9,7 @@ export const InputPrimary = styled.input`
 `
 
 export const Input2 = styled.input`
-  width: 100px;
+  font-size: calc(6px + 0.5vw);
   border-radius: 5px;
   margin: 5px;
   padding: 5px 15px;

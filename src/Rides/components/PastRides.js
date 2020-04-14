@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Trip from '../containers/Trip';
 import { connect } from "react-redux";
+import { Title2 } from '../../styles/StyledText';
+// import { FlexColumn2 } from '../../styles/StyledContainers';
 
 const PastRides = (props) => {
   const { user } = props;
@@ -16,7 +18,7 @@ const PastRides = (props) => {
 
   return (
     <>
-      <h6>Your past rides are:</h6>
+      <Title2>Your past rides are:</Title2>
       {getPastTrips()}
     </>
   );

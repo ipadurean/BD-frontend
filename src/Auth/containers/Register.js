@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { register } from '../ducks/operations';
-import { LgBlueBtn, ButtonMain } from '../../styles/StyledButtons';
+import { Button2, Button1 } from '../../styles/StyledButtons';
 import { InputPrimary } from '../../styles/StyledInputs';
 import { FlexColumn, FlexColumnFull, Loading } from '../../styles/StyledContainers';
 import { StyledForm } from '../../styles/StyledForms';
@@ -59,7 +59,7 @@ class Register extends Component {
           <FlexColumn>
             <h2>Your account has been created! Please log in!</h2>
             <br /><br />
-            <a href='/login'><ButtonMain>Login</ButtonMain></a>
+            <a href='/login'><Button1>Login</Button1></a>
           </FlexColumn> :
           creating ?
             <Loading>Creating account...</Loading> :
@@ -72,7 +72,7 @@ class Register extends Component {
                   <InputPrimary id="phoneNumber" type="text" placeholder="phone number" />
                   <InputPrimary id="password" type="password" placeholder="password" /> 
                   <InputPrimary id="confirmPassword" type="password" placeholder="confirm pasword" />
-                  <LgBlueBtn style={{ 'outline': 'none' }} disabled={!this.validateForm()}>Register</LgBlueBtn>
+                  <Button2 style={{ 'outline': 'none' }} disabled={!this.validateForm()}>Register</Button2>
                 </FlexColumn>
               </StyledForm>}
       </FlexColumnFull>

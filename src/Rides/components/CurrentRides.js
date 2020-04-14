@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Trip from '../containers/Trip';
 import { connect } from "react-redux";
+import { Title2 } from '../../styles/StyledText';
+// import { FlexColumn2 } from '../../styles/StyledContainers';
 
 const CurrentRides = (props) => {
   const { user } = props;
@@ -16,7 +18,7 @@ const CurrentRides = (props) => {
 
   return (
     <>
-      <h6>Your current rides are: </h6>
+      <Title2>Your current rides: </Title2>
       {getCurrentTrips()}
     </>
   );

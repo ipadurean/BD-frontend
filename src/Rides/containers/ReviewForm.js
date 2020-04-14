@@ -3,8 +3,10 @@ import '../style.css';
 import { addReview } from '../ducks/operations';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { StyledContainer } from '../../styles/StyledContainers';
-import { ButtonMain } from '../../styles/StyledButtons';
+import { FixedContainer } from '../../styles/StyledContainers';
+import { Button1 } from '../../styles/StyledButtons';
+import { StyledForm } from '../../styles/StyledForms';
+import close from '../../utils/assets/close.svg';
 
 class ReviewForm extends Component {
   constructor(){
@@ -33,14 +35,15 @@ class ReviewForm extends Component {
   render(){
     const { submitted } = this.props.rideHistory
     return (
-      <StyledContainer>
+      <FixedContainer>
         {submitted?
           <h4>Your review has been posted!</h4> :
-          <form id="review" onSubmit={this.handleSubmit} >
+          <StyledForm id="review" onSubmit={this.handleSubmit} >
+            <img style={{ 'width': '15px', 'float': 'right', 'margin':'3px' }} onClick={this.cancelReview} alt="close" id="close" src={close} />
             <textarea type="text" onChange={this.handleChange} />
-            <ButtonMain type="submit" disabled={this.validateForm()}>Submit</ButtonMain>
-          </form>}
-      </StyledContainer>
+            <Button1 type="submit" disabled={this.validateForm()}>Submit</Button1>
+          </StyledForm>}
+      </FixedContainer>
     )
   }
 }
