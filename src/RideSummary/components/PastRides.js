@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Trip from '../containers/Trip';
 import { connect } from "react-redux";
 import { Title2 } from '../../styles/StyledText';
-// import { FlexColumn2 } from '../../styles/StyledContainers';
+
 
 const PastRides = (props) => {
   const { user } = props;

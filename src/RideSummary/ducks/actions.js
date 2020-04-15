@@ -6,6 +6,12 @@ export const submitReview = () => {
   }
 }
 
+export const submitting = () => {
+  return {
+    type: types.SUBMITTING
+  }
+}
+
 export const deleteTrip = (tripId) => {
   return {
     type: types.DELETE_TRIP,
@@ -13,15 +19,16 @@ export const deleteTrip = (tripId) => {
   }
 }
 
-export const openTrip = () => {
+export const openReview = (tripId) => {
   return {
-    type: types.TRIP_OPEN
+    type: types.OPEN_REVIEW,
+    payload: tripId
   }
 }
 
-export const closeTrip = () => {
+export const closeReview = () => {
   return {
-    type: types.TRIP_CLOSE
+    type: types.CLOSE_REVIEW
   }
 }
 

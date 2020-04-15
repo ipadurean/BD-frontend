@@ -1,5 +1,4 @@
 
-
 .trip-container {
   background-color: rgb(250, 250, 250);
   padding: 1vw;
@@ -12,9 +11,8 @@
 }
 
 #trip-header {
-  background-color: rgb(234, 239, 245);
+  background-color: rgb(229, 238, 236);
   padding: 1%;
-  cursor: pointer;
   height: 30px;
   border-radius: 5px;
   justify-items: space-between;
@@ -26,6 +24,10 @@
   top: 40px;
   left: 50%;
   min-height: 100px;
+}
+
+#dark {
+  filter: brightness(50%)
 }
 
 
@@ -65,15 +67,14 @@
   border-radius: 50%;
 }
 
-#review textarea {
-  height: 150px;
-  width: 100%;
-  text-decoration: none;
-  outline: none;
-  border: 1px solid silver;
+.side-bar {
+  background-image: linear-gradient(to bottom, #7e7c75 0%, #9e9995 50%, #868680 100%);
+  width: 23vw;
 }
 
-.side-bar {
-  background-color: rgb(218, 218, 218);
-  width: 23vw;
+#close {
+  cursor: pointer;
+  width: 15px;
+  float: right;
+  margin:3px;
 }

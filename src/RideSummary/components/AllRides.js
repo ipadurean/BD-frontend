@@ -8,16 +8,20 @@ import { FlexColumnFull, FlexColumn2, Loading, FlexRowFull, StyledContainer } fr
 import { Title1 } from '../../styles/StyledText';
 import SideBar from './SideBar';
 import { Route, Switch } from 'react-router-dom';
+import ReviewForm from '../containers/ReviewForm';
+import { DarkStyle } from '../../styles/DarkStyle';
 
 
 const AllRides = (props) => {
 
-  const { user, loading, authorized } = props
+  const { user, loading, authorized, reviewOpen } = props
 
   return (
     <StyledContainer>
+      {reviewOpen && <ReviewForm />}
+      {reviewOpen && <DarkStyle />}
       {authorized ?
-        <FlexRowFull>
+        <FlexRowFull className="temp">
           <SideBar />
           <FlexColumn2>
             <Title1>Hello <b>{user.username}</b>! This is a summary of your rides:</Title1>
@@ -49,6 +53,7 @@ function mapStateToProps(state){
     user: state.auth.user,
     loading: state.auth.loading,
     authorized: state.auth.authorized,
+    reviewOpen: state.rideSummary.reviewOpen
   }
 }
 

@@ -56,7 +56,7 @@ export const FixedContainer = styled.div`
   position: fixed;
   top: 30vh;
   bottom: auto;
-  left: 30vw;
+  left: 35vw;
   right:auto;
   border-radius: 5px;
   z-index: 2;

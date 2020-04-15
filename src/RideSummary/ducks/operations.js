@@ -1,4 +1,4 @@
-import { deleteTrip, submitReview } from './actions'
+import { deleteTrip, submitReview, submitting } from './actions'
 
 const baseUrl = 'https://radiant-fjord-35660.herokuapp.com';
 
@@ -15,6 +15,7 @@ export const fetchDelete = (tripId) => {
 export const addReview = (tripId, review) => {
   
   return function (dispatch) {
+    dispatch(submitting())
     fetch(`${baseUrl}/trips/${tripId}`, {
       method: 'PATCH',
       headers: {

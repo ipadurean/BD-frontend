@@ -1,6 +1,6 @@
 .search-container{
   padding: 1%;
-  background-image: linear-gradient(to bottom, #4d4d4d 0%, #535353 100%);
+   background-image: linear-gradient(to bottom, #7e7c75 0%, #706c69 50%, #868680 100%);
   border-radius: 5px;
   height: calc(50px + 4vw);
   box-shadow: 1px 0px 2px 3px rgb(207, 207, 207);
@@ -34,7 +34,7 @@
 
 
 #form-title{
-  color: rgb(186, 202, 207);
+  color: rgb(217, 232, 236);
   padding: 2px 10px;
   font-size: calc(8px + 1vw)
 }

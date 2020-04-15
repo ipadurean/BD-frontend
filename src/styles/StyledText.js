@@ -26,3 +26,11 @@ export const Text3 = styled.div`
   font-size: calc(5px + 0.5vw);
   color: gray;
 `
+
+export const TextArea1 = styled.textarea`
+  height: 150px;
+  width: 100%;
+  text-decoration: none;
+  outline: none;
+  border: 1px solid silver;
+`

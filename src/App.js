@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import AllRides from './Rides/components/AllRides';
+import AllRides from './RideSummary/components/AllRides';
 import Home from './Home/containers/Home';
 import Register from './Auth/containers/Register';
 import Login from './Auth/containers/Login';
@@ -26,7 +26,6 @@ class App extends Component {
   render() {
     const token = localStorage.getItem('jwt');
     const { authorized, booking } = this.props;
-  
    
     return (
       <>
@@ -76,7 +75,8 @@ function mapStateToProps(state) {
     authorized: state.auth.authorized,
     loading: state.auth.loading,
     drivers: state.drivers.drivers,
-    booking: state.booking
+    booking: state.booking,
+    reviewOpen: state.rideSummary.reviewOpen
   }
 }
 
