@@ -1,0 +1,29 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90vw;
+  margin: 5vh 5vw;
+  padding: 1%;
+  background-image: linear-gradient(to bottom, #7e7c75 0%, #706c69 50%, #868680 100%);
+  border-radius: 5px;
+  height: calc(50px + 4vw);
+  box-shadow: 0px 1px 2px 2px rgb(207, 207, 207);
+}
+
+
+.input-box {
+  margin: 2px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid rgb(68, 68, 68);
+  width: calc(100px + 4vw);
+  padding: 1px 2%;
+}
+
+
+.sort {
+  width: calc(150px + 5vw);
+  margin: 2px 55px;
+}
+

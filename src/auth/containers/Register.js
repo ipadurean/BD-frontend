@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { register } from '../ducks/operations';
 import { Button2, Button1 } from '../../styles/StyledButtons';
-import { InputPrimary } from '../../styles/StyledInputs';
+import { Input1 } from '../../styles/StyledInputs';
 import { FlexColumn, FlexColumnFull, Loading } from '../../styles/StyledContainers';
 import { StyledForm } from '../../styles/StyledForms';
 
@@ -65,13 +65,13 @@ class Register extends Component {
             <Loading>Creating account...</Loading> :
               <StyledForm onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <FlexColumn>
-                  <InputPrimary id="firstName" type="text" placeholder="first name" />
-                  <InputPrimary id="lastName" type="text" placeholder="last name" />
-                  <InputPrimary id="email" type="email" placeholder="email" />
-                  <InputPrimary id="username" type="text" placeholder="username" />
-                  <InputPrimary id="phoneNumber" type="text" placeholder="phone number" />
-                  <InputPrimary id="password" type="password" placeholder="password" /> 
-                  <InputPrimary id="confirmPassword" type="password" placeholder="confirm pasword" />
+                  <Input1 id="firstName" type="text" placeholder="first name" />
+                  <Input1 id="lastName" type="text" placeholder="last name" />
+                  <Input1 id="email" type="email" placeholder="email" />
+                  <Input1 id="username" type="text" placeholder="username" />
+                  <Input1 id="phoneNumber" type="text" placeholder="phone number" />
+                  <Input1 id="password" type="password" placeholder="password" /> 
+                  <Input1 id="confirmPassword" type="password" placeholder="confirm pasword" />
                   <Button2 style={{ 'outline': 'none' }} disabled={!this.validateForm()}>Register</Button2>
                 </FlexColumn>
               </StyledForm>}

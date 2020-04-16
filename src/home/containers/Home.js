@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import '../styles/Home.css';
-import SearchAvailability from "./SearchAvailability";
+import FilterDrivers from "./FilterDrivers";
 import DriversList from '../components/DriversList';
 import { fetchDrivers } from '../../Main/ducks/operations';
 import { connect } from 'react-redux';
+import { StyledContainer } from '../../styles/StyledContainers';
 
 
 class Home extends Component {
@@ -21,14 +21,12 @@ class Home extends Component {
   }
 
   
- 
- 
   render(){
     return (
-      <div className="home-container">
-        <SearchAvailability />
+      <StyledContainer>
+        <FilterDrivers />
         <DriversList />
-      </div>
+      </StyledContainer>
     )
   }
 }

@@ -62,13 +62,13 @@ class NavBar extends Component {
                 <NavItem href="/rides/current">Rides</NavItem> 
                 <div className="search-drivers">
                   <Input2 onChange={this.handleChange} type="text" ref="input" />
-                  <Button1 onClick={this.handleClick}>Search</Button1>
+              <Button1 onClick={this.handleClick} style={{ 'outline': 'none' }}>Search</Button1>
                 </div>
               {authorized ?
-                <Button1 onClick={this.logout} id="logout">Logout</Button1> :
+              <Button1 onClick={this.logout} id="logout" style={{ 'outline': 'none' }}>Logout</Button1> :
                   <>
-                    <a href="/login"><Button1 className="button" id="login">Login</Button1></a>
-                    <a href="/register"><Button1 className="button" id="register">Register</Button1></a>
+                <a href="/login"><Button1 className="button" id="login" style={{ 'outline': 'none' }}>Login</Button1></a>
+                <a href="/register"><Button1 className="button" id="register" style={{ 'outline': 'none' }}>Register</Button1></a>
                   </>
               }
           </FlexRow>

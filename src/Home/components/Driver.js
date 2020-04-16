@@ -3,27 +3,33 @@ import '../styles/Driver.css';
 import { connect } from "react-redux";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
-import star from '../../utils/assets/star-solid.svg'
+import star from '../../utils/assets/star-solid.svg';
+import { FlexRow, FlexRow2, FlexColumn } from '../../styles/StyledContainers';
+import { DriverCard } from '../../styles/StyledDriver';
+import { Title2, Text1 } from '../../styles/StyledText';
+import { ButtonBook1 } from '../../styles/StyledButtons';
 
 const Driver = (props) => {
 
   const { driver, home } = props
-
   return (
-    <div className="driver-card">
-      <div className="driver-brief">
-        <div className="title">
-          <div id="username">{driver.username}</div><span>Rating <b>{driver.rating}</b><img className="star" alt="star" src={star} /></span>
-          <div>Rate: <b>${driver.rate}/hour</b></div>
-        </div>
-        <LazyLoadImage id="driver-img" alt="img" effect="opacity" src={driver.photo} />
-        <div id="vehicle"><i> ~ {driver.car} ~ </i></div>
-      </div>
-      <div className="book-ride">
-        {home.clickSearch && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}
-        <button id="select">Book ride with this chauffeur</button>
-      </div>
-    </div> 
+    <DriverCard>
+      <FlexRow>
+        <FlexRow2>
+          <FlexColumn style={{'width': '15vw'}}>
+            <Title2>{driver.username}</Title2>
+            <Text1>Rating <b>{driver.rating}</b><img className="star" alt="star" src={star} /></Text1>
+            <Text1>Rate: <b>${driver.rate}/hour</b></Text1>
+          </FlexColumn>
+          <LazyLoadImage id="driver-img" alt="img" effect="opacity" src={driver.photo} />
+          <div id="vehicle"><i> ~ {driver.car} ~ </i></div>
+        </FlexRow2>
+        <FlexRow2>
+          {home.clickSearch && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}
+          <ButtonBook1>Book ride with this chauffeur</ButtonBook1>
+        </FlexRow2>
+      </FlexRow>
+    </DriverCard>
   )
 }
 

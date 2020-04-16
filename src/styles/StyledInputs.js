@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const InputPrimary = styled.input`
+export const Input1 = styled.input`
   width: 300px;
   border-radius: 5px;
   margin: 5px;

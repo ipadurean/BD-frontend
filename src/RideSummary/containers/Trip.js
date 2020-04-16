@@ -6,7 +6,7 @@ import { openReview } from '../ducks/actions';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { FlexRow, FlexColumn2 } from '../../styles/StyledContainers';
-import { Title1, Title2, Text1, Text2, Text3 } from '../../styles/StyledText';
+import { Title2, Text1, Text2, Text3 } from '../../styles/StyledText';
 import { Button3 } from '../../styles/StyledButtons'; 
 
 const Trip = (props) => {
@@ -14,8 +14,6 @@ const Trip = (props) => {
   const { trip, cancel, review, reviewOpen } = props
   const date1 = TimeZone.toCentralTime(trip.start_time)
   const date2 = TimeZone.toCentralTime(trip.end_time)
-
-
 
   const addReview = () => {
     props.open(trip.id)
@@ -30,7 +28,8 @@ const Trip = (props) => {
   return (
     <div className='trip-container'>
       <FlexRow id="trip-header">
-        <Title1>Trip number: <b>{trip.id + 1000}</b></Title1><Title1> For: <Text2><em>{date1.slice(0, 10)}</em></Text2></Title1>
+        <Title2>Trip number: <b>{trip.id + 1000}</b></Title2>
+        <Title2>For: <Text2>{date1.slice(0, 10)}</Text2></Title2>
       </FlexRow>
         <div id="trip-body">
           <Title2><img id="trip-img" alt="img" src={trip.driver_photo} /> Driver: <Text2><b>{trip.driver_name}</b></Text2></Title2>

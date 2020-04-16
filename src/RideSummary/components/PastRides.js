@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Trip from '../containers/Trip';
 import { connect } from "react-redux";
-import { Title2 } from '../../styles/StyledText';
+import { Title3 } from '../../styles/StyledText';
 
 
 const PastRides = (props) => {
@@ -18,7 +18,7 @@ const PastRides = (props) => {
 
   return (
     <>
-      <Title2>Your past rides are:</Title2>
+      <Title3>Your past rides are:</Title3>
       {getPastTrips()}
     </>
   );

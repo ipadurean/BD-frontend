@@ -48,7 +48,8 @@ export const SideItem = styled.a`
   margin: 1px;
   width: 18vw;
   &:hover {
-   background-color: white;
+   background-color: silver;
    text-decoration: none;
+   border-radius: 3px;
   }
 `

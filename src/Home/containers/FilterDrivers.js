@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import '../styles/SearchAvailability.css';
+import '../styles/style.css';
 import CalendarHome from './CalendarHome';
 import { startTime, endTime, dateClicked, resetSearch, clickSearch } from '../ducks/actions';
 import { connect } from "react-redux";
 import { selectDay, setTime } from '../../Booking/ducks/actions';
 import { withRouter } from 'react-router';
-import { sortDrivers } from '../ducks/actions'
+import { FlexRow } from '../../styles/StyledContainers';
+import { Title1 } from '../../styles/StyledText';
+import { Select1 } from '../../styles/StyledSelect';
+import { Button1 } from '../../styles/StyledButtons';
 
 
 
-class SearchAvailability extends Component {
+class FilterDrivers extends Component {
   
   constructor() {
     super();
@@ -83,34 +86,26 @@ class SearchAvailability extends Component {
     })
   }
 
-  sort = (e) => {
-    this.props.sortBy(e.target.value)
-  }
 
   render() {
     const { selectedDate, clickDate } = this.props.home;
       return (
         <div className="search-container">
-          <div id="form-title">Search for available chauffeurs:</div>
-          <form id="form-container">
+          <Title1>Search for available chauffeurs:</Title1>
+          <FlexRow>
             <div className="input-box" onClick={this.clickBox}>{selectedDate ? new Date(selectedDate).toString().slice(4, 15) : "Select Date"}</div>
-            <select onChange={this.handleChange} name="start" className="time-home">
+            <Select1 onChange={this.handleChange} name="start">
               <option>Start Time</option>
-              {this.renderHours1()}
-            </select>
-            <select onChange={this.handleChange} name="end" className="time-home">
+                {this.renderHours1()}
+            </Select1>
+            <Select1 onChange={this.handleChange} name="end">
               <option>End Time</option>
-              {this.renderHours2()}
-            </select>
+                {this.renderHours2()}
+            </Select1>
             <input onChange={this.addFilter} className="input-box" placeholder="Add keyword" type="text" />
-            <button onClick={this.searchAvailable} disabled={!this.validateForm()} type="button" id="filter">Search</button>
-            <button onClick={this.reset} type="reset" id="reset">Reset</button>
-            <select onChange={this.sort} type="text" className="sort">
-              <option>Sort drivers</option>
-              <option value="rating">by Highest Rated</option>
-              <option value="rate">by Lowest Hourly Rate</option>
-            </select>
-          </form>
+              <Button1 onClick={this.searchAvailable} disabled={!this.validateForm()} style={{ 'outline': 'none' }}>Search</Button1>
+              <Button1 onClick={this.reset} style={{ 'outline': 'none' }}>Reset</Button1>
+          </FlexRow>
           <div id="calendar">
             {clickDate && <CalendarHome />}
           </div>
@@ -132,9 +127,8 @@ function mapDispatchToProps(dispatch){
     search: () => dispatch(clickSearch()),
     reset: () => dispatch(resetSearch()),
     sendDate: (date) => dispatch(selectDay(date)),
-    sendTime: (time) => dispatch(setTime(time)),
-    sortBy: (type) => dispatch(sortDrivers(type))
+    sendTime: (time) => dispatch(setTime(time))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchAvailability));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(FilterDrivers));
