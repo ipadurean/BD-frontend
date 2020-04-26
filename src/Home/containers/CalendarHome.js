@@ -14,16 +14,16 @@ class CalendarHome extends Component {
     super()
     this.state = {
       selectedMonth: new Date().getMonth(),
-      dayClicked:false,
-      start:null,
-      end:null
+      dayClicked: false,
+      start: null,
+      end: null
     }
   }
 
   createMonth = () => {
     let now = new Date();
-    let date = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
-    let select = new Date(now.getFullYear(), this.state.selectedMonth, 1, 0, 0, 0);
+    let date = new Date(now.getFullYear(), this.state.selectedMonth, 1);
+    let select = new Date(now.getFullYear(), this.state.selectedMonth, 1);
       select.setTime(this.state.dayClicked);
     let daysArr = [];
     let days = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
@@ -69,7 +69,7 @@ class CalendarHome extends Component {
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     let date = new Date();
     date.setMonth(this.state.selectedMonth);
-    return months[this.state.selectedMonth%12] + " " + date.getFullYear()
+    return months[this.state.selectedMonth % 12] + " " + date.getFullYear()
   }
 
   //determining the selected date in order to display the hours belonging the that specific date

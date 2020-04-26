@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Day from './Day';
-import '../styles/bookingCalendar.css';
+import '../style.css';
 import TripForm from './TripForm';
 import Week from '../components/Week';
 import { connect } from "react-redux";
@@ -9,11 +9,14 @@ import leftArrow from '../../utils/assets/left-arrow.svg';
 import rightArrow from '../../utils/assets/right-arrow.svg';
 import PropTypes from 'prop-types';
 import { selectDay } from '../ducks/actions';
-
-const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"]  
+import { StyledContainer, FlexRowWrap } from '../../styles/StyledContainers';
+import { CalendarBox, CalendarBody, CalendarHeader, Label, DateOuter, DateInner } from '../../styles/StyledCalendar';
+import { Title } from '../../styles/StyledText';
+import { ButtonArrow } from '../../styles/StyledButtons'; 
 
 
 class BookingCalendar extends Component {
+
   constructor(props) {
     super()
     this.state = {
@@ -25,7 +28,7 @@ class BookingCalendar extends Component {
     const { daySelected } = this.props;
     const now = new Date();
     const date = new Date(now.getFullYear(), this.state.selectedMonth, 1);
-    console.log(date)
+    
     let select = new Date(now.getFullYear(), this.state.selectedMonth, 1);
         select.setTime(daySelected);
     let daysArr = [];
@@ -33,16 +36,24 @@ class BookingCalendar extends Component {
 
     let d = 1;
       for (let i=0; i<date.getDay(); i++){
-        daysArr.push(<div key={i+100} className={disabled}><div className="cal"></div></div>)
+        daysArr.push(<DateOuter key={i+100}><DateInner disabled></DateInner></DateOuter>)
       }
       while (d <= daysInMonth) {
         daySelected && d === select.getDate()?
-          daysArr.push( <div key={d} className={selected} data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>):
+          daysArr.push( <DateOuter key={d} data-calendar-date={date.setDate(d)}>
+                          <DateInner selected>{d}</DateInner>
+                        </DateOuter> ) :
         d === now.getDate() && now.getMonth() === date.getMonth()?
-          daysArr.push( <div key={d} className={active} id="calendar-date--today" data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>):
+          daysArr.push( <DateOuter key={d} data-calendar-date={date.setDate(d)}>
+                          <DateInner today className='active'>{d}</DateInner>
+                        </DateOuter>) :
         date.setDate(d) < now.getTime()?
-          daysArr.push( <div key={d} className={disabled} data-calendar-date={date.setDate(d)} ><div className="cal">{d}</div></div>) :
-          daysArr.push( <div key={d} className={active} data-calendar-date={date.setDate(d)}><div className="cal">{d}</div></div>)
+          daysArr.push( <DateOuter key={d} data-calendar-date={date.setDate(d)}>
+                          <DateInner disabled>{d}</DateInner>
+                        </DateOuter>) :
+          daysArr.push( <DateOuter key={d} data-calendar-date={date.setDate(d)}>
+                          <DateInner className='active'>{d}</DateInner>
+                        </DateOuter>)
         d++
       }
     return daysArr;
@@ -72,7 +83,7 @@ class BookingCalendar extends Component {
 
  
   displayDay = (event) => {
-    event.target.parentNode.className === active && this.props.setDay(parseInt(event.target.parentNode.dataset.calendarDate))
+    event.target.className.slice(-6) === 'active' && this.props.setDay(parseInt(event.target.parentNode.dataset.calendarDate))
   }
  
 
@@ -104,36 +115,36 @@ class BookingCalendar extends Component {
   render() {
     const { driver, daySelected } = this.props
 
-      return (
-        <div className="booking-container">
-          <div className="booking-before">
-            <div className="calendar-container">
-              <div id="myCalendar" className="calendar" >
-                <p className="username">Select date and time: </p>
-                  <div className="calendar-header">
-                    <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
+    return (
+        <StyledContainer>
+          <FlexRowWrap>
+            <FlexRowWrap>
+              <CalendarBox className='calendar'>
+                <Title>Select date and time: </Title>
+                  <CalendarHeader>
+                    <ButtonArrow onClick={this.monthPrev} data-calendar-toggle="previous">
                       <img src={leftArrow} alt="left" />
-                    </button>
-                    <div className="calendar-header__label" data-calendar-label="month">{this.getMonthYear()}</div>
-                    <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next">
-                        <img src={rightArrow} alt="right" />
-                    </button>
-                  </div>
+                    </ButtonArrow>
+                    <Label data-calendar-label="month">{this.getMonthYear()}</Label>
+                    <ButtonArrow onClick={this.monthNext} data-calendar-toggle="next">
+                      <img src={rightArrow} alt="right" />
+                    </ButtonArrow>
+                  </CalendarHeader>
                   <Week />
-                  <div onClick={this.displayDay} className="calendar-body" data-calendar-area="month">
+                  <CalendarBody onClick={this.displayDay} data-calendar-area="month">
                         {this.createMonth()}
-                  </div>
-              </div>
+                  </CalendarBody>
+              </CalendarBox>
               <div className="day">
                 {daySelected && <Day />}
               </div>
-              </div>
+            </FlexRowWrap>
               <div className="book">
                 <TripForm driver={driver}
                           submit={this.bookRide} />
               </div>
-          </div>
-        </div> 
+          </FlexRowWrap>
+        </StyledContainer>
         )
     }
 }

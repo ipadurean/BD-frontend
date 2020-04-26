@@ -1,6 +1,6 @@
 import React from 'react';
 import Driver from './Driver';
-import '../styles/Driver.css';
+import '../styles/style.css';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -13,8 +13,14 @@ import { sortDrivers } from '../ducks/actions';
 const DriversList = (props) => {
 
   const { drivers, loading, sortType } = props;
-
   const sortedDrivers = sortType === "rating" ? drivers.sort((a, b) => b[sortType] - a[sortType]) : drivers.sort((a, b) => a[sortType] - b[sortType])
+  
+  const renderDrivers = () => sortedDrivers.map(driver => {
+    return  <Link to={`/drivers/${driver.name}`}
+                  key={driver.id}
+                  style={{ 'textDecoration': "none" }}>
+              <Driver key={driver.id} driver={driver} />
+            </Link> })
 
   const sort = (e) => {
     props.sortBy(e.target.value)
@@ -22,6 +28,7 @@ const DriversList = (props) => {
   
   return (
     <StyledContainer2>
+      {loading && <Loading>Loading...</Loading>}
       <FlexRow2>
         <Title>* There are a total of <b>{drivers.length}</b> drivers available:</Title>
         <Select1 onChange={sort} type="text" style={{ 'width': '200px', 'marginLeft': '5vw' }}>
@@ -30,14 +37,8 @@ const DriversList = (props) => {
           <option value="rate">by Lowest Hourly Rate</option>
         </Select1>
       </FlexRow2>
-      {loading && <Loading>Loading...</Loading>}
       <FlexColumn>
-      {sortedDrivers.map(driver => {
-        return  <Link to={`/drivers/${driver.name}`} key={driver.id} style={{ 'textDecoration':"none" }}>
-                  <Driver key={driver.id}  driver={driver}  /> 
-                </Link>
-      })
-        }
+        {renderDrivers()}
       </FlexColumn>
     </StyledContainer2>
   );

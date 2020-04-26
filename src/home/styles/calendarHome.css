@@ -9,9 +9,9 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 1px 1px 2px 1px silver;
-  min-width: 200px;
-  width: calc(100px + 12vw);
-  min-height: 200px;
+  min-width: 150px;
+  width: calc(100px + 10vw);
+  min-height: 150px;
   height: auto;
   padding: calc(2px + 1vw);
   position: absolute;
@@ -74,7 +74,7 @@
   display: flex;
   flex-wrap: wrap;
   border-radius: var(--calendar-border-radius);
-  font-size: calc(8px + 0.5vw);
+  font-size: calc(7px + 0.4vw);
 }
 
 .calendar-home .calendar-date {
@@ -85,7 +85,7 @@
   flex-direction: column;
   flex: 0 0 14.28%;
   max-width: 14.28%;
-  padding: 0.4vw;
+  padding: 0.3vw;
 }
 
 .calendar-home .calendar-date--active {

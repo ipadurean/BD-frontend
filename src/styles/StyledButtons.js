@@ -7,7 +7,9 @@ export const Button1 = styled.button`
   margin: 2px;
   background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
   &:hover {
-    box-shadow: 0.5px 0.5px 1px 1px #2b2b27;
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
+                0px 2px 2px 0px rgba(0,0,0,0.14), 
+                0px 1px 5px 0px rgba(0,0,0,0.12);
   }
 `
 
@@ -20,7 +22,9 @@ export const Button2 = styled.button`
   cursor: pointer;
   margin: 5px;
   padding: 3px;
-  box-shadow: 1px 1px 1px 1px #757272;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
+              0px 2px 2px 0px rgba(0,0,0,0.14), 
+              0px 1px 5px 0px rgba(0,0,0,0.12);
   &:disabled {
     opacity: 0.5;
     box-shadow: none;
@@ -32,19 +36,30 @@ export const Button3 = styled.button`
   font-size: calc(5px + 0.5vw);
   cursor: pointer;
   background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
-  &:hover {
-    box-shadow: 0.5px 0.5px 1px 1px #757272;
+   &:hover {
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
+                0px 2px 2px 0px rgba(0,0,0,0.14), 
+                0px 1px 5px 0px rgba(0,0,0,0.12);
   }
 `
 
 export const ButtonBook1 = styled.button`
   font-family: Roboto;
   font-size: calc(7px + 0.5vw);
-  font-weight: 400;
+  font-weight: 600;
   margin: 10px;
   height: calc(20px + 1vw);
   border-radius: 20px;
-  background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
+  background-color: brown;
   border: 1px solid rgb(255, 255, 255);
   box-shadow: 1px 1px 1px 1px #757272;
+  color: white;
+  padding: 6px 10px;
+`
+
+export const ButtonArrow = styled.div`
+  background: none;
+  border: 0;
+  outline: none;
+  cursor: pointer
 `

@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/Driver.css';
 import { connect } from "react-redux";
+import '../styles/style.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
 import star from '../../utils/assets/star-solid.svg';

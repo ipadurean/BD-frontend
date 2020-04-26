@@ -21,7 +21,7 @@ const AllRides = (props) => {
       {reviewOpen && <ReviewForm />}
       {reviewOpen && <DarkStyle />}
       {authorized ?
-        <FlexRowFull className="temporary">
+        <FlexRowFull className="background">
           <SideBar />
           <FlexColumn2>
             <Title2>Hello <b>{user.username}</b>! This is a summary of your rides:</Title2>

@@ -30,7 +30,7 @@ class ReviewForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.sendReview(this.props.rideSummary.tripId, this.state.review + ` (${this.props.auth.user.username})`)
+    this.props.sendReview(this.props.rideSummary.tripId, this.state.review + ` *(${this.props.auth.user.username})`)
   }
 
   closeReview = () => {
@@ -42,7 +42,7 @@ class ReviewForm extends Component {
     const { submitted, submitting } = this.props.rideSummary
   
     return (
-      <FixedContainer className="normal">
+      <FixedContainer>
         <StyledForm onSubmit={this.handleSubmit} >
           <img onClick={this.closeReview} alt="close" id="close" src={close} />
           {submitting ?
