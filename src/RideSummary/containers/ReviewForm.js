@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { FixedContainer } from '../../styles/StyledContainers';
 import { Button3 } from '../../styles/StyledButtons';
 import { StyledForm } from '../../styles/StyledForms';
-import { Title1, TextArea1 } from '../../styles/StyledText';
+import { Title, Title1, TextArea1 } from '../../styles/StyledText';
 import close from '../../utils/assets/close.svg';
 
 class ReviewForm extends Component {
@@ -30,7 +30,7 @@ class ReviewForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.sendReview(this.props.rideSummary.tripId, this.state.review + ` *(${this.props.auth.user.username})`)
+    this.props.sendReview(this.props.rideSummary.tripId, this.state.review + ` (*${this.props.auth.user.username})`)
   }
 
   closeReview = () => {
@@ -48,7 +48,7 @@ class ReviewForm extends Component {
           {submitting ?
             <Title1>Loading...</Title1> :
             submitted ?
-            <Title1>Your review has been posted!</Title1> :
+            <Title>Your review has been posted!</Title> :
               <>
                 <TextArea1 type="text" onChange={this.handleChange} />
                 <Button3 type="submit" disabled={this.validateForm()}>Submit</Button3>

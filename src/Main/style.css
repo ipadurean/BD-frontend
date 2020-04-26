@@ -1,11 +1,26 @@
 
 .search-drivers {
+  display: flex;
+  flex-direction: row;
   margin: 0 auto;
+  background-color: white;
+  border-radius: 5px;
+  max-height: 30px;
+  width: calc(110px + 5vw);
+  align-items: center;
 }
 
 .search-drivers input {
   outline: none;
-  width: 15vw;
+  border: none;
+  width: calc(70px + 5vw);
+  height: 25px;
+}
+
+.search-drivers img {
+  width: calc(15px + 0.5vw);
+  margin: 5px;
+  cursor: pointer;
 }
 
 #search {

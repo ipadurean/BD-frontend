@@ -50,8 +50,8 @@ export const ButtonBook1 = styled.button`
   margin: 10px;
   height: calc(20px + 1vw);
   border-radius: 20px;
-  background-color: brown;
-  border: 1px solid rgb(255, 255, 255);
+  background-color: #96b5b1;
+  border: 1px solid white;
   box-shadow: 1px 1px 1px 1px #757272;
   color: white;
   padding: 6px 10px;

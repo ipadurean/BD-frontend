@@ -13,6 +13,7 @@ import { FlexRow } from '../../styles/StyledContainers';
 import { StyledNav, NavItem, StyledWelcome } from '../../styles/StyledNav';
 import { Button1 } from '../../styles/StyledButtons';
 import { Input2 } from '../../styles/StyledInputs';
+import search from '../../utils/assets/search.svg';
 
 
 class NavBar extends Component {
@@ -62,7 +63,7 @@ class NavBar extends Component {
                 <NavItem href="/rides/current">Rides</NavItem> 
                 <div className="search-drivers">
                   <Input2 onChange={this.handleChange} type="text" ref="input" />
-              <Button1 onClick={this.handleClick} style={{ 'outline': 'none' }}>Search</Button1>
+                  <img src={search} alt='search' onClick={this.handleClick} style={{ 'outline': 'none' }} />
                 </div>
               {authorized ?
               <Button1 onClick={this.logout} id="logout" style={{ 'outline': 'none' }}>Logout</Button1> :

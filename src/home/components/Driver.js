@@ -14,7 +14,7 @@ const Driver = (props) => {
   const { driver, home } = props
   return (
     <DriverCard>
-      <FlexRow>
+      <FlexRow style={{'max-height': '90px'}}>
         <FlexRow2>
           <FlexColumn style={{'width': '15vw'}}>
             <Title2>{driver.username}</Title2>
