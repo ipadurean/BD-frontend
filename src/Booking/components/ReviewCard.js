@@ -1,13 +1,14 @@
 import React from 'react';
 import '../styles/ReviewCard.css';
 import PropTypes from 'prop-types';
+import { Text1 } from '../../styles/StyledText';
 
 const ReviewCard = (props) => {
   
   return(
-    <div className="review-container">
+    <Text1>
       {props.review}
-    </div>
+    </Text1>
   )
 }
 

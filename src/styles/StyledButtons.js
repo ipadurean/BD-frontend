@@ -28,6 +28,7 @@ export const Button2 = styled.button`
   &:disabled {
     opacity: 0.5;
     box-shadow: none;
+    cursor: not-allowed;
   }
 `
 
@@ -61,5 +62,5 @@ export const ButtonArrow = styled.div`
   background: none;
   border: 0;
   outline: none;
-  cursor: pointer
+  cursor: pointer;
 `

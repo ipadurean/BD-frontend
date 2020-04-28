@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import '../styles/Day.css';
+import '../style.css';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { setTime } from '../ducks/actions';
 import arrowUp from '../../utils/assets/arrow_drop_up.svg';
 import arrowDown from '../../utils/assets/arrow_drop_down.svg';
+import { FlexColumn } from '../../styles/StyledContainers';
+import { DayBar, HourBox, ScrollArrow } from '../../styles/StyledDay';
 
 class Day extends Component {
  
@@ -38,7 +40,6 @@ class Day extends Component {
 
 
   renderHours = (day) => {
-    
     const { start, end} = this.props
     const dateValue = (hour) => {
       return new Date(new Date(day).setHours(hour)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
@@ -48,16 +49,16 @@ class Day extends Component {
     while (i < 36) {
       if (i > parseInt(start) && this.bookedHours(day).includes(i)) {
             for(let k=i; k<36; k++){
-                hours.push(<div data-val={null} key={k} className="busy">N/A</div>)
+              hours.push(<HourBox busy data-val={null} key={k} className="busy">N/A</HourBox>)
             } return hours;
       } else if (this.bookedHours(day).includes(i)) {
-          hours.push(<div data-val={null} key={i} className="busy">N/A</div>)
+        hours.push(<HourBox busy data-val={null} key={i} className="busy">N/A</HourBox>)
         } else if (i === parseInt(start)) {
-          hours.push(<div data-val={i} key={i} className="hr" id="selected">{dateValue(i).slice(16, 21)}</div>)
+        hours.push(<HourBox selected data-val={i} key={i} className="available">{dateValue(i).slice(16, 21)}</HourBox>)
         } else if(i >= parseInt(start) && i < parseInt(end)) {
-          hours[i+12] = <div data-val={i} key={i} className="hr" id="selected">{dateValue(i).slice(16, 21)}</div>
+        hours[i + 12] = <HourBox selected data-val={i} key={i} className="available">{dateValue(i).slice(16, 21)}</HourBox>
         } else {
-        hours.push(<div data-val={i} key={i} className="hr">{dateValue(i).slice(16, 21)}</div>)
+        hours.push(<HourBox data-val={i} key={i} className="available">{dateValue(i).slice(16, 21)}</HourBox>)
         }
         i++;
     }
@@ -68,7 +69,7 @@ class Day extends Component {
     const { start, end } = this.props
     let x = parseInt(event.target.dataset.val)
     
-    if (event.target.className === "hr") {
+    if (event.target.className.slice(-9) === "available") {
       start === null ?
         this.props.setTime({start: x, end: x+1}) :
       (x - start) <= 0 ?
@@ -78,7 +79,7 @@ class Day extends Component {
       (x - start) > 0 ?
         this.props.setTime({start, end: x + 1 }) :
         this.props.setTime({ start: null, end: null })
-    } else if (event.target.className === "busy"){
+    } else if (event.target.className.slice(-4) === "busy"){
       this.props.setTime({ start: null, end: null })
     }
   }
@@ -100,11 +101,11 @@ class Day extends Component {
   render() {
     const { daySelected } = this.props
     return (
-      <div  onClick={this.handleClick} className="day-bar">
-        <img onClick={this.scrollDown} alt="up" className="arrows" src={arrowUp} />
-          <div ref="bar" className="hours">{this.renderHours(daySelected)}</div>
-        <img onClick={this.scrollUp} alt="down" className="arrows" src={arrowDown} />
-      </div>)
+      <FlexColumn onClick={this.handleClick}>
+        <ScrollArrow onClick={this.scrollDown} alt="up" src={arrowUp} />
+          <DayBar ref="bar">{this.renderHours(daySelected)}</DayBar>
+        <ScrollArrow onClick={this.scrollUp} alt="down" src={arrowDown} />
+      </FlexColumn>)
   }
 }
 

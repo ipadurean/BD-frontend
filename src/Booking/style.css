@@ -1,3 +1,8 @@
+@keyframes fadeIn {
+  0% { opacity: 0;}
+  25% { opacity: 0;}
+  100% { opacity: 1;}
+}
 
 .day {
   width: 65px;
@@ -15,12 +20,7 @@
 }
 
 .calendar .calendar-week {
-  padding: 5px;
-  background-color: #6e7f8f;
-  display: flex;
-  flex-wrap: wrap;
-  border-radius: 10px 10px 0 0;
-  border: 1px solid #d6d8dd;
+ 
 }
 
 .calendar .calendar-week span {
@@ -32,5 +32,46 @@
   max-width: 14.28%;
   padding: 7px 0px;
   text-align: center;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
+}
+
+
+
+
+#profile-photo {
+  float: left;
+  margin: 5px;
+  height: calc(10px + 5vw);
+  width: calc(10px + 5vw);
+  border-radius: 18em;
+}
+
+#vehicle-model {
+  height: calc(15px + 1vw);
+  width: calc(250px + 10vw);
+  font-size: calc(10px + 0.5vw);
+  background: linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
+  text-align: center;
+}
+
+.car-photo {
+  width: calc(250px + 10vw);
+  height: calc(150px + 6vw);
+  object-fit: cover;
+}
+
+#hourly-rate {
+  color: rgb(185, 136, 121);
+  font-size: 20px;
+  height: 30px;
+}
+
+.svg-icon {
+  cursor: pointer;
+  border: 0;
+}
+
+.star {
+  width: 15px;
+  margin-bottom: 15px;
 }

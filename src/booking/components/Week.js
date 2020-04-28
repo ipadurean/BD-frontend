@@ -1,10 +1,10 @@
 import React from 'react';
-import '../style.css';
+import { WeekContainer } from '../../styles/StyledCalendar';
 
 const Week = () => {
   
   return (
-    <div className="calendar-week">
+    <WeekContainer>
       <span>Sun</span>
       <span>Mon</span>
       <span>Tue</span>
@@ -12,7 +12,7 @@ const Week = () => {
       <span>Thu</span>
       <span>Fri</span>
       <span>Sat</span>
-    </div>
+    </WeekContainer>
   )
 }
 

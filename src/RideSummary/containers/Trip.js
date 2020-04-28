@@ -6,7 +6,7 @@ import { openReview } from '../ducks/actions';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { FlexRow, FlexColumn2 } from '../../styles/StyledContainers';
-import { Title2, Text1, Text2, Text3 } from '../../styles/StyledText';
+import { Title2, Text, Text2, Text3 } from '../../styles/StyledText';
 import { Button3 } from '../../styles/StyledButtons'; 
 
 const Trip = (props) => {
@@ -39,10 +39,10 @@ const Trip = (props) => {
                 <Text2><i>{trip.review}</i></Text2>
               </div>}
             <FlexColumn2>
-              <Text1>Pick-up date: <Text2>{date1.slice(0, 15)}</Text2> at: <Text2>{date1.slice(15, 21)}</Text2></Text1>
-              <Text1>Drop-off date: <Text2>{date2.slice(0, 15)}</Text2> at: <Text2>{date2.slice(15, 21)}</Text2></Text1>
-              <Text1>Pick up address: <Text2>{trip.address}</Text2></Text1>
-              <Text1>Total cost: <Text2>${trip.total}</Text2></Text1>
+              <Text>Pick-up date: <Text2>{date1.slice(0, 15)}</Text2> at: <Text2>{date1.slice(15, 21)}</Text2></Text>
+              <Text>Drop-off date: <Text2>{date2.slice(0, 15)}</Text2> at: <Text2>{date2.slice(15, 21)}</Text2></Text>
+              <Text>Pick up address: <Text2>{trip.address}</Text2></Text>
+              <Text>Total cost: <Text2>${trip.total}</Text2></Text>
             </FlexColumn2>
               {cancel && <Button3 onClick={cancelRide} id="cancel-button"> Cancel Ride </Button3>}
               {review && !reviewOpen && <div className="add-review" onClick={addReview}><u>Add Review</u></div>}

@@ -18,6 +18,16 @@ export const FlexRow = styled.div`
   justify-content: space-between;
   height: 100%;
 `
+
+export const FlexRow1 = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 2%;
+`
+
 export const FlexRow2 = styled.div`
   display: flex;
   flex-direction: row;
@@ -32,7 +42,8 @@ export const FlexRowWrap = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 2%;
 `
 
 export const FlexRowFull = styled.div`
@@ -50,7 +61,14 @@ export const FlexColumn = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+`
+
+export const FlexColumn1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2%;
 `
 
 export const FlexColumn2 = styled.div`
@@ -63,6 +81,7 @@ export const FlexColumn2 = styled.div`
 
 export const FlexColumnFull = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;

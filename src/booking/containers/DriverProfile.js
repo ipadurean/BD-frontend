@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/driverProfile.css';
+import '../style.css';
 import BookingCalendar from './BookingCalendar';
 import { connect } from "react-redux";
 import { fetchDriver } from '../ducks/operations';
@@ -7,6 +7,8 @@ import ReviewCard from '../components/ReviewCard';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
 import star from '../../utils/assets/star-solid.svg';
+import { Title, Title3, Text } from '../../styles/StyledText';
+import { StyledContainer, FlexRow1, FlexRowWrap, FlexColumn, FlexColumn1, FlexColumn2 } from '../../styles/StyledContainers';
 
 class DriverProfile extends Component {
   
@@ -19,35 +21,35 @@ class DriverProfile extends Component {
     const { driver, authorized, loading } = this.props
    
     return (
-      <>
+      <StyledContainer>
         {authorized && loading ? <div>Loading...</div> :
-          authorized && <div className="driver-container">
-            <div className="bio">
-              <div className="photo">
-                <div className="username">{driver.name} <h6>Chauffeur</h6></div>
-                <img id="profile-photo" alt="img" src={driver.photo} />
-                <div>
-                  <em>Rating {driver.rating} </em>
-                  <img className="star" alt="star" src={star} />
-                </div>
-              </div>
-              <div className="description">{driver.description}</div>
-              <div id="hourly-rate">Rate: ${driver.rate}/hour</div>
-            </div>
-              
-            <div className="vehicle">
+          authorized &&
+          <FlexRowWrap>
+            <FlexRow1 style={{'width': '50vw', 'minHeight': '300px'}}>
+              <FlexColumn1>
+                <Title style={{ 'width': '100%' }}>{driver.name} <Title3>~ Chauffeur ~</Title3></Title>
+                  <img id="profile-photo" alt="img" src={driver.photo} />
+                  <div style={{'display': 'inline-block'}}>
+                    <em>Rating {driver.rating} </em>
+                    <img className="star" alt="star" src={star} />
+                  </div>
+                  <div id="hourly-rate">Rate: ${driver.rate}/hour</div>
+              </FlexColumn1>
+              <FlexColumn2 style={{ 'width': '70%' }}><Text>{driver.description}</Text></FlexColumn2>
+            </FlexRow1>
+            <FlexColumn>
               <div id="vehicle-model">{driver.car}</div>
               <LazyLoadImage effect="blur" className="car-photo" alt="car" src={driver.car_photo} />
-            </div>
-            <h5 id="reviews-title">Reviews:</h5>
-            <div className="reviewList">
+            </FlexColumn>
+            <FlexColumn2 style={{'maxHeight': '300px', 'backgroundColor': 'white'}}>
+              <Title>Reviews:</Title>
               {driver.trips.map(trip => {
                 return trip.review && <ReviewCard key={trip.id} review={trip.review} />
               })}
-            </div>
+            </FlexColumn2>
             <BookingCalendar driver={driver} />
-          </div>}
-      </>
+          </FlexRowWrap>}
+      </StyledContainer>
     )
   }
 }

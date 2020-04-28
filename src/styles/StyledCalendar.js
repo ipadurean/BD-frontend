@@ -59,3 +59,22 @@ export const DateInner = styled.div`
   color: ${ props => props.selected ? 'white' : props.disabled ? 'silver' : 'black'};
   background-color: ${ props => props.today ? '#eff3fc' : props.selected ? '#6e7f8f' : 'white'}
 `
+
+export const WeekContainer = styled.div`
+  padding: 5px;
+  background-color: #6e7f8f;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid #d6d8dd;
+  & span {
+    color: white;
+    flex-direction: column;
+    flex: 0 0 14.28%;
+    font-size: 0.8em;
+    font-weight: bold;
+    max-width: 14.28%;
+    padding: 7px 0px;
+    text-align: center;
+  }
+`

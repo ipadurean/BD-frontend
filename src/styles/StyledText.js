@@ -24,8 +24,17 @@ export const Title3 = styled.div`
   margin: 3px;
 `
 
+export const Text = styled.div`
+  font-size: calc(8px + 0.5vw);
+  color: gray;
+`
+
 export const Text1 = styled.div`
-  font-size: calc(7px + 0.5vw)
+  font-size: calc(7px + 0.5vw);
+  background-color: #e9f0ea;
+  margin: 5px;
+  padding: 3px;
+  border-radius: 10px;
 `
 
 export const Text2 = styled.span`
