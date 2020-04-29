@@ -66,12 +66,12 @@ table th {
 
 .day {
   width: 65px;
-  margin: 70px;
+  margin: 0 3vw;
   min-height: 480px !important;
   max-height: 480px !important;
 }
 
 #booking-form {
-  margin: 80px 50px 0 50px;
+  margin: 100px 3vw 0 3vw;
   max-width: 460px;
 }

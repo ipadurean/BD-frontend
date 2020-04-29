@@ -84,8 +84,8 @@ class BookingCalendar extends Component {
 
     return (
       <FlexRowWrap>
-        <CalendarBox className='calendar'>
-          <Title style={{'margin':'100px 0'}}>Select date and time: </Title>
+        <CalendarBox>
+          <Title style={{'margin':'50px 0'}}>Select date and time: </Title>
             <CalendarHeader>
               <ButtonArrow onClick={this.monthPrev} src={leftArrow} alt="left" />
                 <Label data-calendar-label="month">{this.getMonthYear()}</Label>

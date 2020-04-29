@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CalendarBox = styled.div`
   display: block !important;
   padding: 3%;
+  margin: 0 3vw;
   max-width: 400px;
   min-width: 320px;
   box-sizing: border-box;
