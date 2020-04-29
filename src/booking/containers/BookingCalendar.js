@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import Day from './Day';
 import '../style.css';
-import TripForm from './TripForm';
-import Week from '../components/Week';
+import BookingForm from './BookingForm';
 import { connect } from "react-redux";
 import { fetchBooking } from '../ducks/operations';
 import leftArrow from '../../utils/assets/left-arrow.svg';
 import rightArrow from '../../utils/assets/right-arrow.svg';
 import PropTypes from 'prop-types';
 import { selectDay } from '../ducks/actions';
-import { StyledContainer, FlexRowWrap } from '../../styles/StyledContainers';
-import { CalendarBox, CalendarBody, CalendarHeader, Label, DateOuter, DateInner } from '../../styles/StyledCalendar';
+import { FlexRowWrap } from '../../styles/StyledContainers';
+import { CalendarBox, CalendarBody, CalendarHeader, Label } from '../../styles/StyledCalendar';
 import { Title } from '../../styles/StyledText';
 import { ButtonArrow } from '../../styles/StyledButtons'; 
+import { WeekContainer } from '../../styles/StyledCalendar';
+import Calendar from '../../utils/calendar';
 
 
 class BookingCalendar extends Component {
@@ -24,41 +25,7 @@ class BookingCalendar extends Component {
     }
   }
 
-  createMonth = () => {
-    const { daySelected } = this.props;
-    const now = new Date();
-    const date = new Date(now.getFullYear(), this.state.selectedMonth, 1);
-    
-    let select = new Date(now.getFullYear(), this.state.selectedMonth, 1);
-        select.setTime(daySelected);
-    let daysArr = [];
-    const daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
-
-    let d = 1;
-      for (let i=0; i<date.getDay(); i++){
-        daysArr.push(<DateOuter key={i+100}><DateInner disabled></DateInner></DateOuter>)
-      }
-      while (d <= daysInMonth) {
-        daySelected && d === select.getDate()?
-          daysArr.push( <DateOuter key={d} data-calendar-date={date.setDate(d)}>
-                          <DateInner selected>{d}</DateInner>
-                        </DateOuter> ) :
-        d === now.getDate() && now.getMonth() === date.getMonth()?
-          daysArr.push( <DateOuter key={d} data-calendar-date={date.setDate(d)}>
-                          <DateInner today className='active'>{d}</DateInner>
-                        </DateOuter>) :
-        date.setDate(d) < now.getTime()?
-          daysArr.push( <DateOuter key={d} data-calendar-date={date.setDate(d)}>
-                          <DateInner disabled>{d}</DateInner>
-                        </DateOuter>) :
-          daysArr.push( <DateOuter key={d} data-calendar-date={date.setDate(d)}>
-                          <DateInner className='active'>{d}</DateInner>
-                        </DateOuter>)
-        d++
-      }
-    return daysArr;
-  }
-
+  
   monthPrev = () => {
     this.state.selectedMonth &&
       this.setState(prevState => ({
@@ -116,37 +83,35 @@ class BookingCalendar extends Component {
     const { driver, daySelected } = this.props
 
     return (
-        <StyledContainer>
-          <FlexRowWrap>
-            <FlexRowWrap>
-              <CalendarBox className='calendar'>
-                <Title>Select date and time: </Title>
-                  <CalendarHeader>
-                    <ButtonArrow onClick={this.monthPrev} data-calendar-toggle="previous">
-                      <img src={leftArrow} alt="left" />
-                    </ButtonArrow>
-                    <Label data-calendar-label="month">{this.getMonthYear()}</Label>
-                    <ButtonArrow onClick={this.monthNext} data-calendar-toggle="next">
-                      <img src={rightArrow} alt="right" />
-                    </ButtonArrow>
-                  </CalendarHeader>
-                  <Week />
-                  <CalendarBody onClick={this.displayDay} data-calendar-area="month">
-                        {this.createMonth()}
-                  </CalendarBody>
-              </CalendarBox>
-              <div className="day">
-                {daySelected && <Day />}
-              </div>
-            </FlexRowWrap>
-              <div className="book">
-                <TripForm driver={driver}
-                          submit={this.bookRide} />
-              </div>
-          </FlexRowWrap>
-        </StyledContainer>
-        )
-    }
+      <FlexRowWrap>
+        <CalendarBox className='calendar'>
+          <Title style={{'margin':'100px 0'}}>Select date and time: </Title>
+            <CalendarHeader>
+              <ButtonArrow onClick={this.monthPrev} src={leftArrow} alt="left" />
+                <Label data-calendar-label="month">{this.getMonthYear()}</Label>
+              <ButtonArrow onClick={this.monthNext} src={rightArrow} alt="right" />
+            </CalendarHeader>
+              <WeekContainer>
+                <span>Sun</span>
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+              </WeekContainer>
+              <CalendarBody onClick={this.displayDay} data-calendar-area="month">
+                {Calendar.createMonth(daySelected, this.state.selectedMonth)}
+              </CalendarBody>
+        </CalendarBox>
+        <div className="day">
+          {daySelected && <Day />}
+        </div>
+        <BookingForm  driver={driver}
+                      submit={this.bookRide} />
+      </FlexRowWrap>
+    )
+  }
 }
 
 BookingCalendar.propTypes = {

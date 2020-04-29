@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/ReviewCard.css';
 import PropTypes from 'prop-types';
 import { Text1 } from '../../styles/StyledText';
 

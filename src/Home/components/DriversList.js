@@ -1,10 +1,10 @@
 import React from 'react';
 import Driver from './Driver';
-import '../styles/style.css';
+import '../style.css';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { FlexRow2, FlexColumn, StyledContainer2, Loading } from '../../styles/StyledContainers';
+import { FlexRow2, FlexColumn1, StyledContainer2, Loading } from '../../styles/StyledContainers';
 import { Title } from '../../styles/StyledText';
 import { Select1 } from '../../styles/StyledSelect';
 import { sortDrivers } from '../ducks/actions';
@@ -37,9 +37,9 @@ const DriversList = (props) => {
           <option value="rate">by Lowest Hourly Rate</option>
         </Select1>
       </FlexRow2>
-      <FlexColumn>
+      <FlexColumn1>
         {renderDrivers()}
-      </FlexColumn>
+      </FlexColumn1>
     </StyledContainer2>
   );
 }

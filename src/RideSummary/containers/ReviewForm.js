@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 import { FixedContainer } from '../../styles/StyledContainers';
 import { Button3 } from '../../styles/StyledButtons';
 import { StyledForm } from '../../styles/StyledForms';
-import { Title, Title1, TextArea1 } from '../../styles/StyledText';
+import { Title, Title1 } from '../../styles/StyledText';
+import { TextArea1 } from '../../styles/StyledInputs';
 import close from '../../utils/assets/close.svg';
 
 class ReviewForm extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/style.css';
+import '../style.css';
 import CalendarHome from './CalendarHome';
 import { startTime, endTime, dateClicked, resetSearch, clickSearch } from '../ducks/actions';
 import { connect } from "react-redux";
@@ -89,6 +89,7 @@ class FilterDrivers extends Component {
 
   render() {
     const { selectedDate, clickDate } = this.props.home;
+    
       return (
         <div className="search-container">
           <Title1>Search for available chauffeurs:</Title1>

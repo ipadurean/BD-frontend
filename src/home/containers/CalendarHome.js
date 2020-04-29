@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import '../styles/calendarHome.css';
-import Week from '../../Booking/components/Week';
 import leftArrow from '../../utils/assets/left-arrow.svg';
 import rightArrow from '../../utils/assets/right-arrow.svg';
 import { selectDate } from '../ducks/actions';
 import { connect } from "react-redux";
+import { WeekContainer, CalendarBoxSmall, CalendarHeader, CalendarBody, Label } from '../../styles/StyledCalendar';
+import { ButtonArrow } from '../../styles/StyledButtons';
+import Calendar from '../../utils/calendar';
 
-const [disabled, active, selected] = ["calendar-date calendar-date--disabled", "calendar-date calendar-date--active", "calendar-date calendar-date--active calendar-date--selected"] 
 
 class CalendarHome extends Component {
 
@@ -20,33 +21,9 @@ class CalendarHome extends Component {
     }
   }
 
-  createMonth = () => {
-    let now = new Date();
-    let date = new Date(now.getFullYear(), this.state.selectedMonth, 1);
-    let select = new Date(now.getFullYear(), this.state.selectedMonth, 1);
-      select.setTime(this.state.dayClicked);
-    let daysArr = [];
-    let days = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
-    let d = 1;
-      for (let i=0; i<date.getDay(); i++){
-        daysArr.push( <div key={i+100} className={disabled}></div>)
-      }
-      while (d <= days) {
-        this.state.dayClicked && d === select.getDate()?
-          daysArr.push( <div key={d} className={selected} data-calendar-date={date.setDate(d)} >{d}</div>):
-        d === now.getDate() && now.getMonth() === date.getMonth()?
-          daysArr.push( <div key={d} className={active} id="calendar-date--today" data-calendar-date={date.setDate(d)} >{d}</div>):
-        date.setDate(d) < now.getTime()?
-          daysArr.push( <div key={d} className={disabled} data-calendar-date={date.setDate(d)} >{d}</div>) :
-          daysArr.push( <div key={d} className={active} data-calendar-date={date.setDate(d)}>{d}</div>)
-        d++
-      }
-    return daysArr;
-  }
-
   selectDate = (event) =>{
-    if (event.target.className === "calendar-date calendar-date--active") {
-      this.props.select(parseInt(event.target.dataset.calendarDate))
+    if (event.target.className.slice(-6) === "active") {
+      this.props.select(parseInt(event.target.parentNode.dataset.calendarDate))
     }
   }
 
@@ -74,7 +51,7 @@ class CalendarHome extends Component {
 
   //determining the selected date in order to display the hours belonging the that specific date
   displayDay = (event) => {
-    event.target.className === active &&
+    event.target.className.slice(-6) === 'active' &&
     this.setState({
         dayClicked: event.target.dataset.calendarDate,
         start:null,
@@ -82,23 +59,28 @@ class CalendarHome extends Component {
     }) 
   }
 
-  render(){
-    return(
-      <div className="calendar-home" >
-        <div className="calendar-header">
-          <button onClick={this.monthPrev} className="calendar-btn" data-calendar-toggle="previous">
-            <img src={leftArrow} alt="left" />
-          </button>
-          <div className="calendar-header__label" data-calendar-label="month">{this.getMonthYear()}</div>
-          <button onClick={this.monthNext} className="calendar-btn" data-calendar-toggle="next">
-              <img src={rightArrow} alt="right" />
-          </button>
-        </div>
-        <Week />
-        <div onClick={this.selectDate} className="calendar-body" data-calendar-area="month">
-          {this.createMonth()}
-        </div>
-      </div>
+  render() {
+    const { dayClicked, selectedMonth } = this.state
+    return (
+      <CalendarBoxSmall>
+        <CalendarHeader>
+          <ButtonArrow small onClick={this.monthPrev} src={leftArrow} alt="left" />
+            <Label small>{this.getMonthYear()}</Label>
+          <ButtonArrow small onClick={this.monthNext} src={rightArrow} alt="right" />
+        </CalendarHeader>
+        <WeekContainer small>
+          <span>Sun</span>
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+        </WeekContainer>
+        <CalendarBody small onClick={this.selectDate}>
+          {Calendar.createMonth(dayClicked, selectedMonth)}
+        </CalendarBody>
+      </CalendarBoxSmall>
     )
   }
 }

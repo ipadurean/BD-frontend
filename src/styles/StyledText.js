@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Title = styled.div`
-  font-size: calc(10px + 1vw);
+  font-size: calc(16px + 0.5vw);
   color: #677385;
   margin: 10px;
 `
@@ -47,10 +47,8 @@ export const Text3 = styled.div`
   color: gray;
 `
 
-export const TextArea1 = styled.textarea`
-  height: 150px;
-  width: 100%;
-  text-decoration: none;
-  outline: none;
-  border: 1px solid silver;
+export const Text4 = styled.div`
+  font-family: 'Courier New', Courier, monospace;
+  font-size: calc(7px + 0.5vw);
+  font-weight: 500;
 `

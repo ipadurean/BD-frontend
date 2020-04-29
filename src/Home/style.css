@@ -49,6 +49,7 @@
   width: calc(100px + 4vw);
   padding: 1px 2%;
   cursor: text;
+  font-size: calc(10px + 0.5vw);
 }
 
 

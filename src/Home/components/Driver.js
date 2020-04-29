@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import '../styles/style.css';
+import '../style.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
 import star from '../../utils/assets/star-solid.svg';
@@ -14,7 +14,7 @@ const Driver = (props) => {
   const { driver, home } = props
   return (
     <DriverCard>
-      <FlexRow style={{'max-height': '90px'}}>
+      <FlexRow style={{'maxHeight': '90px'}}>
         <FlexRow2>
           <FlexColumn style={{'width': '15vw'}}>
             <Title2>{driver.username}</Title2>

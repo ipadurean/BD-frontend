@@ -58,9 +58,28 @@ export const ButtonBook1 = styled.button`
   padding: 6px 10px;
 `
 
-export const ButtonArrow = styled.div`
+export const ButtonBook2 = styled.button`
+  border-radius: 20px;
+  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
+  border: 1px solid rgb(202, 202, 218);
+  box-shadow: 1px 1px 1px 1px #757272;
+  width: 420px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 7px 4px -2px rgba(0,0,0,0.2), 
+                0px 9px 7px 0px rgba(0,0,0,0.14), 
+                0px 4px 12px 0px rgba(0,0,0,0.12);
+  }
+  &:disabled {
+    box-shadow: none;
+    cursor: default;
+  }
+`
+
+export const ButtonArrow = styled.img`
   background: none;
   border: 0;
   outline: none;
   cursor: pointer;
+  width: ${ props => props.small ? '15px' : '20px'}
 `

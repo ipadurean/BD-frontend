@@ -4,39 +4,6 @@
   100% { opacity: 1;}
 }
 
-.day {
-  width: 65px;
-  margin: 50px;
-  min-height: 480px !important;
-  max-height: 480px !important;
-}
-
-.book {
-  margin: 50px 10px;
-  min-width: 450px !important;
-  max-width: 500px !important;
-  min-height: 460px !important;
-  padding: 3%;
-}
-
-.calendar .calendar-week {
- 
-}
-
-.calendar .calendar-week span {
-  color: white;
-  flex-direction: column;
-  flex: 0 0 14.28%;
-  font-size: 0.8em;
-  font-weight: bold;
-  max-width: 14.28%;
-  padding: 7px 0px;
-  text-align: center;
-  /* text-transform: uppercase; */
-}
-
-
-
 
 #profile-photo {
   float: left;
@@ -48,14 +15,14 @@
 
 #vehicle-model {
   height: calc(15px + 1vw);
-  width: calc(250px + 10vw);
+  width: calc(300px + 12vw);
   font-size: calc(10px + 0.5vw);
   background: linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
   text-align: center;
 }
 
 .car-photo {
-  width: calc(250px + 10vw);
+  width: calc(300px + 12vw);
   height: calc(150px + 6vw);
   object-fit: cover;
 }
@@ -74,4 +41,37 @@
 .star {
   width: 15px;
   margin-bottom: 15px;
+}
+
+table {
+  margin: 15px 0;
+  width: 420px;
+}
+
+table th {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 1%;
+  height: 40px;
+  text-align: right;
+  color: rgb(15, 15, 15);
+}
+
+#back {
+  border: 0;
+  background-color: rgb(231, 235, 225);
+}
+
+.day {
+  width: 65px;
+  margin: 70px;
+  min-height: 480px !important;
+  max-height: 480px !important;
+}
+
+#booking-form {
+  margin: 80px 50px 0 50px;
+  max-width: 460px;
 }
