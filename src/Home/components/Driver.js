@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import star from '../../utils/assets/star-solid.svg';
 import { FlexRow, FlexRow2, FlexColumn } from '../../styles/StyledContainers';
 import { DriverCard } from '../../styles/StyledDriver';
-import { Title2, Text2 } from '../../styles/StyledText';
+import { Title3, Text2 } from '../../styles/StyledText';
 import { ButtonBook1 } from '../../styles/StyledButtons';
 
 const Driver = (props) => {
@@ -17,12 +17,12 @@ const Driver = (props) => {
       <FlexRow style={{'maxHeight': '90px'}}>
         <FlexRow2>
           <FlexColumn style={{'width': '15vw'}}>
-            <Title2>{driver.username}</Title2>
+            <Title3>{driver.username}</Title3>
             <Text2>Rating <b>{driver.rating}</b><img className="star" alt="star" src={star} /></Text2>
             <Text2>Rate: <b>${driver.rate}/hour</b></Text2>
           </FlexColumn>
           <LazyLoadImage id="driver-img" alt="img" effect="opacity" src={driver.photo} />
-          <div id="vehicle"><i> ~ {driver.car} ~ </i></div>
+          <Title3> ~ {driver.car} ~ </Title3>
         </FlexRow2>
         <FlexRow2>
           {home.clickSearch && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}

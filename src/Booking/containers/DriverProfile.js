@@ -7,8 +7,9 @@ import ReviewCard from '../components/ReviewCard';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
 import star from '../../utils/assets/star-solid.svg';
-import { Title, Title3, Text } from '../../styles/StyledText';
-import { StyledContainer, FlexRow1, FlexRowWrap, FlexColumn, FlexColumn1, FlexColumn2 } from '../../styles/StyledContainers';
+import { Title, Title2, Title3, Text } from '../../styles/StyledText';
+import { StyledContainer, FlexRow1, FlexRowWrap, FlexColumn, FlexColumn2, Loading } from '../../styles/StyledContainers';
+
 
 class DriverProfile extends Component {
   
@@ -22,19 +23,20 @@ class DriverProfile extends Component {
    
     return (
       <StyledContainer>
-        {authorized && loading ? <div>Loading...</div> :
+        {authorized && loading ? <Loading>Loading...</Loading> :
           authorized &&
           <FlexRowWrap>
             <FlexRow1 style={{'width': '50vw', 'minHeight': '300px'}}>
-              <FlexColumn1>
-                <Title style={{ 'width': '100%' }}>{driver.name} <Title3>~ Chauffeur ~</Title3></Title>
+              <FlexColumn2>
+                <Title style={{ 'width': '100%' }}>{driver.name}</Title>
+                <Title3>~ Chauffeur ~</Title3>
                   <img id="profile-photo" alt="img" src={driver.photo} />
                   <div style={{'display': 'inline-block'}}>
                     <em>Rating {driver.rating} </em>
                     <img className="star" alt="star" src={star} />
                   </div>
-                  <div id="hourly-rate">Rate: ${driver.rate}/hour</div>
-              </FlexColumn1>
+                  <Title2>Rate: ${driver.rate}/hour</Title2>
+              </FlexColumn2>
               <FlexColumn2 style={{ 'width': '70%' }}><Text>{driver.description}</Text></FlexColumn2>
             </FlexRow1>
             <FlexColumn>

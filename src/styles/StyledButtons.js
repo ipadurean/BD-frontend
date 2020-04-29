@@ -44,18 +44,20 @@ export const Button3 = styled.button`
   }
 `
 
-export const ButtonBook1 = styled.button`
-  font-family: Roboto;
-  font-size: calc(7px + 0.5vw);
+export const ButtonBook1 = styled.div`
+  display: flex;
+  align-text: center;
+  justify-content: center;
+  font-size: 16px;
   font-weight: 600;
+  line-height: 30px;
   margin: 10px;
-  height: calc(20px + 1vw);
+  height: 30px;
+  width: 240px;
   border-radius: 20px;
-  background-color: #96b5b1;
-  border: 1px solid white;
+  background-color: #bcccca;
   box-shadow: 1px 1px 1px 1px #757272;
   color: white;
-  padding: 6px 10px;
 `
 
 export const ButtonBook2 = styled.button`
@@ -81,5 +83,5 @@ export const ButtonArrow = styled.img`
   border: 0;
   outline: none;
   cursor: pointer;
-  width: ${ props => props.small ? '15px' : '20px'}
+  width: ${ props => props.small ? '18px' : '24px'}
 `

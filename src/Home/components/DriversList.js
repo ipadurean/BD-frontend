@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FlexRow2, FlexColumn1, StyledContainer2, Loading } from '../../styles/StyledContainers';
-import { Title } from '../../styles/StyledText';
+import { Title2 } from '../../styles/StyledText';
 import { Select1 } from '../../styles/StyledSelect';
 import { sortDrivers } from '../ducks/actions';
 
@@ -30,7 +30,7 @@ const DriversList = (props) => {
     <StyledContainer2>
       {loading && <Loading>Loading...</Loading>}
       <FlexRow2>
-        <Title>* There are a total of <b>{drivers.length}</b> drivers available:</Title>
+        <Title2>* There are a total of <b>{drivers.length}</b> drivers available:</Title2>
         <Select1 onChange={sort} type="text" style={{ 'width': '200px', 'marginLeft': '5vw' }}>
           <option>Sort drivers</option>
           <option value="rating">by Highest Rated</option>

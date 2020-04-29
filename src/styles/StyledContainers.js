@@ -71,6 +71,8 @@ export const FlexColumn = styled.div`
 export const FlexColumn1 = styled.div`
   display: flex;
   flex-direction: column;
+  hight: 100%;
+  width: 100%;
   align-items: center;
   justify-content: space-around;
   padding: 2%;
@@ -79,7 +81,7 @@ export const FlexColumn1 = styled.div`
 export const FlexColumn2 = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 3%;
+  padding: 2%;
   height: 100%;
   overflow: scroll;
 `
@@ -93,7 +95,9 @@ export const FlexColumnFull = styled.div`
 `
 
 export const Loading = styled.div`
-  text-align: center;
+  position: fixed;
+  top: 30vh;
+  left: 40vw;
   font-size: calc(2vh + 2vw);
   color: gray;
 `
@@ -114,13 +118,18 @@ export const FixedContainer = styled.div`
 
 export const FixedContainer2 = styled.div`
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
   padding: 3%;
-  background-color: rgb(231, 235, 225);
+  background-color: rgba(231, 235, 225, 0.5);
   border: 5px solid rgb(253, 253, 253);
-  top:100px;
-  bottom:100px;
-  left:100px;
-  right:100px;
+  width: 80vw;
+  height: calc(40vh + 20vw);
+  top: 10vh;
+  left: 10vw;
+  right: 10vw;
   border-radius: 5px;
   overflow: hidden;
   z-index: 2;
@@ -129,6 +138,8 @@ export const FixedContainer2 = styled.div`
               0px 9px 46px 8px rgba(0,0,0,0.12);
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;            
 `
+
+
 
 
 

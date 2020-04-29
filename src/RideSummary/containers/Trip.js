@@ -6,8 +6,7 @@ import { openReview } from '../ducks/actions';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { FlexRow, FlexColumn2 } from '../../styles/StyledContainers';
-import { Title2, Text, Text2, Text3 } from '../../styles/StyledText';
-import { Button3 } from '../../styles/StyledButtons'; 
+import { Title2, Title3, Text, Text2, Text3 } from '../../styles/StyledText';
 
 const Trip = (props) => {
 
@@ -31,24 +30,30 @@ const Trip = (props) => {
         <Title2>Trip number: <b>{trip.id + 1000}</b></Title2>
         <Title2>For: <Text2>{date1.slice(0, 10)}</Text2></Title2>
       </FlexRow>
-        <div id="trip-body">
-          <Title2><img id="trip-img" alt="img" src={trip.driver_photo} /> Driver: <Text2><b>{trip.driver_name}</b></Text2></Title2>
+      <FlexRow>
+        <FlexColumn2>
+          <div><img id="trip-img" alt="img" src={trip.driver_photo} /><Title3> Driver: </Title3><Text2><b>{trip.driver_name}</b></Text2></div>
             {trip.review &&
               <div className="review-body">
-                <Title2>My review:</Title2>
-                <Text2><i>{trip.review}</i></Text2>
+                <Title3>My review:</Title3>
+                <Text3><i>{trip.review}</i></Text3>
               </div>}
-            <FlexColumn2>
+            <FlexColumn2 style={{'width': 'calc(130px + 20vw)'}}>
               <Text>Pick-up date: <Text2>{date1.slice(0, 15)}</Text2> at: <Text2>{date1.slice(15, 21)}</Text2></Text>
               <Text>Drop-off date: <Text2>{date2.slice(0, 15)}</Text2> at: <Text2>{date2.slice(15, 21)}</Text2></Text>
               <Text>Pick up address: <Text2>{trip.address}</Text2></Text>
               <Text>Total cost: <Text2>${trip.total}</Text2></Text>
             </FlexColumn2>
-              {cancel && <Button3 onClick={cancelRide} id="cancel-button"> Cancel Ride </Button3>}
-              {review && !reviewOpen && <div className="add-review" onClick={addReview}><u>Add Review</u></div>}
-              <br />
-            <Text3><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></Text3>
-        </div>
+        </FlexColumn2>
+          {cancel && <button onClick={cancelRide} id="cancel-button"> Cancel Ride </button>}
+          {review && !reviewOpen &&
+            <FlexColumn2>
+              <div className="add-review" onClick={addReview}><u>Add Review</u></div>
+              <div className="add-review"><u>Rate Driver</u></div>
+            </FlexColumn2>}
+      </FlexRow>
+        <br />
+        <Text3><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></Text3>
     </div>
   )
   

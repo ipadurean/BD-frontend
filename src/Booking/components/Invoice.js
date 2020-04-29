@@ -4,35 +4,34 @@ import TimeZone from '../../utils/timeZone';
 import { resetBooked } from '../ducks/actions';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { FixedContainer2, FlexColumn1 } from '../../styles/StyledContainers';
-import { Text4 } from '../../styles/StyledText';
+import { FixedContainer2, FlexColumn1, FlexColumn2 } from '../../styles/StyledContainers';
+import { Title, Title2, Text2, Text4 } from '../../styles/StyledText';
 
 const Invoice = (props) => {
 
   const { trip, driver } = props
  
-
-  function resetBook() {
+  function cancelInvoice() {
     props.reset()
   }
    
   return (
     <FixedContainer2>
       <Text4>Trip no:<b>{trip.id + 1000} </b><span> Booked on: <em>{new Date(trip.created_at).toString()}</em></span></Text4>
-      <FlexColumn1 style={{'margin' : '5%'}}>
-        <h3>Your ride with {driver.name} was booked!</h3>
-        <div> Date: <b>{TimeZone.toCentralTime(trip.start_time).slice(0, 15)}</b></div>
-        <div>From: <b>{TimeZone.toCentralTime(trip.start_time).slice(16, 18)}:00</b> to:<b>{TimeZone.toCentralTime(trip.end_time).slice(16, 18)}:00</b></div>
-        <div>The pick up address is: <b>{trip.address}</b></div>
-        <div>Total cost: <b>${trip.total}</b></div>
+      <FlexColumn1>
+        <Title>Your ride with {driver.name} was booked!</Title>
+        <FlexColumn2>
+          <Title2> Date: <Text2><b>{TimeZone.toCentralTime(trip.start_time).slice(0, 15)}</b></Text2></Title2>
+          <Title2>From: <Text2><b>{TimeZone.toCentralTime(trip.start_time).slice(16, 18)}:00</b></Text2> to: <Text2><b>{TimeZone.toCentralTime(trip.end_time).slice(16, 18)}:00</b></Text2></Title2>
+          <Title2>The pick up address is: <Text2><b>{trip.address}</b></Text2></Title2>
+          <Title2>Total charged: <Text2><b>${trip.total}</b></Text2></Title2>
+        </FlexColumn2>
       </FlexColumn1>
-      <div>
-        <button onClick={resetBook} id="back">
-          <svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" >
-            <polygon points="7.41 1.41 6 0 0 6 6 12 7.41 10.59 2.83 6"></polygon>
-          </svg><span> Back</span>
-        </button>  
-      </div>
+      <div onClick={cancelInvoice} id="back">
+        <svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" >
+          <polygon points="7.41 1.41 6 0 0 6 6 12 7.41 10.59 2.83 6"></polygon>
+        </svg><span> Back</span>
+      </div>  
     </FixedContainer2>
   )
 }
