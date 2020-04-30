@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { FlexRow, FlexColumn2 } from '../../styles/StyledContainers';
 import { Title2, Title3, Text, Text2, Text3 } from '../../styles/StyledText';
+import { Button4 } from '../../styles/StyledButtons';
 
 const Trip = (props) => {
 
@@ -16,6 +17,10 @@ const Trip = (props) => {
 
   const addReview = () => {
     props.open(trip.id)
+  }
+
+  const addRating = () => {
+
   }
 
   const cancelRide = (e) => {
@@ -48,8 +53,8 @@ const Trip = (props) => {
           {cancel && <button onClick={cancelRide} id="cancel-button"> Cancel Ride </button>}
           {review && !reviewOpen &&
             <FlexColumn2>
-              <div className="add-review" onClick={addReview}><u>Add Review</u></div>
-              <div className="add-review"><u>Rate Driver</u></div>
+              <Button4 onClick={addReview}><u>Add Review</u></Button4>
+              <Button4 onClick={addRating}><u>Rate Driver</u></Button4>
             </FlexColumn2>}
       </FlexRow>
         <br />

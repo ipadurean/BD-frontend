@@ -23,7 +23,7 @@ const AllRides = (props) => {
       {authorized ?
         <FlexRowFull className="background">
           <SideBar />
-          <FlexColumn2>
+          <FlexColumn2 style={{'width': '77vw'}}>
             <Title>Hello <b>{user.username}</b>! This is a summary of your rides:</Title>
             <Switch>
               <>

@@ -10,6 +10,7 @@ import { StyledForm } from '../../styles/StyledForms';
 import { Title, Title1 } from '../../styles/StyledText';
 import { TextArea1 } from '../../styles/StyledInputs';
 import close from '../../utils/assets/close.svg';
+import { Close } from '../../styles/StyledButtons';
 
 class ReviewForm extends Component {
   constructor(){
@@ -44,8 +45,8 @@ class ReviewForm extends Component {
   
     return (
       <FixedContainer>
-        <StyledForm onSubmit={this.handleSubmit} >
-          <img onClick={this.closeReview} alt="close" id="close" src={close} />
+        <Close onClick={this.closeReview} alt="close" id="close" src={close} />
+          <StyledForm onSubmit={this.handleSubmit} >
           {submitting ?
             <Title1>Loading...</Title1> :
             submitted ?

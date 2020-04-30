@@ -26,6 +26,9 @@ export const HourBox = styled.div`
   margin: 2px;
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
+  &:hover {
+    background-color: ${ props => props.busy ? 'white' : '#606c77'};
+  }
 `
 
 export const ScrollArrow = styled.img`

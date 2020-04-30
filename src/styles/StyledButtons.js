@@ -44,6 +44,32 @@ export const Button3 = styled.button`
   }
 `
 
+export const Button4 = styled.div`
+  float: right;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: calc(7px + 0.5vw);
+  color: rgb(60, 120, 175);
+  text-transform: uppercase;
+  padding: 4px;
+  &:hover {
+    color: rgb(0, 86, 136);
+  }
+`
+
+export const Button5 = styled.div`
+  cursor: pointer;
+  min-width: 200px;
+  font-weight: 600;
+  font-size: calc(10px + 0.5vw);
+  color: rgb(60, 120, 175);
+  text-transform: uppercase;
+  padding: 15px;
+  &:hover {
+    color: rgb(0, 86, 136);
+  }
+`
+
 export const ButtonBook1 = styled.div`
   display: flex;
   align-text: center;
@@ -84,4 +110,17 @@ export const ButtonArrow = styled.img`
   outline: none;
   cursor: pointer;
   width: ${ props => props.small ? '18px' : '24px'}
+`
+
+export const Close = styled.img`
+  cursor: pointer;
+  width: 30px;
+  float: right;
+  align-self: flex-end;
+  margin: 8px;
+  padding: 5px;
+  border-radius: 15px;
+  &:hover{
+    background-color: #e8e8e8;
+  }
 `

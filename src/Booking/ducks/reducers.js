@@ -6,6 +6,7 @@ const initialState = {
   loading: true,
   driver: {},
   daySelected: false,
+  reviewsOpen: false,
   time: {
     start: null,
     end: null
@@ -21,7 +22,13 @@ export default function bookingReducer(state = initialState , action) {
     
     case types.SET_TIME:
       return { ...state, time: action.payload }
-
+    
+    case types.OPEN_REVIEWS:
+      return { ...state, reviewsOpen: true }
+    
+    case types.CLOSE_REVIEWS:
+      return { ...state, reviewsOpen: false }
+    
     case types.ADD_DRIVER:
       return {...state, loading: false, driver: action.payload}
 

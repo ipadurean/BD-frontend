@@ -1,6 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  25% { opacity: 0; }
+  100% { opacity: 1; }
+`
 
 export const StyledContainer = styled.div`
+  animation-name: ${fadeIn};
+  animation-duration: 1s;
   min-height: 100vh;
   min-width: 100vw;
   padding-top: calc(4vh + 2vw);
@@ -48,14 +56,14 @@ export const FlexRowWrap = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  padding: 2%;
+  padding: 1% 2%;
 `
 
 export const FlexRowFull = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-items: center;
+  justify-content: space-between;
   height: calc(96vh - 2vw);
   overflow: hidden;
   background-color: rgb(244, 247, 248);

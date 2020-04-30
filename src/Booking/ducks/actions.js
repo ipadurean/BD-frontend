@@ -33,3 +33,15 @@ export const selectDay = (value) => {
     payload: value
   }
 }
+
+export const openReviews = () => {
+  return {
+    type: types.OPEN_REVIEWS,
+  }
+}
+
+export const closeReviews = () => {
+  return {
+    type: types.CLOSE_REVIEWS
+  }
+}

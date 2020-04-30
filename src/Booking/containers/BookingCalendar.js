@@ -105,7 +105,7 @@ class BookingCalendar extends Component {
               </CalendarBody>
         </CalendarBox>
         <div className="day">
-          {daySelected && <Day />}
+          {daySelected && driver.id && <Day />}
         </div>
         <BookingForm  driver={driver}
                       submit={this.bookRide} />

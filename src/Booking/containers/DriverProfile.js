@@ -1,32 +1,47 @@
 import React, { Component } from 'react';
 import '../style.css';
 import BookingCalendar from './BookingCalendar';
+import ReviewsList from '../components/ReviewsList';
 import { connect } from "react-redux";
 import { fetchDriver } from '../ducks/operations';
-import ReviewCard from '../components/ReviewCard';
+import { openReviews } from '../ducks/actions';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
 import star from '../../utils/assets/star-solid.svg';
 import { Title, Title2, Title3, Text } from '../../styles/StyledText';
 import { StyledContainer, FlexRow1, FlexRowWrap, FlexColumn, FlexColumn2, Loading } from '../../styles/StyledContainers';
+import { Button5 } from '../../styles/StyledButtons';
+
 
 
 class DriverProfile extends Component {
+
+  constructor(props) {
+    super(props);
+    this.driverRef = React.createRef();
+  }
   
   componentDidMount() {
-    window.scrollTo(0, 10);
     this.props.getDriver(this.props.driverName)
+    this.driverRef.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   }  
 
+  handleClick = () => {
+    this.props.showReviews()
+  }
+
   render(){
-    const { driver, authorized, loading } = this.props
+    const { driver, authorized, loading, reviewsOpen } = this.props
    
     return (
-      <StyledContainer>
+      <StyledContainer ref={this.driverRef}>
         {authorized && loading ? <Loading>Loading...</Loading> :
           authorized &&
           <FlexRowWrap>
-            <FlexRow1 style={{'width': '50vw', 'minHeight': '300px'}}>
+            <FlexRow1 className='driver-card'>
               <FlexColumn2>
                 <Title style={{ 'width': '100%' }}>{driver.name}</Title>
                 <Title3>~ Chauffeur ~</Title3>
@@ -35,22 +50,19 @@ class DriverProfile extends Component {
                     <em>Rating {driver.rating} </em>
                     <img className="star" alt="star" src={star} />
                   </div>
-                  <Title2>Rate: ${driver.rate}/hour</Title2>
+                <Title2>Rate: ${driver.rate}/hour</Title2>
+                <Button5 onClick={this.handleClick}><u>Driver reviews</u></Button5>
               </FlexColumn2>
               <FlexColumn2 style={{ 'width': '70%' }}><Text>{driver.description}</Text></FlexColumn2>
             </FlexRow1>
             <FlexColumn>
+              <Title3>Vehicle:</Title3>
               <div id="vehicle-model">{driver.car}</div>
               <LazyLoadImage effect="blur" className="car-photo" alt="car" src={driver.car_photo} />
             </FlexColumn>
-            <FlexColumn2 style={{'maxHeight': '300px', 'backgroundColor': 'white'}}>
-              <Title>Reviews:</Title>
-              {driver.trips.map(trip => {
-                return trip.review && <ReviewCard key={trip.id} review={trip.review} />
-              })}
-            </FlexColumn2>
-            <BookingCalendar driver={driver} />
+              {reviewsOpen && <ReviewsList />}
           </FlexRowWrap>}
+          <BookingCalendar driver={driver} />
       </StyledContainer>
     )
   }
@@ -72,13 +84,15 @@ function mapStateToProps(state){
   return {
     driver: state.booking.driver,
     authorized: state.auth.authorized,
-    loading: state.booking.loading
+    loading: state.booking.loading,
+    reviewsOpen: state.booking.reviewsOpen
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    getDriver: (name) => dispatch(fetchDriver(name))
+    getDriver: (name) => dispatch(fetchDriver(name)),
+    showReviews: () => dispatch(openReviews())
   }
 }
 

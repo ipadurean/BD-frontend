@@ -37,10 +37,10 @@ export const Text = styled.div`
 
 export const Text1 = styled.div`
   font-size: calc(7px + 0.5vw);
-  background-color: #e9f0ea;
+  border-bottom: 1px dotted silver;
+  color: #406770;
   margin: 5px;
-  padding: 3px;
-  border-radius: 10px;
+  padding: 9px;
 `
 
 export const Text2 = styled.span`
