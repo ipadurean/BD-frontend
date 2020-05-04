@@ -14,7 +14,7 @@ import NavBar from './Main/containers/NavBar';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import Parse from './utils/parse';
-import GlobalStyle from './styles/GlobalStyle';
+import { GlobalStyle } from './styles/GlobalStyle';
 
 class App extends Component {
 

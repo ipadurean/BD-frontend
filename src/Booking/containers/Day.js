@@ -99,8 +99,8 @@ class Day extends Component {
   }
 
   render() {
-    const { daySelected, driver } = this.props
-    console.log(driver)
+    const { daySelected } = this.props
+  
     return (
       <FlexColumn onClick={this.handleClick}>
         <ScrollArrow onClick={this.scrollDown} alt="up" src={arrowUp} />

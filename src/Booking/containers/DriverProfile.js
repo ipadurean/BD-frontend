@@ -9,7 +9,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
 import star from '../../utils/assets/star-solid.svg';
 import { Title, Title2, Title3, Text } from '../../styles/StyledText';
-import { StyledContainer, FlexRow1, FlexRowWrap, FlexColumn, FlexColumn2, Loading } from '../../styles/StyledContainers';
+import { StyledContainer, StyledContainer2, FlexRow1, FlexRowWrap, FlexColumn, FlexColumn2, Loading } from '../../styles/StyledContainers';
 import { Button5 } from '../../styles/StyledButtons';
 
 
@@ -38,6 +38,7 @@ class DriverProfile extends Component {
    
     return (
       <StyledContainer ref={this.driverRef}>
+        <StyledContainer2>
         {authorized && loading ? <Loading>Loading...</Loading> :
           authorized &&
           <FlexRowWrap>
@@ -63,6 +64,7 @@ class DriverProfile extends Component {
               {reviewsOpen && <ReviewsList />}
           </FlexRowWrap>}
           <BookingCalendar driver={driver} />
+        </StyledContainer2>
       </StyledContainer>
     )
   }

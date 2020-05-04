@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { ButtonBook2 } from '../../styles/StyledButtons';
 import { Input3, TextArea2, FakeInput } from '../../styles/StyledInputs';
 import { StyledContainer2, StyledContainer3 } from '../../styles/StyledContainers';
+import Parse from '../../utils/parse';
 
 class BookingForm extends Component {
   constructor(){
@@ -29,7 +30,7 @@ class BookingForm extends Component {
 
   render(){
     const { driver, daySelected, start, end, submit } = this.props 
-    
+    console.log(Parse.formatDate(new Date(daySelected)))
     return (
       <StyledContainer2 id='booking-form'>
         <table>
@@ -40,7 +41,7 @@ class BookingForm extends Component {
             </tr>
             <tr>
               <th>Date:</th>
-              <th><FakeInput>{daySelected && new Date(new Date(daySelected).setHours(start)).toString().slice(0, 15)}</FakeInput></th> 
+              <th><FakeInput>{daySelected && Parse.formatDate(new Date(daySelected))}</FakeInput></th> 
             </tr>
             <tr>
               <th>From: </th>

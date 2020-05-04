@@ -9,5 +9,10 @@ export default class Parse {
       obj[params[i]] = params[i+1]
     }
     return obj
-   }
+  }
+  
+  static formatDate(date) {
+    let arr = date.toString().slice(0, 15).split(' ')
+    return arr[0] + ', ' + arr[1] + ' ' + arr[2] + ', ' + arr[3]
+  }
 }

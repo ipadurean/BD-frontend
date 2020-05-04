@@ -9,6 +9,7 @@ import { FlexRow } from '../../styles/StyledContainers';
 import { Title1 } from '../../styles/StyledText';
 import { Select1 } from '../../styles/StyledSelect';
 import { Button1 } from '../../styles/StyledButtons';
+import Parse from '../../utils/parse';
 
 
 
@@ -94,7 +95,7 @@ class FilterDrivers extends Component {
         <div className="search-container">
           <Title1>Search for available chauffeurs:</Title1>
           <FlexRow>
-            <div className="input-box" onClick={this.clickBox}>{selectedDate ? new Date(selectedDate).toString().slice(4, 15) : "Select Date"}</div>
+            <div className="input-box" onClick={this.clickBox}>{selectedDate ? Parse.formatDate(new Date(selectedDate)) : "Select Date"}</div>
             <Select1 onChange={this.handleChange} name="start">
               <option>Start Time</option>
                 {this.renderHours1()}

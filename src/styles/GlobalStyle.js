@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
   }
@@ -26,4 +26,8 @@ code {
 }
 `
 
-export default GlobalStyle
+export const DarkBackground = createGlobalStyle`
+  .background {
+    filter: brightness(40%);
+  }
+`

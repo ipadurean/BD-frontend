@@ -31,12 +31,12 @@ export const Title3 = styled.div`
 `
 
 export const Text = styled.div`
-  font-size: calc(8px + 0.5vw);
+  font-size: calc(7px + 0.5vw);
   color: gray;
 `
 
 export const Text1 = styled.div`
-  font-size: calc(7px + 0.5vw);
+  font-size: calc(8px + 0.5vw);
   border-bottom: 1px dotted silver;
   color: #406770;
   margin: 5px;
@@ -44,12 +44,12 @@ export const Text1 = styled.div`
 `
 
 export const Text2 = styled.span`
-  font-size: calc(6px + 0.8vw);
+  font-size: calc(6px + 0.6vw);
   color: #567bb8;
 `
 
 export const Text3 = styled.span`
-  font-size: calc(5px + 0.8vw);
+  font-size: calc(5px + 0.6vw);
   color: gray;
 `
 

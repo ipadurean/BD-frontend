@@ -30,14 +30,16 @@
 
 .reviews-list {
   position: fixed;
-  top: 30%;
+  top: 20%;
+  bottom: 20%;
   left: 10vw;
   right: 10vw;
   animation: fadeIn 1s;
   max-height: 500px;
+  overflow: scroll;
   width: 80vw;
   border-radius: 20px;
-  background-color:  rgb(255, 255, 255);
+  background-color:  rgb(242, 255, 255);
   box-shadow: 0px 6px 11px -4px rgba(0,0,0,0.2), 
               0px 9px 15px 3px rgba(0,0,0,0.14), 
               0px 4px 16px 1px rgba(0,0,0,0.12);
@@ -91,7 +93,7 @@ table th {
 
 .day {
   width: 65px;
-  margin: 0 3vw;
+  margin: 0 2vw;
   min-height: 480px !important;
   max-height: 480px !important;
 }

@@ -9,7 +9,7 @@ import { Title } from '../../styles/StyledText';
 import SideBar from './SideBar';
 import { Route, Switch } from 'react-router-dom';
 import ReviewForm from '../containers/ReviewForm';
-import { DarkStyle } from '../../styles/DarkStyle';
+import { DarkBackground } from '../../styles/GlobalStyle';
 
 
 const AllRides = (props) => {
@@ -19,7 +19,7 @@ const AllRides = (props) => {
   return (
     <StyledContainer>
       {reviewOpen && <ReviewForm />}
-      {reviewOpen && <DarkStyle />}
+      {reviewOpen && <DarkBackground />}
       {authorized ?
         <FlexRowFull className="background">
           <SideBar />

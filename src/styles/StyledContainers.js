@@ -15,7 +15,7 @@ export const StyledContainer = styled.div`
 `
 
 export const StyledContainer2 = styled.div`
-  padding: 2%;
+  padding: 3% 1%;
   height: 100%;
 `
 
@@ -138,6 +138,7 @@ export const FixedContainer2 = styled.div`
   width: 80vw;
   height: calc(40vh + 20vw);
   top: 10vh;
+  bottom: 10vh;
   left: 10vw;
   right: 10vw;
   border-radius: 5px;

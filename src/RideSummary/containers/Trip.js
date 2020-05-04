@@ -1,6 +1,7 @@
 import React from 'react';
 import '../style.css';
 import TimeZone from '../../utils/timeZone';
+import Parse from '../../utils/parse';
 import { fetchDelete } from '../ducks/operations';
 import { openReview } from '../ducks/actions';
 import { connect } from "react-redux";
@@ -33,7 +34,7 @@ const Trip = (props) => {
     <div className='trip-container'>
       <FlexRow id="trip-header">
         <Title2>Trip number: <b>{trip.id + 1000}</b></Title2>
-        <Title2>For: <Text2>{date1.slice(0, 10)}</Text2></Title2>
+        <Title2>For: <Text2>{Parse.formatDate(date1)}</Text2></Title2>
       </FlexRow>
       <FlexRow>
         <FlexColumn2>
@@ -44,8 +45,8 @@ const Trip = (props) => {
                 <Text3><i>{trip.review}</i></Text3>
               </div>}
             <FlexColumn2 style={{'width': 'calc(130px + 20vw)'}}>
-              <Text>Pick-up date: <Text2>{date1.slice(0, 15)}</Text2> at: <Text2>{date1.slice(15, 21)}</Text2></Text>
-              <Text>Drop-off date: <Text2>{date2.slice(0, 15)}</Text2> at: <Text2>{date2.slice(15, 21)}</Text2></Text>
+              <Text>Pick-up date: <Text2>{Parse.formatDate(date1)}</Text2> at: <Text2>{date1.slice(15, 21)}</Text2></Text>
+            <Text>Drop-off date: <Text2>{Parse.formatDate(date2)}</Text2> at: <Text2>{date2.slice(15, 21)}</Text2></Text>
               <Text>Pick up address: <Text2>{trip.address}</Text2></Text>
               <Text>Total cost: <Text2>${trip.total}</Text2></Text>
             </FlexColumn2>
