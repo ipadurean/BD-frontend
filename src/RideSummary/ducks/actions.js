@@ -6,9 +6,21 @@ export const submitReview = () => {
   }
 }
 
-export const submitting = () => {
+export const submittingReview = () => {
   return {
-    type: types.SUBMITTING
+    type: types.SUBMITTING_REVIEW
+  }
+}
+
+export const submitRating = () => {
+  return {
+    type: types.SUBMIT_RATING
+  }
+}
+
+export const submittingRating = () => {
+  return {
+    type: types.SUBMITTING_RATING
   }
 }
 
@@ -26,9 +38,16 @@ export const openReview = (tripId) => {
   }
 }
 
-export const closeReview = () => {
+export const openRating = (tripId) => {
   return {
-    type: types.CLOSE_REVIEW
+    type: types.OPEN_RATING,
+    payload: tripId
+  }
+}
+
+export const closeForm = () => {
+  return {
+    type: types.CLOSE_FORM
   }
 }
 

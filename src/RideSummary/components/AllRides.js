@@ -9,17 +9,20 @@ import { Title } from '../../styles/StyledText';
 import SideBar from './SideBar';
 import { Route, Switch } from 'react-router-dom';
 import ReviewForm from '../containers/ReviewForm';
+import RatingForm from '../containers/RatingForm';
 import { DarkBackground } from '../../styles/GlobalStyle';
 
 
 const AllRides = (props) => {
 
-  const { user, loading, authorized, reviewOpen } = props
+  const { user, loading, authorized, reviewOpen, ratingOpen } = props
 
   return (
     <StyledContainer>
       {reviewOpen && <ReviewForm />}
       {reviewOpen && <DarkBackground />}
+      {ratingOpen && <RatingForm />}
+      {ratingOpen && <DarkBackground />}
       {authorized ?
         <FlexRowFull className="background">
           <SideBar />
@@ -53,7 +56,8 @@ function mapStateToProps(state){
     user: state.auth.user,
     loading: state.auth.loading,
     authorized: state.auth.authorized,
-    reviewOpen: state.rideSummary.reviewOpen
+    reviewOpen: state.rideSummary.reviewOpen,
+    ratingOpen: state.rideSummary.ratingOpen
   }
 }
 

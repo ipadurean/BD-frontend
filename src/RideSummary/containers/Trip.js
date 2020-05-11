@@ -3,7 +3,7 @@ import '../style.css';
 import TimeZone from '../../utils/timeZone';
 import Parse from '../../utils/parse';
 import { fetchDelete } from '../ducks/operations';
-import { openReview } from '../ducks/actions';
+import { openReview, openRating } from '../ducks/actions';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { FlexRow, FlexColumn2 } from '../../styles/StyledContainers';
@@ -17,11 +17,11 @@ const Trip = (props) => {
   const date2 = TimeZone.toCentralTime(trip.end_time)
 
   const addReview = () => {
-    props.open(trip.id)
+    props.openReviewForm(trip.id)
   }
 
   const addRating = () => {
-
+    props.openRatingForm(trip.id)
   }
 
   const cancelRide = (e) => {
@@ -79,7 +79,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return { 
     delete: (id) => dispatch(fetchDelete(id)),
-    open: (id) => dispatch(openReview(id))
+    openReviewForm: (id) => dispatch(openReview(id)),
+    openRatingForm: (id) => dispatch(openRating(id))
   }
 }
 

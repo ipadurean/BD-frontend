@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../style.css';
 import { addReview } from '../ducks/operations';
-import { closeReview } from '../ducks/actions';
+import { closeForm } from '../ducks/actions';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { FixedContainer } from '../../styles/StyledContainers';
@@ -45,7 +45,7 @@ class ReviewForm extends Component {
   
     return (
       <FixedContainer>
-        <Close onClick={this.closeReview} alt="close" id="close" src={close} />
+        <Close onClick={this.closeReview} alt="close" src={close} />
           <StyledForm onSubmit={this.handleSubmit} >
           {submitting ?
             <Title1>Loading...</Title1> :
@@ -72,7 +72,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return {
     sendReview: (tripId, review) => dispatch(addReview(tripId, review)),
-    close: () => dispatch(closeReview())
+    close: () => dispatch(closeForm())
   }
 }
 

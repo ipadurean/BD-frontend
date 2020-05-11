@@ -1,4 +1,4 @@
-import { deleteTrip, submitReview, submitting } from './actions'
+import { deleteTrip, submitReview, submittingReview, submitRating, submittingRating } from './actions'
 
 const baseUrl = 'https://radiant-fjord-35660.herokuapp.com';
 
@@ -15,7 +15,7 @@ export const fetchDelete = (tripId) => {
 export const addReview = (tripId, review) => {
   
   return function (dispatch) {
-    dispatch(submitting())
+    dispatch(submittingReview())
     fetch(`${baseUrl}/trips/${tripId}`, {
       method: 'PATCH',
       headers: {
@@ -28,5 +28,24 @@ export const addReview = (tripId, review) => {
     })
       .then(res => res.json())
       .then(dispatch(submitReview()))
+  }
+}
+
+export const addRating = (tripId, rating) => {
+
+  return function (dispatch) {
+    dispatch(submittingRating())
+    fetch(`${baseUrl}/trips/${tripId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": 'application/json'
+      },
+      body: JSON.stringify({
+        rating
+      })
+    })
+      .then(res => res.json())
+      .then(dispatch(submitRating()))
   }
 }
