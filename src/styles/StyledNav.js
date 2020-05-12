@@ -35,7 +35,7 @@ export const StyledWelcome = styled.div`
   margin: 0 1vw;
   background-color: white;
   padding: 3px 5px;
-  border-radius: 5px;
+  border-radius: 15px;
 `
 
 export const SideItem = styled.a`

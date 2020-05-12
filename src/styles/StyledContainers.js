@@ -37,7 +37,7 @@ export const FlexRow1 = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 2%;
+  padding: 1%;
 `
 
 export const FlexRow2 = styled.div`
@@ -118,6 +118,25 @@ export const FixedContainer = styled.div`
   right:auto;
   border-radius: 5px;
   z-index: 2;
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 
+              0px 24px 38px 3px rgba(0,0,0,0.14), 
+              0px 9px 46px 8px rgba(0,0,0,0.12);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;            
+`
+
+export const FixedContainer1 = styled.div`
+  position: fixed;
+  top: 40vh;
+  bottom: auto;
+  left: calc(50vw - 150px);
+  right:auto;
+  border-radius: 5px;
+  z-index: 2;
+  background-image: linear-gradient(to bottom, #dae0e8 0%, #ebf0f0 100%);
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
   box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 
               0px 24px 38px 3px rgba(0,0,0,0.14), 
               0px 9px 46px 8px rgba(0,0,0,0.12);

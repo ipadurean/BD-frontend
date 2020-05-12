@@ -41,21 +41,21 @@ class ReviewForm extends Component {
 
   
   render(){
-    const { submitted, submitting } = this.props.rideSummary
+    const { reviewSubmitted, submittingReview } = this.props.rideSummary
   
     return (
       <FixedContainer>
         <Close onClick={this.closeReview} alt="close" src={close} />
           <StyledForm onSubmit={this.handleSubmit} >
-          {submitting ?
+          {submittingReview ?
             <Title1>Loading...</Title1> :
-            submitted ?
+            reviewSubmitted ?
             <Title>Your review has been posted!</Title> :
               <>
                 <TextArea1 type="text" onChange={this.handleChange} />
                 <Button3 type="submit" disabled={this.validateForm()}>Submit</Button3>
               </>}
-        </StyledForm>
+          </StyledForm>
       </FixedContainer>
     )
   }

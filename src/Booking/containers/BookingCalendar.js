@@ -72,7 +72,7 @@ class BookingCalendar extends Component {
       note: item.extra,
       address: item.address, 
       review: "",
-      rating: 4
+      rating: null
     }
     if (user && driver && !!item.address) {
       this.props.book(bookingBody)

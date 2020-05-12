@@ -20,11 +20,11 @@ const AllRides = (props) => {
   return (
     <StyledContainer>
       {reviewOpen && <ReviewForm />}
-      {reviewOpen && <DarkBackground />}
       {ratingOpen && <RatingForm />}
-      {ratingOpen && <DarkBackground />}
       {authorized ?
         <FlexRowFull className="background">
+          {ratingOpen && <DarkBackground />}
+          {reviewOpen && <DarkBackground />}
           <SideBar />
           <FlexColumn2 style={{'width': '77vw'}}>
             <Title>Hello <b>{user.username}</b>! This is a summary of your rides:</Title>

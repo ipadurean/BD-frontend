@@ -15,7 +15,6 @@ const Trip = (props) => {
   const { trip, cancel, review, reviewOpen } = props
   const date1 = TimeZone.toCentralTime(trip.start_time)
   const date2 = TimeZone.toCentralTime(trip.end_time)
-
   const addReview = () => {
     props.openReviewForm(trip.id)
   }
@@ -56,6 +55,7 @@ const Trip = (props) => {
             <FlexColumn2>
               <Button4 onClick={addReview}><u>Add Review</u></Button4>
               <Button4 onClick={addRating}><u>Rate Driver</u></Button4>
+                {trip.rating && <div><Title3>My rating: </Title3>{trip.rating}</div>}
             </FlexColumn2>}
       </FlexRow>
         <br />

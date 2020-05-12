@@ -121,6 +121,27 @@ export const Close = styled.img`
   padding: 5px;
   border-radius: 15px;
   &:hover{
-    background-color: #e8e8e8;
+    background-color: #f5f9ff;
   }
+`
+
+export const Close1 = styled.img`
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  align-self: flex-end;
+  margin: 5px;
+  padding: 3px;
+  border-radius: 15px;
+  &:hover{
+    background-color: #f5f9ff;
+  }
+`
+
+export const Star = styled.img`
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
 `

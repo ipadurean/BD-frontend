@@ -6,20 +6,22 @@
   background-color: white;
   border-radius: 5px;
   max-height: 30px;
-  width: calc(110px + 5vw);
+  width: calc(90px + 5vw);
+  height: calc(18px + 1vw);
   align-items: center;
 }
 
 .search-drivers input {
   outline: none;
   border: none;
-  width: calc(70px + 5vw);
-  height: 25px;
+  font-size: calc(10px + 0.5vw);
+  width: calc(50px + 5vw);
+  height: calc(12px + 1vw);
 }
 
 .search-drivers img {
-  width: calc(15px + 0.5vw);
-  margin: 5px;
+  width: calc(15px + 0.7vw);
+  margin: 1%;
   cursor: pointer;
 }
 

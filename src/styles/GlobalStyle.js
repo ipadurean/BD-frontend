@@ -29,5 +29,6 @@ code {
 export const DarkBackground = createGlobalStyle`
   .background {
     filter: brightness(40%);
+    z-index: 0;
   }
 `
