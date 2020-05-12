@@ -12,7 +12,7 @@ import { Button4 } from '../../styles/StyledButtons';
 
 const Trip = (props) => {
 
-  const { trip, cancel, review, reviewOpen } = props
+  const { trip, cancel, reviewOpen, ratingOpen } = props
   const date1 = TimeZone.toCentralTime(trip.start_time)
   const date2 = TimeZone.toCentralTime(trip.end_time)
   const addReview = () => {
@@ -38,11 +38,12 @@ const Trip = (props) => {
       <FlexRow>
         <FlexColumn2>
           <div><img id="trip-img" alt="img" src={trip.driver_photo} /><Title3> Driver: </Title3><Text2><b>{trip.driver_name}</b></Text2></div>
-            {trip.review &&
+            {(trip.review || trip.rating) &&
               <div className="review-body">
-                <Title3>My review:</Title3>
-                <Text3><i>{trip.review}</i></Text3>
-              </div>}
+            {trip.review &&
+              <div><Title3>My review: </Title3><Text3><i>{trip.review}</i></Text3></div>}
+            {trip.rating && <div><Title3>My rating: </Title3><Title2>{trip.rating}</Title2></div>}
+          </div>}
             <FlexColumn2 style={{'width': 'calc(130px + 20vw)'}}>
               <Text>Pick-up date: <Text2>{Parse.formatDate(date1)}</Text2> at: <Text2>{date1.slice(15, 21)}</Text2></Text>
             <Text>Drop-off date: <Text2>{Parse.formatDate(date2)}</Text2> at: <Text2>{date2.slice(15, 21)}</Text2></Text>
@@ -51,12 +52,10 @@ const Trip = (props) => {
             </FlexColumn2>
         </FlexColumn2>
           {cancel && <button onClick={cancelRide} id="cancel-button"> Cancel Ride </button>}
-          {review && !reviewOpen &&
-            <FlexColumn2>
-              <Button4 onClick={addReview}><u>Add Review</u></Button4>
-              <Button4 onClick={addRating}><u>Rate Driver</u></Button4>
-                {trip.rating && <div><Title3>My rating: </Title3>{trip.rating}</div>}
-            </FlexColumn2>}
+          <FlexColumn2>
+            {!trip.review && !reviewOpen && <Button4 onClick={addReview}><u>Add Review</u></Button4>}
+            {!trip.rating && !ratingOpen && <Button4 onClick={addRating}><u>Rate Driver</u></Button4>}
+          </FlexColumn2>
       </FlexRow>
         <br />
         <Text3><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></Text3>
