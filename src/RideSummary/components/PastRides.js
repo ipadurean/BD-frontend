@@ -12,7 +12,7 @@ const PastRides = (props) => {
     let currentTime = new Date().getTime()
     let pastTrips = user.trips.filter(el => new Date(el.end_time).getTime() < currentTime)
     return pastTrips.map(el => {
-      return <Trip review={!el.review} key={el.id} trip={el} />
+      return <Trip past={true} key={el.id} trip={el} />
     })
   }
 

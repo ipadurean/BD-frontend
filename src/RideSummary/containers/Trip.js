@@ -12,7 +12,7 @@ import { Button4 } from '../../styles/StyledButtons';
 
 const Trip = (props) => {
 
-  const { trip, cancel, reviewOpen, ratingOpen } = props
+  const { trip, cancel, past, reviewOpen, ratingOpen } = props
   const date1 = TimeZone.toCentralTime(trip.start_time)
   const date2 = TimeZone.toCentralTime(trip.end_time)
   const addReview = () => {
@@ -52,10 +52,10 @@ const Trip = (props) => {
             </FlexColumn2>
         </FlexColumn2>
           {cancel && <button onClick={cancelRide} id="cancel-button"> Cancel Ride </button>}
-          <FlexColumn2>
-            {!trip.review && !reviewOpen && <Button4 onClick={addReview}><u>Add Review</u></Button4>}
-            {!trip.rating && !ratingOpen && <Button4 onClick={addRating}><u>Rate Driver</u></Button4>}
-          </FlexColumn2>
+        {past && <FlexColumn2>
+          {!trip.review && !reviewOpen && <Button4 onClick={addReview}><u>Add Review</u></Button4>}
+          {!trip.rating && !ratingOpen && <Button4 onClick={addRating}><u>Rate Driver</u></Button4>}
+        </FlexColumn2>}
       </FlexRow>
         <br />
         <Text3><em>The ride was booked on: {new Date(trip.created_at).toString()}</em></Text3>
