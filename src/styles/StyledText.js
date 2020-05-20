@@ -30,6 +30,13 @@ export const Title3 = styled.div`
   display: inline-block;
 `
 
+export const Title4 = styled.div`
+  font-family: Lato;
+  font-size: calc(8px + 0.5vw);
+  margin: 2px;
+  font-weight: 600;
+`
+
 export const Text = styled.div`
   font-size: calc(7px + 0.5vw);
   color: gray;

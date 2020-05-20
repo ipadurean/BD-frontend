@@ -30,7 +30,7 @@
 }
 
 #cancel-button {
-  align-self: flex-end;
+  float: right;
   display: flex;
   width: 70px;
   height: 50px;
@@ -52,14 +52,10 @@
 
 
 .review-body {
-  padding: 1%;
-  position: absolute;
+  padding: 3%;
   border: 1px dotted silver;
   border-radius: 15px;
-  margin: 2%;
-  top: 30px;
-  left: 50%;
-  max-height: 180px;
+  margin: 1%;
   overflow: scroll;
 }
 
