@@ -68,8 +68,8 @@ class NavBar extends Component {
               {authorized ?
               <Button1 onClick={this.logout} id="logout" style={{ 'outline': 'none' }}>Logout</Button1> :
                   <>
-                <a href="/login"><Button1 className="button" id="login" style={{ 'outline': 'none' }}>Login</Button1></a>
-                <a href="/register"><Button1 className="button" id="register" style={{ 'outline': 'none' }}>Register</Button1></a>
+                <a href="/login"><Button1 id="login" style={{ 'outline': 'none' }}>Login</Button1></a>
+                <a href="/register"><Button1 id="register" style={{ 'outline': 'none' }}>Register</Button1></a>
                   </>
               }
           </FlexRow>

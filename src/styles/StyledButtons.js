@@ -5,6 +5,8 @@ export const Button1 = styled.button`
   font-size: calc(8px + 0.5vw);
   cursor: pointer;
   margin: 2px;
+  border: none;
+  box-shadow: 0px 0.3px 1px 1px #757272;
   background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
   &:hover {
     box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
@@ -20,6 +22,7 @@ export const Button2 = styled.button`
   color: white; 
   border: none;
   cursor: pointer;
+  border: none;
   margin: 5px;
   padding: 3px;
   box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
@@ -36,6 +39,7 @@ export const Button3 = styled.button`
   border-radius: 2px;
   font-size: calc(5px + 0.5vw);
   cursor: pointer;
+  border: none;
   background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
    &:hover {
     box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
