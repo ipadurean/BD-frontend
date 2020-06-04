@@ -6,7 +6,6 @@ export const Button1 = styled.button`
   cursor: pointer;
   margin: 2px;
   border: none;
-  box-shadow: 0px 0.3px 1px 1px #757272;
   background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
   &:hover {
     box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
@@ -20,18 +19,23 @@ export const Button2 = styled.button`
   width: 300px;
   background: #5aafc4;
   color: white; 
+  font-weight: 600;
   border: none;
   cursor: pointer;
   border: none;
   margin: 5px;
   padding: 3px;
-  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
-              0px 2px 2px 0px rgba(0,0,0,0.14), 
-              0px 1px 5px 0px rgba(0,0,0,0.12);
   &:disabled {
     opacity: 0.5;
     box-shadow: none;
     cursor: not-allowed;
+  }
+  &:hover {
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
+                0px 2px 2px 0px rgba(0,0,0,0.14), 
+                0px 1px 5px 0px rgba(0,0,0,0.12);
+    transform: translate(-0.2px, -0.1px);
+    transition: transform 0.3s, box-shadow 0.3s;
   }
 `
 

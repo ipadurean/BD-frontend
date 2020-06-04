@@ -5,7 +5,7 @@ import { closeForm } from '../ducks/actions';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { FixedContainer } from '../../styles/StyledContainers';
-import { Button3 } from '../../styles/StyledButtons';
+import { Button1 } from '../../styles/StyledButtons';
 import { StyledForm } from '../../styles/StyledForms';
 import { Title, Title1 } from '../../styles/StyledText';
 import { TextArea1 } from '../../styles/StyledInputs';
@@ -53,7 +53,7 @@ class ReviewForm extends Component {
             <Title>Your review has been posted!</Title> :
               <>
                 <TextArea1 type="text" onChange={this.handleChange} />
-                <Button3 type="submit" disabled={this.validateForm()}>Submit</Button3>
+                <Button1 type="submit" disabled={this.validateForm()}>Submit</Button1>
               </>}
           </StyledForm>
       </FixedContainer>
