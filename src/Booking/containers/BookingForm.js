@@ -30,7 +30,7 @@ class BookingForm extends Component {
 
   render(){
     const { driver, daySelected, start, end, submit } = this.props 
-    console.log(Parse.formatDate(new Date(daySelected)))
+    
     return (
       <StyledContainer2 id='booking-form'>
         <table>

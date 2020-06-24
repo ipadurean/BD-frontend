@@ -19,7 +19,7 @@ export const HourBox = styled.div`
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
   font-size: 12px;
   background-color: ${ props => props.busy ? 'white' : props.selected ? '#606c77' : '#e4dcc5'};
-  color: ${ props => props.selected? 'white' : 'black'};
+  color: ${ props => props.selected? 'white' : props.busy? 'silver' : 'black'};
   border: ${ props => props.busy ? '1px solid silver' : '1px solid white'};
   width: 60px;
   height: 16px;

@@ -15,12 +15,15 @@ class Day extends Component {
     let bookedHours = [];
     const date1 = new Date(day);
     const date2 = new Date(day).setHours(36);
-    
+   
     const filteredTrips = driver.trips.filter(el => {
       const startDate = new Date(el.start_time).getTime();
       const endDate = new Date(el.end_time).getTime();
-        return startDate >= date1.getTime() && endDate <= date2
+      return (startDate >= date1.getTime() && endDate <= date2) ||
+        (startDate < date1.getTime() && endDate > date1.getTime()) ||
+        (startDate < date2 && endDate >= date2)
     })
+
  
     const newArr = filteredTrips.map(el => {
       const hour = 3600000;
@@ -35,6 +38,7 @@ class Day extends Component {
             bookedHours.push(k)
           }
     }
+    console.log(bookedHours.sort((a, b) => a - b))
       return bookedHours.sort((a,b) => a-b);
   }
 
@@ -49,10 +53,10 @@ class Day extends Component {
     while (i < 36) {
       if (i > parseInt(start) && this.bookedHours(day).includes(i)) {
             for(let k=i; k<36; k++){
-              hours.push(<HourBox busy data-val={null} key={k} className="busy">N/A</HourBox>)
+              hours.push(<HourBox busy data-val={null} key={k} className="busy">{dateValue(i).slice(16, 21)}</HourBox>)
             } return hours;
       } else if (this.bookedHours(day).includes(i)) {
-        hours.push(<HourBox busy data-val={null} key={i} className="busy">N/A</HourBox>)
+        hours.push(<HourBox busy data-val={null} key={i} className="busy">{dateValue(i).slice(16, 21)}</HourBox>)
         } else if (i === parseInt(start)) {
         hours.push(<HourBox selected data-val={i} key={i} className="available">{dateValue(i).slice(16, 21)}</HourBox>)
         } else if(i >= parseInt(start) && i < parseInt(end)) {
