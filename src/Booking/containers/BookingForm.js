@@ -41,7 +41,7 @@ class BookingForm extends Component {
             </tr>
             <tr>
               <th>Date:</th>
-              <th><FakeInput>{daySelected && Parse.formatDate(new Date(daySelected))}</FakeInput></th> 
+              <th><FakeInput>{daySelected && Parse.formatDate(new Date(new Date(daySelected).setHours(start)))}</FakeInput></th> 
             </tr>
             <tr>
               <th>From: </th>

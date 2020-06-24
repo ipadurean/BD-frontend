@@ -38,7 +38,6 @@ class Day extends Component {
             bookedHours.push(k)
           }
     }
-    console.log(bookedHours.sort((a, b) => a - b))
       return bookedHours.sort((a,b) => a-b);
   }
 
