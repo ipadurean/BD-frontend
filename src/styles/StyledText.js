@@ -45,7 +45,7 @@ export const Text = styled.div`
 export const Text1 = styled.div`
   font-size: calc(8px + 0.5vw);
   border-bottom: 1px dotted silver;
-  color: #406770;
+  color: #705123;
   margin: 5px;
   padding: 9px;
 `

@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const DriverCard = styled.div`
   margin: 0.5vw 5vw;
   width: 80vw;
+  max-width: 980px;
+  min-width: 700px;
   border-radius: 5px;
     &:hover {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 

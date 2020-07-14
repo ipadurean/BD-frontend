@@ -82,12 +82,13 @@ export const ButtonBook1 = styled.div`
   display: flex;
   align-text: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: calc(10px + 0.5vw);
   font-weight: 600;
   line-height: 30px;
   margin: 10px;
   height: 30px;
-  width: 240px;
+  width: 30vw;
+  max-width: 300px;
   border-radius: 20px;
   background-color: #bcccca;
   box-shadow: 1px 1px 1px 1px #757272;
