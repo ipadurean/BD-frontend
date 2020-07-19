@@ -36,7 +36,7 @@ const Trip = (props) => {
         <Title2>For: <Text2>{Parse.formatDate(date1)}</Text2></Title2>
       </FlexRow>
       <FlexRow>
-        <FlexColumn2 style={{ 'min-width': 'calc(130px + 20vw)' }}>
+        <FlexColumn2 style={{ 'minWidth': 'calc(130px + 20vw)' }}>
           <div>
             <img id="trip-img" alt="img" src={trip.driver_photo} /><Title3> Driver: </Title3><Text2><b>{trip.driver_name}</b></Text2>
           </div>
@@ -45,7 +45,7 @@ const Trip = (props) => {
             <Text>Pick up address: <Text2>{trip.address}</Text2></Text>
             <Text>Total cost: <Text2>${trip.total}</Text2></Text>
         </FlexColumn2>
-        <div style={{'width': 'auto', 'min-width': '120px'}}>
+        <div style={{'width': 'auto', 'minWidth': '120px'}}>
           {cancel && <button onClick={cancelRide} id="cancel-button"> Cancel Ride </button>}
             {(trip.review || trip.rating) &&
               <div className="review-body">

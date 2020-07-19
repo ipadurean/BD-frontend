@@ -96,14 +96,14 @@ class FilterDrivers extends Component {
           <Title2>Search for available chauffeurs:</Title2>
           <FlexRow>
             <div className="input-box" onClick={this.clickBox}>{selectedDate ? Parse.formatDate(new Date(selectedDate)) : "Select Date"}</div>
-            <Select1 onChange={this.handleChange} name="start">
-              <option>Start Time</option>
-                {this.renderHours1()}
-            </Select1>
-            <Select1 onChange={this.handleChange} name="end">
-              <option>End Time</option>
-                {this.renderHours2()}
-            </Select1>
+              <Select1 onChange={this.handleChange} name="start">
+                <option>Start Time</option>
+                  {this.renderHours1()}
+              </Select1>
+              <Select1 onChange={this.handleChange} name="end">
+                <option>End Time</option>
+                  {this.renderHours2()}
+              </Select1>
             <input onChange={this.addFilter} className="input-box" placeholder="Add keyword" type="text" />
               <Button1 onClick={this.searchAvailable} disabled={!this.validateForm()} style={{ 'outline': 'none' }}>Search</Button1>
               <Button1 onClick={this.reset} style={{ 'outline': 'none' }}>Reset</Button1>

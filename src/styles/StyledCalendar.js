@@ -63,10 +63,10 @@ export const DateInner = styled.div`
   align-items: center;
   justify-content: center;
   cursor: ${ props => props.disabled ? 'not-allowed' : 'pointer'};
-  color: ${ props => props.today? 'green' : props.selected ? 'white' : props.disabled ? 'silver' : 'black'};
+  color: ${ props => props.today ? '#3c83b5' : props.selected ? 'white' : props.disabled ? 'silver' : 'black'};
   background-color: ${ props => props.selected ? '#6e7f8f' : 'white'};
   &:hover {
-    background-color: ${ props => props.disabled ? 'white' : '#edf5ef'};
+    background-color: ${ props => props.disabled ? 'white' : '#8dabc2'};
   }
 `
 
@@ -78,9 +78,9 @@ export const WeekContainer = styled.div`
   border-radius: 10px 10px 0 0;
   border:  ${ props => props.small ? 'none' : '1px solid #d6d8dd'};
   & span {
-    color: ${ props => props.small ? 'green' : 'white' };
+    color: ${ props => props.small ? '#3b6280' : 'white' };
     flex: 0 0 14.28%;
-    font-size: ${ props => props.small ? '12px' : '16px'};
+    font-size: ${ props => props.small ? '14px' : '16px'};
     font-weight: bold;
     max-width: 14.28%;
     text-align: center;
