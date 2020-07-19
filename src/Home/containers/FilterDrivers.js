@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { selectDay, setTime } from '../../Booking/ducks/actions';
 import { withRouter } from 'react-router';
 import { FlexRow } from '../../styles/StyledContainers';
-import { Title1 } from '../../styles/StyledText';
+import { Title2 } from '../../styles/StyledText';
 import { Select1 } from '../../styles/StyledSelect';
 import { Button1 } from '../../styles/StyledButtons';
 import Parse from '../../utils/parse';
@@ -93,7 +93,7 @@ class FilterDrivers extends Component {
     
       return (
         <div className="search-container">
-          <Title1>Search for available chauffeurs:</Title1>
+          <Title2>Search for available chauffeurs:</Title2>
           <FlexRow>
             <div className="input-box" onClick={this.clickBox}>{selectedDate ? Parse.formatDate(new Date(selectedDate)) : "Select Date"}</div>
             <Select1 onChange={this.handleChange} name="start">

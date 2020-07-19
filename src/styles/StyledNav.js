@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledNav = styled.div`
-  background-color: rgb(216, 230, 231);
+  background-color: #d3dde0;
   box-shadow: 0 2px 5px -2px rgb(77, 75, 75);
   position: fixed;
   left: 0;
