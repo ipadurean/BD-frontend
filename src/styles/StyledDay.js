@@ -7,9 +7,6 @@ export const DayBar = styled.div`
   overflow-y: scroll;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 export const HourBox = styled.div`
