@@ -19,16 +19,16 @@ class Calendar extends Component {
   }
 
   monthPrev = () => {
-    this.state.selectedMonth &&
+    this.state.monthSelected &&
       this.setState(prevState => ({
-        selectedMonth: prevState.selectedMonth - 1,
+        monthSelected: prevState.monthSelected - 1,
       }));
     this.props.setDay(null)
   }
 
   monthNext = () => {
     this.setState(prevState => ({
-      selectedMonth: prevState.selectedMonth + 1,
+      monthSelected: prevState.monthSelected + 1,
     }))
     this.props.setDay(null)
   }
@@ -49,8 +49,8 @@ class Calendar extends Component {
       'December'
     ];
     let date = new Date();
-    date.setMonth(this.state.selectedMonth);
-    return months[this.state.selectedMonth % 12] + " " + date.getFullYear()
+    date.setMonth(this.state.monthSelected);
+    return months[this.state.monthSelected % 12] + " " + date.getFullYear()
   }
 
   createMonth = () => {
