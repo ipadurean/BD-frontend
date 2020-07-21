@@ -1,12 +1,23 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  0% { opacity: 0; }
+  25% { opacity: 0; }
+  100% { opacity: 1; }
+`
 
 export const DayBar = styled.div`
+  animation-name: ${fadeIn};
+  animation-duration: 0.5s;
   display: flex;
   flex-direction: column;
   height: calc(260px + 10vw);
   overflow-y: scroll;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 export const HourBox = styled.div`
@@ -19,7 +30,7 @@ export const HourBox = styled.div`
   color: ${ props => props.selected? 'white' : props.busy? 'silver' : 'black'};
   border: ${ props => props.busy ? '1px solid silver' : '1px solid white'};
   width: calc(30px + 3vw);
-  height: calc(12px + 0.5vw);
+  min-height: calc(10px + 1vw);
   margin: calc(1px + 0.2vw);
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
