@@ -57,6 +57,7 @@ export const Text2 = styled.span`
 
 export const Text3 = styled.span`
   font-size: calc(5px + 0.6vw);
+  height: 5px;
   color: gray;
 `
 
