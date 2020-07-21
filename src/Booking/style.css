@@ -104,8 +104,7 @@ table th {
   justify-content: center;
   align-items: center;
   width: 120px;
-  min-height: 480px !important;
-  max-height: 480px !important;
+  height: 480px;
   margin: 15px;
 }
 
@@ -117,3 +116,5 @@ table th {
 #calendar-title {
   margin-bottom: 30px;
 }
+
+  
