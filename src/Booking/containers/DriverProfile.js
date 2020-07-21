@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../style.css';
-import BookingCalendar from './BookingCalendar';
+import Booking from './Booking';
 import ReviewsList from '../components/ReviewsList';
 import { connect } from "react-redux";
 import { fetchDriver } from '../ducks/operations';
@@ -51,10 +51,15 @@ class DriverProfile extends Component {
                     <em>Rating {driver.rating} </em>
                     <img className="star" alt="star" src={star} />
                   </div>
-                <Title2>Rate: ${driver.rate}/hour</Title2>
                 <Button5 onClick={this.handleClick}><u>Driver reviews</u></Button5>
               </FlexColumn2>
-              <FlexColumn2 style={{ 'width': '70%' }}><Text>{driver.description}</Text></FlexColumn2>
+                <FlexColumn2 style={{ 'width': '70%' }}>
+                  <div style={{ 'borderBottom':'2px solid #f0f2f5', 'paddingBottom':'20px'}}>
+                    <Text>{driver.description}</Text>
+                  </div>
+                  <Title2>Rate: ${driver.rate}/hour</Title2>
+                </FlexColumn2>
+               
             </FlexRow1>
             <FlexColumn>
               <Title3>Vehicle:</Title3>
@@ -63,7 +68,7 @@ class DriverProfile extends Component {
             </FlexColumn>
               {reviewsOpen && <ReviewsList />}
           </FlexRowWrap>}
-          <BookingCalendar driver={driver} />
+          <Booking driver={driver} />
         </StyledContainer2>
       </StyledContainer>
     )

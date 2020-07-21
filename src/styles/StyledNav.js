@@ -31,7 +31,7 @@ export const StyledWelcome = styled.div`
   justify-content: space-around;
   font-family: Lato;
   font-size: calc(10px + 0.5vw);
-  color: blue;
+  color: #526482;
   margin: 0 1vw;
   background-color: white;
   padding: 3px 5px;

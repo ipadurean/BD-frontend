@@ -18,16 +18,16 @@ export const HourBox = styled.div`
   justify-content: center;
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
   font-size: 12px;
-  background-color: ${ props => props.busy ? 'white' : props.selected ? '#606c77' : '#e4dcc5'};
+  background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f2eedf'};
   color: ${ props => props.selected? 'white' : props.busy? 'silver' : 'black'};
   border: ${ props => props.busy ? '1px solid silver' : '1px solid white'};
   width: 60px;
-  height: 16px;
-  margin: 2px;
+  height: 26px;
+  margin: 4px;
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {
-    background-color: ${ props => props.busy ? 'white' : '#606c77'};
+    background-color: ${ props => props.busy ? 'white' : '#9e8a60'};
   }
 `
 

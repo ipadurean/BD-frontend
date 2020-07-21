@@ -6,7 +6,8 @@
 
 .driver-card {
   width: 50vw;
-  min-height: 300px;
+  max-width: 500px;
+  min-height: 200px;
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
 }
@@ -15,8 +16,8 @@
 #profile-photo {
   float: left;
   margin: 5px;
-  height: calc(25px + 5vw);
-  width: calc(25px + 5vw);
+  height: calc(20px + 5vw);
+  width: calc(20px + 5vw);
   border-radius: 18em;
 }
 

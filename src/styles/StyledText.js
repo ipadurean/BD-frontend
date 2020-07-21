@@ -25,7 +25,7 @@ export const Title2 = styled.div`
 export const Title3 = styled.div`
   font-family: Courgette;
   font-size: calc(10px + 0.5vw);
-  color: #39403e;
+  color: #526482;
   margin: 3px;
   display: inline-block;
 `
@@ -52,7 +52,7 @@ export const Text1 = styled.div`
 
 export const Text2 = styled.span`
   font-size: calc(6px + 0.6vw);
-  color: #567bb8;
+  color: #7d8eab;
 `
 
 export const Text3 = styled.span`

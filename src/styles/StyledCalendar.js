@@ -58,15 +58,15 @@ export const DateOuter = styled.div`
 export const DateInner = styled.div`
   display: flex;
   border-radius: 10px;
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   align-items: center;
   justify-content: center;
   cursor: ${ props => props.disabled ? 'not-allowed' : 'pointer'};
   color: ${ props => props.today ? '#3c83b5' : props.selected ? 'white' : props.disabled ? 'silver' : 'black'};
   background-color: ${ props => props.selected ? '#6e7f8f' : 'white'};
   &:hover {
-    background-color: ${ props => props.disabled ? 'white' : '#8dabc2'};
+    background-color: ${ props => props.disabled ? 'white' : '#d1e5e8'};
   }
 `
 
