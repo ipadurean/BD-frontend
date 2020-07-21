@@ -4,8 +4,9 @@ export const DayBar = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(260px + 10vw);
-  overflow: scroll;
+  overflow-y: scroll;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     display: none;
   }
