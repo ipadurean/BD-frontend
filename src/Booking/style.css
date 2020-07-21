@@ -103,8 +103,7 @@ table th {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 480px;
+  width: calc(60px + 2vw);
   margin: 15px;
 }
 

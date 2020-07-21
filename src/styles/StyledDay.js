@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DayBar = styled.div`
   display: flex;
   flex-direction: column;
-  height: calc(160px + 20vw);
+  height: calc(260px + 10vw);
   overflow: scroll;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
@@ -21,7 +21,7 @@ export const HourBox = styled.div`
   color: ${ props => props.selected? 'white' : props.busy? 'silver' : 'black'};
   border: ${ props => props.busy ? '1px solid silver' : '1px solid white'};
   width: calc(30px + 3vw);
-  height: calc(20px + 2vw);
+  height: calc(12px + 0.5vw);
   margin: calc(1px + 0.2vw);
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
