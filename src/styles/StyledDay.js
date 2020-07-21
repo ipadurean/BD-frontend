@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const DayBar = styled.div`
   display: flex;
   flex-direction: column;
-  height: 480px;
-  margin: 10px;
+  height: 420px;
   overflow: scroll;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {

@@ -38,7 +38,7 @@ export const Title4 = styled.div`
 `
 
 export const Text = styled.div`
-  font-size: calc(7px + 0.5vw);
+  font-size: calc(8px + 0.5vw);
   color: gray;
 `
 

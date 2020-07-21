@@ -70,7 +70,7 @@ export const Button5 = styled.div`
   min-width: 200px;
   font-weight: 600;
   font-size: calc(10px + 0.5vw);
-  color: rgb(60, 120, 175);
+  color: #a1812a;
   text-transform: uppercase;
   padding: 15px;
   &:hover {

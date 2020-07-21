@@ -82,7 +82,7 @@ class Day extends Component {
       (x - start) > 0 ?
         this.props.setTime({start, end: x + 1 }) :
         this.props.setTime({ start: null, end: null })
-    } else if (event.target.className.slice(-4) === "busy"){
+    } else if (event.target.className.slice(-9) !== "available"){
       this.props.setTime({ start: null, end: null })
     }
   }
@@ -105,7 +105,7 @@ class Day extends Component {
     const { daySelected } = this.props
   
     return (
-      <FlexColumn onClick={this.handleClick}>
+      <FlexColumn onClick={this.handleClick} style={{'width': '100%'}}>
         <ScrollArrow onClick={this.scrollDown} alt="up" src={arrowUp} />
           <DayBar ref="bar">{this.renderHours(daySelected)}</DayBar>
         <ScrollArrow onClick={this.scrollUp} alt="down" src={arrowDown} />

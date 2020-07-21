@@ -108,7 +108,7 @@ class Calendar extends Component {
    
     return (
       <CalendarBox>
-        <Title style={{ 'margin': '50px 0' }}>Select date and time: </Title>
+        <Title id="calendar-title">Select date and time: </Title>
         <CalendarHeader>
           <ButtonArrow onClick={this.monthPrev} src={leftArrow} alt="left" />
           <Label data-calendar-label="month">{this.getMonthYear()}</Label>

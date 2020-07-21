@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const CalendarBox = styled.div`
-  display: block !important;
   font-size: 16px;
-  padding: 3%;
-  margin: 0 3vw;
-  max-width: 400px;
+  max-width: 320px;
   min-width: 320px;
+  height: 480px;
   box-sizing: border-box;
+  margin: 20px;
 `
 
 export const CalendarBoxSmall = styled.div`

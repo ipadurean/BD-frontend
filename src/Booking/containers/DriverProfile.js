@@ -9,7 +9,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
 import star from '../../utils/assets/star-solid.svg';
 import { Title, Title2, Title3, Text } from '../../styles/StyledText';
-import { StyledContainer, StyledContainer2, FlexRow1, FlexRowWrap, FlexColumn, FlexColumn2, Loading } from '../../styles/StyledContainers';
+import { StyledContainer, FlexRowWrap, FlexColumn2, Loading } from '../../styles/StyledContainers';
 import { Button5 } from '../../styles/StyledButtons';
 
 
@@ -38,12 +38,11 @@ class DriverProfile extends Component {
    
     return (
       <StyledContainer ref={this.driverRef}>
-        <StyledContainer2>
+        <FlexRowWrap>
         {authorized && loading ? <Loading>Loading...</Loading> :
           authorized &&
-          <FlexRowWrap>
-            <FlexRow1 className='driver-card'>
-              <FlexColumn2>
+            <FlexRowWrap className='driver-card'>
+              <FlexColumn2 style={{ 'maxWidth': '180px' }}>
                 <Title style={{ 'width': '100%' }}>{driver.name}</Title>
                 <Title3>~ Chauffeur ~</Title3>
                   <img id="profile-photo" alt="img" src={driver.photo} />
@@ -53,23 +52,20 @@ class DriverProfile extends Component {
                   </div>
                 <Button5 onClick={this.handleClick}><u>Driver reviews</u></Button5>
               </FlexColumn2>
-                <FlexColumn2 style={{ 'width': '70%' }}>
-                  <div style={{ 'borderBottom':'2px solid #f0f2f5', 'paddingBottom':'20px'}}>
+                <FlexColumn2 style={{ 'maxWidth': '480px' }}>
+                  <div id="driver-description">
                     <Text>{driver.description}</Text>
                   </div>
                   <Title2>Rate: ${driver.rate}/hour</Title2>
                 </FlexColumn2>
-               
-            </FlexRow1>
-            <FlexColumn>
-              <Title3>Vehicle:</Title3>
-              <div id="vehicle-model">{driver.car}</div>
-              <LazyLoadImage effect="blur" className="car-photo" alt="car" src={driver.car_photo} />
-            </FlexColumn>
-              {reviewsOpen && <ReviewsList />}
+                <div>
+                  <div id="vehicle-model">{driver.car}</div>
+                  <LazyLoadImage effect="blur" className="car-photo" alt="car" src={driver.car_photo} />
+                </div>
+            {reviewsOpen && <ReviewsList />}
           </FlexRowWrap>}
           <Booking driver={driver} />
-        </StyledContainer2>
+        </FlexRowWrap>
       </StyledContainer>
     )
   }
