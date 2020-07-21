@@ -5,10 +5,7 @@ export const DayBar = styled.div`
   flex-direction: column;
   height: 420px;
   overflow: scroll;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  
 `
 
 export const HourBox = styled.div`
