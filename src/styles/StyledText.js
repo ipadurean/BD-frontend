@@ -59,6 +59,7 @@ export const Text3 = styled.span`
   font-size: calc(5px + 0.6vw);
   height: 5px;
   color: gray;
+  margin: 3px;
 `
 
 export const Text4 = styled.div`

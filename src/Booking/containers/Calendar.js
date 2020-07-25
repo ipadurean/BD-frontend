@@ -23,14 +23,14 @@ class Calendar extends Component {
       this.setState(prevState => ({
         monthSelected: prevState.monthSelected - 1,
       }));
-    this.props.setDay(null)
+    this.props.sendDay(null)
   }
 
   monthNext = () => {
     this.setState(prevState => ({
       monthSelected: prevState.monthSelected + 1,
     }))
-    this.props.setDay(null)
+    this.props.sendDay(null)
   }
 
   getMonthYear = () => {
@@ -100,7 +100,7 @@ class Calendar extends Component {
 
   displayDay = (event) => {
     event.target.className.slice(-6) === 'active' &&
-      this.props.setDay(parseInt(event.target.parentNode.dataset.calendarDate))
+      this.props.sendDay(parseInt(event.target.parentNode.dataset.calendarDate))
   }
   
 
@@ -139,7 +139,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setDay: (value) => dispatch(selectDay(value))
+    sendDay: (value) => dispatch(selectDay(value))
   }
 }
 

@@ -40,13 +40,14 @@ export const StyledWelcome = styled.div`
 
 export const SideItem = styled.a`
   font-size: calc(10px + 0.7vw);
-  color: #1b1b61 !important;
+  color: #1b1b61;
   line-height: 32px;
-  padding: 0 1vw;
+  padding: 0 2vw;
   border-bottom: 1px solid rgb(228, 233, 221); 
   cursor: pointer;
   margin: 1px;
-  width: 18vw;
+  width: 15vw;
+  min-width: 125px;
   &:hover {
    background-color: silver;
    text-decoration: none;

@@ -11,6 +11,7 @@ import star from '../../utils/assets/star-solid.svg';
 import { Title, Title2, Title3, Text } from '../../styles/StyledText';
 import { StyledContainer, FlexRowWrap, FlexColumn2, Loading } from '../../styles/StyledContainers';
 import { Button5 } from '../../styles/StyledButtons';
+import { DarkBackground } from '../../styles/GlobalStyle';
 
 
 
@@ -38,7 +39,9 @@ class DriverProfile extends Component {
    
     return (
       <StyledContainer ref={this.driverRef}>
-        <FlexRowWrap>
+        {reviewsOpen && <ReviewsList />}
+        <FlexRowWrap className='background'>
+          {reviewsOpen && <DarkBackground />}
         {authorized && loading ? <Loading>Loading...</Loading> :
           authorized &&
             <FlexRowWrap className='driver-card'>
@@ -62,7 +65,6 @@ class DriverProfile extends Component {
                   <div id="vehicle-model">{driver.car}</div>
                   <LazyLoadImage effect="blur" className="car-photo" alt="car" src={driver.car_photo} />
                 </div>
-            {reviewsOpen && <ReviewsList />}
           </FlexRowWrap>}
           <Booking driver={driver} />
         </FlexRowWrap>

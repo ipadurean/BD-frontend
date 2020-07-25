@@ -36,6 +36,7 @@
 
 .reviews-list {
   position: fixed;
+  z-index: 3;
   top: 20%;
   bottom: 20%;
   left: 10vw;
@@ -114,6 +115,10 @@ table th {
 
 #calendar-title {
   margin-bottom: 30px;
+}
+
+.background {
+   background-color: rgb(244, 247, 248);
 }
 
   

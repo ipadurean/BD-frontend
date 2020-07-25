@@ -9,6 +9,7 @@ const fadeIn = keyframes`
 export const StyledContainer = styled.div`
   animation-name: ${fadeIn};
   animation-duration: 1s;
+  background-color: rgb(244, 247, 248);
   min-height: 100vh;
   min-width: 100vw;
   padding-top: calc(4vh + 2vw);
@@ -104,9 +105,9 @@ export const FlexColumnFull = styled.div`
 
 export const Loading = styled.div`
   position: fixed;
-  top: 30vh;
+  top: 35vh;
   left: 40vw;
-  font-size: calc(2vh + 2vw);
+  font-size: calc(1vh + 2vw);
   color: gray;
 `
 
