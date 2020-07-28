@@ -10,9 +10,9 @@ const Quarters = () => {
   
   return (
     <>
-      <QuarterBox> :15</QuarterBox>
-      <QuarterBox> :30</QuarterBox>
-      <QuarterBox> :45</QuarterBox>
+      <QuarterBox className="quarter"> :15</QuarterBox>
+      <QuarterBox className="quarter"> :30</QuarterBox>
+      <QuarterBox className="quarter"> :45</QuarterBox>
     </>
     )
 }

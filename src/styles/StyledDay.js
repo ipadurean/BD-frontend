@@ -7,9 +7,12 @@ const fadeIn = keyframes`
 `
 
 export const Container = styled.div`
-   display: flex;
-   flex-direction: row;
-   width: auto;
+  display: flex;
+  flex-direction: row;
+  width: calc(180px + 1vw);
+  min-height: calc(12px + 1vw);
+  padding: 1px;
+  margin: 1px;
 `
 
 export const DayBar = styled.div`
@@ -18,6 +21,7 @@ export const DayBar = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(260px + 10vw);
+  width: calc(180px + 1vw);
   overflow-y: scroll;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
@@ -29,33 +33,40 @@ export const DayBar = styled.div`
 export const HourBox = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
-  font-size: calc(6px + 0.5vw);
   background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f2eedf'};
-  color: ${ props => props.selected? 'white' : props.busy? 'silver' : 'black'};
   border: ${ props => props.busy ? '1px solid silver' : '1px solid white'};
-  width: calc(30px + 3vw);
-  min-height: calc(10px + 1vw);
-  margin: calc(1px + 0.2vw);
+  width: calc(40px + 2vw);
+  min-height: calc(15px + 0.5vw);
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {
     background-color: ${ props => props.busy ? 'white' : '#9e8a60'};
   }
 `
+
+export const HourText = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 0.3vw);
+  width: calc(35px + 2vw);
+  color: ${ props => props.selected ? 'white' : props.busy ? 'silver' : 'black'};
+`
+
+
 export const QuarterBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
-  font-size: calc(6px + 0.5vw);
+  font-size: calc(10px + 0.3vw);
   background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f2eedf'};
   color: ${ props => props.selected ? 'white' : props.busy ? 'silver' : 'black'};
   border: ${ props => props.busy ? '1px solid silver' : '1px solid white'};
-  width: calc(15px + 1.5vw);
-  min-height: calc(10px + 1vw);
-  margin: calc(1px + 0.2vw);
+  width: calc(22px + 1vw);
+  min-height: calc(15px + 0.5vw);
+  margin-left: 2px;
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {
@@ -64,6 +75,13 @@ export const QuarterBox = styled.div`
 `
 
 export const ScrollArrow = styled.img`
-  width: calc(20px + 2vw);
+  width: calc(45px + 2vw);
   cursor: pointer;
+  align-self: flex-start;
+`
+
+export const Arrows = styled.img`
+  cursor: pointer;
+  height: calc(8px + 0.5vw);
+  margin-right: -1px;
 `

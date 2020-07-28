@@ -5,8 +5,9 @@ import { connect } from "react-redux";
 import { setTime, displayQuarters } from '../ducks/actions';
 import arrowUp from '../../utils/assets/arrow_drop_up.svg';
 import arrowDown from '../../utils/assets/arrow_drop_down.svg';
+import arrows from '../../utils/assets/arrows.svg';
 import { FlexColumn } from '../../styles/StyledContainers';
-import { Container, DayBar, HourBox, ScrollArrow } from '../../styles/StyledDay';
+import { Container, DayBar, HourBox, ScrollArrow, Arrows, HourText } from '../../styles/StyledDay';
 import Quarters from './Quarters';
 
 class Day extends Component {
@@ -55,39 +56,49 @@ class Day extends Component {
       if (i > parseInt(start) && this.bookedHours(day).includes(i)) {
             for(let k=i; k<36; k++){
               hours.push(
-                <Container key={k} data-val={k}>
-                  <HourBox busy data-val={null} className="busy">
-                  {dateValue(i).slice(16, 21)}
+                <Container key={k} data-value={k}>
+                  <HourBox busy data-val={i} className="busy">
+                    <HourText busy data-val={i} className="busy">{dateValue(i).slice(16, 21)}</HourText>
+                    <Arrows src={arrows} data-value={k} className="show-quarters"/>
                   </HourBox>
-                  {this.props.quarters === null && <Quarters />}
+                  {this.props.quarters === k && <Quarters />}
                 </Container>
               )
             } return hours;
       } else if (this.bookedHours(day).includes(i)) {
         hours.push(
-          <Container key={i} data-val={i}>
-            <HourBox busy data-val={null} className="busy">
-              {dateValue(i).slice(16, 21)}
+          <Container key={i} data-value={i}>
+            <HourBox busy data-val={i} className="busy">
+              <HourText busy data-val={i} className="busy">{dateValue(i).slice(16, 21)}</HourText>
+              <Arrows src={arrows} data-value={i} className="show-quarters"/>
             </HourBox>
-            {this.props.quarters === null && <Quarters />}
+            {this.props.quarters === i && <Quarters />}
           </Container>
         )
         } else if (i === parseInt(start)) {
         hours.push(
-          <Container key={i} data-val={i}>
+          <Container key={i} data-value={i}>
             <HourBox selected data-val={i} className="available">
-              {dateValue(i).slice(16, 21)}
+              <HourText selected data-val={i} className="available">{dateValue(i).slice(16, 21)}</HourText>
+              <Arrows src={arrows} data-value={i} className="show-quarters" />
             </HourBox>
             {this.props.quarters === i && <Quarters />}
           </Container>
         )
         } else if(i >= parseInt(start) && i < parseInt(end)) {
-        hours[i + 12] = <div key={i}><HourBox selected data-val={i} className="available">{dateValue(i).slice(16, 21)}</HourBox></div>
+        hours[i + 12] = <Container key={i} data-value={i}>
+          <HourBox selected data-val={i} className="available">
+            <HourText selected data-val={i} className="available">{dateValue(i).slice(16, 21)}</HourText>
+            <Arrows src={arrows} data-value={i} className="show-quarters" />
+          </HourBox>
+          {this.props.quarters === i && <Quarters />}
+        </Container>
         } else {
           hours.push(
-            <Container key={i} data-val={i}>
+            <Container key={i} data-value={i}>
               <HourBox data-val={i} className="available">
-                {dateValue(i).slice(16, 21)}
+                <HourText data-val={i} className="available">{dateValue(i).slice(16, 21)}</HourText>
+                <Arrows src={arrows} data-value={i} className="show-quarters"/>
               </HourBox>
               {this.props.quarters === i && <Quarters />}
             </Container>
@@ -132,22 +143,24 @@ class Day extends Component {
   }
 
   handleMouseOver = (event) => {
-    event.target.parentNode.dataset.val !== undefined &&
-    this.props.showQuarters(parseInt(event.target.dataset.val))
+    event.target.className.slice(-13) === "show-quarters" &&
+    this.props.showQuarters(parseInt(event.target.dataset.value))
   }
 
-  handleMouseOut = () => {
-    this.props.showQuarters(null)
+  handleMouseOut = (event) => {
+    (event.target.dataset.value === undefined && event.target.className.slice(-7) !== "quarter")
+      &&
+        this.props.showQuarters(null)
   }
 
   render() {
     const { daySelected, quarters } = this.props
-  console.log(quarters)
+ console.log(quarters)
     return (
       <FlexColumn onClick={this.handleClick}
                   onMouseOver={this.handleMouseOver}
                   onMouseOut={this.handleMouseOut}
-                  style={{ 'width': '100%' }}>
+        style={{ 'width': 'calc(180px + 1vw)' }}>
         <ScrollArrow onClick={this.scrollDown} alt="up" src={arrowUp} />
           <DayBar ref="bar">
             {this.renderHours(daySelected)}

@@ -107,8 +107,8 @@ export const Loading = styled.div`
   position: fixed;
   top: 40vh;
   left: 45vw;
-  font-size: calc(1vh + 2vw);
-  color: gray;
+  font-size: calc(1vh + 1vw);
+  color: black;
   z-index: 5;
 `
 
@@ -132,8 +132,10 @@ export const FixedContainer1 = styled.div`
   position: fixed;
   top: 40vh;
   bottom: auto;
-  left: calc(50vw - 150px);
+  left: calc(51vw - 200px);
   right:auto;
+  width: calc(400px + 1vw);
+  height: calc(300px + 1vw);
   border-radius: 5px;
   z-index: 2;
   background-image: linear-gradient(to bottom, #dae0e8 0%, #ebf0f0 100%);

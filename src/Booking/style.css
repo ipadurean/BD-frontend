@@ -104,7 +104,7 @@ table th {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100px + 2vw);
+  width: calc(180px + 2vw);
   margin: 15px;
 }
 
