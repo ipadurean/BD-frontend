@@ -105,10 +105,11 @@ export const FlexColumnFull = styled.div`
 
 export const Loading = styled.div`
   position: fixed;
-  top: 35vh;
-  left: 40vw;
+  top: 40vh;
+  left: 45vw;
   font-size: calc(1vh + 2vw);
   color: gray;
+  z-index: 5;
 `
 
 export const FixedContainer = styled.div`

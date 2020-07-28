@@ -111,7 +111,7 @@ class Calendar extends Component {
         <Title id="calendar-title">Select date and time: </Title>
         <CalendarHeader>
           <ButtonArrow onClick={this.monthPrev} src={leftArrow} alt="left" />
-          <Label data-calendar-label="month">{this.getMonthYear()}</Label>
+            <Label data-calendar-label="month">{this.getMonthYear()}</Label>
           <ButtonArrow onClick={this.monthNext} src={rightArrow} alt="right" />
         </CalendarHeader>
         <WeekContainer>

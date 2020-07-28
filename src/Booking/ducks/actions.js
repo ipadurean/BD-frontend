@@ -45,3 +45,10 @@ export const closeReviews = () => {
     type: types.CLOSE_REVIEWS
   }
 }
+
+export const displayQuarters = (value) => {
+  return {
+    type: types.DISPLAY_QUARTERS,
+    payload: value
+  }
+}

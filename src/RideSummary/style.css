@@ -16,7 +16,7 @@
 }
 
 #trip-header {
-  background-color: rgb(237, 238, 238);
+  background-color: rgb(235, 240, 241);
   padding: 1%;
   height: 30px;
   border-radius: 5px;
@@ -70,7 +70,7 @@
 }
 
 .side-bar {
-  background-image: linear-gradient(to bottom, #4b72928f 0%, #9fb7c2 50%, #a9b8c7ab 100%);
+  background-image: linear-gradient(to bottom, #272e338f 0%, #b3bec4 50%, #83909cab 100%);
   width: calc(100px + 10vw);
 }
 

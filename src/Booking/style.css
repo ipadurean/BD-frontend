@@ -41,7 +41,7 @@
   bottom: 20%;
   left: 10vw;
   right: 10vw;
-  animation: fadeIn 1s;
+  animation: fadeIn 0.5s;
   max-height: 500px;
   overflow: scroll;
   width: 80vw;
@@ -104,7 +104,7 @@ table th {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(60px + 2vw);
+  width: calc(100px + 2vw);
   margin: 15px;
 }
 
