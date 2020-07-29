@@ -48,7 +48,9 @@ class DriverProfile extends Component {
               <FlexColumn2 style={{ 'maxWidth': '180px' }}>
                 <Title style={{ 'width': '100%' }}>{driver.name}</Title>
                 <Title3>~ Chauffeur ~</Title3>
-                  <img id="profile-photo" alt="img" src={driver.photo} />
+                 
+                    <img id="profile-photo" alt="img" src={driver.photo} />
+                
                   <div style={{'display': 'inline-block'}}>
                     <em>Rating {driver.rating} </em>
                     <img className="star" alt="star" src={star} />
@@ -61,7 +63,7 @@ class DriverProfile extends Component {
                   </div>
                   <Title2>Rate: ${driver.rate}/hour</Title2>
                 </FlexColumn2>
-                <div>
+                <div  id="car-photo-box">
                   <div id="vehicle-model">{driver.car}</div>
                   <LazyLoadImage effect="blur" className="car-photo" alt="car" src={driver.car_photo} />
                 </div>

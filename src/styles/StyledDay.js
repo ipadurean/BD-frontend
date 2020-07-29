@@ -9,10 +9,10 @@ const fadeIn = keyframes`
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  width: calc(180px + 1vw);
-  min-height: calc(12px + 1vw);
+  width: calc(185px + 1vw);
+  min-height: calc(15px + 0.5vw);
   padding: 1px;
-  margin: 1px;
+  margin: 3px;
 `
 
 export const DayBar = styled.div`
@@ -21,7 +21,7 @@ export const DayBar = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(260px + 10vw);
-  width: calc(180px + 1vw);
+  width: calc(185px + 1vw);
   overflow-y: scroll;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
@@ -66,7 +66,7 @@ export const QuarterBox = styled.div`
   border: ${ props => props.busy ? '1px solid silver' : '1px solid white'};
   width: calc(22px + 1vw);
   min-height: calc(15px + 0.5vw);
-  margin-left: 2px;
+  margin-left: 4px;
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {

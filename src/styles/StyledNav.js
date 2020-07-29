@@ -43,7 +43,7 @@ export const SideItem = styled.a`
   color: #1b1b61;
   line-height: 32px;
   padding: 0 2vw;
-  border-bottom: 1px solid rgb(228, 233, 221); 
+  border-bottom: 1px solid white; 
   cursor: pointer;
   margin: 1px;
   width: 15vw;

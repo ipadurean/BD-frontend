@@ -23,7 +23,7 @@ const Invoice = (props) => {
         <Title>Your ride with {driver.name} was booked!</Title>
         <FlexColumn2>
           <Title2> Date: <Text2><b>{Parse.formatDate(TimeZone.toCentralTime(trip.start_time))}</b></Text2></Title2>
-          <Title2>From: <Text2><b>{TimeZone.toCentralTime(trip.start_time).slice(16, 18)}:00</b></Text2> to: <Text2><b>{TimeZone.toCentralTime(trip.end_time).slice(16, 18)}:00</b></Text2></Title2>
+          <Title2>From: <Text2><b>{TimeZone.toCentralTime(trip.start_time).slice(16, 21)}</b></Text2> to: <Text2><b>{TimeZone.toCentralTime(trip.end_time).slice(16, 21)}</b></Text2></Title2>
           <Title2>The pick up address is: <Text2><b>{trip.address}</b></Text2></Title2>
           <Title2>Total charged: <Text2><b>${trip.total}</b></Text2></Title2>
         </FlexColumn2>

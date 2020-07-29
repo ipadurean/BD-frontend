@@ -46,61 +46,72 @@ class Day extends Component {
 
 
   renderHours = (day) => {
+
     const { start, end} = this.props
-    const dateValue = (hour) => {
-      return new Date(new Date(day).setHours(hour)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
+    const dateValue = (minutes) => {
+      return new Date(new Date(day).setMinutes(minutes)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
     }
     let hours = [];
     let i = 0;
     while (i < 36) {
-      if (i > parseInt(start) && this.bookedHours(day).includes(i)) {
+      if (i*60 > parseInt(start) && this.bookedHours(day).includes(i)) {
             for(let k=i; k<36; k++){
               hours.push(
-                <Container key={k} data-value={k}>
-                  <HourBox busy data-val={i} className="busy">
-                    <HourText busy data-val={i} className="busy">{dateValue(i).slice(16, 21)}</HourText>
+                <Container key={k} data-value={k} className="container">
+                  <HourBox busy data-val={k*60} className="busy">
+                    <HourText busy data-val={k*60} className="busy">{dateValue(i*60).slice(16, 21)}</HourText>
                     <Arrows src={arrows} data-value={k} className="show-quarters"/>
                   </HourBox>
-                  {this.props.quarters === k && <Quarters />}
+                  {this.props.quarters === k && <Quarters minutes={k*60} />}
                 </Container>
               )
             } return hours;
       } else if (this.bookedHours(day).includes(i)) {
         hours.push(
-          <Container key={i} data-value={i}>
-            <HourBox busy data-val={i} className="busy">
-              <HourText busy data-val={i} className="busy">{dateValue(i).slice(16, 21)}</HourText>
+          <Container key={i} data-value={i} className="container">
+            <HourBox busy data-val={i * 60} className="busy">
+              <HourText busy data-val={i * 60} className="busy">{dateValue(i*60).slice(16, 21)}</HourText>
               <Arrows src={arrows} data-value={i} className="show-quarters"/>
             </HourBox>
-            {this.props.quarters === i && <Quarters />}
+            {this.props.quarters === i && <Quarters minutes={i*60} />}
           </Container>
         )
-        } else if (i === parseInt(start)) {
+      } else if (start !== null && i === parseInt(start/60)) {
         hours.push(
-          <Container key={i} data-value={i}>
-            <HourBox selected data-val={i} className="available">
-              <HourText selected data-val={i} className="available">{dateValue(i).slice(16, 21)}</HourText>
+          <Container key={i} data-value={i} className="container">
+            <HourBox selected data-val={i * 60} className="available">
+              <HourText selected data-val={i * 60} className="available">{dateValue(start).slice(16, 21)}</HourText>
               <Arrows src={arrows} data-value={i} className="show-quarters" />
             </HourBox>
-            {this.props.quarters === i && <Quarters />}
+            {this.props.quarters === i && <Quarters minutes={i*60} />}
           </Container>
         )
-        } else if(i >= parseInt(start) && i < parseInt(end)) {
-        hours[i + 12] = <Container key={i} data-value={i}>
-          <HourBox selected data-val={i} className="available">
-            <HourText selected data-val={i} className="available">{dateValue(i).slice(16, 21)}</HourText>
-            <Arrows src={arrows} data-value={i} className="show-quarters" />
-          </HourBox>
-          {this.props.quarters === i && <Quarters />}
-        </Container>
-        } else {
+        } else if(i >= parseInt(start/60) && i < parseInt(end/60)) {
+          hours[i + 12] = <Container key={i} data-value={i} className="container">
+            <HourBox selected data-val={i * 60} className="available">
+              <HourText selected data-val={i * 60} className="available">{dateValue(i*60).slice(16, 21)}</HourText>
+              <Arrows src={arrows} data-value={i} className="show-quarters" />
+            </HourBox>
+            {this.props.quarters === i && <Quarters minutes={i*60} />}
+          </Container>
+        } else if (i*60 < end && i === parseInt(end/60)) {
+        hours.push(
+          <Container key={i} data-value={i} className="container">
+            <HourBox data-val={i * 60} className="available">
+              <HourText data-val={i * 60} className="available">{dateValue(end).slice(16, 21)}</HourText>
+              <Arrows src={arrows} data-value={i} className="show-quarters" />
+            </HourBox>
+            {this.props.quarters === i && <Quarters minutes={i * 60} />}
+        </Container>)
+      }
+      else {
           hours.push(
-            <Container key={i} data-value={i}>
-              <HourBox data-val={i} className="available">
-                <HourText data-val={i} className="available">{dateValue(i).slice(16, 21)}</HourText>
+            <Container key={i} data-value={i} className="container">
+              <HourBox data-val={i * 60} className="available">
+                <HourText data-val={i * 60} className="available">{dateValue(i*60).slice(16, 21)}</HourText>
                 <Arrows src={arrows} data-value={i} className="show-quarters"/>
               </HourBox>
-              {this.props.quarters === i && <Quarters />}
+              {this.props.quarters === i && <Quarters minutes={i*60} />}
             </Container>
           )
         }
@@ -110,20 +121,23 @@ class Day extends Component {
   }
 
   handleClick = (event) => {
+
     const { start, end } = this.props
     let x = parseInt(event.target.dataset.val)
-    
-    if (event.target.className.slice(-9) === "available") {
+    this.props.showQuarters(null)
+    if (event.target.className.slice(-9) === "available" || event.target.className.slice(-7) === "quarter") {
       start === null ?
-        this.props.setTime({start: x, end: x+1}) :
+        this.props.setTime({start: x, end: x + 60}) :
       (x - start) <= 0 ?
-        this.props.setTime({ start: x, end: x + 1 }) :
-      end - start > 1 ?
-        this.props.setTime({ start: x, end: x + 1 }) :
-      (x - start) > 0 ?
-        this.props.setTime({start, end: x + 1 }) :
+        this.props.setTime({ start: x, end: x + 60 }) :
+      end - start > 60 ?
+        this.props.setTime({ start: x, end: x + 60 }) :
+      (x - start) > 60 ?
+        this.props.setTime({ start, end: x }) :
+      (x - start) > 0 && (x - start) <= 60 ?
+        this.props.setTime({ start: x, end: x + 60 }):
         this.props.setTime({ start: null, end: null })
-    } else if (event.target.className.slice(-9) !== "available"){
+    } else if (event.target.className.slice(-9) !== "available" && event.target.className.slice(-7) !== "quarter"){
       this.props.setTime({ start: null, end: null })
     }
   }
@@ -143,24 +157,22 @@ class Day extends Component {
   }
 
   handleMouseOver = (event) => {
-    event.target.className.slice(-13) === "show-quarters" &&
-    this.props.showQuarters(parseInt(event.target.dataset.value))
+    console.log(event.target.dataset.val)
+    event.target.className.slice(-13) === "show-quarters"?
+      this.props.showQuarters(parseInt(event.target.dataset.value)) :
+      event.target.className.slice(-7) === "quarter" ?
+        this.props.showQuarters(parseInt(event.target.parentNode.dataset.value)) :
+        event.target.className.slice(-9) !== "container" && this.props.showQuarters(null)
   }
 
-  handleMouseOut = (event) => {
-    (event.target.dataset.value === undefined && event.target.className.slice(-7) !== "quarter")
-      &&
-        this.props.showQuarters(null)
-  }
 
   render() {
-    const { daySelected, quarters } = this.props
- console.log(quarters)
+    const { daySelected, start, end } = this.props
+ console.log(start, end)
     return (
       <FlexColumn onClick={this.handleClick}
                   onMouseOver={this.handleMouseOver}
-                  onMouseOut={this.handleMouseOut}
-        style={{ 'width': 'calc(180px + 1vw)' }}>
+                  style={{ 'width': 'calc(185px + 1vw)' }}>
         <ScrollArrow onClick={this.scrollDown} alt="up" src={arrowUp} />
           <DayBar ref="bar">
             {this.renderHours(daySelected)}

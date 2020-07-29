@@ -41,23 +41,23 @@ class BookingForm extends Component {
             </tr>
             <tr>
               <th>Date:</th>
-              <th><FakeInput>{daySelected && Parse.formatDate(new Date(new Date(daySelected).setHours(start)))}</FakeInput></th> 
+              <th><FakeInput>{daySelected && Parse.formatDate(new Date(new Date(daySelected).setMinutes(start)))}</FakeInput></th> 
             </tr>
             <tr>
               <th>From: </th>
-              <th><FakeInput>{new Date(new Date(daySelected).setHours(start)).toString().slice(15, 21)}</FakeInput></th>
+              <th><FakeInput>{new Date(new Date(daySelected).setMinutes(start)).toString().slice(15, 21)}</FakeInput></th>
             </tr>
             <tr>
               <th>To: </th>
-              <th><FakeInput>{new Date(new Date(daySelected).setHours(end)).toString().slice(15, 21)}</FakeInput></th>
+              <th><FakeInput>{new Date(new Date(daySelected).setMinutes(end)).toString().slice(15, 21)}</FakeInput></th>
             </tr>
             <tr>
               <th>Total time selected:</th>
-              <th><FakeInput>{end - start} hours</FakeInput></th>
+              <th><FakeInput>{parseFloat((end - start)/60)} hours</FakeInput></th>
             </tr>
             <tr>
               <th>Total: </th>
-              <th><FakeInput>${(end - start) * driver.rate}</FakeInput></th>
+              <th><FakeInput>${parseFloat((end - start) / 60) * driver.rate}</FakeInput></th>
             </tr>
           </tbody>
         </table>
