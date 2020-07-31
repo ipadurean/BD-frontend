@@ -35,7 +35,7 @@ export const HourBox = styled.div`
   align-items: center;
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
   background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f2eedf'};
-  border: ${ props => props.busy ? '1px solid silver' : '1px solid white'};
+  border: ${ props => props.busy ? '1px solid silver' : '2px solid white'};
   width: calc(40px + 2vw);
   min-height: calc(15px + 0.5vw);
   border-radius: 10px;
@@ -83,5 +83,5 @@ export const ScrollArrow = styled.img`
 export const Arrows = styled.img`
   cursor: pointer;
   height: calc(8px + 0.5vw);
-  margin-right: -1px;
+  margin-right: -2px;
 `

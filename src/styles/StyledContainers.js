@@ -116,7 +116,7 @@ export const FixedContainer = styled.div`
   position: fixed;
   top: 30vh;
   bottom: auto;
-  left: 30vw;
+  left: calc(50vw - 200px);
   right:auto;
   border-radius: 5px;
   z-index: 2;
@@ -132,10 +132,8 @@ export const FixedContainer1 = styled.div`
   position: fixed;
   top: 40vh;
   bottom: auto;
-  left: calc(51vw - 200px);
+  left: calc(50vw - 100px);
   right:auto;
-  width: calc(400px + 1vw);
-  height: calc(300px + 1vw);
   border-radius: 5px;
   z-index: 2;
   background-image: linear-gradient(to bottom, #dae0e8 0%, #ebf0f0 100%);

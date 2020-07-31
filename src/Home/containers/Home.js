@@ -3,7 +3,7 @@ import FilterDrivers from "./FilterDrivers";
 import DriversList from '../components/DriversList';
 import { fetchDrivers } from '../../Main/ducks/operations';
 import { connect } from 'react-redux';
-import { StyledContainer } from '../../styles/StyledContainers';
+import { StyledContainer, Loading } from '../../styles/StyledContainers';
 
 
 class Home extends Component {
@@ -21,13 +21,25 @@ class Home extends Component {
   }
 
   
-  render(){
+  render() {
+    const { loading } = this.props
     return (
       <StyledContainer>
-        <FilterDrivers />
-        <DriversList />
+        {loading ?
+          <Loading>Loading...</Loading> :
+          <>
+            <FilterDrivers />
+            <DriversList />
+          </>
+        }
       </StyledContainer>
     )
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    loading: state.drivers.loading,
   }
 }
 
@@ -38,4 +50,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

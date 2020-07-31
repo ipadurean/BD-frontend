@@ -17,7 +17,7 @@ class Day extends Component {
     const { driver } = this.props
     let bookedHours = [];
     const date1 = new Date(day);
-    const date2 = new Date(day).setHours(36);
+    const date2 = new Date(day).setHours(30);
    
     const filteredTrips = driver.trips.filter(el => {
       const startDate = new Date(el.start_time).getTime();
@@ -27,21 +27,21 @@ class Day extends Component {
         (startDate < date2 && endDate >= date2)
     })
 
- 
-    const newArr = filteredTrips.map(el => {
-      const hour = 3600000;
-      const start = (new Date(el.start_time).getTime() - date1)/hour;
-      const end = (new Date(el.end_time).getTime() - date1) / hour;
-      const hoursToCentralTime = (date1.getTimezoneOffset() - 300)/60
-       return [start + hoursToCentralTime, end + hoursToCentralTime]
-    })
+      const newArr = filteredTrips.map(el => {
+        const hour = 3600000;  //one hour in miliseconds
+        const start = (new Date(el.start_time).getTime() - date1)/hour;
+        const end = (new Date(el.end_time).getTime() - date1) / hour;
+        const hoursToCentralTime = (date1.getTimezoneOffset() - 300)/60
+        return [start + hoursToCentralTime, end + hoursToCentralTime]
+      })
     
-    for (let i = 0; i < newArr.length; i++){
+        for (let i = 0; i < newArr.length; i++){
           for(let k = newArr[i][0]; k < newArr[i][1]; k++){
             bookedHours.push(k)
           }
-    }
-      return bookedHours.sort((a,b) => a-b);
+        }
+    
+    return bookedHours.sort((a,b) => a-b);
   }
 
 
@@ -53,9 +53,9 @@ class Day extends Component {
     }
     let hours = [];
     let i = 0;
-    while (i < 36) {
+    while (i < 30) {
       if (i*60 > parseInt(start) && this.bookedHours(day).includes(i)) {
-            for(let k=i; k<36; k++){
+            for(let k=i; k<30; k++){
               hours.push(
                 <Container key={k} data-value={k} className="container">
                   <HourBox busy data-val={k*60} className="busy">
