@@ -57,7 +57,8 @@ export const FlexRowWrap = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 1% 2%;
+  padding: 3%;
+  height: auto;
 `
 
 export const FlexRowFull = styled.div`

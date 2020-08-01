@@ -45,7 +45,6 @@ const DriversList = (props) => {
 
 DriversList.propTypes = {
   drivers: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
 }
   
 function mapStateToProps(state){

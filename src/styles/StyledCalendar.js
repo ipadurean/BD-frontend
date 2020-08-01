@@ -6,7 +6,7 @@ export const CalendarBox = styled.div`
   min-width: 320px;
   height: 480px;
   box-sizing: border-box;
-  margin: 50px;
+  margin: 20px;
 `
 
 export const CalendarBoxSmall = styled.div`

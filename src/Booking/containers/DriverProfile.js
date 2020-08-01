@@ -42,7 +42,7 @@ class DriverProfile extends Component {
         {reviewsOpen && <ReviewsList />}
         <FlexRowWrap className='background'>
           {reviewsOpen && <DarkBackground />}
-        {authorized && loading ? <Loading>Loading...</Loading> :
+          {authorized && loading ? <Loading>Loading...</Loading> :
           authorized &&
             <FlexRowWrap className='driver-card'>
               <FlexColumn2 style={{ 'maxWidth': '180px' }}>

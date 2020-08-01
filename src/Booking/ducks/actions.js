@@ -46,9 +46,3 @@ export const closeReviews = () => {
   }
 }
 
-export const displayQuarters = (value) => {
-  return {
-    type: types.DISPLAY_QUARTERS,
-    payload: value
-  }
-}

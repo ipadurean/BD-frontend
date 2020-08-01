@@ -7,7 +7,6 @@ const initialState = {
   driver: {},
   daySelected: false,
   reviewsOpen: false,
-  displayQuarters: null,
   time: {
     start: null,
     end: null
