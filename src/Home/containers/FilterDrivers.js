@@ -32,7 +32,7 @@ class FilterDrivers extends Component {
     const { end } = this.props.home
     let count = 0;
     let hours = []
-      while (count < (end || 36)){
+      while (count < (end || 30)){
         hours.push(<option data-val={count} key={count}>{this.displayHours(count)}</option>);
           count +=1;
       }
@@ -43,7 +43,7 @@ class FilterDrivers extends Component {
     const { start } = this.props.home
     let count = start || 1;
     let hours = []
-      while (count <= 36){
+      while (count <= 30){
         hours.push(<option data-val={count} key={count}>{this.displayHours(count)}</option>);
           count +=1;
       }
@@ -63,7 +63,7 @@ class FilterDrivers extends Component {
       history.push(`/home/drivers/search?keyword=${this.state.filter}&from=${date1}&to=${date2}`)
       search();
       sendDate(selectedDate);
-      sendTime({start, end});
+      sendTime({start: start * 4, end: end * 4});
   }
 
   handleChange = (event) => {
