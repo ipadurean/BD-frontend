@@ -35,7 +35,7 @@ export const HourBox = styled.div`
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {
-    background-color: ${ props => props.busy ? 'white' : '#9e8a60'};
+    background-color: ${ props => props.busy ? 'white' : '#f0d1a8'};
   }
 `
 
