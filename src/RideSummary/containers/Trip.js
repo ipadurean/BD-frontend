@@ -53,9 +53,9 @@ const Trip = (props) => {
                   <div style={{'maxHeight': '100px'}}><Title4>My review: </Title4><Text3><i>{trip.review}</i></Text3></div>} */}
                   {trip.rating && <Title4>My rating: <Text2>{trip.rating}</Text2></Title4>}
               </div>}
-          {past && <FlexColumn2 style={{'float': 'right'}}>
-            {!trip.review && !reviewOpen && <Button4 onClick={addReview}><u>Add Review</u></Button4>}
-            {!trip.rating && !ratingOpen && <Button4 onClick={addRating}><u>Rate Driver</u></Button4>}
+                {past && <FlexColumn2 style={{'float': 'right'}}>
+                  {!trip.review && !reviewOpen && <Button4 onClick={addReview}><u>Add Review</u></Button4>}
+                  {!trip.rating && !ratingOpen && <Button4 onClick={addRating}><u>Rate Driver</u></Button4>}
           </FlexColumn2>}
         </div>
       </FlexRow>

@@ -12,11 +12,11 @@ import { DayBar, HourBox, ScrollArrow, HourText } from '../../styles/StyledDay';
 class Day extends Component {
 
 
-  bookedHours = (day) => {
-    const { driver } = this.props
+  bookedHours = () => {
+    const { daySelected, driver } = this.props
     let bookedHours = [];
-    const date1 = new Date(day);
-    const date2 = new Date(day).setHours(30);
+    const date1 = new Date(daySelected);
+    const date2 = new Date(daySelected).setHours(30);
    
     const filteredTrips = driver.trips.filter(el => {
       const startDate = new Date(el.start_time).getTime();
@@ -42,15 +42,15 @@ class Day extends Component {
   }
 
 
-  renderHours = (day) => {
-    const { start, end} = this.props
+  renderHours = () => {
+    const { daySelected, start, end} = this.props
     const dateValue = (minutes) => {
-      return new Date(new Date(day).setMinutes(minutes)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
+      return new Date(new Date(daySelected).setMinutes(minutes)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
     }
     let hours = [];
     let i = 0;
     while (i < 120) {
-      if (i > start && start !== null && this.bookedHours(day).includes(i)) {
+      if (i > start && start !== undefined && this.bookedHours().includes(i)) {
             for(let k=i; k<120; k++){
               hours.push(
                 <HourBox key={k} busy quarter={!!parseInt(k % 4)} data-val={k} className="busy">
@@ -58,19 +58,19 @@ class Day extends Component {
                 </HourBox>
               )
             } return hours;
-      } else if (this.bookedHours(day).includes(i)) {
+      } else if (this.bookedHours().includes(i)) {
         hours.push(
           <HourBox key={i} busy quarter={!!parseInt(i % 4)} data-val={i} className="busy">
             <HourText busy quarter={!!parseInt(i % 4)} data-val={i} className="busy">{dateValue(i * 15).slice(16, 21)}</HourText>
           </HourBox>
         )
-      } else if (start !== null && i === start) {
+      } else if (start !== undefined && i === start) {
         hours.push(
           <HourBox key={i}  selected quarter={!!parseInt(i % 4)} data-val={i} className="available">
             <HourText selected quarter={!!parseInt(i % 4)} data-val={i} className="available">{dateValue(start * 15).slice(16, 21)}</HourText>
           </HourBox>
         )
-      } else if(i > start && i < end) {
+      } else if(i > start && i <= end) {
         hours[i] = 
           <HourBox key={i}  selected quarter={!!parseInt(i % 4)} data-val={i} className="available">
             <HourText selected quarter={!!parseInt(i % 4)} data-val={i} className="available">{dateValue(i * 15).slice(16, 21)}</HourText>
@@ -89,22 +89,26 @@ class Day extends Component {
   }
 
   handleClick = (event) => {
-    const { start, end } = this.props
-    let x = parseInt(event.target.dataset.val)
+    const { start, end } = this.props;
+    const x = parseInt(event.target.dataset.val);
+    const y = this.bookedHours();
+    function validateMinBooking(){
+      return !y.includes(x+1) && !y.includes(x+2) && !y.includes(x+3)
+    }
       if (event.target.className.slice(-9) === "available") {
-        start === null ?
-          this.props.setTime({ start: x, end: x + 4 }) :
+        start === undefined && validateMinBooking() ?
+          this.props.setTime({ start: x, end: x + 3 }) :
         (x - start) <= 0 ?
-          this.props.setTime({ start: x, end: x + 4 }) :
-        end - start > 4 ?
-          this.props.setTime({ start: x, end: x + 4 }) :
-        (x - start) > 4 ?
+          this.props.setTime({ start: x, end: x + 3 }) :
+        end - start > 3 && validateMinBooking() ?
+          this.props.setTime({ start: x, end: x + 3 }) :
+        (x - start) > 3 && (end - start) === 3 ?
           this.props.setTime({ start, end: x }) :
-        (x - start) > 0 && (x - start) <= 4 ?
-          this.props.setTime({ start: x, end: x + 4 }):
-          this.props.setTime({ start: null, end: null })
+        (x - start) > 0 && (x - start) <= 3 && validateMinBooking() ?
+          this.props.setTime({ start: x, end: x + 3 }):
+          this.props.setTime({ start: undefined, end: undefined })
       } else if (event.target.className.slice(-9) !== "available" && event.target.name !== "scroll"){
-        this.props.setTime({ start: null, end: null })
+        this.props.setTime({ start: undefined, end: undefined })
       }
   }
 
@@ -124,13 +128,13 @@ class Day extends Component {
 
 
   render() {
-    const { daySelected } = this.props
-
+    const { start, end } = this.props;
+    console.log(start, end)
     return (
       <FlexColumn onClick={this.handleClick}>
         <ScrollArrow onClick={this.scrollDown} alt="up" src={arrowUp} name="scroll" />
           <DayBar ref="bar">
-            {this.renderHours(daySelected)}
+            {this.renderHours()}
           </DayBar>
         <ScrollArrow onClick={this.scrollUp} alt="down" src={arrowDown} name="scroll" />
       </FlexColumn>)

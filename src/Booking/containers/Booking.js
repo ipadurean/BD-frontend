@@ -14,9 +14,9 @@ class Booking extends Component {
   bookRide = (event, item) => {
     const { start, end, user, driver, daySelected } = this.props
     event.preventDefault();
-    const timeTotal = parseFloat((end - start)/4)
+    const timeTotal = parseFloat((end - start + 1)/4)
     let date1 = new Date(new Date(daySelected).setMinutes(start * 15)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
-    let date2 = new Date(new Date(daySelected).setMinutes(end * 15)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
+    let date2 = new Date(new Date(daySelected).setMinutes(end * 15 + 15)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
     const bookingBody = {
       user_id: user.id, 
       driver_id: driver.id,

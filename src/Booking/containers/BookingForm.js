@@ -29,8 +29,13 @@ class BookingForm extends Component {
   }
 
   render(){
-    const { driver, daySelected, start, end, submit } = this.props 
-    
+    const { driver, daySelected, start, end, submit } = this.props;
+    const date = daySelected && Parse.formatDate(new Date(new Date(daySelected).setMinutes((start || 0) * 15)));
+    const from = new Date(new Date(daySelected).setMinutes(start * 15)).toString().slice(15, 21);
+    const to = new Date(new Date(daySelected).setMinutes(end * 15 + 15)).toString().slice(15, 21);
+    const totalTime = parseFloat((end - start + 1) / 4);
+    const totalCost = parseFloat((end - start + 1) / 4) * driver.rate;
+
     return (
       <StyledContainer2 id='booking-form'>
         <table>
@@ -41,23 +46,23 @@ class BookingForm extends Component {
             </tr>
             <tr>
               <th>Date:</th>
-              <th><FakeInput>{daySelected && Parse.formatDate(new Date(new Date(daySelected).setMinutes(start * 15)))}</FakeInput></th> 
+              <th><FakeInput>{date}</FakeInput></th> 
             </tr>
             <tr>
               <th>From: </th>
-              <th><FakeInput>{new Date(new Date(daySelected).setMinutes(start * 15)).toString().slice(15, 21)}</FakeInput></th>
+              <th><FakeInput>{from}</FakeInput></th>
             </tr>
             <tr>
               <th>To: </th>
-              <th><FakeInput>{new Date(new Date(daySelected).setMinutes(end * 15)).toString().slice(15, 21)}</FakeInput></th>
+              <th><FakeInput>{to}</FakeInput></th>
             </tr>
             <tr>
               <th>Total time selected:</th>
-              <th><FakeInput>{parseFloat((end - start)/4)} hours</FakeInput></th>
+              <th><FakeInput>{totalTime || 0} hours</FakeInput></th>
             </tr>
             <tr>
               <th>Total: </th>
-              <th><FakeInput>${parseFloat((end - start)/4) * driver.rate}</FakeInput></th>
+              <th><FakeInput>${totalCost || 0}</FakeInput></th>
             </tr>
           </tbody>
         </table>
