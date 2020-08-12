@@ -27,6 +27,7 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.88.1",
     "serialize-javascript": "^4.0.0",
+    "serve": "^11.3.2",
     "styled-components": "^5.1.1"
   },
   "scripts": {
@@ -38,7 +39,6 @@
     "lint": "eslint .",
     "heroku-postbuild": "npm run build"
   },
-
   "eslintConfig": {
     "extends": "react-app"
   },
