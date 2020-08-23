@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Button1 = styled.button`
   border-radius: 3px;
   font-size: calc(8px + 0.5vw);
+  font-weight: 600;
+  color: #484a49;
   width: calc(30px + 3vw);
   height: calc(15px + 1vw);
   cursor: pointer;
@@ -44,6 +46,7 @@ export const Button2 = styled.button`
 export const Button3 = styled.button`
   border-radius: 2px;
   font-size: calc(5px + 0.5vw);
+  font-weight: 600;
   cursor: pointer;
   border: none;
   background:linear-gradient(0.3turn, #c5bc97, #eee5cb, #c7ac8b);
@@ -92,14 +95,17 @@ export const ButtonBook1 = styled.div`
   width: 30vw;
   max-width: 300px;
   border-radius: 20px;
-  background-color: #bcccca;
+  background-color: #f06b65;
   box-shadow: 1px 1px 1px 1px #757272;
   color: white;
 `
 
 export const ButtonBook2 = styled.button`
   border-radius: 20px;
-  background:linear-gradient(0.3turn, #948b68, #d1c5a4, #a88b68);
+  background-color: #f06b65;
+  color: white;
+  font-size: calc(10px + 0.5vw);
+  font-weight: 600;
   border: 1px solid rgb(202, 202, 218);
   box-shadow: 1px 1px 1px 1px #757272;
   width: 420px;

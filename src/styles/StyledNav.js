@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledNav = styled.div`
-  background-color: #d3dde0;
+  background-color: #666b6a;
   box-shadow: 0 2px 5px -2px rgb(77, 75, 75);
   position: fixed;
   left: 0;
@@ -14,14 +14,15 @@ export const StyledNav = styled.div`
 
 export const NavItem = styled.a`
   font-size: calc(10px + 0.7vw);
+  font-weight: 700;
   text-decoration: none;
-  color: rgb(107, 107, 107) !important;
+  color: white !important;
   line-height: 32px;
   padding: 0 1vw;
-  border-right: 3px solid rgb(246, 246, 250); 
+  border-right: 3px solid #e1e3e2; 
   cursor: pointer;
   &:hover {
-   color: rgb(47, 52, 78) !important;
+   color: silver !important;
    text-decoration: none;
   }
 `
@@ -40,6 +41,7 @@ export const StyledWelcome = styled.div`
 
 export const SideItem = styled.a`
   font-size: calc(10px + 0.7vw);
+  font-weight: 700;
   color: #1b1b61;
   line-height: 32px;
   padding: 0 2vw;

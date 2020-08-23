@@ -16,10 +16,9 @@
 }
 
 #trip-header {
-  background-color: rgb(235, 240, 241);
+  border-bottom: 1px solid rgb(230, 230, 230);
   padding: 1%;
   height: 30px;
-  border-radius: 5px;
 }
 
 .review-form-container {

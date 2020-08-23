@@ -31,7 +31,7 @@ export const HourBox = styled.div`
   background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f2eedf'};
   border: ${ props => props.busy ? '1px solid silver' : props.quarter? 'none' : '2px solid white'};
   width:  ${ props => props.quarter ? 'calc(25px + 3vw)' : 'calc(30px + 4vw)'};
-  min-height: ${ props => props.quarter ? 'calc(6px + 1vw)' : 'calc(10px + 1vw)'};
+  min-height: ${ props => props.quarter ? 'calc(3px + 0.8vw)' : 'calc(10px + 1vw)'};
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {
