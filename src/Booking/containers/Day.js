@@ -53,33 +53,33 @@ class Day extends Component {
       if (i > start && start !== undefined && this.bookedHours().includes(i)) {
             for(let k=i; k<120; k++){
               hours.push(
-                <HourBox key={k} busy quarter={!!parseInt(k % 4)} data-val={k} className="busy">
-                  <HourText busy quarter={!!parseInt(k % 4)} data-val={k} className="busy">{dateValue(k * 15).slice(16, 21)}</HourText>
+                <HourBox key={k} busy quarter={!!parseInt(k % 4) && !!parseInt(k % 2)} half={!parseInt(k % 2) && !!parseInt(k % 4)} data-val={k} className="busy">
+                  <HourText busy data-val={k} className="busy">{!parseInt(k % 4) && dateValue(k * 15).slice(16, 21)}</HourText>
                 </HourBox>
               )
             } return hours;
       } else if (this.bookedHours().includes(i)) {
         hours.push(
-          <HourBox key={i} busy quarter={!!parseInt(i % 4)} data-val={i} className="busy">
-            <HourText busy quarter={!!parseInt(i % 4)} data-val={i} className="busy">{dateValue(i * 15).slice(16, 21)}</HourText>
+          <HourBox key={i} busy quarter={!!parseInt(i % 4) && !!parseInt(i%2)} half={!parseInt(i % 2) && !!parseInt(i % 4)} data-val={i} className="busy">
+            <HourText busy data-val={i} className="busy">{!parseInt(i % 4) && dateValue(i * 15).slice(16, 21)}</HourText>
           </HourBox>
         )
       } else if (start !== undefined && i === start) {
         hours.push(
-          <HourBox key={i}  selected quarter={!!parseInt(i % 4)} data-val={i} className="available">
-            <HourText selected quarter={!!parseInt(i % 4)} data-val={i} className="available">{dateValue(start * 15).slice(16, 21)}</HourText>
+          <HourBox key={i} selected quarter={!!parseInt(i % 4) && !!parseInt(i % 2)} half={!parseInt(i % 2) && !!parseInt(i % 4)} data-val={i} className="available">
+            <HourText selected data-val={i} className="available">{!parseInt(i % 4) && dateValue(start * 15).slice(16, 21)}</HourText>
           </HourBox>
         )
       } else if(i > start && i <= end) {
         hours[i] = 
-          <HourBox key={i}  selected quarter={!!parseInt(i % 4)} data-val={i} className="available">
-            <HourText selected quarter={!!parseInt(i % 4)} data-val={i} className="available">{dateValue(i * 15).slice(16, 21)}</HourText>
+          <HourBox key={i} selected quarter={!!parseInt(i % 4) && !!parseInt(i % 2)} half={!parseInt(i % 2) && !!parseInt(i % 4)} data-val={i} className="available">
+          <HourText selected data-val={i} className="available">{!parseInt(i % 4) && dateValue(i * 15).slice(16, 21)}</HourText>
           </HourBox>
       }
       else {
         hours.push(
-          <HourBox key={i}  data-val={i} quarter={!!parseInt(i % 4)} className="available">
-            <HourText quarter={!!parseInt(i % 4)} data-val={i} className="available">{dateValue(i * 15).slice(16, 21)}</HourText>
+          <HourBox key={i} quarter={!!parseInt(i % 4) && !!parseInt(i % 2)} half={!parseInt(i % 2) && !!parseInt(i % 4)} data-val={i}className="available">
+            <HourText data-val={i} className="available">{!parseInt(i % 4) && dateValue(i * 15).slice(16, 21)}</HourText>
           </HourBox>
         )
       }

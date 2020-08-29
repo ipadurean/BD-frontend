@@ -93,7 +93,6 @@ export const FlexColumn2 = styled.div`
   flex-direction: column;
   padding: 2%;
   height: 100%;
-  overflow: scroll;
 `
 
 export const FlexColumnFull = styled.div`

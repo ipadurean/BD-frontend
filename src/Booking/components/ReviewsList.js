@@ -17,7 +17,7 @@ const ReviewsList = (props) => {
   return (
     <FlexColumn className='reviews-list'>
       <Close onClick={closeReviews} alt="close" id="close" src={close} />
-        <FlexColumn2>
+        <FlexColumn2 style={{'overflow': 'scroll'}}>
           {driver.trips.map(trip => {
             return trip.review && <ReviewCard key={trip.id} review={trip.review} />
         })}

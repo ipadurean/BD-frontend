@@ -29,9 +29,9 @@ export const HourBox = styled.div`
   margin: 2px;
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
   background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f2eedf'};
-  border: ${ props => props.busy ? '1px solid silver' : props.quarter? 'none' : '2px solid white'};
-  width:  ${ props => props.quarter ? 'calc(25px + 3vw)' : 'calc(30px + 4vw)'};
-  min-height: ${ props => props.quarter ? 'calc(3px + 0.8vw)' : 'calc(10px + 1vw)'};
+  border: ${ props => props.busy ? '1px solid silver' : props.quarter? 'none' : props.half ? 'none' : '2px solid white'};
+  width:  ${ props => props.half ? 'calc(25px + 3vw)' : props.quarter ? 'calc(20px + 2vw)' : 'calc(30px + 4vw)'};
+  min-height: ${ props => props.quarter ? 'calc(3px + 0.2vw)' : props.half ? 'calc(3px + 0.2vw)' : 'calc(10px + 1vw)'};
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {
