@@ -10,10 +10,11 @@ export const DayBar = styled.div`
   animation-name: ${fadeIn};
   animation-duration: 0.5s;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
   height: calc(265px + 10vw);
-  width: calc(100px + 3vw);
+  width: calc(120px + 3vw);
   overflow-y: scroll;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
@@ -29,10 +30,10 @@ export const HourBox = styled.div`
   margin: 2px;
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
   background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f2eedf'};
-  border: ${ props => props.busy ? '1px solid silver' : props.quarter? 'none' : props.half ? 'none' : '1px solid white'};
-  width:  ${ props => props.half ? 'calc(25px + 3vw)' : props.quarter ? 'calc(20px + 2vw)' : 'calc(30px + 4vw)'};
-  min-height: ${ props => props.quarter ? 'calc(6px + 0.2vw)' : props.half ? 'calc(6px + 0.2vw)' : 'calc(14px + 0.5vw)'};
-  border-radius: 10px;
+  border: ${ props => props.busy ? '1px solid silver' : '2px solid white'};
+  width:  ${ props => props.quarter ? 'calc(15px + 1vw)' : 'calc(30px + 2vw)'};
+  min-height: calc(14px + 0.5vw);
+  border-radius: 5px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {
     background-color: ${ props => props.busy ? 'white' : '#d6c598'};
@@ -45,7 +46,7 @@ export const HourText = styled.span`
   justify-content: center;
   font-size: calc(10px + 0.3vw);
   width: calc(35px + 2vw);
-  color: ${ props => props.selected ? 'white' : props.busy ? 'silver' : props.quarter ? '#3a3d42' : 'black'};
+  color: ${ props => props.selected ? 'white' : props.busy ? 'silver' : '#2a4152'};
 `
 
 export const ScrollArrow = styled.img`
