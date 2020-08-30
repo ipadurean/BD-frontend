@@ -109,7 +109,7 @@ table th {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(125px + 3vw);
+  width: calc(160px + 6vw);
 }
 
 #booking-form {

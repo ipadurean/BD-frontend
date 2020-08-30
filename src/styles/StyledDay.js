@@ -14,7 +14,8 @@ export const DayBar = styled.div`
   flex-direction: row;
   align-items: center;
   height: calc(265px + 10vw);
-  width: calc(120px + 3vw);
+  width: calc(150px + 6vw);
+  padding: 0 calc(20px + 0.5vw);
   overflow-y: scroll;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
@@ -27,10 +28,10 @@ export const HourBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2px;
+  margin: 3px;
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
-  background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f2eedf'};
-  border: ${ props => props.busy ? '1px solid silver' : '2px solid white'};
+  background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f5eed5'};
+  border: ${ props => props.busy ? '1px solid silver' : 'none'};
   width:  ${ props => props.quarter ? 'calc(15px + 1vw)' : 'calc(30px + 2vw)'};
   min-height: calc(14px + 0.5vw);
   border-radius: 5px;
