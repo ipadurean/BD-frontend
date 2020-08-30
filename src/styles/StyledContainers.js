@@ -154,8 +154,8 @@ export const FixedContainer2 = styled.div`
   animation-name: ${fadeIn};
   animation-duration: 1s;
   padding: 3%;
-  background-color: rgba(231, 235, 225, 0.5);
-  border: 5px solid rgb(253, 253, 253);
+  background-color: #faf9f7;
+  border: 5px solid #bab6ab;
   width: 80vw;
   height: calc(40vh + 20vw);
   top: 10vh;

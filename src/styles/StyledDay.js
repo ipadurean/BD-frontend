@@ -29,9 +29,9 @@ export const HourBox = styled.div`
   margin: 2px;
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
   background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f2eedf'};
-  border: ${ props => props.busy ? '1px solid silver' : props.quarter? 'none' : props.half ? 'none' : '2px solid white'};
+  border: ${ props => props.busy ? '1px solid silver' : props.quarter? 'none' : props.half ? 'none' : '1px solid white'};
   width:  ${ props => props.half ? 'calc(25px + 3vw)' : props.quarter ? 'calc(20px + 2vw)' : 'calc(30px + 4vw)'};
-  min-height: ${ props => props.quarter ? 'calc(3px + 0.2vw)' : props.half ? 'calc(3px + 0.2vw)' : 'calc(10px + 1vw)'};
+  min-height: ${ props => props.quarter ? 'calc(6px + 0.2vw)' : props.half ? 'calc(6px + 0.2vw)' : 'calc(14px + 0.5vw)'};
   border-radius: 10px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {
@@ -43,7 +43,7 @@ export const HourText = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: ${props => props.quarter ? 'calc(8px + 0.3vw)' : 'calc(10px + 0.3vw)'};
+  font-size: calc(10px + 0.3vw);
   width: calc(35px + 2vw);
   color: ${ props => props.selected ? 'white' : props.busy ? 'silver' : props.quarter ? '#3a3d42' : 'black'};
 `

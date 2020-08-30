@@ -26,7 +26,7 @@ const AllRides = (props) => {
           {ratingOpen && <DarkBackground />}
           {reviewOpen && <DarkBackground />}
           <SideBar />
-          <FlexColumn2 style={{'width': '77vw'}}>
+          <FlexColumn2 style={{'width': '77vw', 'overflow': 'scroll'}}>
             <Title>Hello <b>{user.username}</b>! This is a summary of your rides:</Title>
             <Switch>
               <>
