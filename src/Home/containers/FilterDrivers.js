@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../style.css';
 import CalendarHome from './CalendarHome';
-import { startTime, endTime, dateClicked, resetSearch, clickSearch } from '../ducks/actions';
+import { startTime, endTime, dateClicked, startClicked, endClicked, resetSearch, clickSearch } from '../ducks/actions';
 import { connect } from "react-redux";
 import { selectDay, setTime } from '../../Booking/ducks/actions';
 import { withRouter } from 'react-router';
-import { FlexRow } from '../../styles/StyledContainers';
+import { FlexRow, FlexColumn } from '../../styles/StyledContainers';
 import { Title2 } from '../../styles/StyledText';
-import { Select1 } from '../../styles/StyledSelect';
+import { FakeSelect, SelectOptionBox, OptionBox } from '../../styles/StyledSelect';
 import { Button1 } from '../../styles/StyledButtons';
 import Parse from '../../utils/parse';
 
@@ -32,8 +32,8 @@ class FilterDrivers extends Component {
     const { end } = this.props.home
     let count = 0;
     let hours = []
-      while (count < (end || 30)){
-        hours.push(<option data-val={count} key={count}>{this.displayHours(count)}</option>);
+      while (count < (end || 24)){
+        hours.push(<OptionBox data-val={count} key={count}>{this.displayHours(count)}</OptionBox>);
           count +=1;
       }
     return hours
@@ -41,17 +41,25 @@ class FilterDrivers extends Component {
 
   renderHours2 = () => {
     const { start } = this.props.home
-    let count = start || 1;
+    let count = start || 0;
     let hours = []
-      while (count <= 30){
-        hours.push(<option data-val={count} key={count}>{this.displayHours(count)}</option>);
+      while (count < 30){
+        hours.push(<OptionBox data-val={count} key={count}>{this.displayHours(count)}</OptionBox>);
           count +=1;
       }
     return hours
   }
 
-  clickBox = () => {
+  clickDate = () => {
     this.props.dateClick();
+  }
+
+  clickStartTime = () => {
+    this.props.startClick();
+  }
+
+  clickEndTime = () => {
+    this.props.endClick();
   }
 
   searchAvailable = () => {
@@ -89,26 +97,26 @@ class FilterDrivers extends Component {
 
 
   render() {
-    const { selectedDate, clickDate } = this.props.home;
+    const { selectedDate, clickDate, clickStart, clickEnd } = this.props.home;
     
       return (
         <div className="search-container">
           <Title2>Search for available chauffeurs:</Title2>
           <FlexRow>
-            <div className="input-box" onClick={this.clickBox}>{selectedDate ? Parse.formatDate(new Date(selectedDate)) : "Select Date"}</div>
-              <Select1 onChange={this.handleChange} name="start">
-                <option>Start Time</option>
-                  {this.renderHours1()}
-              </Select1>
-              <Select1 onChange={this.handleChange} name="end">
-                <option>End Time</option>
-                  {this.renderHours2()}
-              </Select1>
+            <div className="input-box" onClick={this.clickDate}>{selectedDate ? Parse.formatDate(new Date(selectedDate)) : "Select Date"}</div>
+              <FlexColumn>
+                <FakeSelect onClick={this.props.startClick}>Start time</FakeSelect>
+                {clickStart && <SelectOptionBox>{this.renderHours1()}</SelectOptionBox>}
+              </FlexColumn>
+              <FlexColumn>
+              <FakeSelect onClick={this.props.endClick}>End time</FakeSelect>
+                {clickEnd && <SelectOptionBox>{this.renderHours2()}</SelectOptionBox>}
+              </FlexColumn>
             <input onChange={this.addFilter} className="input-box" placeholder="Add keyword" type="text" />
               <Button1 onClick={this.searchAvailable} disabled={!this.validateForm()} style={{ 'outline': 'none' }}>Search</Button1>
               <Button1 onClick={this.reset} style={{ 'outline': 'none' }}>Reset</Button1>
           </FlexRow>
-          <div id="calendar">
+          <div>
             {clickDate && <CalendarHome />}
           </div>
         </div>
@@ -124,6 +132,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return {
     dateClick: () => dispatch(dateClicked()),
+    startClick: () => dispatch(startClicked()),
+    endClick: () => dispatch(endClicked()),
     start: (time) => dispatch(startTime(time)),
     end: (time) => dispatch(endTime(time)),
     search: () => dispatch(clickSearch()),

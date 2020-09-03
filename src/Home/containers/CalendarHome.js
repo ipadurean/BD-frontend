@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../styles/calendarHome.css';
 import leftArrow from '../../utils/assets/left-arrow.svg';
 import rightArrow from '../../utils/assets/right-arrow.svg';
 import { selectDate } from '../ducks/actions';

@@ -28,6 +28,18 @@ export const dateClicked = () => {
   }
 }
 
+export const startClicked = () => {
+  return {
+    type: types.START_CLICKED
+  }
+}
+
+export const endClicked = () => {
+  return {
+    type: types.END_CLICKED
+  }
+}
+
 export const clickSearch = () => {
   return {
     type: types.CLICK_SEARCH
