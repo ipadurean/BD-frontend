@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import '../style.css';
 import CalendarHome from './CalendarHome';
-import { startTime, endTime, dateClicked, startClicked, endClicked, resetSearch, clickSearch } from '../ducks/actions';
+import { startTime, endTime, dateClicked, startClicked, endClicked, resetSearch, clickSearch, cancelClicks } from '../ducks/actions';
 import { connect } from "react-redux";
 import { selectDay, setTime } from '../../Booking/ducks/actions';
 import { withRouter } from 'react-router';
-import { FlexRow, FlexColumn } from '../../styles/StyledContainers';
+import { FlexRowWrap, FlexColumn } from '../../styles/StyledContainers';
 import { Title2 } from '../../styles/StyledText';
 import { FakeSelect, SelectOptionBox, OptionBox } from '../../styles/StyledSelect';
 import { Button1 } from '../../styles/StyledButtons';
@@ -24,7 +24,7 @@ class FilterDrivers extends Component {
 
   displayHours = (value) => {
     return  value > 23 ?
-            value % 24 + ':00 + 1 day' :
+            value % 24 + ':00(+1 day)' :
             value + ':00'
   }
 
@@ -32,7 +32,7 @@ class FilterDrivers extends Component {
     const { end } = this.props.home
     let count = 0;
     let hours = []
-      while (count < (end || 24)){
+      while (count < ((end && (end < 24)) || 24)){
         hours.push(<OptionBox data-val={count} key={count}>{this.displayHours(count)}</OptionBox>);
           count +=1;
       }
@@ -50,17 +50,6 @@ class FilterDrivers extends Component {
     return hours
   }
 
-  clickDate = () => {
-    this.props.dateClick();
-  }
-
-  clickStartTime = () => {
-    this.props.startClick();
-  }
-
-  clickEndTime = () => {
-    this.props.endClick();
-  }
 
   searchAvailable = () => {
     const { search, sendDate, sendTime, history } = this.props
@@ -72,11 +61,6 @@ class FilterDrivers extends Component {
       search();
       sendDate(selectedDate);
       sendTime({start: start * 4, end: end * 4});
-  }
-
-  handleChange = (event) => {
-    const { name, options } = event.target
-      this.props[name](parseInt(options[options.selectedIndex].dataset.val))
   }
 
   validateForm = () => {
@@ -95,30 +79,43 @@ class FilterDrivers extends Component {
     })
   }
 
+  handleClick1 = (event) => {
+    this.props.start(parseInt(event.target.dataset.val))
+  }
+
+  handleClick2 = (event) => {
+    this.props.end(parseInt(event.target.dataset.val))
+  }
+
 
   render() {
-    const { selectedDate, clickDate, clickStart, clickEnd } = this.props.home;
+    const { selectedDate, clickDate, clickStart, clickEnd, start, end } = this.props.home;
     
       return (
         <div className="search-container">
           <Title2>Search for available chauffeurs:</Title2>
-          <FlexRow>
-            <div className="input-box" onClick={this.clickDate}>{selectedDate ? Parse.formatDate(new Date(selectedDate)) : "Select Date"}</div>
-              <FlexColumn>
-                <FakeSelect onClick={this.props.startClick}>Start time</FakeSelect>
-                {clickStart && <SelectOptionBox>{this.renderHours1()}</SelectOptionBox>}
-              </FlexColumn>
-              <FlexColumn>
-              <FakeSelect onClick={this.props.endClick}>End time</FakeSelect>
-                {clickEnd && <SelectOptionBox>{this.renderHours2()}</SelectOptionBox>}
-              </FlexColumn>
-            <input onChange={this.addFilter} className="input-box" placeholder="Add keyword" type="text" />
+          <FlexRowWrap>
+            <FlexColumn>
+              <div className="input-box" onClick={this.props.dateClick}>{selectedDate ? Parse.formatDate(new Date(selectedDate)) : "Select Date"}</div>
+              {clickDate && <CalendarHome />}
+            </FlexColumn>
+            <FlexColumn>
+              <FakeSelect onClick={this.props.startClick}>{start ? `${start}:00` : 'Start time'}</FakeSelect>
+              {clickStart && <SelectOptionBox onClick={this.handleClick1}>{this.renderHours1()}</SelectOptionBox>}
+            </FlexColumn>
+            <FlexColumn>
+              <FakeSelect onClick={this.props.endClick}>{end ? `${end}:00` : 'End time'}</FakeSelect>
+              {clickEnd && <SelectOptionBox onClick={this.handleClick2}>{this.renderHours2()}</SelectOptionBox>}
+            </FlexColumn>
+            <div>
+              <input onChange={this.addFilter} className="input-box" placeholder="Add keyword" type="text" />
               <Button1 onClick={this.searchAvailable} disabled={!this.validateForm()} style={{ 'outline': 'none' }}>Search</Button1>
               <Button1 onClick={this.reset} style={{ 'outline': 'none' }}>Reset</Button1>
-          </FlexRow>
-          <div>
-            {clickDate && <CalendarHome />}
-          </div>
+            </div>
+          </FlexRowWrap>
+         
+           
+         
         </div>
     )
   }
@@ -139,7 +136,8 @@ function mapDispatchToProps(dispatch){
     search: () => dispatch(clickSearch()),
     reset: () => dispatch(resetSearch()),
     sendDate: (date) => dispatch(selectDay(date)),
-    sendTime: (time) => dispatch(setTime(time))
+    sendTime: (time) => dispatch(setTime(time)),
+    resetClicks: () => dispatch(cancelClicks())
   }
 }
 

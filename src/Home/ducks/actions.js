@@ -58,3 +58,9 @@ export const sortDrivers = (sortType) => {
     payload: sortType
   }
 }
+
+export const cancelClicks = () => {
+  return {
+    type: types.CANCEL_CLICKS
+  }
+}

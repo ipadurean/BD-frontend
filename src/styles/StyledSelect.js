@@ -33,7 +33,9 @@ export const SelectOptionBox = styled.div`
   top: calc(48px + 9vh + 4.8vw);
   flex-direction: column;
   align-items: flex-start;
-  z-index: 5;
+  height: 50vh;
+  overflow: scroll;
+  z-index: 2;
 `
 
 export const OptionBox = styled.div`
@@ -46,6 +48,6 @@ export const OptionBox = styled.div`
   width: calc(80px + 3vw);
   height: calc(10px + 1vw);
   padding: 1px 5%;
-  cursor: text;
+  cursor: pointer;
   font-size: calc(10px + 0.5vw);
 `

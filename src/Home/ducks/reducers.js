@@ -16,28 +16,31 @@ export default function homeReducer(state = initialState, action) {
   switch (action.type) {
 
   case types.DATE_CLICKED:
-    return { ...state, clickDate: true }
+      return { ...state, clickDate: !state.clickDate, clickStart: false, clickEnd: false }
     
   case types.START_CLICKED:
-    return { ...state, clickStart: true }
+    return { ...state, clickStart: !state.clickStart, clickDate: false, clickEnd: false }
   
   case types.END_CLICKED:
-    return { ...state, clickEnd: true }
+    return { ...state, clickEnd: !state.clickEnd, clickDate: false, clickStart: false }
 
   case types.ADD_DATE:
     return { ...state, clickDate: false, selectedDate: action.payload};
 
   case types.ADD_START:
-    return {...state, start: action.payload};
+    return {...state, start: action.payload, clickStart: false };
   
   case types.ADD_END:
-      return { ...state, end: action.payload };
+      return { ...state, end: action.payload, clickEnd: false };
     
   case types.CLICK_SEARCH:
     return {...state, clickSearch: true}
 
   case types.RESET_SEARCH:
       return { ...state, clickSearch: false, selectedDate: false, start: null, end: null }
+    
+  case types.CANCEL_CLICKS:
+    return { ...state, clickDate: false, clickStart: false, clickEnd: false }
     
   case types.SORT_DRIVERS:
     return { ...state, sortType: action.payload}

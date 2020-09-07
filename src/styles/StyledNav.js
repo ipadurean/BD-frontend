@@ -8,7 +8,7 @@ export const StyledNav = styled.div`
   right: 0;
   padding: 1vw;
   top: 0;
-  z-index: 1;
+  z-index: 5;
   height: calc(4vh + 2vw);
 `
 
