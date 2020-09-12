@@ -8,7 +8,8 @@ const initialState = {
   clickDate: false,
   clickStart: false,
   clickEnd: false,
-  sortType: 'username'
+  sortType: 'username',
+  quarters: false
 }
 
 export default function homeReducer(state = initialState, action) {
@@ -43,7 +44,13 @@ export default function homeReducer(state = initialState, action) {
     return { ...state, clickDate: false, clickStart: false, clickEnd: false }
     
   case types.SORT_DRIVERS:
-    return { ...state, sortType: action.payload}
+      return { ...state, sortType: action.payload }
+  
+  case types.SHOW_QUARTERS:
+    return { ...state, quarters: action.payload }
+  
+  case types.HIDE_QUARTERS:
+    return { ...state, quarters: false }
 
   default:
     return state;

@@ -43,7 +43,8 @@ class Day extends Component {
 
 
   renderHours = () => {
-    const { daySelected, start, end} = this.props
+    const { daySelected, start, end } = this.props
+    console.log(start, end)
     const dateValue = (minutes) => {
       return new Date(new Date(daySelected).setMinutes(minutes)).toString().slice(0, 24) + " GMT-0500 (Central Daylight Time)";
     }
@@ -70,15 +71,15 @@ class Day extends Component {
             <HourText selected data-val={i} className="available">{!parseInt(i % 4) ? dateValue(start * 15).slice(16, 21) : dateValue(i * 15).slice(18, 21)}</HourText>
           </HourBox>
         )
-      } else if(i > start && i <= end) {
+      } else if(i >= start && i < end) {
         hours[i] = 
           <HourBox key={i} selected quarter={!!parseInt(i % 4)} data-val={i} className="available">
-          <HourText selected data-val={i} className="available">{!parseInt(i % 4) ? dateValue(i * 15).slice(16, 21) : dateValue(i * 15).slice(18, 21)}</HourText>
+            <HourText selected data-val={i} className="available">{!parseInt(i % 4) ? dateValue(i * 15).slice(16, 21) : dateValue(i * 15).slice(18, 21)}</HourText>
           </HourBox>
       }
       else {
         hours.push(
-          <HourBox key={i} quarter={!!parseInt(i % 4)} data-val={i}className="available">
+          <HourBox key={i} quarter={!!parseInt(i % 4)} data-val={i} className="available">
             <HourText data-val={i} className="available">{!parseInt(i % 4) ? dateValue(i * 15).slice(16, 21) : dateValue(i * 15).slice(18, 21)}</HourText>
           </HourBox>
         )
@@ -97,15 +98,15 @@ class Day extends Component {
     }
       if (event.target.className.slice(-9) === "available") {
         start === undefined && validateMinBooking() ?
-          this.props.setTime({ start: x, end: x + 3 }) :
+          this.props.setTime({ start: x, end: x + 4 }) :
         (x - start) <= 0 ?
-          this.props.setTime({ start: x, end: x + 3 }) :
-        end - start > 3 && validateMinBooking() ?
-          this.props.setTime({ start: x, end: x + 3 }) :
-        (x - start) > 3 && (end - start) === 3 ?
+          this.props.setTime({ start: x, end: x + 4 }) :
+        end - start > 4 && validateMinBooking() ?
+          this.props.setTime({ start: x, end: x + 4 }) :
+        (x - start) > 4 && (end - start) === 4 ?
           this.props.setTime({ start, end: x }) :
-        (x - start) > 0 && (x - start) <= 3 && validateMinBooking() ?
-          this.props.setTime({ start: x, end: x + 3 }):
+        (x - start) > 0 && (x - start) <= 4 && validateMinBooking() ?
+          this.props.setTime({ start: x, end: x + 4 }):
           this.props.setTime({ start: undefined, end: undefined })
       } else if (event.target.className.slice(-9) !== "available" && event.target.name !== "scroll"){
         this.props.setTime({ start: undefined, end: undefined })

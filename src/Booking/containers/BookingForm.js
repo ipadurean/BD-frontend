@@ -32,9 +32,9 @@ class BookingForm extends Component {
     const { driver, daySelected, start, end, submit } = this.props;
     const date = daySelected && Parse.formatDate(new Date(new Date(daySelected).setMinutes((start || 0) * 15)));
     const from = new Date(new Date(daySelected).setMinutes(start * 15)).toString().slice(15, 21);
-    const to = new Date(new Date(daySelected).setMinutes(end * 15 + 15)).toString().slice(15, 21);
-    const totalTime = parseFloat((end - start + 1) / 4);
-    const totalCost = parseFloat((end - start + 1) / 4) * driver.rate;
+    const to = new Date(new Date(daySelected).setMinutes(end * 15)).toString().slice(15, 21);
+    const totalTime = parseFloat((end - start) / 4);
+    const totalCost = parseFloat((end - start) / 4) * driver.rate;
 
     return (
       <StyledContainer2 id='booking-form'>

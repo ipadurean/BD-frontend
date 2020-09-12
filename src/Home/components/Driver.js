@@ -52,4 +52,4 @@ function mapStateToProps(state){
   return state
 }
 
-export default connect(mapStateToProps)(Driver);
+export default connect(mapStateToProps, null)(Driver);

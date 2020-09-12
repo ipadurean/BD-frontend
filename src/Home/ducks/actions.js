@@ -64,3 +64,16 @@ export const cancelClicks = () => {
     type: types.CANCEL_CLICKS
   }
 }
+
+export const showQuarters = (value) => {
+  return {
+    type: types.SHOW_QUARTERS,
+    payload: value
+  }
+}
+
+export const hideQuarters = () => {
+  return {
+    type: types.HIDE_QUARTERS
+  }
+}
