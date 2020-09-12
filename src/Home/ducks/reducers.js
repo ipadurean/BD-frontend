@@ -20,10 +20,10 @@ export default function homeReducer(state = initialState, action) {
       return { ...state, clickDate: !state.clickDate, clickStart: false, clickEnd: false }
     
   case types.START_CLICKED:
-    return { ...state, clickStart: !state.clickStart, clickDate: false, clickEnd: false }
+    return { ...state, clickStart: !state.clickStart, clickDate: false, clickEnd: false, quarters: false }
   
   case types.END_CLICKED:
-    return { ...state, clickEnd: !state.clickEnd, clickDate: false, clickStart: false }
+      return { ...state, clickEnd: !state.clickEnd, clickDate: false, clickStart: false, quarters: false}
 
   case types.ADD_DATE:
     return { ...state, clickDate: false, selectedDate: action.payload};

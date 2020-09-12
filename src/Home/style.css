@@ -61,3 +61,7 @@
   margin: 2px 55px;
 }
 
+.disabled {
+  pointer-events: none;
+}
+

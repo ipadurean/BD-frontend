@@ -16,16 +16,11 @@ import {
 import { connect } from "react-redux";
 import { selectDay, setTime } from '../../Booking/ducks/actions';
 import { withRouter } from 'react-router';
-import { FlexRowWrap, FlexColumn, FlexRow } from '../../styles/StyledContainers';
+import { FlexRowWrap, FlexColumn } from '../../styles/StyledContainers';
 import { Title2 } from '../../styles/StyledText';
-import {
-  FakeSelect,
-  SelectOptionOuterBox,
-  SelectOptionInnerBox,
-  OptionBox,
-  QuarterBox,
-  Quarters
-} from '../../styles/StyledSelect';
+import { FakeSelect, SelectOptionOuterBox } from '../../styles/StyledSelect';
+import StartTimeOptions from '../components/StartTimeOptions';
+import EndTimeOptions from '../components/EndTimeOptions';
 import { Button1 } from '../../styles/StyledButtons';
 import Parse from '../../utils/parse';
 
@@ -40,64 +35,9 @@ class FilterDrivers extends Component {
     }
   }
 
-  displayHours = (value) => {
-    return  value > 1380 ?
-            (value % 1440)/60 + ':00(+1 day)' :
-            value/60 + ':00'
-  }
 
   displaySelectedTime = (minutes) => {
      return parseInt(minutes/60)%24 + ':' + (minutes%60 || '00')
-  }
-
-  setQuarters = (event) => {
-    this.props.showQuarters(parseInt(event.target.dataset.val))
-  }
-
-  renderHours1 = () => {
-    const { end, quarters } = this.props.home
-    let count = 0;
-    let hours = []
-      while (count < (end && end < 1440 ? end : 1440)){
-        hours.push(
-          <FlexRow key={count}>
-            <OptionBox onMouseOver={this.setQuarters}
-                       data-val={count}>
-              {this.displayHours(count)}
-            </OptionBox>
-            {(quarters === count) && <Quarters>
-              {(end || 1440) - count > 15 && <QuarterBox data-val={count + 15}>:15</QuarterBox>}
-              {(end || 1440) - count > 30 && <QuarterBox data-val={count + 30}>:30</QuarterBox>}
-              {(end || 1440) - count > 45 && <QuarterBox data-val={count + 45}>:45</QuarterBox>}
-            </Quarters>}
-          </FlexRow>
-        );
-          count+=60;
-      }
-    return hours
-  }
-
-  renderHours2 = () => {
-    const { start, quarters } = this.props.home
-    let count = (start - start%60) || 0;
-    let hours = []
-      while (count < 1800){
-        hours.push(
-          <FlexRow key={count}>
-            <OptionBox onMouseOver={this.setQuarters}
-                       data-val={count}>
-              {this.displayHours(count)}
-            </OptionBox>
-            {(quarters === count) && <Quarters>
-              {(start - count < 15) && <QuarterBox data-val={count + 15}>:15</QuarterBox>}
-              {(start - count < 30) && <QuarterBox data-val={count + 30}>:30</QuarterBox>}
-              {(start - count < 45) && <QuarterBox data-val={count + 45}>:45</QuarterBox>}
-            </Quarters>}
-          </FlexRow>
-        );
-          count+=60;
-      }
-    return hours
   }
 
 
@@ -140,7 +80,7 @@ class FilterDrivers extends Component {
 
   render() {
     const { selectedDate, clickDate, clickStart, clickEnd, start, end } = this.props.home;
-    console.log(start, end)
+   
       return (
         <div className="search-container">
           <Title2>Search for available chauffeurs:</Title2>
@@ -151,11 +91,17 @@ class FilterDrivers extends Component {
             </FlexColumn>
             <FlexColumn>
               <FakeSelect onClick={this.props.startClick}>{start ? this.displaySelectedTime(start) : 'Start time'}</FakeSelect>
-              {clickStart && <SelectOptionOuterBox onClick={this.handleClick1}><SelectOptionInnerBox>{this.renderHours1()}</SelectOptionInnerBox></SelectOptionOuterBox>}
+              {clickStart &&
+                <SelectOptionOuterBox onClick={this.handleClick1}>
+                  <StartTimeOptions />
+                </SelectOptionOuterBox>}
             </FlexColumn>
             <FlexColumn>
               <FakeSelect onClick={this.props.endClick}>{end ? this.displaySelectedTime(end) : 'End time'}</FakeSelect>
-              {clickEnd && <SelectOptionOuterBox onClick={this.handleClick2}><SelectOptionInnerBox>{this.renderHours2()}</SelectOptionInnerBox></SelectOptionOuterBox>}
+              {clickEnd &&
+                <SelectOptionOuterBox onClick={this.handleClick2}>
+                  <EndTimeOptions />
+                </SelectOptionOuterBox>}
             </FlexColumn>
             <div>
               <input onChange={this.addFilter} className="input-box" placeholder="Add keyword" type="text" />
