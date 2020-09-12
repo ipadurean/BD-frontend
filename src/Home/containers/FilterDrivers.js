@@ -45,12 +45,12 @@ class FilterDrivers extends Component {
     const { search, sendDate, sendTime, history } = this.props
     const { selectedDate, start, end } = this.props.home
     const differenceToChicagoTime = (new Date().getTimezoneOffset() - 300) * 60000
-    const date1 = new Date(selectedDate).setHours(start) + differenceToChicagoTime;
-    const date2 = new Date(selectedDate).setHours(end) + differenceToChicagoTime;
+    const date1 = new Date(selectedDate).setMinutes(start) + differenceToChicagoTime;
+    const date2 = new Date(selectedDate).setMinutes(end) + differenceToChicagoTime;
       history.push(`/home/drivers/search?keyword=${this.state.filter}&from=${date1}&to=${date2}`)
       search();
       sendDate(selectedDate);
-      sendTime({start: start * 4, end: end * 4});
+      sendTime({start: (start/60) * 4, end: (end/60) * 4});
   }
 
   validateForm = () => {
@@ -74,6 +74,8 @@ class FilterDrivers extends Component {
   }
 
   handleClick2 = (event) => {
+    const { start } = this.props.home;
+    return (parseInt(event.target.dataset.val) > start + 45) &&
     this.props.end(parseInt(event.target.dataset.val))
   }
 

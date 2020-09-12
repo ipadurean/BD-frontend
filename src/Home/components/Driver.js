@@ -25,7 +25,7 @@ const Driver = (props) => {
           <Title3> ~ {driver.car} ~ </Title3>
         </FlexRow2>
         <FlexRow2>
-          {home.clickSearch && <div id="total">Total: ${driver.rate * (home.end - home.start)}</div>}
+          {home.clickSearch && <div id="total">Total: ${driver.rate * (home.end/60 - home.start/60)}</div>}
           <ButtonBook1>Book ride with this chauffeur</ButtonBook1>
         </FlexRow2>
       </FlexRow>
