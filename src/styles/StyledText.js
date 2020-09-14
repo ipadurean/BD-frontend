@@ -23,7 +23,6 @@ export const Title2 = styled.div`
 `
 
 export const Title3 = styled.div`
-  font-family: Courgette;
   font-size: calc(10px + 0.5vw);
   color: #526482;
   margin: 3px;
@@ -36,6 +35,13 @@ export const Title4 = styled.div`
   margin: 2px;
   font-weight: 600;
 `
+
+export const Title5 = styled.div`
+  font-family: Courgette;
+  font-size: calc(7px + 0.7vw);
+  font-weight: 500;
+  color: #777a7a;
+`;
 
 export const Text = styled.div`
   font-size: calc(8px + 0.5vw);
@@ -63,8 +69,17 @@ export const Text3 = styled.span`
 `
 
 export const Text4 = styled.div`
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: calc(7px + 0.7vw);
   font-weight: 500;
+  color: #777a7a;
 `
+
+export const Text5 = styled.span`
+  font-size: calc(6px + 0.6vw);
+  font-weight: 500;
+  height: 5px;
+  color: #b09a6d;
+  margin: 3px;
+`;
 

@@ -11,17 +11,18 @@ import {
   clickSearch,
   cancelClicks,
   showQuarters,
-  hideQuarters
-} from '../ducks/actions';
+  hideQuarters,
+  showFilterBox,
+} from "../ducks/actions";
 import { connect } from "react-redux";
 import { selectDay, setTime } from '../../Booking/ducks/actions';
 import { withRouter } from 'react-router';
-import { FlexRowWrap, FlexColumn } from '../../styles/StyledContainers';
+import { FlexRowWrap, FlexColumn, FlexRow } from '../../styles/StyledContainers';
 import { Title2 } from '../../styles/StyledText';
 import { FakeSelect, SelectOptionOuterBox } from '../../styles/StyledSelect';
 import StartTimeOptions from '../components/StartTimeOptions';
 import EndTimeOptions from '../components/EndTimeOptions';
-import { Button1 } from '../../styles/StyledButtons';
+import { Button1, Button4 } from '../../styles/StyledButtons';
 import Parse from '../../utils/parse';
 
 
@@ -65,7 +66,7 @@ class FilterDrivers extends Component {
 
   addFilter = (event) => {
     this.setState({
-      filter: event.target.value
+      filter: event.target.value.toLowerCase()
     })
   }
 
@@ -81,41 +82,70 @@ class FilterDrivers extends Component {
 
 
   render() {
-    const { selectedDate, clickDate, clickStart, clickEnd, start, end } = this.props.home;
+    const { selectedDate, clickDate, clickStart, clickEnd, start, end, showFilterInput } = this.props.home;
    
       return (
         <div className="search-container">
           <Title2>Search for available chauffeurs:</Title2>
           <FlexRowWrap>
-            <FlexColumn>
-              <div className="input-box" onClick={this.props.dateClick}>{selectedDate ? Parse.formatDate(new Date(selectedDate)) : "Select Date"}</div>
-              {clickDate && <CalendarHome />}
-            </FlexColumn>
-            <FlexColumn>
-              <FakeSelect onClick={this.props.startClick}>{start ? this.displaySelectedTime(start) : 'Start time'}</FakeSelect>
-              {clickStart &&
-                <SelectOptionOuterBox onClick={this.handleClick1}>
-                  <StartTimeOptions />
-                </SelectOptionOuterBox>}
-            </FlexColumn>
-            <FlexColumn>
-              <FakeSelect onClick={this.props.endClick}>{end ? this.displaySelectedTime(end) : 'End time'}</FakeSelect>
-              {clickEnd &&
-                <SelectOptionOuterBox onClick={this.handleClick2}>
-                  <EndTimeOptions />
-                </SelectOptionOuterBox>}
-            </FlexColumn>
-            <div>
-              <input onChange={this.addFilter} className="input-box" placeholder="Add keyword" type="text" />
-              <Button1 onClick={this.searchAvailable} disabled={!this.validateForm()} style={{ 'outline': 'none' }}>Search</Button1>
-              <Button1 onClick={this.reset} style={{ 'outline': 'none' }}>Reset</Button1>
+            <FlexRow>
+              <FlexColumn>
+                <div className="input-box" onClick={this.props.dateClick}>
+                  {selectedDate
+                    ? Parse.formatDate(new Date(selectedDate))
+                    : "Select Date"}
+                </div>
+                {clickDate && <CalendarHome />}
+              </FlexColumn>
+              <FlexColumn>
+                <FakeSelect onClick={this.props.startClick}>
+                  {start ? this.displaySelectedTime(start) : "Start time"}
+                </FakeSelect>
+                {clickStart && (
+                  <SelectOptionOuterBox onClick={this.handleClick1}>
+                    <StartTimeOptions />
+                  </SelectOptionOuterBox>
+                )}
+              </FlexColumn>
+              <FlexColumn>
+                <FakeSelect onClick={this.props.endClick}>
+                  {end ? this.displaySelectedTime(end) : "End time"}
+                </FakeSelect>
+                {clickEnd && (
+                  <SelectOptionOuterBox onClick={this.handleClick2}>
+                    <EndTimeOptions />
+                  </SelectOptionOuterBox>
+                )}
+              </FlexColumn>
+            </FlexRow>
+            {!showFilterInput && (
+              <Button4 onClick={this.props.showFilter}>
+                <u>Add Filter </u> (vehicle, name)
+              </Button4>
+            )}
+            {showFilterInput && (
+              <input
+                onChange={this.addFilter}
+                className="input-box"
+                placeholder="Add filter"
+                type="text"
+              />
+            )}
+            <div style={{ marginLeft: "200px" }}>
+              <Button1
+                onClick={this.searchAvailable}
+                disabled={!this.validateForm()}
+                style={{ outline: "none" }}
+              >
+                Search
+              </Button1>
+              <Button1 onClick={this.reset} style={{ outline: "none" }}>
+                Reset
+              </Button1>
             </div>
           </FlexRowWrap>
-         
-           
-         
         </div>
-    )
+      );
   }
 }
 
@@ -137,7 +167,8 @@ function mapDispatchToProps(dispatch){
     sendTime: (time) => dispatch(setTime(time)),
     resetClicks: () => dispatch(cancelClicks()),
     showQuarters: (value) => dispatch(showQuarters(value)),
-    hideQuarters: () => dispatch(hideQuarters())
+    hideQuarters: () => dispatch(hideQuarters()),
+    showFilter: () => dispatch(showFilterBox())
   }
 }
 

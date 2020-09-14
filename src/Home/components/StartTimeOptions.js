@@ -6,7 +6,7 @@ import {
   QuarterBox,
   Quarters
 } from '../../styles/StyledSelect';
-import { FlexRow } from '../../styles/StyledContainers';
+import { FlexRow3 } from '../../styles/StyledContainers';
 import { showQuarters } from '../ducks/actions';
 
 
@@ -20,7 +20,7 @@ const StartTimeOptions = (props) => {
   
   return (
     <SelectOptionInnerBox>
-      { (45 < (end || 1440)) && <FlexRow key='1'>
+      { (45 < (end || 1440)) && <FlexRow3 key='1'>
         <OptionBox onMouseOver={setQuarters} data-val='0'>
           00:00
         </OptionBox>
@@ -29,8 +29,8 @@ const StartTimeOptions = (props) => {
           { 30 < ((end || 1485) - 45) && <QuarterBox data-val='30'>:30</QuarterBox>}
           { 45 < ((end || 1485) - 45) && <QuarterBox data-val='45'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (105 < (end || 1440)) && <FlexRow key='2'>
+      </FlexRow3> }
+      { (105 < (end || 1440)) && <FlexRow3 key='2'>
         <OptionBox onMouseOver={setQuarters} data-val='60'>
           01:00
         </OptionBox>
@@ -39,8 +39,8 @@ const StartTimeOptions = (props) => {
           { 90 < ((end || 1485) - 45) && <QuarterBox data-val='90'>:30</QuarterBox>}
           { 105 < ((end || 1485) - 45) && <QuarterBox data-val='105'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (165 < (end || 1440)) && <FlexRow key='3'>
+      </FlexRow3> }
+      { (165 < (end || 1440)) && <FlexRow3 key='3'>
         <OptionBox onMouseOver={setQuarters} data-val='120'>
           02:00
         </OptionBox>
@@ -49,8 +49,8 @@ const StartTimeOptions = (props) => {
           { 150 < ((end || 1485) - 45) && <QuarterBox data-val='150'>:30</QuarterBox>}
           { 165 < ((end || 1485) - 45) && <QuarterBox data-val='165'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (225 < (end || 1440)) && <FlexRow key='4'>
+      </FlexRow3> }
+      { (225 < (end || 1440)) && <FlexRow3 key='4'>
         <OptionBox onMouseOver={setQuarters} data-val='180'>
           03:00
         </OptionBox>
@@ -59,8 +59,8 @@ const StartTimeOptions = (props) => {
           { 210 < ((end || 1485) - 45) && <QuarterBox data-val='210'>:30</QuarterBox>}
           { 225 < ((end || 1485) - 45) && <QuarterBox data-val='225'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (285 < (end || 1440)) && <FlexRow key='5'>
+      </FlexRow3> }
+      { (285 < (end || 1440)) && <FlexRow3 key='5'>
         <OptionBox onMouseOver={setQuarters} data-val='240'>
           04:00
         </OptionBox>
@@ -69,8 +69,8 @@ const StartTimeOptions = (props) => {
           { 270 < ((end || 1485) - 45) && <QuarterBox data-val='270'>:30</QuarterBox>}
           { 285 < ((end || 1485) - 45) && <QuarterBox data-val='285'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (345 < (end || 1440)) && <FlexRow key='6'>
+      </FlexRow3> }
+      { (345 < (end || 1440)) && <FlexRow3 key='6'>
         <OptionBox onMouseOver={setQuarters} data-val='300'>
           05:00
         </OptionBox>
@@ -79,8 +79,8 @@ const StartTimeOptions = (props) => {
           { 330 < ((end || 1485) - 45) && <QuarterBox data-val='330'>:30</QuarterBox>}
           { 345 < ((end || 1485) - 45) && <QuarterBox data-val='345'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (405 < (end || 1440)) && <FlexRow key='7'>
+      </FlexRow3> }
+      { (405 < (end || 1440)) && <FlexRow3 key='7'>
         <OptionBox onMouseOver={setQuarters} data-val='360'>
           06:00
         </OptionBox>
@@ -89,8 +89,8 @@ const StartTimeOptions = (props) => {
           { 390 < ((end || 1485) - 45) && <QuarterBox data-val='390'>:30</QuarterBox>}
           { 405 < ((end || 1485) - 45) && <QuarterBox data-val='405'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (465 < (end || 1440)) && <FlexRow key='8'>
+      </FlexRow3> }
+      { (465 < (end || 1440)) && <FlexRow3 key='8'>
         <OptionBox onMouseOver={setQuarters} data-val='420'>
           07:00
         </OptionBox>
@@ -99,8 +99,8 @@ const StartTimeOptions = (props) => {
           { 450 < ((end || 1485) - 45) && <QuarterBox data-val='450'>:30</QuarterBox>}
           { 465 < ((end || 1485) - 45) && <QuarterBox data-val='465'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (525 < (end || 1440)) && <FlexRow key='9'>
+      </FlexRow3> }
+      { (525 < (end || 1440)) && <FlexRow3 key='9'>
         <OptionBox onMouseOver={setQuarters} data-val='480'>
           08:00
         </OptionBox>
@@ -109,8 +109,8 @@ const StartTimeOptions = (props) => {
           { 510 < ((end || 1485) - 45) && <QuarterBox data-val='510'>:30</QuarterBox>}
           { 525 < ((end || 1485) - 45) && <QuarterBox data-val='525'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (585 < (end || 1440)) && <FlexRow key='10'>
+      </FlexRow3> }
+      { (585 < (end || 1440)) && <FlexRow3 key='10'>
         <OptionBox onMouseOver={setQuarters} data-val='540'>
           09:00
         </OptionBox>
@@ -119,8 +119,8 @@ const StartTimeOptions = (props) => {
           { 570 < ((end || 1485) - 45) && <QuarterBox data-val='570'>:30</QuarterBox>}
           { 585 < ((end || 1485) - 45) && <QuarterBox data-val='585'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (645 < (end || 1440)) && <FlexRow key='11'>
+      </FlexRow3> }
+      { (645 < (end || 1440)) && <FlexRow3 key='11'>
         <OptionBox onMouseOver={setQuarters} data-val='600'>
           10:00
         </OptionBox>
@@ -129,8 +129,8 @@ const StartTimeOptions = (props) => {
           { 630 < ((end || 1485) - 45) && <QuarterBox data-val='630'>:30</QuarterBox>}
           { 645 < ((end || 1485) - 45) && <QuarterBox data-val='645'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (705 < (end || 1440)) && <FlexRow key='12'>
+      </FlexRow3> }
+      { (705 < (end || 1440)) && <FlexRow3 key='12'>
         <OptionBox onMouseOver={setQuarters} data-val='660'>
           11:00
         </OptionBox>
@@ -139,8 +139,8 @@ const StartTimeOptions = (props) => {
           { 690 < ((end || 1485) - 45) && <QuarterBox data-val='690'>:30</QuarterBox>}
           { 705 < ((end || 1485) - 45) && <QuarterBox data-val='705'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (765 < (end || 1440)) && <FlexRow key='13'>
+      </FlexRow3> }
+      { (765 < (end || 1440)) && <FlexRow3 key='13'>
         <OptionBox onMouseOver={setQuarters} data-val='720'>
           12:00
         </OptionBox>
@@ -149,8 +149,8 @@ const StartTimeOptions = (props) => {
           { 750 < ((end || 1485) - 45) && <QuarterBox data-val='750'>:30</QuarterBox>}
           { 765 < ((end || 1485) - 45) && <QuarterBox data-val='765'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (825 < (end || 1440)) && <FlexRow key='14'>
+      </FlexRow3> }
+      { (825 < (end || 1440)) && <FlexRow3 key='14'>
         <OptionBox onMouseOver={setQuarters} data-val='780'>
           13:00
         </OptionBox>
@@ -159,8 +159,8 @@ const StartTimeOptions = (props) => {
           { 810 < ((end || 1485) - 45) && <QuarterBox data-val='810'>:30</QuarterBox>}
           { 825 < ((end || 1485) - 45) && <QuarterBox data-val='825'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (885 < (end || 1440)) && <FlexRow key='15'>
+      </FlexRow3> }
+      { (885 < (end || 1440)) && <FlexRow3 key='15'>
         <OptionBox onMouseOver={setQuarters} data-val='840'>
           14:00
         </OptionBox>
@@ -169,8 +169,8 @@ const StartTimeOptions = (props) => {
           { 870 < ((end || 1485) - 45) && <QuarterBox data-val='870'>:30</QuarterBox>}
           { 885 < ((end || 1485) - 45) && <QuarterBox data-val='885'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (945 < (end || 1440)) && <FlexRow key='16'>
+      </FlexRow3> }
+      { (945 < (end || 1440)) && <FlexRow3 key='16'>
         <OptionBox onMouseOver={setQuarters} data-val='900'>
           15:00
         </OptionBox>
@@ -179,8 +179,8 @@ const StartTimeOptions = (props) => {
           { 930 < ((end || 1485) - 45) && <QuarterBox data-val='930'>:30</QuarterBox>}
           { 945 < ((end || 1485) - 45) && <QuarterBox data-val='945'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (1005 < (end || 1440)) && <FlexRow key='17'>
+      </FlexRow3> }
+      { (1005 < (end || 1440)) && <FlexRow3 key='17'>
         <OptionBox onMouseOver={setQuarters} data-val='960'>
           16:00
         </OptionBox>
@@ -189,8 +189,8 @@ const StartTimeOptions = (props) => {
           { 990 < ((end || 1485) - 45) && <QuarterBox data-val='990'>:30</QuarterBox>}
           { 1005 < ((end || 1485) - 45) && <QuarterBox data-val='1005'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (1065 < (end || 1440)) && <FlexRow key='18'>
+      </FlexRow3> }
+      { (1065 < (end || 1440)) && <FlexRow3 key='18'>
         <OptionBox onMouseOver={setQuarters} data-val='1020'>
           17:00
         </OptionBox>
@@ -199,8 +199,8 @@ const StartTimeOptions = (props) => {
           { 1050 < ((end || 1485) - 45) && <QuarterBox data-val='1050'>:30</QuarterBox>}
           { 1065 < ((end || 1485) - 45) && <QuarterBox data-val='1065'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (1125 < (end || 1440)) && <FlexRow key='19'>
+      </FlexRow3> }
+      { (1125 < (end || 1440)) && <FlexRow3 key='19'>
         <OptionBox onMouseOver={setQuarters} data-val='1080'>
           18:00
         </OptionBox>
@@ -209,8 +209,8 @@ const StartTimeOptions = (props) => {
           { 1110 < ((end || 1485) - 45) && <QuarterBox data-val='1110'>:30</QuarterBox>}
           { 1125 < ((end || 1485) - 45) && <QuarterBox data-val='1125'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (1185 < (end || 1440)) && <FlexRow key='20'>
+      </FlexRow3> }
+      { (1185 < (end || 1440)) && <FlexRow3 key='20'>
         <OptionBox onMouseOver={setQuarters} data-val='1140'>
           19:00
         </OptionBox>
@@ -219,8 +219,8 @@ const StartTimeOptions = (props) => {
           { 1170 < ((end || 1485) - 45) && <QuarterBox data-val='1170'>:30</QuarterBox>}
           { 1185 < ((end || 1485) - 45) && <QuarterBox data-val='1185'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (1245 < (end || 1440)) && <FlexRow key='21'>
+      </FlexRow3> }
+      { (1245 < (end || 1440)) && <FlexRow3 key='21'>
         <OptionBox onMouseOver={setQuarters} data-val='1200'>
           20:00
         </OptionBox>
@@ -229,8 +229,8 @@ const StartTimeOptions = (props) => {
           { 1230 < ((end || 1485) - 45) && <QuarterBox data-val='1230'>:30</QuarterBox>}
           { 1245 < ((end || 1485) - 45) && <QuarterBox data-val='1245'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (1305 < (end || 1440)) && <FlexRow key='22'>
+      </FlexRow3> }
+      { (1305 < (end || 1440)) && <FlexRow3 key='22'>
         <OptionBox onMouseOver={setQuarters} data-val='1260'>
           21:00
         </OptionBox>
@@ -239,8 +239,8 @@ const StartTimeOptions = (props) => {
           { 1290 < ((end || 1485) - 45) && <QuarterBox data-val='1290'>:30</QuarterBox>}
           { 1305 < ((end || 1485) - 45) && <QuarterBox data-val='1305'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (1365 < (end || 1440)) && <FlexRow key='23'>
+      </FlexRow3> }
+      { (1365 < (end || 1440)) && <FlexRow3 key='23'>
         <OptionBox onMouseOver={setQuarters} data-val='1320'>
           22:00
         </OptionBox>
@@ -249,8 +249,8 @@ const StartTimeOptions = (props) => {
           { 1350 < ((end || 1485) - 45) && <QuarterBox data-val='1350'>:30</QuarterBox>}
           { 1365 < ((end || 1485) - 45) && <QuarterBox data-val='1365'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
-      { (1425 < (end || 1440)) && <FlexRow key='24'>
+      </FlexRow3> }
+      { (1425 < (end || 1440)) && <FlexRow3 key='24'>
         <OptionBox onMouseOver={setQuarters} data-val='1380'>
           23:00
         </OptionBox>
@@ -259,7 +259,7 @@ const StartTimeOptions = (props) => {
           { 1410 < ((end || 1485) - 45) && <QuarterBox data-val='1410'>:30</QuarterBox>}
           { 1425 < ((end || 1485) - 45) && <QuarterBox data-val='1425'>:45</QuarterBox>}
         </Quarters>}
-      </FlexRow> }
+      </FlexRow3> }
     </SelectOptionInnerBox>
   )
 }

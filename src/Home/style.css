@@ -15,14 +15,20 @@
   border-radius: 50%;
 }
 
-#total {
+#total-cost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: Cambria;
-  padding: 10px;
+  padding: 1px 10px;
   border-radius: 10px;
-  font-size: calc(8px + 0.7vw);
+  font-size: calc(7px + 0.7vw);
   font-weight: 500;
-  color: rgb(62, 119, 71);
-  width: calc(40px + 1.5vw);
+  color: rgb(161, 105, 88);
+  width: calc(50px + 1.5vw);
+  background-color: #f5fafa;
+  background-blend-mode: color-burn;
+
 }
 
 .search-container {
@@ -43,6 +49,9 @@
 
 
 .input-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 2px;
   border: 1px solid silver;
   border-radius: 7px;

@@ -51,6 +51,15 @@ export const FlexRow2 = styled.div`
   height: 100%;
 `
 
+export const FlexRow3 = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: calc(240px + 8vw);
+`;
+
 export const FlexRowWrap = styled.div`
   display: flex;
   flex-direction: row;

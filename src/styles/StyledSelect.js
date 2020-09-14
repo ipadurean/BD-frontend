@@ -30,13 +30,15 @@ export const FakeSelect = styled.div`
 export const SelectOptionOuterBox = styled.div`
   position: absolute;
   top: calc(48px + 9vh + 4.8vw);
+  max-height: 50vh;
   z-index: 2;
+  overflow-y: scroll;
 `
 
 export const SelectOptionInnerBox = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   z-index: 2;
 `
 
@@ -46,16 +48,18 @@ export const OptionBox = styled.div`
   justify-content: center;
   border: 1px solid silver;
   border-radius: 4px;
-  background-color: #edf1f7;
+  background-color: #edf7f7;
   width: calc(80px + 3vw);
   height: calc(10px + 1vw);
-  padding: 1px 5%;
+  padding: 1px;
   cursor: pointer;
   font-size: calc(10px + 0.5vw);
-  box-shadow: 0px 7px 4px -2px rgba(0,0,0,0.2), 
-                0px 9px 7px 0px rgba(0,0,0,0.14), 
-                0px 4px 12px 0px rgba(0,0,0,0.12);
-`
+  box-shadow: 0px 7px 4px -2px rgba(0, 0, 0, 0.2),
+    0px 9px 7px 0px rgba(0, 0, 0, 0.14), 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
+  &:hover {
+    color: #777a7a;
+  }
+`;
 
 export const QuarterBox = styled.div`
   display: flex;
@@ -63,22 +67,24 @@ export const QuarterBox = styled.div`
   justify-content: center;
   border: 1px solid silver;
   border-radius: 4px;
-  background-color: #edf1f7;
+  background-color: #edf7f7;
   width: calc(20px + 1vw);
   height: calc(10px + 1vw);
   padding: 1px 5%;
   cursor: pointer;
   font-size: calc(10px + 0.5vw);
-`
+  box-shadow: 0px 7px 4px -2px rgba(0, 0, 0, 0.2),
+    0px 9px 7px 0px rgba(0, 0, 0, 0.14), 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
+  &:hover {
+    color: #777a7a;
+  }
+`;
 
 export const Quarters = styled.span`
   position: absolute;
-  left: calc(80px + 3vw);
+  margin-left: calc(140px + 6vw);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 7px 4px -2px rgba(0,0,0,0.2), 
-                0px 9px 7px 0px rgba(0,0,0,0.14), 
-                0px 4px 12px 0px rgba(0,0,0,0.12);
 `

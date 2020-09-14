@@ -77,3 +77,9 @@ export const hideQuarters = () => {
     type: types.HIDE_QUARTERS
   }
 }
+
+export const showFilterBox = () => {
+  return {
+    type: types.SHOW_FILTER_BOX
+  }
+}

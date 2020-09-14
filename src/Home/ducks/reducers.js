@@ -9,7 +9,8 @@ const initialState = {
   clickStart: false,
   clickEnd: false,
   sortType: 'username',
-  quarters: false
+  quarters: false,
+  showFilterInput: false
 }
 
 export default function homeReducer(state = initialState, action) {
@@ -50,7 +51,10 @@ export default function homeReducer(state = initialState, action) {
     return { ...state, quarters: action.payload }
   
   case types.HIDE_QUARTERS:
-    return { ...state, quarters: false }
+      return { ...state, quarters: false }
+    
+    case types.SHOW_FILTER_BOX:
+      return {...state, showFilterInput: true}
 
   default:
     return state;
