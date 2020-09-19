@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { CalendarBox, CalendarBody, CalendarHeader, Label, DateOuter, DateInner } from '../../styles/StyledCalendar';
 import leftArrow from '../../utils/assets/left-arrow.svg';
 import rightArrow from '../../utils/assets/right-arrow.svg';
-import { Title } from '../../styles/StyledText';
+import { Title, Title3 } from '../../styles/StyledText';
 import { ButtonArrow } from '../../styles/StyledButtons';
 import { WeekContainer } from '../../styles/StyledCalendar';
 import { selectDay } from '../ducks/actions';
 import { connect } from "react-redux";
+import TimeZone from "../../utils/timeZone";
 
 
 class Calendar extends Component {
@@ -70,29 +71,46 @@ class Calendar extends Component {
         </DateOuter>
       )
     }
+    debugger;
     while (day <= monthSize) {
-      daySelected && day === select.getDate() ?
-        daysArr.push(
-          <DateOuter key={day} data-calendar-date={date.setDate(day)}>
-            <DateInner selected>{day}</DateInner>
-          </DateOuter>
-        ) :
-        day === new Date().getDate() && new Date().getMonth() === date.getMonth() ?
-          daysArr.push(
-            <DateOuter key={day} data-calendar-date={date.setDate(day)}>
-              <DateInner today className='active'>{day}</DateInner>
-            </DateOuter>) :
-          date.setDate(day) < new Date().getTime() ?
-            daysArr.push(
-              <DateOuter key={day} data-calendar-date={date.setDate(day)}>
-                <DateInner disabled>{day}</DateInner>
-              </DateOuter>
-            ) :
-            daysArr.push(
-              <DateOuter key={day} data-calendar-date={date.setDate(day)}>
-                <DateInner className='active'>{day}</DateInner>
-              </DateOuter>
-            )
+      daySelected && day === select.getDate()
+        ? daysArr.push(
+            <DateOuter
+              key={day}
+              data-calendar-date={TimeZone.toCentral(date.setDate(day))}
+            >
+              <DateInner selected>{day}</DateInner>
+            </DateOuter>
+          )
+        : day === new Date().getDate() &&
+          new Date().getMonth() === date.getMonth()
+        ? daysArr.push(
+            <DateOuter
+              key={day}
+              data-calendar-date={TimeZone.toCentral(date.setDate(day))}
+            >
+              <DateInner today className="active">
+                {day}
+              </DateInner>
+            </DateOuter>
+          )
+        : date.setDate(day) < new Date().getTime()
+        ? daysArr.push(
+            <DateOuter
+              key={day}
+              data-calendar-date={TimeZone.toCentral(date.setDate(day))}
+            >
+              <DateInner disabled>{day}</DateInner>
+            </DateOuter>
+          )
+        : daysArr.push(
+            <DateOuter
+              key={day}
+              data-calendar-date={TimeZone.toCentral(date.setDate(day))}
+            >
+              <DateInner className="active">{day}</DateInner>
+            </DateOuter>
+          );
       day++
     }
     return daysArr;
@@ -108,10 +126,11 @@ class Calendar extends Component {
    
     return (
       <CalendarBox>
+        <Title3>(*minimum booking is 1 hour)</Title3>
         <Title id="calendar-title">Select date and time: </Title>
         <CalendarHeader>
           <ButtonArrow onClick={this.monthPrev} src={leftArrow} alt="left" />
-            <Label data-calendar-label="month">{this.getMonthYear()}</Label>
+          <Label data-calendar-label="month">{this.getMonthYear()}</Label>
           <ButtonArrow onClick={this.monthNext} src={rightArrow} alt="right" />
         </CalendarHeader>
         <WeekContainer>
@@ -127,7 +146,7 @@ class Calendar extends Component {
           {this.createMonth()}
         </CalendarBody>
       </CalendarBox>
-    )
+    );
   }
 }
 

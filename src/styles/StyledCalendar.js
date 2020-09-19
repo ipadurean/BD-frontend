@@ -19,7 +19,7 @@ export const CalendarBoxSmall = styled.div`
   max-height: 240px;
   max-width: 240px;
   position: absolute;
-  top: calc(48px + 9vh + 4.8vw);
+  top: calc(48px + 11vh + 4.8vw);
   z-index: 1;
 `
 

@@ -53,25 +53,55 @@ class NavBar extends Component {
         <StyledNav>
           <FlexRow>
             <Header />
-            <span style={{ 'width': '200px' }}>
-              {loading ?
-                <StyledWelcome>Loading...</StyledWelcome> :
-                <StyledWelcome>Welcome <b>{user.username}</b> !</StyledWelcome>}
+            <span style={{ minWidth: "calc(100px + 3vw)" }}>
+              {loading ? (
+                <StyledWelcome>Loading...</StyledWelcome>
+              ) : (
+                <StyledWelcome>
+                  <span>Welcome</span> 
+                  &nbsp;
+                  <b> {user.username} </b>!
+                </StyledWelcome>
+              )}
             </span>
-                <NavItem href="/home">Home</NavItem>
-                <NavItem href="/about">About</NavItem>
-                <NavItem href="/rides/current">Rides</NavItem> 
-                <div className="search-drivers">
-                  <Input2 onChange={this.handleChange} type="text" ref="input" />
-                  <img src={search} alt='search' onClick={this.handleClick} style={{ 'outline': 'none' }} />
-                </div>
-              {authorized ?
-              <Button1 onClick={this.logout} id="logout" style={{ 'outline': 'none' }}>Logout</Button1> :
-                  <>
-                <a href="/login"><Button1 id="login" style={{ 'outline': 'none' }}>Login</Button1></a>
-                <a href="/register"><Button1 id="register" style={{ 'outline': 'none' }}>Register</Button1></a>
-                  </>
-              }
+            <span style={{ width: "calc(200px + 1vw)" }}>
+              <NavItem href="/home">Home</NavItem>
+              <NavItem href="/about">About</NavItem>
+              <NavItem href="/rides/current">Rides</NavItem>
+            </span>
+            <div className="search-drivers">
+              <Input2 onChange={this.handleChange} type="text" ref="input" />
+              <img
+                src={search}
+                alt="search"
+                onClick={this.handleClick}
+                style={{ outline: "none" }}
+              />
+            </div>
+            <div className="logInOut">
+              {authorized ? (
+                <Button1
+                  onClick={this.logout}
+                  id="logout"
+                  style={{ outline: "none" }}
+                >
+                  Logout
+                </Button1>
+              ) : (
+                <>
+                  <a href="/login">
+                    <Button1 id="login" style={{ outline: "none" }}>
+                      Login
+                    </Button1>
+                  </a>
+                  <a href="/register">
+                    <Button1 id="register" style={{ outline: "none" }}>
+                      Register
+                    </Button1>
+                  </a>
+                </>
+              )}
+            </div>
           </FlexRow>
         </StyledNav>
       );

@@ -29,7 +29,7 @@ export const FakeSelect = styled.div`
 
 export const SelectOptionOuterBox = styled.div`
   position: absolute;
-  top: calc(48px + 9vh + 4.8vw);
+  top: calc(48px + 11vh + 4.8vw);
   max-height: 50vh;
   z-index: 2;
   overflow-y: scroll;

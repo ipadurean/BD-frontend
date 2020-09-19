@@ -45,7 +45,7 @@ class FilterDrivers extends Component {
   searchAvailable = () => {
     const { search, sendDate, sendTime, history } = this.props
     const { selectedDate, start, end } = this.props.home
-    const differenceToChicagoTime = (new Date().getTimezoneOffset() - 300) * 60000
+    const differenceToChicagoTime = (300 - new Date().getTimezoneOffset()) * 60000
     const date1 = new Date(selectedDate).setMinutes(start) + differenceToChicagoTime;
     const date2 = new Date(selectedDate).setMinutes(end) + differenceToChicagoTime;
       history.push(`/home/drivers/search?keyword=${this.state.filter}&from=${date1}&to=${date2}`)

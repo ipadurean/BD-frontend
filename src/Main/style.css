@@ -2,7 +2,7 @@
 .search-drivers {
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
+  margin: 0 5px;
   background-color: white;
   border-radius: 5px;
   max-height: 30px;
@@ -55,4 +55,10 @@
 
 #search-box {
   width: calc(100px + 5vw)
+}
+
+.logInOut {
+  display: flex;
+  align-items: flex-end;
+  min-width: 140px;
 }

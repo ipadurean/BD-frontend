@@ -12,7 +12,7 @@ export const StyledContainer = styled.div`
   background-color: rgb(244, 247, 248);
   min-height: 100vh;
   min-width: 100vw;
-  padding-top: calc(4vh + 2vw);
+  padding-top: calc(6vh + 2vw);
 `
 
 export const StyledContainer2 = styled.div`
@@ -162,8 +162,12 @@ export const FixedContainer2 = styled.div`
   animation-name: ${fadeIn};
   animation-duration: 1s;
   padding: 3%;
-  background-color: #faf9f7;
-  border: 5px solid #bab6ab;
+  background-image: linear-gradient(
+    to bottom,
+    #ededed 10%,
+    #fafafa 50%,
+    #e8e8e8 90%
+  );
   width: 80vw;
   height: calc(40vh + 20vw);
   top: 10vh;
@@ -173,11 +177,10 @@ export const FixedContainer2 = styled.div`
   border-radius: 5px;
   overflow: hidden;
   z-index: 2;
-  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2), 
-              0px 24px 38px 3px rgba(0,0,0,0.14), 
-              0px 9px 46px 8px rgba(0,0,0,0.12);
-  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;            
-`
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+`;
 
 
 
