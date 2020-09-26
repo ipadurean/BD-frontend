@@ -32,6 +32,7 @@
 
 #logout {
   margin-left: auto;
+  width: calc(70px + 1vw);
 }
 
 #logout:hover{
@@ -46,10 +47,12 @@
 
 #login {
   animation: fadeIn 1s;
+  width: calc(70px + 1vw);
 }
 
 #register {
   animation: fadeIn 1s;
+  width: calc(80px + 1vw);
   margin-left: 3px;
 }
 

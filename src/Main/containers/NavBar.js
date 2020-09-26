@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { FlexRow } from '../../styles/StyledContainers';
 import { StyledNav, NavItem, StyledWelcome } from '../../styles/StyledNav';
-import { Button1 } from '../../styles/StyledButtons';
+import { Button2 } from '../../styles/StyledButtons';
 import { Input2 } from '../../styles/StyledInputs';
 import search from '../../utils/assets/search.svg';
 
@@ -53,7 +53,7 @@ class NavBar extends Component {
         <StyledNav>
           <FlexRow>
             <Header />
-            <span style={{ minWidth: "calc(100px + 3vw)" }}>
+            <span style={{ minWidth: "calc(80px + 10vw)" }}>
               {loading ? (
                 <StyledWelcome>Loading...</StyledWelcome>
               ) : (
@@ -80,24 +80,24 @@ class NavBar extends Component {
             </div>
             <div className="logInOut">
               {authorized ? (
-                <Button1
+                <Button2
                   onClick={this.logout}
                   id="logout"
                   style={{ outline: "none" }}
                 >
                   Logout
-                </Button1>
+                </Button2>
               ) : (
                 <>
                   <a href="/login">
-                    <Button1 id="login" style={{ outline: "none" }}>
+                    <Button2 id="login" style={{ outline: "none" }}>
                       Login
-                    </Button1>
+                    </Button2>
                   </a>
                   <a href="/register">
-                    <Button1 id="register" style={{ outline: "none" }}>
+                    <Button2 id="register" style={{ outline: "none" }}>
                       Register
-                    </Button1>
+                    </Button2>
                   </a>
                 </>
               )}

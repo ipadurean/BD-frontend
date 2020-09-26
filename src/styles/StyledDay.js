@@ -30,14 +30,14 @@ export const HourBox = styled.div`
   justify-content: center;
   margin: 3px;
   box-shadow: ${ props => props.busy ? 'none' : '1px 1px 1px 1px rgb(182, 181, 181)'};
-  background-color: ${ props => props.busy ? 'white' : props.selected ? '#a69d7c' : '#f5eed5'};
+  background-color: ${ props => props.busy ? 'white' : props.selected ? '#a37f0a' : '#f0d98d'};
   border: ${ props => props.busy ? '1px solid silver' : 'none'};
   width:  ${ props => props.quarter ? 'calc(15px + 1vw)' : 'calc(30px + 2vw)'};
   min-height: calc(14px + 0.5vw);
   border-radius: 5px;
   cursor: ${ props => props.busy ? 'default' : 'pointer'};
   &:hover {
-    background-color: ${ props => props.busy ? 'white' : '#d6c598'};
+    background-color: ${ props => props.busy ? 'white' : props.selected ? '#a37f0a' : '#f7ecc8'};
   }
 `
 
@@ -48,6 +48,9 @@ export const HourText = styled.span`
   font-size: calc(10px + 0.3vw);
   width: calc(35px + 2vw);
   color: ${ props => props.selected ? 'white' : props.busy ? 'silver' : '#2a4152'};
+  &:hover {
+    color: '#f7ecc8';
+  }
 `
 
 export const ScrollArrow = styled.img`

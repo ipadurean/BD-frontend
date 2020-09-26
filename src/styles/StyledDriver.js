@@ -9,6 +9,6 @@ export const DriverCard = styled.div`
     &:hover {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
     transform: translate(-0.8px, -1px);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.8s, box-shadow 0.8s;
   }
 `

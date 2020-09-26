@@ -17,14 +17,15 @@ export const Title1 = styled.div`
 export const Title2 = styled.div`
   font-family: Lato;
   font-size: calc(12px + 0.5vw);
-  color: #5c6664;
+  color: #a1812a;
   margin: 5px;
   display: inline-block;
 `
 
 export const Title3 = styled.div`
+  font-family: Lato;
   font-size: calc(10px + 0.5vw);
-  color: #526482;
+  color: #475157;
   margin: 3px;
   display: inline-block;
 `
@@ -37,7 +38,7 @@ export const Title4 = styled.div`
 `
 
 export const Title5 = styled.div`
-  font-family: Courgette;
+  font-family: "Roboto";
   font-size: calc(7px + 0.7vw);
   font-weight: 500;
   color: #777a7a;
@@ -49,11 +50,17 @@ export const Text = styled.div`
 `
 
 export const Text1 = styled.div`
+  font-family: "Helvetica Neue";
   font-size: calc(8px + 0.5vw);
-  border-bottom: 1px dotted silver;
-  color: #044470;
+  background-color: white;
+  color: #364754;
+  border-radius: 5px;
   margin: 5px;
   padding: 9px;
+  box-shadow: 0px 3px 1px -2px rgba(182, 181, 181, 0.2), 
+                0px 2px 2px 0px rgba(104, 104, 104, 0.14), 
+                0px 1px 5px 0px rgba(122, 122, 122, 0.12);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;    
 `
 
 export const Text2 = styled.span`

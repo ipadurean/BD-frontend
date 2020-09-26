@@ -29,7 +29,6 @@ export const Input3 = styled.input`
 `
 
 export const FakeInput = styled.div`
-  color: #45536d;
   font-size: 14px;
   line-height: 24px;
   background-color: rgb(232, 241, 252);
@@ -38,6 +37,7 @@ export const FakeInput = styled.div`
   border-radius: 3px;
   height: 30px;
   width: 165px;
+  text-align: left;
 `
 
 export const TextArea1 = styled.textarea`

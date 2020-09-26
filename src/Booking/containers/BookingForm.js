@@ -41,27 +41,27 @@ class BookingForm extends Component {
         <table>
           <tbody>
             <tr>
-              <th>You are booking a ride with: </th>
+              <th className="input-label">You are booking a ride with: </th>
               <th><FakeInput>{driver.name}</FakeInput></th>
             </tr>
             <tr>
-              <th>Date:</th>
+              <th className="input-label">Date:</th>
               <th><FakeInput>{date}</FakeInput></th> 
             </tr>
             <tr>
-              <th>From: </th>
+              <th className="input-label">From: </th>
               <th><FakeInput>{from}</FakeInput></th>
             </tr>
             <tr>
-              <th>To: </th>
+              <th className="input-label">To: </th>
               <th><FakeInput>{to}</FakeInput></th>
             </tr>
             <tr>
-              <th>Total time selected:</th>
+              <th className="input-label">Total time selected:</th>
               <th><FakeInput>{totalTime || 0} hours</FakeInput></th>
             </tr>
             <tr>
-              <th>Total: </th>
+              <th className="input-label">Total: </th>
               <th><FakeInput>${totalCost || 0}</FakeInput></th>
             </tr>
           </tbody>

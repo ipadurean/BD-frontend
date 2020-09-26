@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import star from '../../utils/assets/star-solid.svg';
 import { FlexRow, FlexRow2, FlexColumn } from '../../styles/StyledContainers';
 import { DriverCard } from '../../styles/StyledDriver';
-import { Title2, Text5, Title5 } from '../../styles/StyledText';
+import { Title3, Text5, Title5 } from '../../styles/StyledText';
 import { ButtonBook1 } from '../../styles/StyledButtons';
 
 const Driver = (props) => {
@@ -14,12 +14,12 @@ const Driver = (props) => {
   const { driver, home } = props
   return (
     <DriverCard>
-      <FlexRow style={{ maxHeight: "90px", backgroundColor: "white" }}>
+      <FlexRow style={{ maxHeight: "90px", backgroundColor: "white", borderRadius: "5px" }}>
         <FlexRow2>
           <FlexColumn style={{ width: "15vw" }}>
             <Title5>
-              <Title2>{driver.username}</Title2> {driver.rating}
-              <img className="star" alt="star" src={star} />
+              <Title3>{driver.username}</Title3> {driver.rating}
+              <img id="star" alt="star" src={star} />
             </Title5>
             <Text5>
               ${driver.rate}/hr

@@ -16,7 +16,7 @@ export const FakeSelect = styled.div`
   align-items: center;
   justify-content: center;
   margin: 2px;
-  border: 1px solid silver;
+  border: 1px solid #e0e0e0;
   border-radius: 7px;
   background-color: white;
   width: calc(80px + 3vw);

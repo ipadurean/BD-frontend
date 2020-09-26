@@ -3,9 +3,11 @@ import styled from 'styled-components';
 export const StyledNav = styled.div`
   background-image: linear-gradient(
     to bottom,
-    #b0c1ccd7 0%,
-    #d1dde8 50%,
-    #c8d2dbab 90%
+    #ccd5db 5%,
+    #d3dde3 30%,
+    #d3dde3 50%,
+    #d3dde3 70%,
+    #ccd5db 95%
   );
   position: fixed;
   left: 0;
