@@ -71,7 +71,7 @@ class Calendar extends Component {
         </DateOuter>
       )
     }
-    debugger;
+
     while (day <= monthSize) {
       daySelected && day === select.getDate()
         ? daysArr.push(
@@ -126,7 +126,6 @@ class Calendar extends Component {
    
     return (
       <CalendarBox>
-        <Title3>(*minimum booking is 1 hour)</Title3>
         <Title id="calendar-title">Select date and time: </Title>
         <CalendarHeader>
           <ButtonArrow onClick={this.monthPrev} src={leftArrow} alt="left" />
@@ -145,6 +144,7 @@ class Calendar extends Component {
         <CalendarBody onClick={this.displayDay} data-calendar-area="month">
           {this.createMonth()}
         </CalendarBody>
+        <Title3><i>* minimum booking is 1 hour</i></Title3>
       </CalendarBox>
     );
   }

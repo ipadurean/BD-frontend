@@ -21,7 +21,7 @@ export const Button1 = styled.button`
 export const Button2 = styled.button`
   border-radius: 20px; 
   width: 300px;
-  height: calc(10px + 2vw);
+  height: calc(12px + 1.6vw);
   background: #0f7c90;
   color: white; 
   font-size: calc(6px + 0.8vw);
@@ -29,7 +29,7 @@ export const Button2 = styled.button`
   border: none;
   cursor: pointer;
   border: none;
-  margin: 5px;
+  margin: 4px;
   padding: 3px;
   &:disabled {
     opacity: 0.5;
@@ -94,7 +94,7 @@ export const ButtonBook1 = styled.div`
   line-height: 30px;
   margin: 10px;
   height: calc(17px + 1vw);
-  width: 25vw;
+  width: 28vw;
   max-width: 250px;
   border-radius: 20px;
   background-color: #f06b65;

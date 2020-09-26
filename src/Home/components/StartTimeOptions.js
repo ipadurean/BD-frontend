@@ -85,7 +85,7 @@ const StartTimeOptions = (props) => {
           06:00
         </OptionBox>
         { quarters === 360 && <Quarters>
-          { 365 < ((end || 1485) - 45) && <QuarterBox data-val='365'>:15</QuarterBox>}
+          { 365 < ((end || 1485) - 45) && <QuarterBox data-val='375'>:15</QuarterBox>}
           { 390 < ((end || 1485) - 45) && <QuarterBox data-val='390'>:30</QuarterBox>}
           { 405 < ((end || 1485) - 45) && <QuarterBox data-val='405'>:45</QuarterBox>}
         </Quarters>}

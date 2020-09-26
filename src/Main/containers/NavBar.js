@@ -53,7 +53,7 @@ class NavBar extends Component {
         <StyledNav>
           <FlexRow>
             <Header />
-            <span style={{ minWidth: "calc(80px + 10vw)" }}>
+            <span id="welcome-message">
               {loading ? (
                 <StyledWelcome>Loading...</StyledWelcome>
               ) : (
@@ -64,7 +64,7 @@ class NavBar extends Component {
                 </StyledWelcome>
               )}
             </span>
-            <span style={{ width: "calc(200px + 1vw)" }}>
+            <span id="nav-items">
               <NavItem href="/home">Home</NavItem>
               <NavItem href="/about">About</NavItem>
               <NavItem href="/rides/current">Rides</NavItem>
@@ -79,7 +79,7 @@ class NavBar extends Component {
               />
             </div>
             <div className="logInOut">
-              {authorized ? (
+              {authorized ? 
                 <Button2
                   onClick={this.logout}
                   id="logout"
@@ -87,8 +87,8 @@ class NavBar extends Component {
                 >
                   Logout
                 </Button2>
-              ) : (
-                <>
+               : 
+                <span>
                   <a href="/login">
                     <Button2 id="login" style={{ outline: "none" }}>
                       Login
@@ -99,8 +99,8 @@ class NavBar extends Component {
                       Register
                     </Button2>
                   </a>
-                </>
-              )}
+                </span>
+              }
             </div>
           </FlexRow>
         </StyledNav>

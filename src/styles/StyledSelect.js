@@ -48,7 +48,7 @@ export const OptionBox = styled.div`
   justify-content: center;
   border: 1px solid silver;
   border-radius: 4px;
-  background-color: #edf7f7;
+  background-color: white;
   width: calc(80px + 3vw);
   height: calc(10px + 1vw);
   padding: 1px;
@@ -67,7 +67,7 @@ export const QuarterBox = styled.div`
   justify-content: center;
   border: 1px solid silver;
   border-radius: 4px;
-  background-color: #edf7f7;
+  background-color: white;
   width: calc(20px + 1vw);
   height: calc(10px + 1vw);
   padding: 1px 5%;
