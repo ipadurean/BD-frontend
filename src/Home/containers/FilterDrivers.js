@@ -15,7 +15,7 @@ import {
   showFilterBox,
 } from "../ducks/actions";
 import { connect } from "react-redux";
-import { selectDay, setTime } from '../../Booking/ducks/actions';
+import { selectDay, setTime, resetBooked } from '../../Booking/ducks/actions';
 import { withRouter } from 'react-router';
 import { FlexRowWrap, FlexColumn, FlexRow } from '../../styles/StyledContainers';
 import { Title2 } from '../../styles/StyledText';
@@ -61,7 +61,8 @@ class FilterDrivers extends Component {
 
   reset = () => {
     this.props.reset();
-    this.props.history.push('/home')
+    this.props.resetBooking();
+    this.props.history.push('/home');
   }
 
   addFilter = (event) => {
@@ -163,6 +164,7 @@ function mapDispatchToProps(dispatch){
     end: (time) => dispatch(endTime(time)),
     search: () => dispatch(clickSearch()),
     reset: () => dispatch(resetSearch()),
+    resetBooking: () => dispatch(resetBooked()),
     sendDate: (date) => dispatch(selectDay(date)),
     sendTime: (time) => dispatch(setTime(time)),
     resetClicks: () => dispatch(cancelClicks()),

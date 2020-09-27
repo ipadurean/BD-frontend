@@ -26,6 +26,11 @@ class App extends Component {
   render() {
     const token = localStorage.getItem('jwt');
     const { authorized, booking } = this.props;
+    const { selectedDate, start, end } = this.props.home;
+    const differenceToChicagoTime = (300 - new Date().getTimezoneOffset()) * 60000;
+    const date1 = new Date(selectedDate).setMinutes(start) + differenceToChicagoTime;
+    const date2 = new Date(selectedDate).setMinutes(end) + differenceToChicagoTime;
+    const homeURL = `/home/drivers/search?from=${date1}&to=${date2}`;
    
     return (
       <>
@@ -39,7 +44,7 @@ class App extends Component {
           }} />
           <Route path='/login' render={() => {
             return !authorized ? <Login /> :
-              <Redirect to="/home" />
+              <Redirect to={homeURL} />
           }} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/about' component={About} />
@@ -76,7 +81,8 @@ function mapStateToProps(state) {
     loading: state.auth.loading,
     drivers: state.drivers.drivers,
     booking: state.booking,
-    reviewOpen: state.rideSummary.reviewOpen
+    reviewOpen: state.rideSummary.reviewOpen,
+    home: state.home
   }
 }
 

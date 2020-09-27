@@ -53,7 +53,7 @@ export const loginAction = (loginParams) => {
   }
 }
 
-export const register = (registerParams, history) => {
+export const register = (registerParams) => {
 
   return function (dispatch) {
     dispatch(startCreating())
