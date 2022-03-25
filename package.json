@@ -67,7 +67,7 @@
     "install-peers": "^1.0.3",
     "kind-of": ">=6.0.3",
     "less-loader": "^5.0.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "style-loader": "^1.2.1"
   }
 }
